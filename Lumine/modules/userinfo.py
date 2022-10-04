@@ -36,11 +36,18 @@ from Lumine.modules.helper_funcs.misc import delete
 from Lumine import telethn as LumineTelethonClient, SUDO_USERS, SUPPORT_USERS
 
 
-SUSER = 5731542078
-"""AUSER =
-BUSER =
-CUSER =
-DUSER =
+SSUSER = 5731542078
+"""AAUSER =
+BBUSER =
+CCUSER =
+DDUSER =
+"""
+
+SUSER = int(SSUSER)
+"""AUSER = int(AAUSER)
+BUSER = int(BBUSER)
+CUSER = int(CCUSER)
+DUSER = int(DDUSER)
 """
 SCLASS = list(SUSER)
 """ACLASS = list(AUSER)
