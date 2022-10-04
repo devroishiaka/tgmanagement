@@ -167,8 +167,6 @@ def info(update: Update, context: CallbackContext):
     )
 
     if user.last_name:
-        text += f"\nName: {html.escape(user.first_name)} {html.escape(user.last_name)}"
-    elif:
         text += f"\nName: {html.escape(user.first_name)}"
 
     if user.username:
