@@ -16,7 +16,7 @@ from Lumine.modules.helper_funcs.telethn.chatstatus import (
 from Lumine.modules.sql.clear_cmd_sql import get_clearcmd
 
 
-@telethn.on(events.NewMessage(pattern="^[!/]purge$"))
+@telethn.on(events.NewMessage(pattern="^[!/]kpurge$"))
 async def purge_messages(event):
     start = time.perf_counter()
     if event.from_id is None:
