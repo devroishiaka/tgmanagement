@@ -446,6 +446,27 @@ def __user_info__(user_id):
     result = result.strip("\n")
     return result
 
+"""
+def __user_info__(user_id):
+    is_blacklisted = sql.is_user_blacklisted(user_id)
+
+    text = "┣◈BʟᴀcᴋWɪzᴀʀᴅ ⊶ <b>{}</b>"
+    if user_id in [777000, 1087968824]:
+        return ""
+    if user_id == dispatcher.bot.id:
+        return "OFC NO"
+    if int(user_id) in SUDO_USERS:
+        return ""
+    if is_blacklisted:
+        text = text.format("Yes")
+        reason = sql.get_reason(user_id)
+        if reason:
+            text += f"\nReason: <code>{reason}</code>"
+    else:
+        text = text.format("No")
+
+    return text
+"""
 
 def __gdpr__(user_id):
     sql.clear_user_info(user_id)
