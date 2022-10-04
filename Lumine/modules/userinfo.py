@@ -36,6 +36,19 @@ from Lumine.modules.helper_funcs.misc import delete
 from Lumine import telethn as LumineTelethonClient, SUDO_USERS, SUPPORT_USERS
 
 
+SUSER = 5731542078
+"""AUSER =
+BUSER =
+CUSER =
+DUSER =
+"""
+SCLASS = list(SUSER)
+"""ACLASS = list(AUSER)
+BCLASS = list(BUSER)
+CCLASS = list(CUSER)
+DCLASS = list(DUSER)
+"""
+
 def get_id(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
@@ -162,35 +175,50 @@ def info(update: Update, context: CallbackContext):
 
     text = (
         f"┏━━━•°•━━\n"
-        f"<b>┣━ ⊱ Usᴇʀ Iɴғᴏ ⊰</b>\n\n"
-        f"┣━◈ ID ⊶ <code>{user.id}</code>\n"
-        f"┣━◈ Fɪʀsᴛ Nᴀᴍᴇ ⊶ {html.escape(user.first_name)}"
+        f"<b>┣ ⊱ Usᴇʀ Iɴғᴏ ⊰</b>\n┃\n"
+        f"┣◈ ID ⊶ <code>{user.id}</code>\n"
+        f"┣◈ Fɪʀsᴛ Nᴀᴍᴇ ⊶ {html.escape(user.first_name)}"
     )
 
     if user.last_name:
         text += f"\n┣━◈ Lᴀsᴛ Nᴀᴍᴇ ⊶ {html.escape(user.first_name)}"
 
     if user.username:
-        text += f"\n┣━◈ UsᴇʀNᴀᴍᴇ ⊶ @{html.escape(user.username)}"
+        text += f"\n┣━◈ UsᴇʀNᴀᴍᴇ ⊶ @{html.escape(user.username)}\n┃"
 
 
     disaster_level_present = False
 
     if user.id == OWNER_ID:
-        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>Owner</b>"               #Title----s-class------------------------
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>Dragon GOD</b>"               #Title----s-class------------------------
         disaster_level_present = True
     elif user.id in DEV_USERS:
-        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>developer</b>"
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>S-Class</b>"
         disaster_level_present = True
     elif user.id in SUDO_USERS:
-        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>sudo</b>"
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>A-class</b>"
         disaster_level_present = True
     elif user.id in SUPPORT_USERS:
-        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>support</b>"
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>B-class</b>"
         disaster_level_present = True
     elif user.id in WHITELIST_USERS:
-        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>whitelist</b>"
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>C-Class</b>"
         disaster_level_present = True
+    elif user.id in SCLASS:
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ S-Class"
+        disaster_level_present = True
+    """elif user.id in ACLASS:
+        text += "\n💠Tʜɪs ᴘᴇʀsᴏɴ ɪs MY Bᴇsᴛɪᴇ."
+        disaster_level_present = True
+    elif user.id in BCLASS:
+        text += "\n💠Tʜɪs ᴘᴇʀsᴏɴ ɪs MY Bᴇsᴛɪᴇ."
+        disaster_level_present = True
+    elif user.id in CCLASS:
+        text += "\n💠Tʜɪs ᴘᴇʀsᴏɴ ɪs MY Bᴇsᴛɪᴇ."
+        disaster_level_present = True
+    elif user.id in DCLASS:
+        text += "\n💠Tʜɪs ᴘᴇʀsᴏɴ ɪs MY Bᴇsᴛɪᴇ."
+        disaster_level_present = True"""
 
     # if disaster_level_present:
     #     text += ' [<a href="https://t.me/OnePunchUpdates/155">?</a>]'.format(
@@ -215,7 +243,7 @@ def info(update: Update, context: CallbackContext):
         except TypeError:
             mod_info = mod.__user_info__(user.id, chat.id).strip()
         if mod_info:
-            text += "\n\n" + mod_info
+            text += "\n┃\n┃" + mod_info
 
     if INFOPIC:
         try:
