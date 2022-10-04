@@ -12,4 +12,4 @@ if you want to know about the game or how to play, then please send /howto
 
 If you have any doubts then simply message my babe [Ishikki Akabane](t.me/ishikki_akabane)
 """
-__mod_name__ = "About"
+__mod_name__ = "⊱ About ⊰"
