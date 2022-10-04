@@ -261,19 +261,9 @@ def buttons(update: Update, context: CallbackContext):
             query.answer("🛑 Failed to delete message!")
 
 
-__help__ = """
- • `/report <reason>`*:* reply to a message to report it to admins.
- • `@admin`*:* reply to a message to report it to admins.
-*NOTE:* Neither of these will get triggered if used by admins.
 
-*Admins only:*
- • `/reports <on/off>`*:* change report setting, or view current status.
-   • If done in pm, toggles your status.
-   • If in group, toggles that groups's status.
-"""
-
-SETTING_HANDLER = CommandHandler("reports", report_setting, run_async=True)
-REPORT_HANDLER = CommandHandler("report", report, filters=Filters.chat_type.groups, run_async=True)
+SETTING_HANDLER = CommandHandler("kreports", report_setting, run_async=True)
+REPORT_HANDLER = CommandHandler("kreport", report, filters=Filters.chat_type.groups, run_async=True)
 ADMIN_REPORT_HANDLER = MessageHandler(Filters.regex(r"(?i)@admin(s)?"), report)
 
 REPORT_BUTTON_USER_HANDLER = CallbackQueryHandler(buttons, pattern=r"report_")
