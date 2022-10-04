@@ -665,10 +665,10 @@ __help__ = """
  • `/unban`*:* unbans a user. (via handle, or reply)
  • `/kick`*:* Kicks a user out of the group, (via handle, or reply)
  • `/kickme`*:* kicks the user who issued the command.
- • `mute`*:* mutes a user. That user wont be able to send any kind of message
- • `tmute <userhandle> x(m/h/d)`*:* mutes a user for x time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
- • `unmute`*:* unmutes a user.
- • ``*:* 
+ • `/mute`*:* mutes a user. That user wont be able to send any kind of message
+ • `/tmute <userhandle> x(m/h/d)`*:* mutes a user for x time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
+ • `/unmute`*:* unmutes a user.
+ • `/purge`*:* deletes all messages between this and the replied to message.
 """
 
 ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist, run_async=True)
