@@ -35,11 +35,6 @@ from Lumine.modules.helper_funcs.extraction import extract_user
 from Lumine.modules.helper_funcs.misc import delete
 from Lumine import telethn as LumineTelethonClient, SUDO_USERS, SUPPORT_USERS
 
-ACLASS = list(AUSER)
-BCLASS = list(BUSER)
-CCLASS = list(CUSER)
-DCLASS = list(DUSER)
-
 SCLASS = [5731542078]
          #koichi_demon
 ACLASS = []
