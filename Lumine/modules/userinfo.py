@@ -437,8 +437,8 @@ def __user_info__(user_id):
     if me:
         result += f"┣━◈<b> Gᴜɪʟᴅ ⊶ </b>{me}\n"
     if bio:
-        result += f"┣━◈<b> Pᴏɪɴᴛs ⊶ </b>{bio}\n"
-    result = result.strip("\n")
+        result += f"┣━◈<b> Pᴏɪɴᴛs ⊶ </b>{bio}"
+    result = result.strip("")
     return result
 
 """
@@ -494,7 +494,7 @@ Examples:
  • `/gdpr`*:* deletes your information from the bot's database. Private chats only.
 """
 
-SET_BIO_HANDLER = DisableAbleCommandHandler("setpointxyz", set_about_bio, run_async=True)
+SET_BIO_HANDLER = DisableAbleCommandHandler("ksetpoint", set_about_bio, run_async=True)
 GET_BIO_HANDLER = DisableAbleCommandHandler("points", about_bio)
 
 STATS_HANDLER = CommandHandler("stats", stats, run_async=True)
@@ -517,7 +517,7 @@ dispatcher.add_handler(SET_ABOUT_HANDLER)
 dispatcher.add_handler(GET_ABOUT_HANDLER)
 
 __mod_name__ = "Info"
-__command_list__ = ["setpointxyz", "points", "join", "Myguild", "info", "gprd"]
+__command_list__ = ["ksetpoint", "points", "join", "Myguild", "info", "gprd"]
 __handlers__ = [
     ID_HANDLER,
     GIFID_HANDLER,
