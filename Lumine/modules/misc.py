@@ -81,35 +81,27 @@ def markdown_help(update: Update, context: CallbackContext):
 
 __help__ = """
 *Available commands:*\n
-*Covid:*
- • `/covid <country>`: provides lastest covid information\n
-*Weather:*
- • `/weather <city>`: gives weather information about a specific location or country\n
-*Quotly:*
- • `/quotly`: reply to a message to get a quoted message\n
 *Markdown:*
- • `/markdownhelp`*:* quick summary of how markdown works in telegram - can only be called in private chats\n
-*Paste:*
- • `/paste`*:* saves replied content to `nekobin.com` and replies with a url\n
-*React:*
- • `/react`*:* reacts with a random reaction\n
+ • `/markdownhelp`*:* quick summary of how markdown works in telegram - can only be called in private chats
+*Translator:*
+ • `/tr` or `/tl` as reply to the message to translate.
 *Urban Dictonary:*
- • `/ud <word>`*:* type the word or expression you want to search use\n
+ • `/ud <word>`*:* type the word or expression you want to search use
+*IMBD*
+ • `/imbd <query>`*:* gives you the imbd imformation for your requested query
 *Wikipedia:*
- • `/wiki <query>`*:* wikipedia your query\n
-*Wallpapers:*
- • `/wall <query>`*:* get a wallpaper from wall.alphacoders.com\n
-*Currency converter:* 
- • `/cash`*:* currency converter
-Example:
- `/cash 1 USD INR`  
-      _OR_
- `/cash 1 usd inr`
-Output: `1.0 USD = 75.505 INR`\n
+ • `/wiki <query>`*:* wikipedia your query
 *Timezones:*
  • `/time <query>`*:* Gives information about a timezone.
 *Available queries:* Country Code/Country Name/Timezone Name
-• 🕐 [Timezones list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+ • 🕐 [Timezones list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+*GitHub:*
+ • `/git <user>/<repo>`: will fetch the most recent release from that repo.
+ • `/git <user>/<repo> <number>`: will fetch releases in past.
+ • `/fetch <reponame> or &reponame`: same as `/git`, but you can use a saved repo shortcut
+ • `/listrepo`: lists all repo shortcuts in chat
+ • `/gitver`: returns the current API version
+ • `/changelog <reponame>`: gets the changelog of a saved repo shortcut
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler("echo", echo, filters=Filters.chat_type.groups, run_async=True)
@@ -118,7 +110,7 @@ MD_HELP_HANDLER = CommandHandler("markdownhelp", markdown_help, run_async=True)
 dispatcher.add_handler(ECHO_HANDLER)
 dispatcher.add_handler(MD_HELP_HANDLER)
 
-__mod_name__ = "Extras"
+__mod_name__ = "Exᴛʀᴀs"
 __command_list__ = ["id", "echo", "covid", "weather", "quotly"]
 __handlers__ = [
     ECHO_HANDLER,
