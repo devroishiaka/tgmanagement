@@ -659,17 +659,16 @@ __help__ = """
  • `/delgpic`*:* Same as above but to remove group profile pic.
  • `/setsticker`*:* As a reply to some sticker to set it as group sticker set!
  • `/setdescription` `<description>`*:* Sets new chat description in group.
- • `/zombies`*:* scan and clean zombies
 """
 
 ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist, run_async=True)
-PIN_HANDLER = CommandHandler("pin", pin, filters=Filters.chat_type.groups, run_async=True)
-UNPIN_HANDLER = CommandHandler("unpin", unpin, filters=Filters.chat_type.groups, run_async=True)
+PIN_HANDLER = CommandHandler("kpin", pin, filters=Filters.chat_type.groups, run_async=True)
+UNPIN_HANDLER = CommandHandler("kunpin", unpin, filters=Filters.chat_type.groups, run_async=True)
 INVITE_HANDLER = DisableAbleCommandHandler(["invitelink", "link"], invite, run_async=True)
 PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote, run_async=True)
 DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote, run_async=True)
 SET_TITLE_HANDLER = CommandHandler("title", set_title, run_async=True)
-ADMIN_REFRESH_HANDLER = CommandHandler("admincache", refresh_admin, filters=Filters.chat_type.groups)
+ADMIN_REFRESH_HANDLER = CommandHandler(["admincache", "reload_admins"], refresh_admin, filters=Filters.chat_type.groups)
 CHAT_PIC_HANDLER = CommandHandler("setgpic", setchatpic, filters=Filters.group, run_async=True)
 DEL_CHAT_PIC_HANDLER = CommandHandler("delgpic", rmchatpic, filters=Filters.group, run_async=True)
 SETCHAT_TITLE_HANDLER = CommandHandler("setgtitle", setchat_title, filters=Filters.group, run_async=True)
@@ -690,7 +689,7 @@ dispatcher.add_handler(SETCHAT_TITLE_HANDLER)
 dispatcher.add_handler(SETSTICKET_HANDLER)
 dispatcher.add_handler(SETDESC_HANDLER)
 
-__mod_name__ = "Admin"
+__mod_name__ = "⊱ Aᴅᴍɪɴ ⊰"
 __command_list__ = [
     "adminlist",
     "admins",
