@@ -659,6 +659,16 @@ __help__ = """
  • `/delgpic`*:* Same as above but to remove group profile pic.
  • `/setsticker`*:* As a reply to some sticker to set it as group sticker set!
  • `/setdescription` `<description>`*:* Sets new chat description in group.
+*Bans and Mutes*
+ • `/ban`*:* bans a user. (via handle, or reply)
+ • `/tban <userhandle> x(m/h/d)`*:* bans a user for `x` time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
+ • `/unban`*:* unbans a user. (via handle, or reply)
+ • `/kick`*:* Kicks a user out of the group, (via handle, or reply)
+ • `/kickme`*:* kicks the user who issued the command.
+ • `mute`*:* mutes a user. That user wont be able to send any kind of message
+ • `tmute <userhandle> x(m/h/d)`*:* mutes a user for x time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
+ • `unmute`*:* unmutes a user.
+ • ``*:* 
 """
 
 ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist, run_async=True)
