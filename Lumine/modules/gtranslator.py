@@ -46,12 +46,6 @@ def translate(update: Update, context: CallbackContext):
     message.reply_text(f"*Translated from {detectlang}:*\n```{tekstr.text}```", parse_mode=ParseMode.MARKDOWN)
 
 
-__help__ = """
-• `/tr` or `/tl` (language code) as reply to a long message
-*Example:* 
-  `/tr en`*:* translates something to english
-  `/tr hi-en`*:* translates hindi to english
-"""
 
 TRANSLATE_HANDLER = DisableAbleCommandHandler(["tr", "tl"], translate, run_async=True)
 
