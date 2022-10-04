@@ -35,27 +35,21 @@ from Lumine.modules.helper_funcs.extraction import extract_user
 from Lumine.modules.helper_funcs.misc import delete
 from Lumine import telethn as LumineTelethonClient, SUDO_USERS, SUPPORT_USERS
 
-
-#SSUSER = (5731542078)
-"""AAUSER =
-BBUSER =
-CCUSER =
-DDUSER =
-"""
-
-#SUSER = set(int(x) for x in SSUSER or [])
-"""AUSER = int(AAUSER)
-BUSER = int(BBUSER)
-CUSER = int(CCUSER)
-DUSER = int(DDUSER)
-"""
-#SCLASS = list(SUSER)
-"""ACLASS = list(AUSER)
+ACLASS = list(AUSER)
 BCLASS = list(BUSER)
 CCLASS = list(CUSER)
 DCLASS = list(DUSER)
-"""
+
 SCLASS = [5731542078]
+         #koichi_demon
+ACLASS = []
+         #
+BCLASS = []
+         #
+CCLASS = []
+         #
+DCLASS = []
+         #
 
 def get_id(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
@@ -183,16 +177,16 @@ def info(update: Update, context: CallbackContext):
 
     text = (
         f"┏━━━•°•━━\n"
-        f"<b>┣ ⊱ Usᴇʀ Iɴғᴏ ⊰</b>\n┃\n"
+        f"┣<b> ⊱ Usᴇʀ Iɴғᴏ ⊰</b>\n┃\n"
         f"┣◈ ID ⊶ <code>{user.id}</code>\n"
         f"┣◈ Fɪʀsᴛ Nᴀᴍᴇ ⊶ {html.escape(user.first_name)}"
     )
 
     if user.last_name:
-        text += f"\n┣━◈ Lᴀsᴛ Nᴀᴍᴇ ⊶ {html.escape(user.first_name)}"
+        text += f"\n┣◈ Lᴀsᴛ Nᴀᴍᴇ ⊶ {html.escape(user.first_name)}"
 
     if user.username:
-        text += f"\n┣━◈ UsᴇʀNᴀᴍᴇ ⊶ @{html.escape(user.username)}\n┃"
+        text += f"\n┣◈ UsᴇʀNᴀᴍᴇ ⊶ @{html.escape(user.username)}\n┃"
 
 
     disaster_level_present = False
@@ -215,18 +209,18 @@ def info(update: Update, context: CallbackContext):
     elif user.id in SCLASS:
         text += "\n┣━◈ Rᴀɴᴋ ⊶ S-Class"
         disaster_level_present = True
-    """elif user.id in ACLASS:
-        text += "\n💠Tʜɪs ᴘᴇʀsᴏɴ ɪs MY Bᴇsᴛɪᴇ."
+    elif user.id in ACLASS:
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ A-Class"
         disaster_level_present = True
     elif user.id in BCLASS:
-        text += "\n💠Tʜɪs ᴘᴇʀsᴏɴ ɪs MY Bᴇsᴛɪᴇ."
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ B-Class"
         disaster_level_present = True
     elif user.id in CCLASS:
-        text += "\n💠Tʜɪs ᴘᴇʀsᴏɴ ɪs MY Bᴇsᴛɪᴇ."
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ C-Class"
         disaster_level_present = True
     elif user.id in DCLASS:
-        text += "\n💠Tʜɪs ᴘᴇʀsᴏɴ ɪs MY Bᴇsᴛɪᴇ."
-        disaster_level_present = True"""
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ D-Class"
+        disaster_level_present = True
 
     # if disaster_level_present:
     #     text += ' [<a href="https://t.me/OnePunchUpdates/155">?</a>]'.format(
@@ -251,7 +245,7 @@ def info(update: Update, context: CallbackContext):
         except TypeError:
             mod_info = mod.__user_info__(user.id, chat.id).strip()
         if mod_info:
-            text += "\n┃\n┃" + mod_info
+            text += "\n┃\n" + mod_info
 
     if INFOPIC:
         try:
@@ -446,9 +440,9 @@ def __user_info__(user_id):
     me = html.escape(sql.get_user_me_info(user_id) or "")
     result = ""
     if me:
-        result += f"<b>┣━◈ Gᴜɪʟᴅ ⊶ </b>{me}\n"
+        result += f"┣━◈<b> Gᴜɪʟᴅ ⊶ </b>{me}\n"
     if bio:
-        result += f"<b>┣━◈ Pᴏɪɴᴛs ⊶ </b>{bio}\n"
+        result += f"┣━◈<b> Pᴏɪɴᴛs ⊶ </b>{bio}\n"
     result = result.strip("\n")
     return result
 
