@@ -158,37 +158,38 @@ def info(update: Update, context: CallbackContext):
     else:
         return
 
-    rep = message.reply_text("<code>Searching database...</code>", parse_mode=ParseMode.HTML)
+    rep = message.reply_text("<code>Sᴇᴀʀᴄʜɪɴɢ Dᴀᴛᴀʙᴀsᴇ...</code>", parse_mode=ParseMode.HTML)
 
     text = (
-        f"<b>User info:</b>\n"
-        f"ID: <code>{user.id}</code>\n"
-        f"First Name: {html.escape(user.first_name)}"
+        f"┏━━━•°•━━\n"
+        f"<b>┣━ ⊱ Usᴇʀ Iɴғᴏ ⊰</b>\n\n"
+        f"┣━◈ ID ⊶ <code>{user.id}</code>\n"
+        f"┣━◈ Fɪʀsᴛ Nᴀᴍᴇ ⊶ {html.escape(user.first_name)}"
     )
 
     if user.last_name:
-        text += f"\nName: {html.escape(user.first_name)}"
+        text += f"\n┣━◈ Lᴀsᴛ Nᴀᴍᴇ ⊶ {html.escape(user.first_name)}"
 
     if user.username:
-        text += f"\nUsername: @{html.escape(user.username)}"
+        text += f"\n┣━◈ UsᴇʀNᴀᴍᴇ ⊶ @{html.escape(user.username)}"
 
 
     disaster_level_present = False
 
     if user.id == OWNER_ID:
-        text += "\n\nUser level: <b>Owner</b>"               #Title----------------------------
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>Owner</b>"               #Title----s-class------------------------
         disaster_level_present = True
     elif user.id in DEV_USERS:
-        text += "\n\nUser level: <b>developer</b>"
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>developer</b>"
         disaster_level_present = True
     elif user.id in SUDO_USERS:
-        text += "\n\nUser level: <b>sudo</b>"
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>sudo</b>"
         disaster_level_present = True
     elif user.id in SUPPORT_USERS:
-        text += "\n\nUser level: <b>support</b>"
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>support</b>"
         disaster_level_present = True
     elif user.id in WHITELIST_USERS:
-        text += "\n\nUser level: <b>whitelist</b>"
+        text += "\n┣━◈ Rᴀɴᴋ ⊶ <b>whitelist</b>"
         disaster_level_present = True
 
     # if disaster_level_present:
@@ -204,7 +205,7 @@ def info(update: Update, context: CallbackContext):
             result = result.json()["result"]
             if "custom_title" in result.keys():
                 custom_title = result["custom_title"]
-                text += f"\n\nTitle:\n<b>{custom_title}</b>"    #Rank---------------------------
+                text += f"\n┣━◈ Tɪᴛʟᴇ ⊶ <b>{custom_title}</b>"    #Title---dragon-slayer------------------------
     except BadRequest:
         pass
 
@@ -270,10 +271,10 @@ def about_me(update: Update, context: CallbackContext):  #POINTS----------------
     elif message.reply_to_message:
         username = message.reply_to_message.from_user.first_name
         update.effective_message.reply_text(
-            f"{username} hasn't registered yet!"
+            f"`{username} hasn't registered yet!`"
         )
     else:
-        update.effective_message.reply_text("There are no points, register first to get started")
+        update.effective_message.reply_text("`There are no points, register first to get started`")
 
 
 def set_about_me(update: Update, context: CallbackContext):
@@ -335,11 +336,11 @@ def about_bio(update: Update, context: CallbackContext):       #Guild-----------
     elif message.reply_to_message:
         username = user.first_name
         update.effective_message.reply_text(
-            f"{username} is not part of any guild!\njoin a guild or create"
+            f"`{username} is not part of any guild!\njoin a guild or create`"
         )
     else:
         update.effective_message.reply_text(
-            "You haven't joined any guild yet!"
+            "`You haven't joined any guild yet!`"
         )
 
 
@@ -409,9 +410,9 @@ def __user_info__(user_id):
     me = html.escape(sql.get_user_me_info(user_id) or "")
     result = ""
     if me:
-        result += f"<b>Guild:</b>\n{me}\n"
+        result += f"<b>┣━◈ Gᴜɪʟᴅ ⊶ </b>{me}\n"
     if bio:
-        result += f"<b>Points:</b>\n{bio}\n"
+        result += f"<b>┣━◈ Pᴏɪɴᴛs ⊶ </b>{bio}\n"
     result = result.strip("\n")
     return result
 
