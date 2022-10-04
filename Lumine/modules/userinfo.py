@@ -36,25 +36,26 @@ from Lumine.modules.helper_funcs.misc import delete
 from Lumine import telethn as LumineTelethonClient, SUDO_USERS, SUPPORT_USERS
 
 
-SSUSER = (5731542078)
+#SSUSER = (5731542078)
 """AAUSER =
 BBUSER =
 CCUSER =
 DDUSER =
 """
 
-SUSER = set(int(x) for x in SSUSER or [])
+#SUSER = set(int(x) for x in SSUSER or [])
 """AUSER = int(AAUSER)
 BUSER = int(BBUSER)
 CUSER = int(CCUSER)
 DUSER = int(DDUSER)
 """
-SCLASS = list(SUSER)
+#SCLASS = list(SUSER)
 """ACLASS = list(AUSER)
 BCLASS = list(BUSER)
 CCLASS = list(CUSER)
 DCLASS = list(DUSER)
 """
+SCLASS = [5731542078]
 
 def get_id(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
