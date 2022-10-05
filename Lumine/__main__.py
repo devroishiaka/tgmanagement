@@ -76,13 +76,13 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 ᏦϴΝΝᏆᏟᎻᏆᏔᎪ !! (◍•ᴗ•◍)
 
-Hᴏɪ {} sᴀɴ, ɪ'ᴍ Eʀɪ Aᴋᴀɴᴇ, Nɪcᴇ To Mᴇᴇᴛ Yoᴜ! ✨
+ʜᴏɪ {} sᴀɴ, ɪ’ᴍ Eʀɪ Aᴋᴀɴᴇ, ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ!! ✨ 
+ɪ’ᴍ ᴀ ғᴜɴ ɢᴀᴍᴇ ʙᴏᴛ ᴡɪᴛʜ ғᴀɴᴛᴀsʏ ᴍᴀɢɪᴄᴀʟ ᴛʜᴇᴍᴇ.
 
-I’m a Fun Game bot with Fantasy Magical Theme.
-Type /help to see all my commands
+ᴛʏᴘᴇ /help ᴛᴏ sᴇᴇ ᴀʟʟ ᴍʏ ᴄᴏᴍᴍᴀɴᴅs
 
-**Note**
-*Currently this bot is in its BETA phase. You can’t add this bot in your groups. You can play with the bot in [Friends Domain](t.me/friendsdomain)*
+**ɴᴏᴛᴇ**
+**ᴄᴜʀʀᴇɴᴛʟʏ ᴛʜɪs ʙᴏᴛ ɪs ɪɴ ɪᴛs ʙᴇᴛᴀ ᴘʜᴀsᴇ. ʏᴏᴜ ᴄᴀɴ’ᴛ ᴀᴅᴅ ᴛʜɪs ʙᴏᴛ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘs. ʏᴏᴜ ᴄᴀɴ ᴘʟᴀʏ ᴡɪᴛʜ ᴛʜᴇ ʙᴏᴛ ɪɴ @friendsdomain**
 """
 
 HELP_STRINGS = """
@@ -103,10 +103,11 @@ ERI_VID= (
 
 ERI_IMG = "https://te.legra.ph/file/7bd18e2d1345f6705f41b.jpg"   #start in pm pic
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
-ERi is hosted on its own server and require donations.
-You can donate to the original writer of the Base code, @ishikki_akabane
-or you can join his [Group](https://t.me/friendsdomain) to support him."""
+DONATE_STRING = """ʜᴇʏᴀ, ɢʟᴀᴅ ᴛᴏ ʜᴇᴀʀ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴅᴏɴᴀᴛᴇ!
+Eʀɪ ɪs ʜᴏsᴛᴇᴅ ᴏɴ ɪᴛs ᴏᴡɴ sᴇʀᴠᴇʀ ᴀɴᴅ ʀᴇϙᴜɪʀᴇ ᴅᴏɴᴀᴛɪᴏɴs. 
+ʏᴏᴜ ᴄᴀɴ ᴅᴏɴᴀᴛᴇ ᴛᴏ ᴛʜᴇ ᴏʀɪɢɪɴᴀʟ ᴡʀɪᴛᴇʀ ᴏғ ᴛʜᴇ ʙᴀsᴇ ᴄᴏᴅᴇ, @Ishikki_Akabane 
+ᴏʀ ʏᴏᴜ ᴄᴀɴ ᴊᴏɪɴ ʜɪs ɢʀᴏᴜᴘ ᴛᴏ sᴜᴘᴘᴏʀᴛ ʜɪᴍ.
+"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -225,7 +226,7 @@ def start(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Play",
+                                text="Pʟᴀʏ",
                                 url="t.me/Friendsdomain".format(
                                     context.bot.username,
                                 ),
@@ -233,21 +234,21 @@ def start(update: Update, context: CallbackContext):
                         ],
                         [
                             InlineKeyboardButton(
-                                text="Support",
+                                text="Sᴜᴘᴘᴏʀᴛ",
                                 url=f"https://t.me/{SUPPORT_CHAT}",
                             ),
                             InlineKeyboardButton(
-                                text="Guide",
+                                text="Gᴜɪᴅᴇ",
                                 callback_data="vegeta_",
                             ),
                         ],
                         [
                             InlineKeyboardButton(
-                                text="Kazuma Clan",
+                                text="kᴀᴢᴜᴍᴀ ᴄʟᴀɴ",
                                 url="https://t.me/KazumaclanXD"
                             ),
                             InlineKeyboardButton(
-                            text="Owner",
+                            text="Oᴡɴᴇʀ",
                             url="https://t.me/Ishikki_Akabane"
                             ),
                         ],
@@ -257,7 +258,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
           update.effective_message.reply_video(
-            ERI_VID, caption= "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+            ERI_VID, caption= "ᴍᴏsʜɪ ᴍᴏsʜɪ, Eʀɪ sᴘᴇᴀᴋɪɴɢ!!!\n<b>ʜᴀᴠᴇɴ'ᴛ sʟᴇᴘᴛ sɪɴᴄᴇ:</b> <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
@@ -383,7 +384,7 @@ def get_help(update: Update, context: CallbackContext):
         if len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
             module = args[1].lower()
             update.effective_message.reply_video(
-                random.choice(HELP_IMG),caption= f"Contact me in PM to get help of {module.capitalize()} ✨",
+                random.choice(HELP_IMG),caption= f"ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ ɪɴ ᴘᴍ ᴛᴏ ɢᴇᴛ ʜᴇʟᴘ ᴏғ {module.capitalize()} ✨",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -399,7 +400,7 @@ def get_help(update: Update, context: CallbackContext):
             )
             return
         update.effective_message.reply_video(
-            random.choice(HELP_IMG), caption= "Contact me in PM to get the list of possible commands.✨",
+            random.choice(HELP_IMG), caption= "ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ ɪɴ ᴘᴍ ᴛᴏ ɢᴇᴛ ᴛʜᴇ ʟɪsᴛ ᴏғ ᴘᴏssɪʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs.✨",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -589,86 +590,103 @@ def get_settings(update: Update, context: CallbackContext):
 
 
 #------------------------------------------------------------------------------------
-def vegeta_about_callback(update, context):
+def vegeta_about_callback(update, context):        #Guide-0------
     query = update.callback_query
     if query.data == "vegeta_":
         query.message.edit_caption(
-            "๏ I'm Zᴇʀᴏᴛᴡᴏ, a powerful group management bot built to help you manage your group easily."
-            "\n❍ I can restrict users."
-            "\n❍ I can greet users with customizable welcome messages and even set a group's rules."
-            "\n❍ I have an advanced anti-flood system."
-            "\n❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc."
-            "\n❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords."
-            "\n❍ I check for admins' permissions before executing any command and more stuffs",
+            "ʀᴀɴᴋ sʜᴏᴡs ʏᴏᴜʀ ʟᴇᴠᴇʟ. ɪᴛ ʙᴀsɪᴄᴀʟʟʏ ᴛᴇʟʟs ʜᴏᴡ ɢᴏᴏᴅ ʏᴏᴜ ᴀʀᴇ ɪɴ ᴛʜᴇ ɢᴀᴍᴇ."
+            "\n❍ᴛᴏ ᴄʜᴇᴄᴋ ᴛʜᴇ ʀᴀɴᴋ ᴄᴏᴍᴍᴀɴᴅs ᴛʏᴘᴇ /help ᴀɴᴅ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʀᴀɴᴋ ʙᴜᴛᴛᴏɴ.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="ɢᴜɪᴅᴇ", callback_data="vegeta_admin"),
-                    InlineKeyboardButton(text="Sᴏᴜʀᴄᴇ Cᴏᴅᴇ", callback_data="vegeta_notes"),
+                    InlineKeyboardButton(text="Rᴀɴᴋ", callback_data="vegeta_admin"),
+                    InlineKeyboardButton(text="Tᴇʟᴇɢʀᴀᴘʜ", url="https://t.me/"),
                  ],
                  [
-                    InlineKeyboardButton(text="Sᴜᴘᴘᴏʀᴛ", callback_data="vegeta_support"),
-                    InlineKeyboardButton(text="Bᴏᴛ ᴀᴅᴍɪɴs", url="https://t.me/KazumaclanXD/13"),
+                    InlineKeyboardButton(text="Pᴏɪɴᴛs", callback_data="vegeta_notes"),
+                    InlineKeyboardButton(text="Gᴜɪʟᴅ", callback_data="vegeta_admin"),
                  ],
                  [
-                    InlineKeyboardButton(text="❮❮ Bᴀᴄᴋ", callback_data="vegeta_back"),
+                    InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="vegeta_back"),
                  ]
                 ]
             ),
         )
     elif query.data == "vegeta_back":
         query.message.edit_caption(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-        )
-
-    elif query.data == "vegeta_admin":
-        query.message.edit_caption(
-            "ʜᴇʀᴇ ɪs ᴛʜᴇ ʟɪsᴛ ᴏғ ᴛʜɪɴɢs ɪ ᴄᴀɴ ᴅᴏ"
-            "\n❍ Wᴀrning sysᴛᴇʍ."
-            "\n❍ Flᴏᴏd ᴄᴏnᴛrᴏl sysᴛᴇʍ."
-            "\n❍ Nᴏᴛᴇ ᴋᴇᴇᴩing sysᴛᴇʍ."
-            "\n❍ Filᴛᴇrs ᴋᴇᴇᴩing sysᴛᴇʍ."
-            "\n❍ Aᴩᴩrᴏvᴀls ᴀnd ʍuᴄh ʍᴏrᴇ.",
-            parse_mode=ParseMode.HTML,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="❮❮ Bᴀᴄᴋ", callback_data="vegeta_")]]
+            PM_START_TEXT.format(
+                escape_markdown(first_name), escape_markdown(context.bot.first_name)
             ),
-        )
-
-    elif query.data == "vegeta_notes":
-        query.message.edit_caption(
-            "Zerotwo bot's source code is now private"
-            "\nIf you have any problem regarding the source code then message the onwer @ishikki_akabane",
-            parse_mode=ParseMode.HTML,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="❮❮ Bᴀᴄᴋ", callback_data="vegeta_")]]
-            ),
-        )
-    elif query.data == "vegeta_support":
-        query.message.edit_caption(
-            "*๏ support chats*"
-            "\nJoin My Support Group if you want to report a problem on Zerotwo.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url="t.me/suppportxd"),
-                    InlineKeyboardButton(text="ғᴇᴅᴇʀᴀᴛɪᴏɴ", url="https://t.me/KazumaclanXD/23"),
-                 ],
-                 [
-                       InlineKeyboardButton(text="ɴᴇᴛᴡᴏʀᴋ", url="t.me/kazumaclanxd"),
-                       InlineKeyboardButton(text="ʟᴏɢs", url="t.me/logsforbots"),
-                   
-                   ],
                     [
-                     InlineKeyboardButton(text="❮❮ Bᴀᴄᴋ", callback_data="vegeta_"),
-                 
-                 ]
-                ]
+                        InlineKeyboardButton(
+                            text="Pʟᴀʏ",
+                            url="t.me/Friendsdomain".format(
+                                context.bot.username,
+                            ),
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="Sᴜᴘᴘᴏʀᴛ",
+                            url=f"https://t.me/{SUPPORT_CHAT}",
+                        ),
+                        InlineKeyboardButton(
+                            text="Gᴜɪᴅᴇ",
+                            callback_data="vegeta_",
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="kᴀᴢᴜᴍᴀ ᴄʟᴀɴ",
+                            url="https://t.me/KazumaclanXD"
+                        ),
+                        InlineKeyboardButton(
+                        text="Oᴡɴᴇʀ",
+                        url="https://t.me/Ishikki_Akabane"
+                        ),
+                    ],
+                        
+                ],
+            ),
+        )
+    elif query.data == "vegeta_admin":   #rank----------------
+        query.message.edit_caption(
+            "ʀᴀɴᴋ sʜᴏᴡs ʏᴏᴜʀ ʟᴇᴠᴇʟ. ɪᴛ ʙᴀsɪᴄᴀʟʟʏ ᴛᴇʟʟs ʜᴏᴡ ɢᴏᴏᴅ ʏᴏᴜ ᴀʀᴇ ɪɴ ᴛʜᴇ ɢᴀᴍᴇ."
+            "\nᴀᴠᴀɪʟᴀʙʟᴇ ʀᴀɴᴋs ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ ᴀʀᴇ :"
+            "\nɢᴏᴅ       s-ᴄʟᴀss"
+            "\nᴀ-ᴄʟᴀss   ʙ-ᴄʟᴀss"
+            "\nᴄ-ᴄʟᴀss   ᴅ-ᴄʟᴀss "
+            "\nɢᴏᴅs ᴀʀᴇ ᴛʜᴇ ʜɪɢʜᴇsᴛ ʀᴀɴᴋ ᴡʜɪᴄʜ ᴄᴀɴ ʙᴇ ᴀᴄʜɪᴠᴇᴅ. ᴛʜᴇʏ ɢᴇᴛ sᴘᴄɪᴇʟ ᴀᴄᴄᴇss ᴏғ ᴛʜᴇ ʙᴏᴛ. s-ᴄʟᴀss ᴀʀᴇ ᴛʜᴏsᴇ ᴘᴇᴏᴘʟᴇ ᴡʜᴏ ɢᴇᴛs ᴄʜᴀɴᴄᴇ ᴛᴏ ʙᴇ ᴛʜᴇ ᴀᴅᴍɪɴ ᴏғ ᴛʜᴇ ɢʀᴏᴜᴘ. ᴀ-ᴄʟᴀss ᴀʀᴇ ᴛʜᴏsᴇ ᴘᴇᴏᴘʟᴇ ᴡʜᴏ ᴄᴀɴ ʙᴇ ᴛʜᴇ ᴘᴀʀᴛ ᴏғ ᴛʜᴇ ᴍɪɴɪsᴛʀʏ. ʙ-ᴄʟᴀss ᴘᴇᴏᴘʟᴇ ᴄᴀɴ ᴀᴘᴘʟʏ ᴡᴏʀᴋ ɪɴ ᴛʜᴇ ᴍɪɴɪsᴛʀʏ, ɪғ ᴛʜᴇ ɢᴏᴅs ғᴇᴇʟs ʀɪɢʜᴛ, ᴛʜᴇɴ ᴀ ʙ-ᴄʟᴀss ᴜsᴇʀ ᴄᴀɴ ᴀʟsᴏ ʙᴇ ᴀ ᴘᴀʀᴛ ᴏғ ᴛʜᴇ ᴍɪɴɪsᴛʀʏ. ᴄ-ᴄʟᴀss ᴜsᴇʀ ᴅᴏɴ’ᴛ ʜᴀᴠᴇ ᴍᴜᴄʜ ᴘʀɪᴠᴀʟᴀɢᴇs, ᴛʜᴇʏ ᴄᴀɴ ᴄʀᴇᴀᴛᴇ ɢᴜɪʟᴅs. ᴅ-ᴄʟᴀss ᴜsᴇʀ ᴀʀᴇ ᴀᴛ ᴛʜᴇ ʙᴏᴛᴛᴏᴍ ᴏғ ᴛʜɪs ʜᴇɪʀᴄʜʏ, ᴛʜᴇʏ sɪᴍᴘʟʏ ᴀʀᴇ ᴛʜᴇ ʙɪɢɪɴᴇʀs. ʙᴜᴛ ɪᴛ ᴅᴏɴ’ᴛ ᴛᴀᴋᴇ ᴍᴜᴄʜ ᴛɪᴍᴇ ᴛᴏ ᴀᴅᴠᴀɴᴄᴇ ᴛʜᴇɪʀ ʟᴇᴠᴇʟ ᴛᴏ ᴄ-ᴄʟᴀss. ᴀᴅᴠᴀɴᴄɪɴɢ ғʀᴏᴍ ᴄ-ᴄʟᴀss ᴛᴏ ʙ-ᴄʟᴀss ɪs ʙɪᴛ ᴛᴏᴜʜ. ᴛʜɪs ᴡᴀʏ ᴛʜᴇ ᴅɪғғɪᴄᴜʟᴛʏ ᴋᴇᴇᴘs ɪɴᴄʀᴇᴀsɪɴɢ ᴡʜᴇɴᴇᴠᴇʀ ʏᴏᴜ ᴀᴅᴀᴠᴀɴᴄᴇ ʏᴏᴜʀ ʀᴀɴᴋ."
+            "\n❍ ᴛᴏ ᴄʜᴇᴄᴋ ᴛʜᴇ ʀᴀɴᴋ ᴄᴏᴍᴍᴀɴᴅs ᴛʏᴘᴇ /help ᴀɴᴅ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʀᴀɴᴋ ʙᴜᴛᴛᴏɴ.",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="vegeta_")]]
+            ),
+        )
+
+    elif query.data == "vegeta_notes":  #Points------------------
+        query.message.edit_caption(
+            "ᴘᴏɪɴᴛs ᴀʀᴇ ʟɪᴋᴇ ɢᴀᴍᴇ ᴄᴜʀʀᴇɴᴄʏ. ʏᴏᴜ ᴄᴀɴ ᴇᴀʀɴ ᴘᴏɪɴᴛs ɪɴ sᴇᴠᴇʀᴀʟ ᴡᴀʏs."
+            "\nʏᴏᴜ ᴄᴀɴ ɢᴇᴛ ᴘᴏɪɴᴛs ʙʏ ᴊᴏɪɴɪɴɢ ɢᴜɪʟᴅs, ʙʏ ᴄᴏᴍᴘʟᴇᴛɪɴɢ ᴊᴏʙ ʀᴇϙᴜᴇsᴛ."
+            "\nᴛʜᴇʀᴇ ᴡɪʟʟ ʙᴇ ᴍᴀɴʏ ᴇᴠᴇɴᴛs ʜᴏsᴛᴇᴅ ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ, ʏᴏᴜ ᴄᴀɴ ᴘᴀʀᴛɪᴄɪᴘᴀᴛᴇ ɪɴ ᴛʜᴀᴛ ᴇᴠᴇɴᴛ ᴀɴᴅ ᴄᴀɴ ɢᴇᴛ ᴘᴏɪɴᴛs, ʏᴏᴜ ᴄᴀɴ ᴇᴀʀɴ ᴇᴠᴇɴ ᴍᴏʀᴇ ʙʏ ᴀᴄʜɪᴇᴠɪɴɢ 1sᴛ, 2ɴᴅ  ᴀɴᴅ 3ʀᴅ ᴘʟᴀᴄᴇ ɪɴ ᴛʜᴇ ᴇᴠᴇɴᴛ. ʏᴏᴜ ᴄᴀɴ ᴀʟsᴏ ᴇᴀʀɴ ᴘᴏɪɴᴛs ғᴏʀ ʏᴏᴜʀ ʀᴀɴᴋ, ᴛʜᴇ ᴍᴏʀᴇ ɪs ʏᴏᴜʀ ʀᴀɴᴋ ᴛʜᴇ ᴍᴏʀᴇ ᴘᴏɪɴᴛs ʏᴏᴜ ᴡɪʟʟ ɢᴇᴛ ᴀs ᴀ ʀᴇᴡᴀʀᴅ ɪɴ ᴛʜᴇ ᴇɴᴅ ᴏғ ᴛʜᴇ ᴡᴇᴇᴋ."
+            "\nʏᴏᴜ ᴄᴀɴ ᴀʟsᴏ ᴜsᴇ ᴘᴏʟɪᴛɪᴄᴀʟ ᴛʀɪᴄᴋs ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ ᴛᴏ ᴇᴀʀɴ ᴍᴏʀᴇ ᴘᴏɪɴᴛs ʙᴜᴛ ᴅᴏɴ’ᴛ ɢᴇᴛ ᴄᴀᴜɢʜᴛ."
+            "\n❍ ᴛᴏ ᴄʜᴇᴄᴋ ᴛʜᴇ ᴘᴏɪɴᴛs ᴄᴏᴍᴍᴀɴᴅs ᴛʏᴘᴇ /help ᴀɴᴅ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ᴘᴏɪɴᴛ’s ʙᴜᴛᴛᴏɴ.",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="vegeta_")]]
+            ),
+        )
+    elif query.data == "vegeta_support":   #Guild----------------
+        query.message.edit_caption(
+            "ʏᴏᴜ ᴄᴀɴ ᴇᴀʀɴ ᴇxᴛʀᴀ ᴘᴏɪɴᴛs ʙʏ ᴊᴏɪɴɪɴɢ ɢᴜɪʟᴅs. ᴀ ɢᴜɪʟᴅ ɢᴇᴛs ᴍᴏɴᴛʜʟʏ ʀᴇᴠᴇɴᴜᴇ ғʀᴏᴍ ᴛʜᴇ ᴍɪɴɪsᴛᴇʀs, ᴡʜɪᴄʜ ᴅɪʀᴇᴄᴛʟʏ ɢᴇᴛs sᴛᴏʀᴇᴅ ᴛᴏ ʏᴏᴜʀ ɢᴜɪʟᴅ sᴛᴏʀᴀɢᴇ ᴡʜɪᴄʜ ɪs ᴋᴇᴘᴛ sᴀғᴇ ʙʏ ᴛʜᴇ ɢᴏʙʟɪɴs. ᴀ ᴍᴇᴍʙᴇʀ ᴄᴀɴ ᴡɪᴛʜᴅʀᴀᴡ ᴛʜᴀᴛ ᴍᴏɴᴇʏ ғʀᴏᴍ ᴛʜᴇ sᴛᴏʀᴀɢᴇ ʙʏ ʀᴇϙᴜᴇsᴛɪɴɢ ᴛʜᴇ ɢᴏʙʟɪɴs. ʙᴇsɪᴅᴇs ᴛʜᴀᴛ, ᴀ sᴀʟᴀʀʏ ᴀᴍᴏᴜɴᴛ ɪs ᴀʟsᴏ ɢɪᴠᴇɴ ᴛᴏ ᴛʜᴇ ɢᴜɪʟᴅ ᴍᴇᴍʙᴇʀs. ᴛʜᴇ ᴀᴍᴏᴜɴᴛ ᴏғ ᴛʜᴇ ʀᴇᴠᴇɴᴜᴇ ᴀɴᴅ sᴀʟᴀʀʏ ᴅᴇᴘᴇɴᴅs ᴏɴ ᴛʜᴇ ʟᴇᴠᴇʟ ᴏғ ᴛʜᴇ ɢᴜɪʟᴅ. ʏᴏᴜ ᴄᴀɴ ʟᴇᴠᴇʟ ᴜᴘ ʏᴏᴜʀ ɢᴜɪʟᴅ ʙʏ ʟᴇᴠᴇʟɪɴɢ ᴜᴘ ʏᴏᴜʀ ᴏᴡɴ ʀᴀɴᴋ ᴏʀ ᴄᴏᴍᴘʟᴇᴛɪɴɢ sᴏᴍᴇ ɢᴜɪʟᴅ ʀᴇϙᴜᴇsᴛ. ʏᴏᴜ ᴄᴀɴ ᴀʟsᴏ ᴄʀᴇᴀᴛᴇ ʏᴏᴜʀ ᴏᴡɴ ɢᴜɪʟᴅ."
+            "\n❍ ᴛᴏ ᴄʜᴇᴄᴋ ᴛʜᴇ ɢᴜɪʟᴅ ᴄᴏᴍᴍᴀɴᴅs ᴛʏᴘᴇ /help ᴀɴᴅ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ɢᴜɪʟᴅs ʙᴜᴛᴛᴏɴ. ",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="vegeta_")]]
             ),
         )
 
