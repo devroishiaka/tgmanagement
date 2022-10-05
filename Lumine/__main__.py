@@ -605,10 +605,7 @@ def vegeta_about_callback(update, context):        #Guide-0------
                  ],
                  [
                     InlineKeyboardButton(text="Pᴏɪɴᴛs", callback_data="vegeta_notes"),
-                    InlineKeyboardButton(text="Gᴜɪʟᴅ", callback_data="vegeta_admin"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="vegeta_back"),
+                    InlineKeyboardButton(text="Gᴜɪʟᴅ", callback_data="vegeta_support"),
                  ]
                 ]
             ),
@@ -657,7 +654,7 @@ def vegeta_about_callback(update, context):        #Guide-0------
         query.message.edit_caption(
             "ʀᴀɴᴋ sʜᴏᴡs ʏᴏᴜʀ ʟᴇᴠᴇʟ. ɪᴛ ʙᴀsɪᴄᴀʟʟʏ ᴛᴇʟʟs ʜᴏᴡ ɢᴏᴏᴅ ʏᴏᴜ ᴀʀᴇ ɪɴ ᴛʜᴇ ɢᴀᴍᴇ."
             "\nᴀᴠᴀɪʟᴀʙʟᴇ ʀᴀɴᴋs ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ ᴀʀᴇ :"
-            "\nɢᴏᴅ       s-ᴄʟᴀss"
+            "\nɢᴏᴅ        s-ᴄʟᴀss"
             "\nᴀ-ᴄʟᴀss   ʙ-ᴄʟᴀss"
             "\nᴄ-ᴄʟᴀss   ᴅ-ᴄʟᴀss "
             "\nɢᴏᴅs ᴀʀᴇ ᴛʜᴇ ʜɪɢʜᴇsᴛ ʀᴀɴᴋ ᴡʜɪᴄʜ ᴄᴀɴ ʙᴇ ᴀᴄʜɪᴠᴇᴅ. ᴛʜᴇʏ ɢᴇᴛ sᴘᴄɪᴇʟ ᴀᴄᴄᴇss ᴏғ ᴛʜᴇ ʙᴏᴛ. s-ᴄʟᴀss ᴀʀᴇ ᴛʜᴏsᴇ ᴘᴇᴏᴘʟᴇ ᴡʜᴏ ɢᴇᴛs ᴄʜᴀɴᴄᴇ ᴛᴏ ʙᴇ ᴛʜᴇ ᴀᴅᴍɪɴ ᴏғ ᴛʜᴇ ɢʀᴏᴜᴘ. ᴀ-ᴄʟᴀss ᴀʀᴇ ᴛʜᴏsᴇ ᴘᴇᴏᴘʟᴇ ᴡʜᴏ ᴄᴀɴ ʙᴇ ᴛʜᴇ ᴘᴀʀᴛ ᴏғ ᴛʜᴇ ᴍɪɴɪsᴛʀʏ. ʙ-ᴄʟᴀss ᴘᴇᴏᴘʟᴇ ᴄᴀɴ ᴀᴘᴘʟʏ ᴡᴏʀᴋ ɪɴ ᴛʜᴇ ᴍɪɴɪsᴛʀʏ, ɪғ ᴛʜᴇ ɢᴏᴅs ғᴇᴇʟs ʀɪɢʜᴛ, ᴛʜᴇɴ ᴀ ʙ-ᴄʟᴀss ᴜsᴇʀ ᴄᴀɴ ᴀʟsᴏ ʙᴇ ᴀ ᴘᴀʀᴛ ᴏғ ᴛʜᴇ ᴍɪɴɪsᴛʀʏ. ᴄ-ᴄʟᴀss ᴜsᴇʀ ᴅᴏɴ’ᴛ ʜᴀᴠᴇ ᴍᴜᴄʜ ᴘʀɪᴠᴀʟᴀɢᴇs, ᴛʜᴇʏ ᴄᴀɴ ᴄʀᴇᴀᴛᴇ ɢᴜɪʟᴅs. ᴅ-ᴄʟᴀss ᴜsᴇʀ ᴀʀᴇ ᴀᴛ ᴛʜᴇ ʙᴏᴛᴛᴏᴍ ᴏғ ᴛʜɪs ʜᴇɪʀᴄʜʏ, ᴛʜᴇʏ sɪᴍᴘʟʏ ᴀʀᴇ ᴛʜᴇ ʙɪɢɪɴᴇʀs. ʙᴜᴛ ɪᴛ ᴅᴏɴ’ᴛ ᴛᴀᴋᴇ ᴍᴜᴄʜ ᴛɪᴍᴇ ᴛᴏ ᴀᴅᴠᴀɴᴄᴇ ᴛʜᴇɪʀ ʟᴇᴠᴇʟ ᴛᴏ ᴄ-ᴄʟᴀss. ᴀᴅᴠᴀɴᴄɪɴɢ ғʀᴏᴍ ᴄ-ᴄʟᴀss ᴛᴏ ʙ-ᴄʟᴀss ɪs ʙɪᴛ ᴛᴏᴜʜ. ᴛʜɪs ᴡᴀʏ ᴛʜᴇ ᴅɪғғɪᴄᴜʟᴛʏ ᴋᴇᴇᴘs ɪɴᴄʀᴇᴀsɪɴɢ ᴡʜᴇɴᴇᴠᴇʀ ʏᴏᴜ ᴀᴅᴀᴠᴀɴᴄᴇ ʏᴏᴜʀ ʀᴀɴᴋ."
