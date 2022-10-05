@@ -76,29 +76,20 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 ᏦϴΝΝᏆᏟᎻᏆᏔᎪ !! (◍•ᴗ•◍)
 
-⊰᯽⊱┈─╌❊ - ❊╌─┈⊰᯽⊱
-ʜᴏɪ {} sᴀɴ, ɪ'ᴍ ʀᴜᴋᴀ sᴀʀᴀsʜɪɴᴀ, ʜᴀᴊɪᴍᴇᴍᴀsʜɪᴛᴇ! ✨
-⊰᯽⊱┈─╌❊ - ❊╌─┈⊰᯽⊱
-ɪ'ᴍ ᴀɴ ᴀɴɪᴍᴇ ᴛʜᴇᴍᴇᴅ ᴀᴅᴠᴀɴᴄᴇ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ. ɪ ʜᴀᴠᴇ ʟᴏᴛs ᴏғ ʜᴀɴᴅʏ ғᴇᴀᴛᴜʀᴇs sᴜᴄʜ :
-❍ Wᴀrning sysᴛᴇʍ.
-❍ Flᴏᴏd ᴄᴏnᴛrᴏl sysᴛᴇʍ.
-❍ Nᴏᴛᴇ ᴋᴇᴇᴩing sysᴛᴇʍ.
-❍ Filᴛᴇrs ᴋᴇᴇᴩing sysᴛᴇʍ.
-❍ Aᴩᴩrᴏvᴀls ᴀnd ʍuᴄh ʍᴏrᴇ.
-━━━•❅•°•❈ - •°•❅•━━━
+Hᴏɪ {} sᴀɴ, ɪ'ᴍ Eʀɪ Aᴋᴀɴᴇ, Nɪcᴇ To Mᴇᴇᴛ Yoᴜ! ✨
 
-*Add Mᴇ Tᴏ Yᴏur Grᴏuᴩ Wiᴛh Full Righᴛs Tᴏ Sᴇᴇ My Pᴏwᴇr Tᴏ Iᴛ's Full Exᴛᴇnᴛ.*
-Type /help to see all the commands.
+I’m a Fun Game bot with Fantasy Magical Theme.
+Type /help to see all my commands
+
+**Note**
+*Currently this bot is in its BETA phase. You can’t add this bot in your groups. You can play with the bot in [Friends Domain](t.me/friendsdomain)*
 """
 
 HELP_STRINGS = """
-Hi Bᴀᴇ! I'ʍ *Ruka Sarashina*
+Hɪ Bᴜᴅᴅy! I'ʍ *Eʀɪ Aᴋᴀɴᴇ*
 
-I'ʍ ᴀ ʍᴏdulᴀr grᴏuᴩ ʍᴀnᴀgᴇʍᴇnᴛ ʙᴏᴛ wiᴛh ᴀ fᴇw fun ᴇxᴛrᴀs! Hᴀvᴇ ᴀ lᴏᴏᴋ ᴀᴛ ᴛhᴇ fᴏllᴏwing fᴏr ᴀn idᴇᴀ ᴏf sᴏʍᴇ ᴏf ᴛhᴇ ᴛhings I ᴄᴀn hᴇlᴩ yᴏu wiᴛh.
-""".format(
-    dispatcher.bot.first_name,
-    "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
-)
+I'ʍ ᴀ Fun Game ʙᴏᴛ wiᴛh fᴇw fun ᴇxᴛrᴀs! Hᴀvᴇ ᴀ lᴏᴏᴋ ᴀᴛ ᴛhᴇ fᴏllᴏwing fᴏr ᴀn idᴇᴀ ᴏf sᴏʍᴇ ᴏf ᴛhᴇ ᴛhings I ᴄᴀn hᴇlᴩ yᴏu wiᴛh.
+"""
 
 HELP_IMG = (
     "https://te.legra.ph/file/ebb5d2cd41cc6381192ae.mp4",
@@ -106,16 +97,16 @@ HELP_IMG = (
     "https://te.legra.ph/file/85f3b831e8230b6111004.mp4",
 )
 
-LUM_IMG= (
-          "https://te.legra.ph/file/0b52368c526e7a494c6c9.mp4",
+ERI_VID= (
+          "https://te.legra.ph/file/0b52368c526e7a494c6c9.mp4",  #start in group vid
           )
 
-Lumine_IMG = "https://te.legra.ph/file/7bd18e2d1345f6705f41b.jpg"
+ERI_IMG = "https://te.legra.ph/file/7bd18e2d1345f6705f41b.jpg"   #start in pm pic
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
-Ruka is hosted on its own server and require donations as of now but \
+ERi is hosted on its own server and require donations.
 You can donate to the original writer of the Base code, @ishikki_akabane
-There are two ways of supporting him; [Group](https://t.me/manhwarecommend)."""
+or you can join his [Group](https://t.me/friendsdomain) to support him."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -203,7 +194,7 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help_back")]]
                     ),
                 )
             elif args[0].lower() == "markdownhelp":
@@ -225,7 +216,7 @@ def start(update: Update, context: CallbackContext):
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(
-                Lumine_IMG,
+                ERI_IMG,
                 PM_START_TEXT.format(
                     escape_markdown(first_name), escape_markdown(context.bot.first_name)
                 ),
@@ -234,8 +225,8 @@ def start(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="☑️ Add me",
-                                url="t.me/{}?startgroup=true".format(
+                                text="Play",
+                                url="t.me/Friendsdomain".format(
                                     context.bot.username,
                                 ),
                             ),
@@ -246,18 +237,18 @@ def start(update: Update, context: CallbackContext):
                                 url=f"https://t.me/{SUPPORT_CHAT}",
                             ),
                             InlineKeyboardButton(
-                                text="Kazuma",
-                                url="https://t.me/KazumaclanXD",
+                                text="Guide",
+                                callback_data="vegeta_",
                             ),
                         ],
                         [
                             InlineKeyboardButton(
-                                text="Federation",
-                                url="https://t.me/KazumaclanXD/23"
+                                text="Kazuma Clan",
+                                url="https://t.me/KazumaclanXD"
                             ),
                             InlineKeyboardButton(
-                            text="Guide",
-                            url="https://t.me/"
+                            text="Owner",
+                            url="https://t.me/Ishikki_Akabane"
                             ),
                         ],
                         
@@ -266,17 +257,24 @@ def start(update: Update, context: CallbackContext):
             )
     else:
           update.effective_message.reply_video(
-            random.choice(LUM_IMG), caption= "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+            ERI_VID, caption= "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [
-                  [ 
-                       InlineKeyboardButton(
-                             text="Report bug?",
-                             url="https://t.me/suppportXd")
-                     ] 
+                    [
+                        InlineKeyboardButton(
+                            text="Hᴇʟᴘ ❔",
+                            url="t.me/{}?start=help".format(context.bot.username),
+                        )
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="Sᴜᴘᴘᴏʀᴛ Cʜᴀᴛ 📢 ",
+                            url="https://t.me/suppporttxd".format(SUPPORT_CHAT),
+                        )
+                    ],
                 ]
             ),
         )
@@ -325,7 +323,7 @@ def help_button(update: Update, context: CallbackContext):
         if mod_match:
             module = mod_match.group(1)
             text = (
-                "*⚊❮❮❮ ｢Help for {} module」❯❯❯⚊*\n".format(
+                "⊷⊶⊷❍ ｢Help for {} module」❍⊶⊷⊶\n".format(
                     HELPABLE[module].__mod_name__
                 )
                 + HELPABLE[module].__help__
@@ -335,7 +333,7 @@ def help_button(update: Update, context: CallbackContext):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help_back")]]
                 ),
             )
 
@@ -390,7 +388,7 @@ def get_help(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Help",
+                                text="Hᴇʟᴘ ❔",
                                 url="t.me/{}?start=ghelp_{}".format(
                                     context.bot.username, module
                                 ),
@@ -406,7 +404,7 @@ def get_help(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="Help",
+                            text="Hᴇʟᴘ ❔",
                             url="t.me/{}?start=help".format(context.bot.username),
                         )
                     ]
@@ -590,6 +588,91 @@ def get_settings(update: Update, context: CallbackContext):
         send_settings(chat.id, user.id, True)
 
 
+#------------------------------------------------------------------------------------
+def vegeta_about_callback(update, context):
+    query = update.callback_query
+    if query.data == "vegeta_":
+        query.message.edit_caption(
+            "๏ I'm Zᴇʀᴏᴛᴡᴏ, a powerful group management bot built to help you manage your group easily."
+            "\n❍ I can restrict users."
+            "\n❍ I can greet users with customizable welcome messages and even set a group's rules."
+            "\n❍ I have an advanced anti-flood system."
+            "\n❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc."
+            "\n❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords."
+            "\n❍ I check for admins' permissions before executing any command and more stuffs",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="ɢᴜɪᴅᴇ", callback_data="vegeta_admin"),
+                    InlineKeyboardButton(text="Sᴏᴜʀᴄᴇ Cᴏᴅᴇ", callback_data="vegeta_notes"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Sᴜᴘᴘᴏʀᴛ", callback_data="vegeta_support"),
+                    InlineKeyboardButton(text="Bᴏᴛ ᴀᴅᴍɪɴs", url="https://t.me/KazumaclanXD/13"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="❮❮ Bᴀᴄᴋ", callback_data="vegeta_back"),
+                 ]
+                ]
+            ),
+        )
+    elif query.data == "vegeta_back":
+        query.message.edit_caption(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+        )
+
+    elif query.data == "vegeta_admin":
+        query.message.edit_caption(
+            "ʜᴇʀᴇ ɪs ᴛʜᴇ ʟɪsᴛ ᴏғ ᴛʜɪɴɢs ɪ ᴄᴀɴ ᴅᴏ"
+            "\n❍ Wᴀrning sysᴛᴇʍ."
+            "\n❍ Flᴏᴏd ᴄᴏnᴛrᴏl sysᴛᴇʍ."
+            "\n❍ Nᴏᴛᴇ ᴋᴇᴇᴩing sysᴛᴇʍ."
+            "\n❍ Filᴛᴇrs ᴋᴇᴇᴩing sysᴛᴇʍ."
+            "\n❍ Aᴩᴩrᴏvᴀls ᴀnd ʍuᴄh ʍᴏrᴇ.",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="❮❮ Bᴀᴄᴋ", callback_data="vegeta_")]]
+            ),
+        )
+
+    elif query.data == "vegeta_notes":
+        query.message.edit_caption(
+            "Zerotwo bot's source code is now private"
+            "\nIf you have any problem regarding the source code then message the onwer @ishikki_akabane",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="❮❮ Bᴀᴄᴋ", callback_data="vegeta_")]]
+            ),
+        )
+    elif query.data == "vegeta_support":
+        query.message.edit_caption(
+            "*๏ support chats*"
+            "\nJoin My Support Group if you want to report a problem on Zerotwo.",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url="t.me/suppportxd"),
+                    InlineKeyboardButton(text="ғᴇᴅᴇʀᴀᴛɪᴏɴ", url="https://t.me/KazumaclanXD/23"),
+                 ],
+                 [
+                       InlineKeyboardButton(text="ɴᴇᴛᴡᴏʀᴋ", url="t.me/kazumaclanxd"),
+                       InlineKeyboardButton(text="ʟᴏɢs", url="t.me/logsforbots"),
+                   
+                   ],
+                    [
+                     InlineKeyboardButton(text="❮❮ Bᴀᴄᴋ", callback_data="vegeta_"),
+                 
+                 ]
+                ]
+            ),
+        )
+
+
 def donate(update: Update, context: CallbackContext):
     user = update.effective_message.from_user
     chat = update.effective_chat  # type: Optional[Chat]
@@ -656,11 +739,16 @@ def main():
     donate_handler = CommandHandler("donate", donate, run_async=True)
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 
+    about_callback_handler = CallbackQueryHandler(
+        vegeta_about_callback, pattern=r"vegeta_", run_async=True
+    )
+
     # dispatcher.add_handler(test_handler)
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
+    dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(settings_callback_handler)
     dispatcher.add_handler(migrate_handler)
     dispatcher.add_handler(donate_handler)
