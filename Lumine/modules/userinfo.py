@@ -23,7 +23,7 @@ from Lumine import (
     dispatcher,
     sw,
 )
-from Lumine.userlist import SCLASS, ACLASS, BCLASS, CCLASS, DCLASS
+from Lumine.userlist import (SCLASS, ACLASS, BCLASS, CCLASS, DCLASS)
 from Lumine.__main__ import STATS, GDPR, TOKEN, USER_INFO
 import Lumine.modules.sql.userinfo_sql as sql
 from Lumine.modules.disable import DisableAbleCommandHandler
@@ -35,6 +35,7 @@ from Lumine.modules.helper_funcs.chat_status import sudo_plus
 from Lumine.modules.helper_funcs.extraction import extract_user
 from Lumine.modules.helper_funcs.misc import delete
 from Lumine import telethn as LumineTelethonClient, SUDO_USERS, SUPPORT_USERS
+
 
 def get_id(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
@@ -230,7 +231,7 @@ def info(update: Update, context: CallbackContext):
         except TypeError:
             mod_info = mod.__user_info__(user.id, chat.id).strip()
         if mod_info:
-            text += "\n┃\n" + mod_info
+            text += "\n\n┃" + mod_info
 
     if INFOPIC:
         try:
@@ -265,7 +266,7 @@ def info(update: Update, context: CallbackContext):
         context.dispatcher.run_async(delete, delmsg, cleartime.time)
 
 
-def about_me(update: Update, context: CallbackContext):  #POINTS-------------------------------
+def about_me(update: Update, context: CallbackContext):  #guilds-------------------------------
     bot, args = context.bot, context.args
     message = update.effective_message
     user_id = extract_user(message, args)
@@ -289,7 +290,7 @@ def about_me(update: Update, context: CallbackContext):  #POINTS----------------
             f"`{username} hasn't registered yet!`"
         )
     else:
-        update.effective_message.reply_text("`There are no points, register first to get started`")
+        update.effective_message.reply_text("`You not part of any guild, join a guild or create one`")
 
 
 def set_about_me(update: Update, context: CallbackContext):
@@ -312,12 +313,12 @@ def set_about_me(update: Update, context: CallbackContext):
             if user_id in [777000, 1087968824]:
                 message.reply_text("Authorized...Information updated!")
             elif user_id == bot.id:
-                message.reply_text("I have updated the POINTS with the one you provided!")
+                message.reply_text("Request completed")
             else:
-                message.reply_text("Information updated!")
+                message.reply_text("successfully DONE!")
         else:
             message.reply_text(
-                "The Points needs to be under {} characters! You have {}.".format(
+                "The guild name needs to be under {} characters! You have {}.".format(
                     MAX_MESSAGE_LENGTH // 4, len(info[1])
                 )
             )
@@ -330,7 +331,7 @@ def stats(update: Update, context: CallbackContext):
     update.effective_message.reply_text(result, parse_mode=ParseMode.HTML)
 
 
-def about_bio(update: Update, context: CallbackContext):       #Guild----------------------------
+def about_bio(update: Update, context: CallbackContext):       #points----------------------------
     bot, args = context.bot, context.args
     message = update.effective_message
 
@@ -370,7 +371,7 @@ def set_about_bio(update: Update, context: CallbackContext):
 
         if user_id == message.from_user.id:
             message.reply_text(
-                "Ha, you can't set your own bio! You're at the mercy of others here..."
+                "Ha, you can't set your own points! You're at the mercy of gods here..."
             )
             return
 
@@ -380,7 +381,7 @@ def set_about_bio(update: Update, context: CallbackContext):
 
         if user_id == bot.id and sender_id not in DEV_USERS:
             message.reply_text(
-                "Erm... yeah, I only trust developer users to set my bio."
+                "Erm... yeah, I only trust Dragon gods."
             )
             return
 
@@ -393,16 +394,16 @@ def set_about_bio(update: Update, context: CallbackContext):
             if len(bio[1]) < MAX_MESSAGE_LENGTH // 4:
                 sql.set_user_bio(user_id, bio[1])
                 message.reply_text(
-                    "Updated {}'s bio!".format(repl_message.from_user.first_name)
+                    "Updated {}'s points!".format(repl_message.from_user.first_name)
                 )
             else:
                 message.reply_text(
-                    "Bio needs to be under {} characters! You tried to set {}.".format(
+                    "points needs to be under {} characters! You tried to set {}.".format(
                         MAX_MESSAGE_LENGTH // 4, len(bio[1])
                     )
                 )
     else:
-        message.reply_text("Reply to someone to set their bio!")
+        message.reply_text("Reply to someone to set their points!")
 
 
 def gdpr(update: Update, context: CallbackContext):
@@ -458,31 +459,6 @@ def __gdpr__(user_id):
     sql.clear_user_bio(user_id)
 
 
-__help__ = """
-*ID:*
- • `/id`*:* get the current group id. If used by replying to a message, gets that user's id.
- • `/gifid`*:* reply to a gif to me to tell you its file ID.
-
-*Self addded information:* 
- • `/setme <text>`*:* will set your info
- • `/me`*:* will get your or another user's info.
-Examples:
- `/setme I am a wolf.`
- `/me @username(defaults to yours if no user specified)`
-
-*Information others add on you:* 
- • `/bio`*:* will get your or another user's bio. This cannot be set by yourself.
-• `/setbio <text>`*:* while replying, will save another user's bio 
-Examples:
- `/bio @username(defaults to yours if not specified).`
- `/setbio This user is a wolf` (reply to the user)
-
-*Overall Information about you:*
- • `/info`*:* get information about a user.
-
-*Guide to the General Data Protection Regulation (GDPR):*
- • `/gdpr`*:* deletes your information from the bot's database. Private chats only.
-"""
 
 SET_BIO_HANDLER = DisableAbleCommandHandler("ksetpoint", set_about_bio, run_async=True)
 GET_BIO_HANDLER = DisableAbleCommandHandler("points", about_bio)
