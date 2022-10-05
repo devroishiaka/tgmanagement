@@ -91,15 +91,9 @@ Hɪ Bᴜᴅᴅy! I'ʍ *Eʀɪ Aᴋᴀɴᴇ*
 I'ʍ ᴀ Fun Game ʙᴏᴛ wiᴛh fᴇw fun ᴇxᴛrᴀs! Hᴀvᴇ ᴀ lᴏᴏᴋ ᴀᴛ ᴛhᴇ fᴏllᴏwing fᴏr ᴀn idᴇᴀ ᴏf sᴏʍᴇ ᴏf ᴛhᴇ ᴛhings I ᴄᴀn hᴇlᴩ yᴏu wiᴛh.
 """
 
-HELP_IMG = (
-    "https://te.legra.ph/file/ebb5d2cd41cc6381192ae.mp4",
-    "https://te.legra.ph/file/ebb5d2cd41cc6381192ae.mp4",
-    "https://te.legra.ph/file/85f3b831e8230b6111004.mp4",
-)
+HELP_IMG = "https://te.legra.ph/file/847042600ee21d42c79b1.mp4"
 
-ERI_VID= (
-          "https://te.legra.ph/file/0b52368c526e7a494c6c9.mp4",  #start in group vid
-          )
+ERI_VID= "https://te.legra.ph/file/847042600ee21d42c79b1.mp4",  #start in group vid
 
 ERI_IMG = "https://te.legra.ph/file/7bd18e2d1345f6705f41b.jpg"   #start in pm pic
 
