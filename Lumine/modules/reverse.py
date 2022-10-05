@@ -222,11 +222,6 @@ REVERSE_HANDLER = DisableAbleCommandHandler(
 
 dispatcher.add_handler(REVERSE_HANDLER)
 
-__help__ = """*Image reverse:*
- • `/reverse`: does a *reverse image search* of the media which it was replied to.
- • You can also use `/grs` ,`/pp` or `/p`.
- """
-
 __mod_name__ = "Reverse"
 __command_list__ = ["reverse", "grs", "pp", "p"]
 __handlers__ = [REVERSE_HANDLER]
