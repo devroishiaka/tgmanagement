@@ -102,6 +102,9 @@ __help__ = """
  • `/listrepo`: lists all repo shortcuts in chat
  • `/gitver`: returns the current API version
  • `/changelog <reponame>`: gets the changelog of a saved repo shortcut
+*Reverse Google Lens*
+ • `/reverse`: does a *reverse image search* of the media which it was replied to.
+ • You can also use `/grs` ,`/pp` or `/p`.
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler("echo", echo, filters=Filters.chat_type.groups, run_async=True)
