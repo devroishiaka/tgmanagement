@@ -23,6 +23,7 @@ from Lumine import (
     dispatcher,
     sw,
 )
+from Lumine.userlist import SCLASS, ACLASS, BCLASS, CCLASS, DCLASS
 from Lumine.__main__ import STATS, GDPR, TOKEN, USER_INFO
 import Lumine.modules.sql.userinfo_sql as sql
 from Lumine.modules.disable import DisableAbleCommandHandler
@@ -34,17 +35,6 @@ from Lumine.modules.helper_funcs.chat_status import sudo_plus
 from Lumine.modules.helper_funcs.extraction import extract_user
 from Lumine.modules.helper_funcs.misc import delete
 from Lumine import telethn as LumineTelethonClient, SUDO_USERS, SUPPORT_USERS
-
-SCLASS = [5731542078]
-         #koichi_demon
-ACLASS = []
-         #
-BCLASS = []
-         #
-CCLASS = []
-         #
-DCLASS = []
-         #
 
 def get_id(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
