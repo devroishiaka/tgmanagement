@@ -9,5 +9,8 @@ CCLASS = []
 DCLASS = []
          #
 
-GODS = [5030730429 5039582471 1469565088]
-       #ishikki     shikumi    emmi
+GODS = [
+        5030730429, #ishikki
+        5039582471, #shikumi
+        1469565088  #emmi
+       ]
