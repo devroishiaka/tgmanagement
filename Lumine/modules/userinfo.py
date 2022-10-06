@@ -359,7 +359,7 @@ def about_bio(update: Update, context: CallbackContext):       #points----------
             "`You haven't joined any guild yet!`"
         )
 
-
+@dev_plus
 def set_about_bio(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
