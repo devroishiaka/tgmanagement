@@ -280,7 +280,7 @@ def about_me(update: Update, context: CallbackContext):  #guilds----------------
 
     if info:
         update.effective_message.reply_text(
-            f"*{user.first_name}*:\n{escape_markdown(info)}",
+            f"*Guild*:\n{escape_markdown(info)}",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
         )
@@ -345,7 +345,7 @@ def about_bio(update: Update, context: CallbackContext):       #points----------
 
     if info:
         update.effective_message.reply_text(
-            "*{}*:\n{}".format(user.first_name, escape_markdown(info)),
+            "*Points*:\n{}".format(user.first_name, escape_markdown(info)),
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
         )
