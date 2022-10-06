@@ -93,7 +93,7 @@ I'ʍ ᴀ Fun Game ʙᴏᴛ wiᴛh fᴇw fun ᴇxᴛrᴀs! Hᴀvᴇ ᴀ lᴏᴏ�
 
 HELP_IMG = "https://te.legra.ph/file/847042600ee21d42c79b1.mp4"
 
-ERI_VID= "https://te.legra.ph/file/847042600ee21d42c79b1.mp4",  #start in group vid
+ERI_VID = "https://te.legra.ph/file/847042600ee21d42c79b1.mp4"  #start in group vid
 
 ERI_IMG = "https://te.legra.ph/file/7bd18e2d1345f6705f41b.jpg"   #start in pm pic
 
