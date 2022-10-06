@@ -13,7 +13,6 @@ from telegram.ext.dispatcher import run_async
 from telegram.error import BadRequest
 from telegram.utils.helpers import escape_markdown, mention_html
 
-from Lumine.modules.helper_funcs.chat_status import dev_plus
 from Lumine import (
     DEV_USERS,
     OWNER_ID,
@@ -32,7 +31,7 @@ from Lumine.modules.sql.global_bans_sql import is_user_gbanned
 from Lumine.modules.sql.afk_sql import is_afk, check_afk_status
 from Lumine.modules.sql.users_sql import get_user_num_chats
 from Lumine.modules.sql.clear_cmd_sql import get_clearcmd
-from Lumine.modules.helper_funcs.chat_status import sudo_plus
+from Lumine.modules.helper_funcs.chat_status import sudo_plus, gods_plus
 from Lumine.modules.helper_funcs.extraction import extract_user
 from Lumine.modules.helper_funcs.misc import delete
 from Lumine import telethn as LumineTelethonClient, SUDO_USERS, SUPPORT_USERS
@@ -360,7 +359,7 @@ def about_bio(update: Update, context: CallbackContext):       #points----------
             "`You haven't yet registered!`"
         )
 
-@dev_plus
+@gods_plus
 def set_about_bio(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
@@ -382,7 +381,7 @@ def set_about_bio(update: Update, context: CallbackContext):
 
         if user_id == bot.id and sender_id not in DEV_USERS:
             message.reply_text(
-                "Erm... yeah, I only trust Dragon gods."
+                "Erm... yeah, I only trust Dragon god."
             )
             return
 
