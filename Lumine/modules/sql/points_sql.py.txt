@@ -1,0 +1,38 @@
+from pymongo import MongoClient
+import os
+
+MONGO_URL = "mongodb+srv://ishikki:ishikki143@cluster0.azewvhf.mongodb.net/?retryWrites=true&w=majority"
+
+pointsdb = MongoClient(MONGO_URL)
+
+point = pointsdb["PointsDb"]["Point"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import threading
+
+from Lumine.modules.sql import BASE, SESSION
+from sqlalchemy import Column, Integer, BigInteger, UnicodeText
+
+class PointsInfo(BASE):
+    __tablename__ = "pointsinfo"
+    user_id = Column(BigInteger, primary_key=True)
+    points = Column(Integer)
+
+    def __init__(self, user_id, points):
+        self.user_id = user_id
+        self.points = points
+
+    def __repr__(self):
+        return "<User info %d>" % self.user_id
