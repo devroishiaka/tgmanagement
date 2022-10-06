@@ -378,7 +378,7 @@ def get_help(update: Update, context: CallbackContext):
         if len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
             module = args[1].lower()
             update.effective_message.reply_video(
-                random.choice(HELP_IMG),caption= f"ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ ɪɴ ᴘᴍ ᴛᴏ ɢᴇᴛ ʜᴇʟᴘ ᴏғ {module.capitalize()} ✨",
+                HELP_IMG ,caption= f"ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ ɪɴ ᴘᴍ ᴛᴏ ɢᴇᴛ ʜᴇʟᴘ ᴏғ {module.capitalize()} ✨",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -394,7 +394,7 @@ def get_help(update: Update, context: CallbackContext):
             )
             return
         update.effective_message.reply_video(
-            random.choice(HELP_IMG), caption= "ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ ɪɴ ᴘᴍ ᴛᴏ ɢᴇᴛ ᴛʜᴇ ʟɪsᴛ ᴏғ ᴘᴏssɪʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs.✨",
+            HELP_IMG , caption= "ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ ɪɴ ᴘᴍ ᴛᴏ ɢᴇᴛ ᴛʜᴇ ʟɪsᴛ ᴏғ ᴘᴏssɪʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs.✨",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -588,8 +588,11 @@ def vegeta_about_callback(update, context):        #Guide-0------
     query = update.callback_query
     if query.data == "vegeta_":
         query.message.edit_caption(
-            "ʀᴀɴᴋ sʜᴏᴡs ʏᴏᴜʀ ʟᴇᴠᴇʟ. ɪᴛ ʙᴀsɪᴄᴀʟʟʏ ᴛᴇʟʟs ʜᴏᴡ ɢᴏᴏᴅ ʏᴏᴜ ᴀʀᴇ ɪɴ ᴛʜᴇ ɢᴀᴍᴇ."
-            "\n❍ᴛᴏ ᴄʜᴇᴄᴋ ᴛʜᴇ ʀᴀɴᴋ ᴄᴏᴍᴍᴀɴᴅs ᴛʏᴘᴇ /help ᴀɴᴅ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʀᴀɴᴋ ʙᴜᴛᴛᴏɴ.",
+            "ʜᴏʟᴀ (◍•ᴗ•◍),"
+            "\nɪ'ᴍ ᴀ ᴠᴇʀʏ sɪᴍᴘʟᴇ ɢᴀᴍᴇ ʙᴏᴛ."
+            "\nᴛᴏ ɢᴇᴛ sᴛᴀʀᴛᴇᴅ ғɪʀsᴛ ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ʀᴇɢɪsᴛᴇʀ ʏᴏᴜʀsᴇʟғ ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ @friendsdomain ."
+            "\nɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ ʏᴏᴜ ʜᴀᴠᴇ ᴛᴏ sᴇɴᴅ /register ᴛʜᴇɴ ᴏɴᴇ ᴏғ ᴛʜᴇ ᴍɪɴɪsᴛʀʏ ᴍᴇᴍʙᴇʀs ᴡɪʟʟ ᴀᴘᴘʀᴏᴠᴇ ʏᴏᴜʀ ʀᴇϙᴜᴇsᴛ ᴀɴᴅ ʏᴏᴜ ᴡɪʟʟ ʙᴇ ᴀᴅᴅᴇᴅ ɪɴ ᴛʜᴇ ᴅᴀᴛᴀʙᴀsᴇ. ᴀғᴛᴇʀ ʀᴇɢɪsᴛʀᴀᴛɪᴏɴ, ʏᴏᴜ ᴡɪʟʟ ʙᴇ ɢɪᴠᴇɴ sᴏᴍᴇ ᴘᴏɪɴᴛs ᴀɴᴅ ᴛʜᴇɴ ʏᴏᴜ ᴄᴀɴ sᴛᴀʀᴛ ʏᴏᴜʀ ᴊᴏᴜʀɴᴇʏ ᴛᴏ ᴛʜᴇ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ."
+            "\nʏᴏᴜ ᴄᴀɴ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴘʀᴏғɪʟᴇ ʙʏ ᴜsɪɴɢ /info .",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
