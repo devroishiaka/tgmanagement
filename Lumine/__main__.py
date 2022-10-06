@@ -95,7 +95,7 @@ HELP_IMG = "https://te.legra.ph/file/847042600ee21d42c79b1.mp4"
 
 ERI_VID = "https://te.legra.ph/file/847042600ee21d42c79b1.mp4"  #start in group vid
 
-ERI_IMG = "https://te.legra.ph/file/7bd18e2d1345f6705f41b.jpg"   #start in pm pic
+ERI_IMG = "https://te.legra.ph/file/054a0e938449525ffb6fd.mp4"   #start in pm pic
 
 DONATE_STRING = """ʜᴇʏᴀ, ɢʟᴀᴅ ᴛᴏ ʜᴇᴀʀ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴅᴏɴᴀᴛᴇ!
 Eʀɪ ɪs ʜᴏsᴛᴇᴅ ᴏɴ ɪᴛs ᴏᴡɴ sᴇʀᴠᴇʀ ᴀɴᴅ ʀᴇϙᴜɪʀᴇ ᴅᴏɴᴀᴛɪᴏɴs. 
@@ -210,7 +210,7 @@ def start(update: Update, context: CallbackContext):
 
         else:
             first_name = update.effective_user.first_name
-            update.effective_message.reply_photo(
+            update.effective_message.reply_video(
                 ERI_IMG,
                 PM_START_TEXT.format(
                     escape_markdown(first_name), escape_markdown(context.bot.first_name)
@@ -745,7 +745,7 @@ def main():
     help_handler = CommandHandler("help", get_help, run_async=True)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_.*", run_async=True)
 
-    settings_handler = CommandHandler("settings", get_settings, run_async=True)
+    settings_handler = CommandHandler("ksettings", get_settings, run_async=True)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_", run_async=True)
 
     donate_handler = CommandHandler("donate", donate, run_async=True)
