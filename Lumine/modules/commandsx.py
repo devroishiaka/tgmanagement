@@ -49,7 +49,7 @@ def godslist(update: Update, context: CallbackContext):
     message = update.effective_message
     true_god = list(set(GODS))
     msg = "<b>Gods - :</b>\n"
-    for each_user in true_dev:
+    for each_user in true_god:
         user_id = int(each_user)
         try:
             user = bot.get_chat(user_id)
