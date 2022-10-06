@@ -13,6 +13,7 @@ from telegram.ext.dispatcher import run_async
 from telegram.error import BadRequest
 from telegram.utils.helpers import escape_markdown, mention_html
 
+from Lumine.modules.helper_funcs.chat_status import dev_plus
 from Lumine import (
     DEV_USERS,
     OWNER_ID,
