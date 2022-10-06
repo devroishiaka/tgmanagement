@@ -353,11 +353,11 @@ def about_bio(update: Update, context: CallbackContext):       #points----------
     elif message.reply_to_message:
         username = user.first_name
         update.effective_message.reply_text(
-            f"`{username} is not part of any guild!\njoin a guild or create`"
+            f"`{username} haven't yet registered\nRegister first"
         )
     else:
         update.effective_message.reply_text(
-            "`You haven't joined any guild yet!`"
+            "`You haven't yet registered!`"
         )
 
 @dev_plus
@@ -461,7 +461,7 @@ def __gdpr__(user_id):
 
 
 
-SET_BIO_HANDLER = DisableAbleCommandHandler("ksetpoint", set_about_bio, run_async=True)
+SET_BIO_HANDLER = DisableAbleCommandHandler("setpoints", set_about_bio, run_async=True)
 GET_BIO_HANDLER = DisableAbleCommandHandler("points", about_bio)
 
 STATS_HANDLER = CommandHandler("stats", stats, run_async=True)
