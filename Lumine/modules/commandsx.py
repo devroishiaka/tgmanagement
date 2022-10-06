@@ -71,4 +71,5 @@ dispatcher.add_handler(REGISTERX_HANDLER)
 dispatcher.add_handler(GODSLIST_HANDLER)
 
 
+
 __handlers__ = [REGISTERX_HANDLER]
