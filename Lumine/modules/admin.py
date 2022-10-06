@@ -645,20 +645,14 @@ def adminlist(update: Update, context: CallbackContext):
 __help__ = """
  • `/admins`*:* list of admins in the chat
 
-*Admins only:*
+*Admins only*
  • `/pin`*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
  • `/unpin`*:* unpins the currently pinned message
  • `/invitelink`*:* gets invitelink
- • `/link`*:* same as invitelink
  • `/promote`*:* promotes the user replied to
  • `/demote`*:* demotes the user replied to
  • `/title <title here>`*:* sets a custom title for an admin that the bot promoted
  • `/admincache`*:* force refresh the admins list
- • `/setgtitle` `<newtitle>`*:* Sets new chat title in your group.
- • `/setgpic`*:* As a reply to file or photo to set group profile pic!
- • `/delgpic`*:* Same as above but to remove group profile pic.
- • `/setsticker`*:* As a reply to some sticker to set it as group sticker set!
- • `/setdescription` `<description>`*:* Sets new chat description in group.
 *Bans and Mutes*
  • `/ban`*:* bans a user. (via handle, or reply)
  • `/tban <userhandle> x(m/h/d)`*:* bans a user for `x` time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
@@ -668,7 +662,17 @@ __help__ = """
  • `/mute`*:* mutes a user. That user wont be able to send any kind of message
  • `/tmute <userhandle> x(m/h/d)`*:* mutes a user for x time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
  • `/unmute`*:* unmutes a user.
- • `/purge`*:* deletes all messages between this and the replied to message.
+*Anti-Flood*
+ • `/flood`*:* Get the current flood control setting
+ *Admins only:*
+ • `/setflood <int/'no'/'off'>`*:* enables or disables flood control
+ *Example:* `/setflood 10`
+ • `/setfloodmode <ban/kick/mute/tban/tmute> <value>`*:* Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban
+*Rules*
+ • `/rules`*:* get the rules for this chat.
+ *Admins only:*
+ • `/setrules <your rules here>`*:* set the rules for this chat.
+ • `/clearrules`*:* clear the rules for this chat.
 """
 
 ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist, run_async=True)
