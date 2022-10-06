@@ -95,7 +95,7 @@ HELP_IMG = "https://te.legra.ph/file/847042600ee21d42c79b1.mp4"
 
 ERI_VID = "https://te.legra.ph/file/847042600ee21d42c79b1.mp4"  #start in group vid
 
-ERI_IMG = "https://te.legra.ph/file/054a0e938449525ffb6fd.mp4"   #start in pm pic
+ERI_IMG = "https://te.legra.ph/file/fbb51cc139648d1f36cb0.jpg"   #start in pm pic
 
 DONATE_STRING = """ʜᴇʏᴀ, ɢʟᴀᴅ ᴛᴏ ʜᴇᴀʀ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴅᴏɴᴀᴛᴇ!
 Eʀɪ ɪs ʜᴏsᴛᴇᴅ ᴏɴ ɪᴛs ᴏᴡɴ sᴇʀᴠᴇʀ ᴀɴᴅ ʀᴇϙᴜɪʀᴇ ᴅᴏɴᴀᴛɪᴏɴs. 
@@ -210,7 +210,7 @@ def start(update: Update, context: CallbackContext):
 
         else:
             first_name = update.effective_user.first_name
-            update.effective_message.reply_video(
+            update.effective_message.reply_photo(
                 ERI_IMG,
                 PM_START_TEXT.format(
                     escape_markdown(first_name), escape_markdown(context.bot.first_name)
