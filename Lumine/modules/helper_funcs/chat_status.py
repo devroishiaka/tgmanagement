@@ -12,6 +12,7 @@ from Lumine import (
     WHITELIST_USERS,
     dispatcher,
 )
+from Lumine.userlist import GODS
 
 from telegram import Chat, ChatMember, ParseMode, Update
 from telegram.ext import CallbackContext
@@ -20,6 +21,10 @@ from telegram.ext import CallbackContext
 ADMIN_CACHE = TTLCache(maxsize=512, ttl=60 * 10, timer=perf_counter)
 THREAD_LOCK = RLock()
 
+#------------------------------------------------
+def is_gods_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
+    return user_id in GODS
+#------------------------------------------------
 
 def is_whitelist_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
     return any(user_id in user for user in [WHITELIST_USERS, SUPPORT_USERS, SUDO_USERS, DEV_USERS])
@@ -204,6 +209,26 @@ def whitelist_plus(func):
 
     return is_whitelist_plus_func
 
+#-----------------------------------------------------
+def gods_plus(func):
+    @wraps(func)
+    def is_gods_plus_func(
+        update: Update, context: CallbackContext, *args, **kwargs
+    ):
+        bot = context.bot
+        user = update.effective_user
+        chat = update.effective_chat
+
+        if user and is_gods_plus(chat, user.id):
+            return func(update, context, *args, **kwargs)
+        else:
+            update.effective_message.reply_text(
+                f"You don't have access to use this.\nVisit @{SUPPORT_CHAT}"
+            )
+
+    return is_gods_plus_func
+
+#---------------------------------------------------
 
 def user_admin(func):
     @wraps(func)
