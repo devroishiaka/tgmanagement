@@ -162,14 +162,14 @@ def info(update: Update, context: CallbackContext):
     rep = message.reply_text("<code>Sᴇᴀʀᴄʜɪɴɢ Dᴀᴛᴀʙᴀsᴇ...</code>", parse_mode=ParseMode.HTML)
 
     text = (
-        f"┏━━━•°•━━\n"
+        f"┏━━━•°•━━•°•\n"
         f"┣<b> ⊱ Usᴇʀ Iɴғᴏ ⊰</b>\n┃\n"
         f"┣◈ ID ⊶ <code>{user.id}</code>\n"
         f"┣◈ Fɪʀsᴛ Nᴀᴍᴇ ⊶ {html.escape(user.first_name)}"
     )
 
     if user.last_name:
-        text += f"\n┣◈ Lᴀsᴛ Nᴀᴍᴇ ⊶ {html.escape(user.first_name)}"
+        text += f"\n┣◈ Lᴀsᴛ Nᴀᴍᴇ ⊶ {html.escape(user.last_name)}"
 
     if user.username:
         text += f"\n┣◈ UsᴇʀNᴀᴍᴇ ⊶ @{html.escape(user.username)}\n┃"
@@ -290,7 +290,7 @@ def about_me(update: Update, context: CallbackContext):  #guilds----------------
             f"`{username} hasn't registered yet!`"
         )
     else:
-        update.effective_message.reply_text("`You not part of any guild, join a guild or create one`")
+        update.effective_message.reply_text("You not part of any guild 👀,\nPlease join a guild or create one")
 
 
 def set_about_me(update: Update, context: CallbackContext):
@@ -352,11 +352,11 @@ def about_bio(update: Update, context: CallbackContext):       #points----------
     elif message.reply_to_message:
         username = user.first_name
         update.effective_message.reply_text(
-            f"`{username} haven't yet registered\nRegister first"
+            f"{username} is not registered\n
         )
     else:
         update.effective_message.reply_text(
-            "`You haven't yet registered!`"
+            "You haven't yet registered!👀"
         )
 
 @gods_plus
