@@ -1,12 +1,8 @@
 import pymongo
 from pymongo import MongoClient
-
-cluster = MongoClient("mongodb+srv://ishikki:ishikki143@cluster0.azewvhf.mongodb.net/?retryWrites=true&w=majority") #mongoURL
-
-db = cluster["cluster0"]  #database name
-collection = db["userlistx"]  #collection name
+from Lumine.mangodb import collection
 
 #--------------------------------------------------------------#
-post1 = {"_id": 0, "name": "Ishikki", "score": 100}
+post1 = {"_id": 1, "name": "shikumi", "score": 200}
 
 collection.insert_one(post1)  #single
