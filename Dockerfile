@@ -59,6 +59,7 @@ RUN apt update && apt upgrade -y && \
     unzip \
     libopus0 \
     libopus-dev \
+    pymongo[srv] \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
 # Pypi package Repo upgrade
