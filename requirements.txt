@@ -18,7 +18,6 @@ Pillow
 CurrencyConverter
 gpytranslate
 jikanpy
-speedtest-cli
 coffeehouse
 regex
 bleach
