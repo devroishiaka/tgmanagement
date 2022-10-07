@@ -32,8 +32,7 @@ def registerx(update: Update, context: CallbackContext):
     user_id = extract_user(update.effective_message, args)
     first_name = update.effective_user.first_name
     post = {"_id": {user.id}, "Name": "{html.escape(user.first_name)}", "Points": 100, "Guild": "null"}
-    collection.insert_one(post)
-    update.effective_message.reply_text("registerd Successfully", parse_mode=ParseMode.HTML)
+    return collection.insert_one(post)
 
-REGISTERX_HANDLER = CommandHandler(("register"), registerx, run_async=True)
+REGISTERX_HANDLER = CommandHandler(("register"), registerx)
 dispatcher.add_handler(REGISTERX_HANDLER)
