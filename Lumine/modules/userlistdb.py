@@ -31,7 +31,7 @@ def registerx(update: Update, context: CallbackContext):
     args = context.args
     user_id = extract_user(update.effective_message, args)
     first_name = update.effective_user.first_name
-    post = {"_id": {user.id}, "Name": "{html.escape(user.first_name)}", "Points": 100, "Guild": "null"]
+    post = {"_id": {user.id}, "Name": "{html.escape(user.first_name)}", "Points": 100, "Guild": "null"}
     collection.insert_one(post)
     update.effective_message.reply_text("registerd Successfully", parse_mode=ParseMode.HTML)
 
