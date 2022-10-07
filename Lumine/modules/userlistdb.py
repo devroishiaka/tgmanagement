@@ -1,6 +1,6 @@
 import pymongo
 from pymongo import MongoClient
-from Lumine.mangodb import collection
+from Lumine.mongodb import collection
 
 #--------------------------------------------------------------#
 post1 = {"_id": 1, "name": "shikumi", "score": 200}
