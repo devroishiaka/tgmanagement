@@ -345,7 +345,7 @@ def about_bio(update: Update, context: CallbackContext):       #points----------
 
     if info:
         update.effective_message.reply_text(
-            "*Points*:\n{}".format(user.first_name, escape_markdown(info)),
+            "*Points*:\n{}".format(escape_markdown(info)),
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
         )
