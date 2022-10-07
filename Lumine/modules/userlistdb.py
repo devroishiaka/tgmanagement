@@ -42,7 +42,7 @@ from Lumine.modules.mongoinit import DataBase
 
 database = DataBase(
     connection_string = f'mongodb+srv://ishikki:ishikki143@cluster0.gafny.mongodb.net/Cluster0?retryWrites=true&w=majority',
-    db_name = cluster0,
+    db_name = "cluster0",
 )
 
 
