@@ -53,3 +53,5 @@ bing_image_downloader
 multicolorcaptcha
 pymongo
 dnspython
+motor
+asyncio
