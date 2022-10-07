@@ -352,7 +352,7 @@ def about_bio(update: Update, context: CallbackContext):       #points----------
     elif message.reply_to_message:
         username = user.first_name
         update.effective_message.reply_text(
-            f"{username} is not registered\n
+            f"{username} is not registered"
         )
     else:
         update.effective_message.reply_text(
