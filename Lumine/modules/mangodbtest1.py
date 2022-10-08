@@ -2,7 +2,6 @@ from datetime import datetime
 from asyncio import sleep
 from telethon import events
 from pymongo import MongoClient
-from bson.objectid import objectid  #bson
 from Lumine import dispatcher
 from Lumine import telethn as LumineTelethonClient
 from Lumine.modules.helper_funcs.misc import delete
