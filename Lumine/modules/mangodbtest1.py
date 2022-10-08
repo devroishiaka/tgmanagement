@@ -8,7 +8,7 @@ from Lumine.modules.helper_funcs.misc import delete
 
 
 url = "mongodb+srv://ishikki:ishikki143@cluster0.azewvhf.mongodb.net/?retryWrites=true&w=majority"
-cluster = MangoClient(url) 
+cluster = MongoClient(url) 
 
 db = cluster["Cluster0"]
 collection = db["userlistx"]
