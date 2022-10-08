@@ -23,8 +23,7 @@ async def register(event):
     
     list_of_words = event.message.text.split("")
     name = list_of_words[1]
-    dt_string = datetime.now()strftime("%d-%m_%y")
-    post_dict = {"Name": name, "points": 100, "Guild": "Null" "date": dt_string}
+    post_dict = {"Name": name, "points": 100, "Guild": "Null"}
 
     collection.insert_one(post_dict)
 
