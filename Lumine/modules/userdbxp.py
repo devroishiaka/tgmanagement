@@ -38,5 +38,5 @@ def about_bio(bot: Bot, update: Update, args: List[str]):
 
 __mod_name__ = "DB Func"
 
-GET_BIO_HANDLER = DisableAbleCommandHandler("biox", about_bio, pass_args=True)
+GET_BIO_HANDLER = DisableAbleCommandHandler("biox", about_bio, run_async=True)
 dispatcher.add_handler(GET_BIO_HANDLER)
