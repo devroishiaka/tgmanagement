@@ -7,7 +7,7 @@ from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import escape_markdown
 from telegram.ext import CallbackContext, CommandHandler, Filters
 
-from Lumine.modules.dbfunct import collection
+from Lumine.modules.mongodbtest1 import collection
 from Lumine import dispatcher, SUDO_USERS
 from Lumine.modules.disable import DisableAbleCommandHandler
 from Lumine.modules.helper_funcs.extraction import extract_user
