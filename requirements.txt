@@ -53,4 +53,3 @@ multicolorcaptcha
 pymongo
 dnspython
 motor
-bson
