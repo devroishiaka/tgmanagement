@@ -14,7 +14,7 @@ from Lumine.modules.helper_funcs.extraction import extract_user
 
 
 
-@run_async
+
 def about_bio(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message  # type: Optional[Message]
 
