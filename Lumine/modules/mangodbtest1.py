@@ -16,6 +16,7 @@ collection = db["userlistx"]
 #----------------------------------#######################
 
 #/register [name]
+"""
 @LumineTelethonClient.on(events.NewMessage(pattern="(?i)/registerxy"))
 async def register(event):
     sender = await event.get_sender()
@@ -29,3 +30,4 @@ async def register(event):
 
     text = "Successfully Registered!!!"
     await client.send_message(SENDER, text, parse_mode='html')
+"""
