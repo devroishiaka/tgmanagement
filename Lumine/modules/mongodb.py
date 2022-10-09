@@ -40,5 +40,5 @@ async def points(event):
     results = collection.find_one({"_id": sender.id})
     for result in results:
         pointx = result["Points"]
-
-    await event.reply("Your Points\n", pointx)
+        point = int(pointx)
+        await event.reply("Your Points\n", point)
