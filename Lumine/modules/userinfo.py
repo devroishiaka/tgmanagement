@@ -460,17 +460,17 @@ def __gdpr__(user_id):
 
 
 
-SET_BIO_HANDLER = DisableAbleCommandHandler("setpoints", set_about_bio, run_async=True)
-GET_BIO_HANDLER = DisableAbleCommandHandler("points", about_bio)
+SET_BIO_HANDLER = DisableAbleCommandHandler("setpointsxx", set_about_bio, run_async=True)
+GET_BIO_HANDLER = DisableAbleCommandHandler("pointsxx", about_bio)
 
 STATS_HANDLER = CommandHandler("stats", stats, run_async=True)
 ID_HANDLER = DisableAbleCommandHandler("id", get_id, run_async=True)
 GIFID_HANDLER = DisableAbleCommandHandler("gifid", gifid, run_async=True)
-INFO_HANDLER = DisableAbleCommandHandler(("info", "book"), info, run_async=True)
+INFO_HANDLER = DisableAbleCommandHandler(("infoxx", "book"), info, run_async=True)
 GDPR_HANDLER = CommandHandler("gdpr", gdpr, filters=Filters.chat_type.private, run_async=True)
 
-SET_ABOUT_HANDLER = DisableAbleCommandHandler(("join", "create"), set_about_me, run_async=True)
-GET_ABOUT_HANDLER = DisableAbleCommandHandler("myguild", about_me, run_async=True)
+SET_ABOUT_HANDLER = DisableAbleCommandHandler(("joinxx", "createxx"), set_about_me, run_async=True)
+GET_ABOUT_HANDLER = DisableAbleCommandHandler("myguildxx", about_me, run_async=True)
 
 dispatcher.add_handler(STATS_HANDLER)
 dispatcher.add_handler(ID_HANDLER)
@@ -483,7 +483,7 @@ dispatcher.add_handler(SET_ABOUT_HANDLER)
 dispatcher.add_handler(GET_ABOUT_HANDLER)
 
 __mod_name__ = "Info"
-__command_list__ = ["ksetpoint", "points", "join", "Myguild", "info", "gprd"]
+__command_list__ = ["ksetpoint", "pointsxx", "join", "Myguild", "info", "gprd"]
 __handlers__ = [
     ID_HANDLER,
     GIFID_HANDLER,
