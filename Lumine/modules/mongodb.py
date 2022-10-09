@@ -48,6 +48,21 @@ async def register(event):
     text = "Successfully Registered!!!"
     await event.reply("Successfully Registered!!!")
 
+#/join <guild name>
+@LumineTelethonClient.on(events.NewMessage(pattern="(?i)/join"))
+async def register(event):
+    sender = await event.get_sender()
+    SENDER = sender.id
+    
+    list_of_words = event.message.text.split(" ")
+    guild = list_of_words[1]
+
+    collection.update_one({"_id": sender.id}, {"$set":{"Guild": guild})
+
+    await event.reply("Successfully joined the guild {guild}!!!")
+
+
+"""
 #/points
 @LumineTelethonClient.on(events.NewMessage(pattern="(?i)/points"))
 async def points(event):
@@ -58,3 +73,4 @@ async def points(event):
     #pointx = results["Points"]
     #text1 = create_message_select_query(results)
     await event.reply(results)
+"""
