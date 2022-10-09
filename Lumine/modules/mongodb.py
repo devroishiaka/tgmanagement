@@ -41,5 +41,5 @@ async def points(event):
     SENDER = sender.id
     #post_dict = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class" "Points": 100, "Guild": "No"}
     results = collection.find_one({"_id": sender.id})
-    pointx = results["Points"]
-    await event.reply("Your Points\n", pointx)
+    #pointx = results["Points"]
+    await event.reply("Your Points", results)
