@@ -12,7 +12,7 @@ url = "mongodb+srv://ishikki:ishikki143@cluster0.azewvhf.mongodb.net/?retryWrite
 cluster = MongoClient(url) 
 
 db = cluster['Cluster0']
-collection = db.['userlistx']
+collection = db['userlistx']
 
 #----------------------------------#######################
 
