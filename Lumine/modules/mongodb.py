@@ -7,6 +7,23 @@ from Lumine import dispatcher
 from Lumine import telethn as LumineTelethonClient
 from Lumine.modules.helper_funcs.misc import delete
 
+from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity
+from telegram.ext import CallbackContext, CommandHandler, Filters
+from telegram.ext.dispatcher import run_async
+from telegram.utils.helpers import escape_markdown, mention_html
+from Lumine import (
+    DEV_USERS,
+    OWNER_ID,
+    SUDO_USERS,
+    SUPPORT_USERS,
+    WHITELIST_USERS,
+    INFOPIC,
+    dispatcher,
+    sw,
+)
+from Lumine.modules.helper_funcs.chat_status import sudo_plus, gods_plus
+from Lumine.modules.helper_funcs.extraction import extract_user
+from Lumine.modules.disable import DisableAbleCommandHandler
 
 url = "mongodb+srv://ishikki:ishikki143@cluster0.azewvhf.mongodb.net/?retryWrites=true&w=majority"
 cluster = MongoClient(url) 
@@ -61,6 +78,22 @@ async def register(event):
     await event.reply("Successfully joined the guild {guild}!!!")
 
 
+#/create <guild name>
+
+@gods_plus
+def createguild(update: Update, context: CallbackContext):
+    message = update.effective_message
+    sender_id = update.effective_user.id
+    bot = context.bot
+    text = message.text
+    bio = text.split(
+        None, 1
+    )
+    collection.update_one({"_id": sender_id}, {"$set":{"Guild": bio[1]}})
+    message.reply_text("Updated points!")
+    
+CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguild, run_async=True)
+dispatcher.add_handler(CREATEGUILD_HANDLER)
 """
 #/points
 @LumineTelethonClient.on(events.NewMessage(pattern="(?i)/points"))
