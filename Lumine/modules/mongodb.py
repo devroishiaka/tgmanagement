@@ -24,10 +24,21 @@ async def register(event):
     
     list_of_words = event.message.text.split(" ")
     name = list_of_words[1]
-    post_dict = {"_id": sender.id, "Name": name, "Level": 1, "Points": 100, "Guild": "No"}
+    post_dict = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class" "Points": 100, "Guild": "No"}
 
     collection.insert_one(post_dict)
 
     text = "Successfully Registered!!!"
     await event.reply("Successfully Registered!!!")
 
+#/points
+@LumineTelethonClient.on(events.NewMessage(pattern="(?i)/points"))
+async def points(event):
+    sender = await event.get_sender()
+    SENDER = sender.id
+    #post_dict = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class" "Points": 100, "Guild": "No"}
+    results = collection.find_one({"_id": sender.id})
+    for result in results:
+        pointx = result["Points"]
+
+    await event.reply("Your Points\n", pointx)
