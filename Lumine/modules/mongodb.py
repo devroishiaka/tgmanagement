@@ -45,7 +45,6 @@ async def register(event):
 
     collection.insert_one(post_dict)
 
-    text = "Successfully Registered!!!"
     await event.reply("Successfully Registered!!!")
 
 #/join <guild name>
@@ -57,7 +56,7 @@ async def register(event):
     list_of_words = event.message.text.split(" ")
     guild = list_of_words[1]
 
-    collection.update_one({"_id": sender.id}, {"$set":{"Guild": guild})
+    collection.update_one({"_id": sender.id}, {"$set":{"Guild": guild}})
 
     await event.reply("Successfully joined the guild {guild}!!!")
 
