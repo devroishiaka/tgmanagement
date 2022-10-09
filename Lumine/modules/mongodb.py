@@ -15,7 +15,10 @@ db = cluster['userlistxy']
 collection = db['userdataxy']
 
 #----------------------------------#######################
+def 
 
+
+#----------------------------------#######################
 #/register [name]
 @LumineTelethonClient.on(events.NewMessage(pattern="(?i)/register"))
 async def register(event):
@@ -38,7 +41,5 @@ async def points(event):
     SENDER = sender.id
     #post_dict = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class" "Points": 100, "Guild": "No"}
     results = collection.find_one({"_id": sender.id})
-    for result in results:
-        pointx = result["Points"]
-        point = int(pointx)
-        await event.reply("Your Points\n", point)
+    pointx = results["Points"]
+    await event.reply("Your Points\n", pointx)
