@@ -30,5 +30,5 @@ async def register(event):
     collection.insert_one(post_dict)
 
     text = "Successfully Registered!!!"
-    await LumineTelethonclient.send_message(SENDER, text, parse_mode='html')
+    await event.reply("Successfully Registered!!!")
 
