@@ -32,22 +32,14 @@ db = cluster['userlistxy']
 collection = db['userdataxy']
 
 #----------------------------------#######################
-"""
-def create_message_select_query(ans):
-    text = ""
-    for res in ans:
-        if res in ans:
-            if(res !=[]):
-                id = res["_id"]
-                name = res["Name"]
-                level = res["Level"]
-                rank = res["Rank"]
-                points = res["Points"]
-                guild = res["Guild"]
-                text+= "<b>"+ str(id) + "</b>"+ str(name) + "</b>"+ str(level) + "</b>"+ str(rank) + "</b>"+ str(points) + "</b>"+ str(guild) + "</b>"
-    message = "info\n"+text
-    return message
-"""
+
+async def get_points(sender_id: int):
+    user = collection.find_one({"_id": sender_id})
+    if user:
+        user = user["Points"]
+    else:
+        user = {}
+    return user
 
 #----------------------------------#######################
 #/register [name]
@@ -76,7 +68,7 @@ async def register(event):
 
 #/join <guild name>
 @LumineTelethonClient.on(events.NewMessage(pattern="(?i)/join"))
-async def register(event):
+async def join(event):
     sender = await event.get_sender()
     SENDER = sender.id
     
@@ -85,7 +77,8 @@ async def register(event):
 
     collection.update_one({"_id": sender.id}, {"$set":{"Guild": guild}})
 
-    await event.reply("Successfully joined the guild {guild}!!!")
+    textx = "Successfully joined the guild {} !!!"
+    await event.reply(textx.format(guild), parse_mode=ParseMode.MARKDOWN)
 
 
 #/create <guild name>
@@ -107,12 +100,13 @@ dispatcher.add_handler(CREATEGUILD_HANDLER)
       
 
 #/points
-@LumineTelethonClient.on(events.NewMessage(pattern="(?i)/points"))
-async def points(event):
-    sender = await event.get_sender()
-    SENDER = sender.id
-    #post_dict = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class" "Points": 100, "Guild": "No"}
-    results = collection.find_one({"_id": sender.id})
-    scorex = results["Points"]
-    await event.reply(scorex)
+def points(update: Update, context: CallbackContext):
+    message = update.effective_message
+    sender_id = update.effective_user.id
+    bot = context.bot
+    #post_dict = {"_id": sender_id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Guild": "No"}
+    results = get_points(sender_id)
+    message.reply_text(results)
 
+POINTS_HANDLER = DisableAbleCommandHandler("point", points, run_async=True)
+dispatcher.add_handler(POINTS_HANDLER)
