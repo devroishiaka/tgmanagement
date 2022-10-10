@@ -108,8 +108,9 @@ def setpointsx(update: Update, context: CallbackContext):
     bot = context.bot
     list_of_words = message.text.split(" ")
     point3 = list_of_words[1]
+    points = int(point3)
 
-    collection.update_one({"_id": sender_id}, {"$inc": {"Points": point3}})
+    collection.update_one({"_id": sender_id}, {"$inc": {"Points": points}})
     message.reply_text("successfully updated the points")
             
             
