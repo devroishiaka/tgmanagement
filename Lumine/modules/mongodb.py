@@ -62,7 +62,7 @@ async def register(event):
             "Give me a name in the format /register <Your Name>"
         )
     
-    results = connection.find({"_id": sender.id})
+    results = collection.find({"_id": sender.id})
     if sender.id in results:
         return await event.respond(
             "You already registered in My Database"
