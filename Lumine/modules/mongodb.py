@@ -57,6 +57,16 @@ async def register(event):
     SENDER = sender.id
     
     list_of_words = event.message.text.split(" ")
+    if len(list_of_words) == 1:
+        return await event.respond(
+            "Give me a name in the format /register <Your Name>"
+        )
+    
+    results = connection.find({"_id": sender.id})
+    if sender.id in results:
+        return await event.respond(
+            "You already registered in My Database"
+        )
     name = list_of_words[1]
     post_dict = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Guild": "No"}
 
@@ -90,7 +100,7 @@ def createguild(update: Update, context: CallbackContext):
         None, 1
     )
     collection.update_one({"_id": sender_id}, {"$set":{"Guild": bio[1]}})
-    message.reply_text("Updated points!")
+    message.reply_text("Created a new guild!")
     
 CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguild, run_async=True)
 dispatcher.add_handler(CREATEGUILD_HANDLER)
