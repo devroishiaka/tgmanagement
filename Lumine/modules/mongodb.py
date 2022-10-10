@@ -47,7 +47,8 @@ async def registerx(event):
         )
     
     results = collection.find({"_id": sender.id})
-    if results:
+    result = str(results["_id"])
+    if result == sender.id:
         return await event.respond(
             "You already registered in My Database"
         )
