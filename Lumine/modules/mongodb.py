@@ -83,7 +83,7 @@ def createguildx(update: Update, context: CallbackContext):
     bio = text.split(
         None, 1
     )
-    collection.update_one({"_id": sender_id}, {"$set":{"Guild": bio[1]}, "$set":{"Guild_Status": "Creator"})
+    collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator"}})
     message.reply_text("Created a new guild!")
     
       
@@ -99,8 +99,62 @@ def pointsx(update: Update, context: CallbackContext):
     message.reply_text(result)
 
 
+
+
+@gods_plus
+def setpointsx(update: Update, context: CallbackContext):
+    message = update.effective_message
+    sender_id = update.effective_user.id
+    bot = context.bot
+    list_of_words = message.text.split(" ")
+    
+    if message.reply_to_message:
+        repl_message = message.reply_to_message
+        user_id = repl_message.from_user.id
+        
+        if len(list_of_words) == 2:
+            point1 = list_of_words[1]
+            collection.update_one({"_id": user_id}, {"$inc": {"Points": point1}})
+            message.reply_text("successfully updated the points")
+            
+        elif len(list_of_words) == 3:
+            id_sender = list_of_words[1]
+            point2 = list_of_words[2]
+            collection.update_one({"_id": id_sender}, {"$inc": {"Points": point2}})
+            message.reply_text("successfully updated the points")
+        else len(list_of_words) == 1:
+            message.reply_text("Atleast give me some amounts to add")
+     else:
+        if len(list_of_words) == 1:
+            message.reply_text("Atleast give me some amounts to add")
+        
+        if len(list_of_words) == 2:
+        point3 = list_of_words[1]
+        collection.update_one({"_id": sender_id}, {"$inc": {"Points": point3}})
+        message.reply_text("successfully updated the points")
+            
+            
+"""            
+    if len(list_of_words) == 1:
+        message.reply_text("atleast provide me some points to update")
+    
+    results = collection.find({"_id": sender_id})
+    if results:
+        #collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator"}})
+        collection.update_one({"_id": sender_id}, {"$inc": {"Points": 
+        message.reply_text("Successfully updated points")
+    else :
+        message.reply_text("No such user registerd in my database!")
+"""
+                                               
+
+
 CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
 POINTS_HANDLER = DisableAbleCommandHandler("point", pointsx, run_async=True)
+SETPOINTS_HANDLER = DisableAbleCommandHandler("setpoints", setpointsx, run_async=True)
 
 dispatcher.add_handler(CREATEGUILD_HANDLER)
 dispatcher.add_handler(POINTS_HANDLER)
+dispatcher.add_handler(SETPOINTS_HANDLER)
+
+
