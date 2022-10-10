@@ -31,20 +31,12 @@ cluster = MongoClient(url)
 db = cluster['userlistxy']
 collection = db['userdataxy']
 
-#----------------------------------#######################
-"""
-async def get_points(sender_id: int):
-    user = collection.find_one({"_id": sender_id})
-    if user:
-        user = user["Points"]
-    else:
-        user = {}
-    return user
-"""
-#----------------------------------#######################
+#----------------------------------#######################----------------------------------
+
+#----------------------------------#######################----------------------------------
 #/register [name]
 @LumineTelethonClient.on(events.NewMessage(pattern="(?i)/register"))
-async def register(event):
+async def registerx(event):
     sender = await event.get_sender()
     SENDER = sender.id
     
@@ -61,14 +53,14 @@ async def register(event):
         )
     else :
         name = list_of_words[1]
-        post_dict = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Guild": "No"}
+        post_dict = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Guild": "No", "Guild_Status": "No"}
         collection.insert_one(post_dict)
         
         await event.reply("Successfully Registered!!!")
 
 #/join <guild name>
 @LumineTelethonClient.on(events.NewMessage(pattern="(?i)/join"))
-async def join(event):
+async def joinx(event):
     sender = await event.get_sender()
     SENDER = sender.id
     
@@ -82,9 +74,8 @@ async def join(event):
 
 
 #/create <guild name>
-
 @gods_plus
-def createguild(update: Update, context: CallbackContext):
+def createguildx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
     bot = context.bot
@@ -92,22 +83,24 @@ def createguild(update: Update, context: CallbackContext):
     bio = text.split(
         None, 1
     )
-    collection.update_one({"_id": sender_id}, {"$set":{"Guild": bio[1]}})
+    collection.update_one({"_id": sender_id}, {"$set":{"Guild": bio[1]}, "$set":{"Guild_Status": "Creator"})
     message.reply_text("Created a new guild!")
     
-CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguild, run_async=True)
-dispatcher.add_handler(CREATEGUILD_HANDLER)
       
 
 #/points
-def points(update: Update, context: CallbackContext):
+def pointsx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
     bot = context.bot
-    #post_dict = {"_id": sender_id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Guild": "No"}
+    #post_dict = {"_id": sender_id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Guild": "No", "Guild_Status": "No"}
     results = collection.find_one({"_id": sender_id})
     result = str(results["Points"])
     message.reply_text(result)
 
-POINTS_HANDLER = DisableAbleCommandHandler("point", points, run_async=True)
+
+CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
+POINTS_HANDLER = DisableAbleCommandHandler("point", pointsx, run_async=True)
+
+dispatcher.add_handler(CREATEGUILD_HANDLER)
 dispatcher.add_handler(POINTS_HANDLER)
