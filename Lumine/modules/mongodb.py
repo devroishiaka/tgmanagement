@@ -35,6 +35,7 @@ collection = db['userdataxy']
 
 
 #----------------------------------#######################----------------------------------
+
 #/register [name]
 @LumineTelethonClient.on(events.NewMessage(pattern="(?i)/register"))
 async def registerx(event):
@@ -54,10 +55,11 @@ async def registerx(event):
         )
     else :
         name = list_of_words[1]
-        post_dict = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Guild": "No", "Guild_Status": "No"}
+        post_dict = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Guild": "No", "Guild_Status": "No", "Vault": "No"}
         collection.insert_one(post_dict)
         
         await event.reply("Successfully Registered!!!")
+
 
 #/join <guild name>
 @LumineTelethonClient.on(events.NewMessage(pattern="(?i)/join"))
@@ -84,11 +86,10 @@ def createguildx(update: Update, context: CallbackContext):
     bio = text.split(
         None, 1
     )
-    collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator"}})
+    collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator", "Vault": "100"}})
     message.reply_text("Created a new guild!")
     
       
-
 #/points
 def pointsx(update: Update, context: CallbackContext):
     message = update.effective_message
@@ -100,8 +101,7 @@ def pointsx(update: Update, context: CallbackContext):
     message.reply_text(result)
 
 
-
-
+#/setpoints
 @gods_plus
 def setpointsx(update: Update, context: CallbackContext):
     message = update.effective_message
@@ -121,37 +121,50 @@ def setpointsx(update: Update, context: CallbackContext):
         id_tag = list_of_words[1]
         point2 = list_of_words[2]
         points2 = int(point2)
-        
         collection.update_one({"_id": id_tag}, {"$inc": {"Points": points2}})
         message.reply_text("successfully updated the points")
         
-    point3 = list_of_words[1]
-    points3 = int(point3)
-    collection.update_one({"_id": sender_id}, {"$inc": {"Points": points3}})
-    message.reply_text("successfully updated the points")
+    elif len(list_of_words) == 2:
+        point3 = list_of_words[1]
+        points3 = int(point3)
+        collection.update_one({"_id": sender_id}, {"$inc": {"Points": points3}})
+        message.reply_text("successfully updated the points")
             
-            
-"""            
-    if len(list_of_words) == 1:
-        message.reply_text("atleast provide me some points to update")
+
+#/deposit <amount>
+def depositx(update: Update, context: CallbackContext):
+    message = update.effective_message
+    sender_id = update.effective_user.id
+    bot = context.bot
+    list_of_words = message.text.split(" ")
+    points = int(list_of_words[1])
     
-    results = collection.find({"_id": sender_id})
-    if results:
-        #collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator"}})
-        collection.update_one({"_id": sender_id}, {"$inc": {"Points": 
-        message.reply_text("Successfully updated points")
-    else :
-        message.reply_text("No such user registerd in my database!")
-"""
-                                               
+    if len(list_of_words) == 2:
+        results1 = collection.find_one({"_id": sender_id})
+        result1 = int(results["Points"])
+        result2 = str(results["Guild"])
+        
+        if result2 == "No":
+            message.reply_text("Brooooooooooo,\nJoin a guild first to have a vault")
+        else :
+            if points < result1:
+                collection.update_many({"Guild": result2}, {"$inc": {"Vault": points}})
+                message.reply_text("Deposited points!")
+            else:
+                message.reply_text("you dont have enough points to deposit")
+    else:
+        message.reply_text("Provide me something to deposit")
+
+
 
 
 CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
 POINTS_HANDLER = DisableAbleCommandHandler("point", pointsx, run_async=True)
 SETPOINTS_HANDLER = DisableAbleCommandHandler("setpoints", setpointsx, run_async=True)
+DEPOSIT_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 
 dispatcher.add_handler(CREATEGUILD_HANDLER)
 dispatcher.add_handler(POINTS_HANDLER)
 dispatcher.add_handler(SETPOINTS_HANDLER)
-
+dispatcher.add_handler(DEPOSIT_HANDLER)
 
