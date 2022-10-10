@@ -122,7 +122,7 @@ def setpointsx(update: Update, context: CallbackContext):
             point2 = list_of_words[2]
             collection.update_one({"_id": id_sender}, {"$inc": {"Points": point2}})
             message.reply_text("successfully updated the points")
-        else len(list_of_words) == 1:
+        elif len(list_of_words) == 1:
             message.reply_text("Atleast give me some amounts to add")
      else:
         if len(list_of_words) == 1:
