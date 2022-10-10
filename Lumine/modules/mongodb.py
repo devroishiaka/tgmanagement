@@ -108,6 +108,9 @@ def setpointsx(update: Update, context: CallbackContext):
     bot = context.bot
     list_of_words = message.text.split(" ")
     
+    if len(list_of_words) == 1:
+            message.reply_text("Atleast give me some amounts to add")
+            
     if message.reply_to_message:
         repl_message = message.reply_to_message
         user_id = repl_message.from_user.id
@@ -122,16 +125,10 @@ def setpointsx(update: Update, context: CallbackContext):
             point2 = list_of_words[2]
             collection.update_one({"_id": id_sender}, {"$inc": {"Points": point2}})
             message.reply_text("successfully updated the points")
-        elif len(list_of_words) == 1:
-            message.reply_text("Atleast give me some amounts to add")
-    else:
-        if len(list_of_words) == 1:
-            message.reply_text("Atleast give me some amounts to add")
-        
-        if len(list_of_words) == 2:
-        point3 = list_of_words[1]
-        collection.update_one({"_id": sender_id}, {"$inc": {"Points": point3}})
-        message.reply_text("successfully updated the points")
+            
+    point3 = list_of_words[1]
+    collection.update_one({"_id": sender_id}, {"$inc": {"Points": point3}})
+    message.reply_text("successfully updated the points")
             
             
 """            
