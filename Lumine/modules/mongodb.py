@@ -32,7 +32,7 @@ db = cluster['userlistxy']
 collection = db['userdataxy']
 
 #----------------------------------#######################
-
+"""
 async def get_points(sender_id: int):
     user = collection.find_one({"_id": sender_id})
     if user:
@@ -40,7 +40,7 @@ async def get_points(sender_id: int):
     else:
         user = {}
     return user
-
+"""
 #----------------------------------#######################
 #/register [name]
 @LumineTelethonClient.on(events.NewMessage(pattern="(?i)/register"))
@@ -55,16 +55,16 @@ async def register(event):
         )
     
     results = collection.find({"_id": sender.id})
-    if sender.id in results:
+    if results:
         return await event.respond(
             "You already registered in My Database"
         )
-    name = list_of_words[1]
-    post_dict = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Guild": "No"}
-
-    collection.insert_one(post_dict)
-
-    await event.reply("Successfully Registered!!!")
+    else :
+        name = list_of_words[1]
+        post_dict = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Guild": "No"}
+        collection.insert_one(post_dict)
+        
+        await event.reply("Successfully Registered!!!")
 
 #/join <guild name>
 @LumineTelethonClient.on(events.NewMessage(pattern="(?i)/join"))
@@ -105,8 +105,9 @@ def points(update: Update, context: CallbackContext):
     sender_id = update.effective_user.id
     bot = context.bot
     #post_dict = {"_id": sender_id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Guild": "No"}
-    results = get_points(sender_id)
-    message.reply_text(results)
+    results = collection.find_one("_id": sender_id)
+    result = str(results)
+    message.reply_text(result)
 
 POINTS_HANDLER = DisableAbleCommandHandler("point", points, run_async=True)
 dispatcher.add_handler(POINTS_HANDLER)
