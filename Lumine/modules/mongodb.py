@@ -124,7 +124,7 @@ def setpointsx(update: Update, context: CallbackContext):
             message.reply_text("successfully updated the points")
         elif len(list_of_words) == 1:
             message.reply_text("Atleast give me some amounts to add")
-     else:
+    else:
         if len(list_of_words) == 1:
             message.reply_text("Atleast give me some amounts to add")
         
