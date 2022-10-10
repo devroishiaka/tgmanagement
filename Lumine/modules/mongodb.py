@@ -108,10 +108,26 @@ def setpointsx(update: Update, context: CallbackContext):
     sender_id = update.effective_user.id
     bot = context.bot
     list_of_words = message.text.split(" ")
+    
+    if message.reply_to_message:
+        repl_message = message.reply_to_message
+        user_id = repl_message.from_user.id
+        point1 = list_of_words[1]
+        points1 = int(point1)
+        collection.update_one({"_id": user_id}, {"$inc": {"Points": points1}})
+        message.reply_text("successfully updated the points")
+        
+    if len(list_of_words) == 3:
+        id_tag = list_of_words[1]
+        point2 = list_of_words[2]
+        points2 = int(point2)
+        
+        collection.update_one({"_id": id_tag}, {"$inc": {"Points": points2}})
+        message.reply_text("successfully updated the points")
+        
     point3 = list_of_words[1]
-    points = int(point3)
-
-    collection.update_one({"_id": sender_id}, {"$inc": {"Points": points}})
+    points3 = int(point3)
+    collection.update_one({"_id": sender_id}, {"$inc": {"Points": points3}})
     message.reply_text("successfully updated the points")
             
             
