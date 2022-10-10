@@ -111,7 +111,7 @@ def setpointsx(update: Update, context: CallbackContext):
     if len(list_of_words) == 1:
             message.reply_text("Atleast give me some amounts to add")
             
-    elif message.reply_to_message:
+    if message.reply_to_message:
         repl_message = message.reply_to_message
         user_id = repl_message.from_user.id
         
