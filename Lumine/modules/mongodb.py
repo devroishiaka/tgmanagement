@@ -106,7 +106,7 @@ def points(update: Update, context: CallbackContext):
     bot = context.bot
     #post_dict = {"_id": sender_id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Guild": "No"}
     results = collection.find_one({"_id": sender_id})
-    result = str(results)
+    result = str(results["Points"])
     message.reply_text(result)
 
 POINTS_HANDLER = DisableAbleCommandHandler("point", points, run_async=True)
