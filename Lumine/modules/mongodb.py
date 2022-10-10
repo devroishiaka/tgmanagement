@@ -94,7 +94,7 @@ def createguild(update: Update, context: CallbackContext):
     
 CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguild, run_async=True)
 dispatcher.add_handler(CREATEGUILD_HANDLER)
-"""
+
 #/points
 @LumineTelethonClient.on(events.NewMessage(pattern="(?i)/points"))
 async def points(event):
@@ -105,4 +105,4 @@ async def points(event):
     #pointx = results["Points"]
     #text1 = create_message_select_query(results)
     await event.reply(results)
-"""
+
