@@ -31,17 +31,19 @@ USER : [{first_name}](tg://openmessage?user_id={sender_id})
 USER ID : {sender_id}
 GUILD NAME : {guild_name}</b>
 
-    bio = text.split(
-        None, 1
-    )
     #collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator"}})
     message.reply_text("YOUR Request has been sent")
     dispatcher.bot.send_photo(f"@suppportXd", photo=REQUEST_IMG, caption=f"{guild_request}", parse_mode=ParseMode.HTML)
 """
 def createguildxx(update: Update, context: CallbackContext):
     message = update.effective_message
+    guild_request = f"""
+<b>#GUILD_REQUEST :
+USER : 
+USER ID : 
+GUILD NAME : </b>"""
     message.reply_text("YOUR Request has been sent")
-    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption="Hello")
+    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=f"guild_request")
 
     
 
