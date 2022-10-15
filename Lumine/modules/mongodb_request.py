@@ -39,13 +39,13 @@ def createguildxx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
     guild_request = f"""
-<b>#GUILD_REQUEST :
+#GUILD_REQUEST :
 USER : 
 USER ID : 
-GUILD NAME : </b>
+GUILD NAME : 
 """
     message.reply_text("YOUR Request has been sent")
-    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption="#GUILD_REQUEST : \nUSER : \n USER ID :", parse_mode=ParseMode.HTML)
+    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=guild_request, parse_mode=ParseMode.HTML)
 
     
 
