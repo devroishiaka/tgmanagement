@@ -11,7 +11,7 @@ from Lumine.modules.helper_funcs.extraction import extract_user
 
 TESTX_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
 
-
+"""
 #/create <guild name>
 @gods_plus
 def createguildx(update: Update, context: CallbackContext):
@@ -25,24 +25,27 @@ def createguildx(update: Update, context: CallbackContext):
         None, 1
     )
     guild_name = bio[1]
-    guild_request = f"""
+    guild_request = f
 <b>#GUILD_REQUEST :
 USER : [{first_name}](tg://openmessage?user_id={sender_id})
 USER ID : {sender_id}
 GUILD NAME : {guild_name}</b>
-"""
+
     bio = text.split(
         None, 1
     )
     #collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator"}})
     message.reply_text("YOUR Request has been sent")
     dispatcher.bot.send_photo(f"@suppportXd", photo=REQUEST_IMG, caption=f"{guild_request}", parse_mode=ParseMode.HTML)
+"""
+def createguildxx(update: Update, context: CallbackContext):
+    dispatcher.bot.send_photo(f"@suppportXd", photo=TESTX_IMG, caption="Hello")
 
-
-    
     
 
 
 CREATE_HANDLER = CommandHandler("createguild", createguildx)
+CREATEX_HANDLER = CommandHandler("createguildx", createguildxx)
 
 dispatcher.add_handler(CREATE_HANDLER)
+dispatcher.add_handler(CREATEX_HANDLER)
