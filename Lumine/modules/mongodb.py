@@ -156,15 +156,29 @@ def depositx(update: Update, context: CallbackContext):
         message.reply_text("Provide me something to deposit")
 
 
+#/leaderboard
+def leaderboardx(update: Update, context: CallbackContext):
+    leaderboardr = collection.find({}).sort({Points:-1}).limit(10)
+    leaderboardrs = str(leaderboardr)
+    message.reply_text(leaderboardrs)
 
-
+"""
+mydoc = mycol.find().sort("name")
+aggregate([
+{$group:{_id:"$Appname", softcount:{$max:"$softcount"}}},
+{$project:{_id:0, "Appname":"$_id", softcount:1}},
+{$sort:{softcount:-1}},
+{$limit: 5}
+])        
+"""
 #CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
 POINTS_HANDLER = DisableAbleCommandHandler("point", pointsx, run_async=True)
 SETPOINTS_HANDLER = DisableAbleCommandHandler("setpoints", setpointsx, run_async=True)
 DEPOSIT_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
+LEADERBOARDX_HANDLER = DisableAbleCommandHandler("leaderboard", leaderboardx, run_async=True)
 
 #dispatcher.add_handler(CREATEGUILD_HANDLER)
 dispatcher.add_handler(POINTS_HANDLER)
 dispatcher.add_handler(SETPOINTS_HANDLER)
 dispatcher.add_handler(DEPOSIT_HANDLER)
-
+dispatcher.add_handler(LEADERBOARDX_HANDLER)
