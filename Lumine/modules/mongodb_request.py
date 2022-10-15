@@ -36,13 +36,13 @@ GUILD NAME : {guild_name}</b>
     )
     #collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator"}})
     message.reply_text("YOUR Request has been sent")
-    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=REQUEST_IMG, caption=f"{guild_request}", parse_mode=ParseMode.HTML)
+    dispatcher.bot.send_photo(f"@suppportXd", photo=REQUEST_IMG, caption=f"{guild_request}", parse_mode=ParseMode.HTML)
 
 
     
     
 
 
-CREATE_HANDLER = CommandHandler("create", createguildx)
+CREATE_HANDLER = CommandHandler("createguild", createguildx)
 
 dispatcher.add_handler(CREATE_HANDLER)
