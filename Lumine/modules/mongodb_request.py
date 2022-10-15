@@ -27,7 +27,7 @@ def createguildx(update: Update, context: CallbackContext):
     guild_name = bio[1]
     guild_request = f"""
 #GUILD_REQUEST :
-USER : [{first_name}](tg://openmessage?user_id={sender_id})
+USER : {mention}
 USER ID : {sender_id}
 GUILD NAME : {guild_name}
 """
