@@ -75,7 +75,7 @@ async def joinx(event):
     textx = "Successfully joined the guild {} !!!"
     await event.reply(textx.format(guild), parse_mode=ParseMode.MARKDOWN)
 
-
+"""
 #/create <guild name>
 @gods_plus
 def createguildx(update: Update, context: CallbackContext):
@@ -88,7 +88,7 @@ def createguildx(update: Update, context: CallbackContext):
     )
     collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator", "Vault": "100"}})
     message.reply_text("Created a new guild!")
-    
+"""    
       
 #/points
 def pointsx(update: Update, context: CallbackContext):
@@ -158,12 +158,12 @@ def depositx(update: Update, context: CallbackContext):
 
 
 
-CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
+#CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
 POINTS_HANDLER = DisableAbleCommandHandler("point", pointsx, run_async=True)
 SETPOINTS_HANDLER = DisableAbleCommandHandler("setpoints", setpointsx, run_async=True)
 DEPOSIT_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 
-dispatcher.add_handler(CREATEGUILD_HANDLER)
+#dispatcher.add_handler(CREATEGUILD_HANDLER)
 dispatcher.add_handler(POINTS_HANDLER)
 dispatcher.add_handler(SETPOINTS_HANDLER)
 dispatcher.add_handler(DEPOSIT_HANDLER)
