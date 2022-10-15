@@ -44,7 +44,7 @@ USER ID :
 GUILD NAME : </b>
 """
     message.reply_text("YOUR Request has been sent")
-    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=f"guild_request")
+    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=f"(guild_request)", parse_mode=ParseMode.HTML)
 
     
 
