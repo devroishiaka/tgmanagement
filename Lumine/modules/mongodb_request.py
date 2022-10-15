@@ -39,6 +39,8 @@ GUILD NAME : {guild_name}</b>
     dispatcher.bot.send_photo(f"@suppportXd", photo=REQUEST_IMG, caption=f"{guild_request}", parse_mode=ParseMode.HTML)
 """
 def createguildxx(update: Update, context: CallbackContext):
+    message = update.effective_message
+    message.reply_text("YOUR Request has been sent")
     dispatcher.bot.send_photo(f"@suppportXd", photo=TESTX_IMG, caption="Hello")
 
     
