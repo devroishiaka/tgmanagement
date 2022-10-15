@@ -49,10 +49,28 @@ GUILD NAME :
     dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=guild_request, parse_mode=ParseMode.HTML)
 """
     
+#/takejob
+def takejobx(update: Update, context: CallbackContext):
+    message = update.effective_message
+    sender_id = update.effective_user.id
+    bot = context.bot
+    text = message.text
+    first_name = update.effective_user.first_name
+    job_request = f"""
+#JOB_REQUEST :
+USER : {first_name}
+USER ID : {sender_id}
+REQUESTED JOB :
+{job_request}
+"""
+    message.reply_text("Your JOB Request has been sent")
+    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=job_request, parse_mode=ParseMode.HTML)
 
 
 CREATE_HANDLER = CommandHandler("createguild", createguildx)
 #CREATEX_HANDLER = CommandHandler("createguildx", createguildxx)
+TAKEJOB_HANDLER = CommandHandler("takejob", takejob)
 
 dispatcher.add_handler(CREATE_HANDLER)
 #dispatcher.add_handler(CREATEX_HANDLER)
+dispatcher.add_handler(TAKEJOB_HANDLER)
