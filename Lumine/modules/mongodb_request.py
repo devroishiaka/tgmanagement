@@ -69,7 +69,7 @@ REQUESTED JOB :
 
 CREATE_HANDLER = CommandHandler("createguild", createguildx)
 #CREATEX_HANDLER = CommandHandler("createguildx", createguildxx)
-TAKEJOB_HANDLER = CommandHandler("takejob", takejob)
+TAKEJOB_HANDLER = CommandHandler("takejob", takejobx)
 
 dispatcher.add_handler(CREATE_HANDLER)
 #dispatcher.add_handler(CREATEX_HANDLER)
