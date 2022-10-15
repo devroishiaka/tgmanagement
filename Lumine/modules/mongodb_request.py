@@ -51,8 +51,8 @@ GUILD NAME :
     
 
 
-#CREATE_HANDLER = CommandHandler("createguild", createguildx)
-CREATEX_HANDLER = CommandHandler("createguildx", createguildxx)
+CREATE_HANDLER = CommandHandler("createguild", createguildx)
+#CREATEX_HANDLER = CommandHandler("createguildx", createguildxx)
 
-#dispatcher.add_handler(CREATE_HANDLER)
-dispatcher.add_handler(CREATEX_HANDLER)
+dispatcher.add_handler(CREATE_HANDLER)
+#dispatcher.add_handler(CREATEX_HANDLER)
