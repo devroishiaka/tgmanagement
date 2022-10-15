@@ -161,7 +161,7 @@ def leaderboardx(update: Update, context: CallbackContext):
     message = update.effective_message
     #leaderboardr = collection.find({}).sort({Points:-1}).limit(10)
     leaderboardr = collection.find({})
-    leaderboardrs = str(leaderboardr)
+    leaderboardrs = str(leaderboardr["Name", "Points"])
     message.reply_text(leaderboardrs)
 
 """
