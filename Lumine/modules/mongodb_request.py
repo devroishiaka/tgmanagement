@@ -44,8 +44,8 @@ def createguildxx(update: Update, context: CallbackContext):
     
 
 
-CREATE_HANDLER = CommandHandler("createguild", createguildx)
+#CREATE_HANDLER = CommandHandler("createguild", createguildx)
 CREATEX_HANDLER = CommandHandler("createguildx", createguildxx)
 
-dispatcher.add_handler(CREATE_HANDLER)
+#dispatcher.add_handler(CREATE_HANDLER)
 dispatcher.add_handler(CREATEX_HANDLER)
