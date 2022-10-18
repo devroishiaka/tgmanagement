@@ -67,7 +67,7 @@ USER ID : {sender_id}
 REQUESTED JOB :
 {jon_name}
 """
-    message.reply_text(f"Your JOB Request has been sent. https://t.me/Friendsdomain/{message.message_id}")
+    message.reply_text(f"Your JOB Request has been sent.")
     dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=job_request, parse_mode=ParseMode.HTML)
 
 
@@ -76,13 +76,11 @@ def testingx(update: Update, context: CallbackContext):
     sender_id = update.effective_user.id
     bot = context.bot
     text = message.text
- 
-    mesid2 = update.effective_message.id
     first_name = update.effective_user.first_name
     user_namm = update.effective_user.user_name
     job_request = "HELLO,\nJust testing"
-    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=job_request, parse_mode=ParseMode.HTML, reply_markup = InlineKeyboardMarkup([InlineKeyboardButton("Your request", url = f"https://t.me/friendsdomain/{mesid2}")]))
-    message.reply_text(f"Done {first_name}\n yo @{user_namm}", reply_markup = InlineKeyboardMarkup([InlineKeyboardButton("Your request", url = f"https://t.me/friendsdomain/{mesid2}")]))
+    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=job_request, parse_mode=ParseMode.HTML, reply_markup = InlineKeyboardMarkup([InlineKeyboardButton("Your request", url = f"https://t.me/friendsdomain/{message.message_id}")]))
+    message.reply_text(f"Done {first_name}\n yo @{user_namm}", reply_markup = InlineKeyboardMarkup([InlineKeyboardButton("Your request", url = f"https://t.me/friendsdomain/{message.message_id}")]))
     
     #https://t.me/Friendsdomain/15588
 
