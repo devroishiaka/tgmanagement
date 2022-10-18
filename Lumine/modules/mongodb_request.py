@@ -54,7 +54,6 @@ def takejobx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
     bot = context.bot
-    messag = message.id
     text = message.text
     first_name = update.effective_user.first_name
     bio = text.split(
@@ -68,7 +67,7 @@ USER ID : {sender_id}
 REQUESTED JOB :
 {jon_name}
 """
-    message.reply_text(f"Your JOB Request has been sent. {messag}")
+    message.reply_text(f"Your JOB Request has been sent. https://t.me/Friendsdomain/{message.message_id}")
     dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=job_request, parse_mode=ParseMode.HTML)
 
 
