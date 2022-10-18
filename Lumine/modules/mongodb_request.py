@@ -78,9 +78,9 @@ def testingx(update: Update, context: CallbackContext):
     text = message.text
     first_name = update.effective_user.first_name
     user_namm = update.effective_user.user_name
-    job_request = "HELLO,\nJust testing"
-    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=job_request, parse_mode=ParseMode.HTML, reply_markup = InlineKeyboardMarkup([InlineKeyboardButton("Your request", url = f"https://t.me/friendsdomain/{message.message_id}")]))
-    message.reply_text(f"Done {first_name}\n yo @{user_namm}", reply_markup = InlineKeyboardMarkup([InlineKeyboardButton("Your request", url = f"https://t.me/friendsdomain/{message.message_id}")]))
+    job_request = "HELLO, Just testing"
+    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=job_request, parse_mode=ParseMode.HTML)
+    message.reply_text(f"Done {first_name}\n yo @{user_namm}", reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(text = "Your request", url = f"https://t.me/friendsdomain/{message.message_id}")]]))
     
     #https://t.me/Friendsdomain/15588
 
