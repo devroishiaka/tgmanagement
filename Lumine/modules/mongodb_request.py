@@ -77,7 +77,7 @@ def testingx(update: Update, context: CallbackContext):
     bot = context.bot
     text = message.text
  
-    mesid2 = message.message.id
+    mesid2 = update.effective_message.id
     first_name = update.effective_user.first_name
     user_namm = update.effective_user.user_name
     job_request = "HELLO,\nJust testing"
