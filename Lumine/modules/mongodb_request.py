@@ -76,11 +76,11 @@ def testingx(update: Update, context: CallbackContext):
     sender_id = update.effective_user.id
     bot = context.bot
     text = message.text
-    mesid = message.chatid
+ 
     mesid2 = message.message.id
     first_name = update.effective_user.first_name
     user_namm = update.effective_user.user_name
-    job_request = f"HELLO,\nJust testing"
+    job_request = "HELLO,\nJust testing"
     dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=job_request, parse_mode=ParseMode.HTML, reply_markup = InlineKeyboardMarkup([InlineKeyboardButton("Your request", url = f"https://t.me/friendsdomain/{mesid2}")]))
     message.reply_text(f"Done {first_name}\n yo @{user_namm}", reply_markup = InlineKeyboardMarkup([InlineKeyboardButton("Your request", url = f"https://t.me/friendsdomain/{mesid2}")]))
     
