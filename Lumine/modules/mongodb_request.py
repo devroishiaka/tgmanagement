@@ -44,7 +44,7 @@ GUILD NAME : {guild_name}
         ),
     )
     
-    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=REQUEST_IMG, caption=guild_request, parse_mode=ParseMode.HTML)
+    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=guild_request, parse_mode=ParseMode.HTML)
     
 """
 def createguildxx(update: Update, context: CallbackContext):
