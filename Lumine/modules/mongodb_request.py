@@ -54,19 +54,7 @@ def takejobx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
     bot = context.bot
-    text = message.text
-    first_namex = update.effective_user.first_name
-    bio = text.split(
-        None, 1
-    )
-    job_name = bio[1]
-    job_request = f"""
-#JOB_REQUEST :
-USER : {first_namex}
-USER ID : {sender_id}
-REQUESTED JOB :
-{job_name}
-"""
+    job_request = "#JOB_REQUEST :"
     message.reply_text(
         "Your JOB Request has been sent",
         parse_mode=ParseMode.MARKDOWN,
