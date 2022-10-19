@@ -67,10 +67,8 @@ USER ID : {sender_id}
 REQUESTED JOB :
 {job_name}
 """
-    message.reply_text("Your JOB Request has been sent")
-    dispatcher.bot.send_photo(
-        f"@logsforfriendsdomain",
-        photo=TESTX_IMG, caption=job_request,
+    message.reply_text(
+        "Your JOB Request has been sent",
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=InlineKeyboardMarkup(
             [
@@ -80,6 +78,8 @@ REQUESTED JOB :
             ]
         ),
     )
+    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=job_request, parse_mode=ParseMode.HTML)
+    
 
 
 def testingx(update: Update, context: CallbackContext):
