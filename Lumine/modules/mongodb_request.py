@@ -31,7 +31,7 @@ GUILD NAME : {guild_name}
 
     #collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator"}})
     message.reply_text(
-        "YOUR Request has been sent"
+        "YOUR Request has been sent",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
