@@ -52,21 +52,19 @@ GUILD NAME :
 #/takejob
 def takejobx(update: Update, context: CallbackContext):
     message = update.effective_message
-    sender_id = update.effective_user.id
-    bot = context.bot
-    job_request = "#JOB_REQUEST :"
     message.reply_text(
         "Your JOB Request has been sent",
-        parse_mode=ParseMode.MARKDOWN,
         reply_markup=InlineKeyboardMarkup(
             [
-                InlineKeyboardButton(
-                    text="Request",
-                    url=f"t.me/friendsdomain")
+                [
+                    InlineKeyboardButton(
+                        text="Request",
+                        url=f"t.me/friendsdomain"
+                    )
+                ]
             ]
         ),
     )
-    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=job_request, parse_mode=ParseMode.HTML)
     
 
 
