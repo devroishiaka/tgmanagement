@@ -97,7 +97,7 @@ def testingx(update: Update, context: CallbackContext):
 
 CREATE_HANDLER = CommandHandler("createguild", testingx)
 #CREATEX_HANDLER = CommandHandler("createguildx", createguildxx)
-TAKEJOB_HANDLER = CommandHandler("takejob", takejobx)
+TAKEJOB_HANDLER = CommandHandler("takejob", takejobx, run_async=True)
 
 dispatcher.add_handler(CREATE_HANDLER)
 #dispatcher.add_handler(CREATEX_HANDLER)
