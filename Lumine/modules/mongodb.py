@@ -116,7 +116,7 @@ def createguildx(update: Update, context: CallbackContext):
     if registerd:
         pointreq = int(registerd["Points"])
         if pointreq > 25000:
-            collection2.insert_one({"_id": sender_id, "Guild_Name": bio[1], "Guild_Status": "Creator", "Vault": 1000 }})
+            collection2.insert_one({"_id": sender_id, "Guild_Name": bio[1], "Guild_Status": "Creator", "Vault": 1000 })
             message.reply_text("Created a new guild!")
         else:
             message.reply_text("You dont have enough points to create the guild")
