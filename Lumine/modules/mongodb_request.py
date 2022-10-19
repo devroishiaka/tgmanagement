@@ -44,21 +44,22 @@ GUILD NAME : {guild_name}
         ),
     )
     
-    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=guild_request, parse_mode=ParseMode.HTML)
+    dispatcher.bot.send_photo(
+        f"@logsforfriendsdomain",
+        photo=TESTX_IMG,
+        caption=guild_request,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="Request",
+                        url=f"t.me/friendsdomain"
+                    )
+                ]
+            ]
+        ),
+    )
     
-"""
-def createguildxx(update: Update, context: CallbackContext):
-    message = update.effective_message
-    sender_id = update.effective_user.id
-    guild_request = f
-#GUILD_REQUEST :
-USER : 
-USER ID : 
-GUILD NAME : 
-
-    message.reply_text("YOUR Request has been sent")
-    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=guild_request, parse_mode=ParseMode.HTML)
-"""
     
 #/takejob
 def takejobx(update: Update, context: CallbackContext):
