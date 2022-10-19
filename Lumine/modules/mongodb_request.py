@@ -17,24 +17,35 @@ TESTX_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
 def createguildx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
+    list_of_words = message.text.split(" ")
     bot = context.bot
-    text = message.text
     first_name = update.effective_user.first_name
-    mention = f'<a href="tg://user?id={sender_id}">{first_name}</a>'
-    bio = text.split(
-        None, 1
-    )
-    guild_name = bio[1]
+    #mention = f'<a href="tg://user?id={sender_id}">{first_name}</a>'
+    guild_name = list_of_words[1]
     guild_request = f"""
 #GUILD_REQUEST :
-USER : {mention}
+USER : {first_name}
 USER ID : {sender_id}
 GUILD NAME : {guild_name}
 """
 
     #collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator"}})
-    message.reply_text("YOUR Request has been sent")
+    message.reply_text(
+        "YOUR Request has been sent"
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="Request",
+                        url=f"t.me/friendsdomain"
+                    )
+                ]
+            ]
+        ),
+    )
+    
     dispatcher.bot.send_photo(f"@suppportXd", photo=REQUEST_IMG, caption=guild_request, parse_mode=ParseMode.HTML)
+    
 """
 def createguildxx(update: Update, context: CallbackContext):
     message = update.effective_message
@@ -81,10 +92,10 @@ def testingx(update: Update, context: CallbackContext):
     
     #https://t.me/Friendsdomain/15588
 
-CREATE_HANDLER = CommandHandler("createguild", testingx)
-#CREATEX_HANDLER = CommandHandler("createguildx", createguildxx)
+#CREATE_HANDLER = CommandHandler("createguild", testingx)
+CREATEX_HANDLER = CommandHandler("createguild", createguildx, run_async=True)
 TAKEJOB_HANDLER = CommandHandler("takejob", takejobx, run_async=True)
 
-dispatcher.add_handler(CREATE_HANDLER)
-#dispatcher.add_handler(CREATEX_HANDLER)
+#dispatcher.add_handler(CREATE_HANDLER)
+dispatcher.add_handler(CREATEX_HANDLER)
 dispatcher.add_handler(TAKEJOB_HANDLER)
