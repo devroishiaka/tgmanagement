@@ -26,7 +26,7 @@ def createguildx(update: Update, context: CallbackContext):
     guild_name = list_of_words[1]
     guild_request = f"""
 #GUILD_REQUEST :
-USER : "[{first_name}](tg://openmessage?user_id={sender_id})"
+USER : [{first_name}](tg://openmessage?user_id={sender_id})
 USER ID : {sender_id}
 GUILD NAME : {guild_name}
 """
