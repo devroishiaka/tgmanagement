@@ -20,11 +20,11 @@ def createguildx(update: Update, context: CallbackContext):
     list_of_words = message.text.split(" ")
     bot = context.bot
     first_name = update.effective_user.first_name
-    #mention = f'<a href="tg://user?id={sender_id}">{first_name}</a>'
+    mention = f'<a href="tg://user?id={sender_id}">{first_name}</a>'
     guild_name = list_of_words[1]
     guild_request = f"""
 #GUILD_REQUEST :
-USER : {first_name}
+USER : {mention}
 USER ID : {sender_id}
 GUILD NAME : {guild_name}
 """
