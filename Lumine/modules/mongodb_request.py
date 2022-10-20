@@ -37,24 +37,35 @@ def createguildx(update: Update, context: CallbackContext):
             [
                 [
                     InlineKeyboardButton(
-                        text="Request",
-                        url="t.me/logsforfriendsdomain/"
+                        text="Your Request",
+                        url=f"t.me/eventlogsforeri/{log.message_id}"
                     )
                 ]
             ]
         ),
     )
     log_message = (
-        f"#GUILD_REQUEST"
-        f"<b>USER:</b> {mention_html(sender_id, html.escape(first_name))}\n"
-        f"<b>USER ID:</b> {sender_id}\n"
-        f"<b>GUILD NAME:</b> {guild_name}"
+        f"#<b>GUILD_REQUEST</b>\n"
+        f"User: {mention_html(sender_id, html.escape(first_name))}\n"
+        f"User ID: {sender_id}\n"
+        f"Guild Name: {guild_name}"
     )
         
     if EVENT_LOGS:
         try:
             log = bot.send_photo(
-                EVENT_LOGS, TESTX_IMG,caption=log_message, parse_mode=ParseMode.HTML)
+                EVENT_LOGS, TESTX_IMG,caption=log_message, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text="Request",
+                                url=f"t.me/eventlogsforeri/{message.message_id}"
+                            )
+                        ]
+                    ]
+                )
+            )
+
         except BadRequest as excp:
             log = bot.send_message(
                 EVENT_LOGS,log_message +
