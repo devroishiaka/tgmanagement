@@ -30,20 +30,7 @@ def createguildx(update: Update, context: CallbackContext):
     #mention = f'<a href="tg://user?id={sender_id}">{first_name}</a>'
     guild_name = list_of_words[1]
 
-    message.reply_text(
-        "YOUR Request has been sent",
-        parse_mode=ParseMode.HTML,
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Your Request",
-                        url=f"t.me/eventlogsforeri/{log.message_id}"
-                    )
-                ]
-            ]
-        ),
-    )
+
     log_message = (
         f"#<b>GUILD_REQUEST</b>\n"
         f"User: {mention_html(sender_id, html.escape(first_name))}\n"
@@ -70,8 +57,21 @@ def createguildx(update: Update, context: CallbackContext):
             log = bot.send_message(
                 EVENT_LOGS,log_message +
                 "\n\nFormatting has been disabled due to an unexpected error.")
-
-    
+            
+    message.reply_text(
+        "YOUR Request has been sent",
+        parse_mode=ParseMode.HTML,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="Your Request",
+                        url=f"t.me/eventlogsforeri/{log.message_id}"
+                    )
+                ]
+            ]
+        ),
+    )
     
 #/takejob
 def takejobx(update: Update, context: CallbackContext):
