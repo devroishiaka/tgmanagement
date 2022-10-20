@@ -27,7 +27,7 @@ def createguildx(update: Update, context: CallbackContext):
     guild_name = list_of_words[1]
     guild_request = f"""
 #GUILD_REQUEST :
-USER : [{first_name}](tg://user?id={sender_id})
+USER : {}
 USER ID : {sender_id}
 GUILD NAME : {guild_name}
 """
@@ -36,7 +36,7 @@ GUILD NAME : {guild_name}
     gmessage = dispatcher.bot.send_photo(
         f"@logsforfriendsdomain",
         photo=TESTX_IMG,
-        caption=guild_request,
+        caption=guild_request.format(mention_html(sender_id, first_name)),
         parse_mode=ParseMode.HTML,
         reply_markup=InlineKeyboardMarkup(
             [
