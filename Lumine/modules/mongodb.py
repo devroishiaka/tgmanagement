@@ -231,8 +231,7 @@ def testt(update: Update, context: CallbackContext):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(text="Option a", callback_data=="hmm"),
-                    InlineKeyboardButton(text="Option b", callback_data=="hola")
+                    InlineKeyboardButton(text="Option a", callback_data="hmm")
                 ]
             ]
         ),
@@ -242,12 +241,8 @@ def testt(update: Update, context: CallbackContext):
 def testt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     message = update.effective_message
-    msgg = message.edit_text ("hmmm......")
     if query.data == "hmm":
-        message.reply_text(f"YOU choose {query.data}")
-        msgg.delete()
-    if query.data == "hola":
-        bot.answer_callback_query(query.id, text="You don't have enough rights to unmute people", show_alert=True)
+        message.reply_text(f"YOU choose")
 
 
 #CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
