@@ -71,7 +71,7 @@ async def registerx(event):
         )
     else :
         name = list_of_words[1]
-        post_dict1 = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Gender": "No", "Partner": "No", "Friend": "No", "Father": "No", "Mother": "No", "Children": "No", "Status": "No"}
+        post_dict1 = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Gender": "No", "Partner": "No", "Friend": "No", "Father": "No", "Mother": "No", "Children": "No", "Status": "No", "Bounty": 0}
         collection1.insert_one(post_dict1)
         
         await event.reply("Successfully Registered!!!")
