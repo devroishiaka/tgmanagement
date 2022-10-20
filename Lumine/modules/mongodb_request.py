@@ -1,3 +1,4 @@
+import html
 from datetime import datetime
 from Lumine import dispatcher, DEV_USERS, OWNER_ID
 from Lumine.modules.mongodb import collection
@@ -10,6 +11,7 @@ from Lumine.modules.helper_funcs.chat_status import sudo_plus, gods_plus
 from Lumine.modules.helper_funcs.extraction import extract_user
 from telegram.utils.helpers import mention_html
 from Lumine.modules.helper_funcs.alternate import typing_action
+from Lumine.modules.log_channel import gloggable
 
 TESTX_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
 
@@ -50,7 +52,8 @@ GUILD NAME : {}
     )
     
     message.reply_text(
-        "YOUR Request has been sent",
+        "YOUR Request has been sent [hmm](t.me/ishikki_akabane)",
+        parse_mode=ParseMode.HTML,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
