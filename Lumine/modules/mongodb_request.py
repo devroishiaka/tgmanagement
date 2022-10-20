@@ -1,3 +1,4 @@
+import json
 import html
 from datetime import datetime
 from Lumine import dispatcher, DEV_USERS, OWNER_ID
@@ -19,6 +20,7 @@ TESTX_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
 #/create <guild name>
 @typing_action
 @gods_plus
+@gloggable
 def createguildx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
@@ -35,7 +37,7 @@ GUILD NAME : {}
 """
 
     #collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator"}})
-    gmessage = dispatcher.bot.send_photo(
+"""    gmessage = dispatcher.bot.send_photo(
         f"@logsforfriendsdomain",
         photo=TESTX_IMG,
         caption=guild_request.format(mention_html(sender_id, first_name), sender_id, guild_name),
@@ -50,7 +52,8 @@ GUILD NAME : {}
             ]
         ),
     )
-    
+    """
+
     message.reply_text(
         "YOUR Request has been sent [hmm](t.me/ishikki_akabane)",
         parse_mode=ParseMode.HTML,
@@ -59,13 +62,18 @@ GUILD NAME : {}
                 [
                     InlineKeyboardButton(
                         text="Request",
-                        url=f"t.me/logsforfriendsdomain/{gmessage.message_id}"
+                        url=f"t.me/logsforfriendsdomain/{log_message.message_id}"
                     )
                 ]
             ]
         ),
     )
-    
+    log_message = (
+        f"#SUDO\n"
+        f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
+        f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
+    )
+    return log_message
     
     
 #/takejob
