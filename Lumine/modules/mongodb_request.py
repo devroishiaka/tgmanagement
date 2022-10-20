@@ -34,6 +34,7 @@ GUILD NAME : {guild_name}
         f"@logsforfriendsdomain",
         photo=TESTX_IMG,
         caption=guild_request,
+        parse_mode=ParseMode.MARKDOWN,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
