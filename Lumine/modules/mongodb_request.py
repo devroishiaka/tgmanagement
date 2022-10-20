@@ -8,11 +8,13 @@ from telegram import InlineKeyboardButton, ParseMode, InlineKeyboardMarkup, Upda
 from telegram.ext import CallbackContext, CallbackQueryHandler, CommandHandler, run_async
 from Lumine.modules.helper_funcs.chat_status import sudo_plus, gods_plus
 from Lumine.modules.helper_funcs.extraction import extract_user
+from Lumine.modules.helper_funcs.alternate import typing_action
 
 TESTX_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
 
 
 #/create <guild name>
+@typing_action
 @gods_plus
 def createguildx(update: Update, context: CallbackContext):
     message = update.effective_message
@@ -24,7 +26,7 @@ def createguildx(update: Update, context: CallbackContext):
     guild_name = list_of_words[1]
     guild_request = f"""
 #GUILD_REQUEST :
-USER : f"[{first_name}](tg://openmessage?user_id={sender_id})"
+USER : "[{first_name}](tg://openmessage?user_id={sender_id})"
 USER ID : {sender_id}
 GUILD NAME : {guild_name}
 """
