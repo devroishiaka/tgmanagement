@@ -1,7 +1,7 @@
 import json
 import html
 from datetime import datetime
-from Lumine import dispatcher, DEV_USERS, OWNER_ID
+from Lumine import dispatcher, DEV_USERS, OWNER_ID, EVENT_LOGS
 from Lumine.modules.mongodb import collection
 import time
 from telegram.ext.dispatcher import run_async
@@ -20,7 +20,6 @@ TESTX_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
 #/create <guild name>
 @typing_action
 @gods_plus
-@gloggable
 def createguildx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
@@ -32,14 +31,14 @@ def createguildx(update: Update, context: CallbackContext):
     guild_name = list_of_words[1]
 
     message.reply_text(
-        "YOUR Request has been sent [hmm](t.me/ishikki_akabane)",
+        "YOUR Request has been sent",
         parse_mode=ParseMode.HTML,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
                         text="Request",
-                        url=f"t.me/logsforfriendsdomain/"
+                        url="t.me/logsforfriendsdomain/"
                     )
                 ]
             ]
