@@ -17,7 +17,6 @@ from Lumine.modules.log_channel import gloggable
 GUILD_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
 JOB_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
 
-MINISTRY = "eventlogsforeri"
 
 #/create <guild name>
 @typing_action
@@ -65,7 +64,7 @@ def createguildx(update: Update, context: CallbackContext):
                 [
                     InlineKeyboardButton(
                         text="Your Request",
-                        url=f"t.me/{MINISTRY}/{log.message_id}"
+                        url=f"t.me/eriakanexd/{log.message_id}"
                     )
                 ]
             ]
@@ -118,7 +117,7 @@ def takejobx(update: Update, context: CallbackContext):
                 [
                     InlineKeyboardButton(
                         text="Your Request",
-                        url=f"t.me/{MINISTRY}/{log.message_id}"
+                        url=f"t.me/eriakanexd/{log.message_id}"
                     )
                 ]
             ]
@@ -142,7 +141,6 @@ TAKEJOB_HANDLER = CommandHandler("takejob", takejobx, run_async=True)
 
 
 dispatcher.add_handler(CREATEX_HANDLER)
-dispatcher.add_handler(TAKEJOB_HANDLER)
 dispatcher.add_handler(TAKEJOB_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
