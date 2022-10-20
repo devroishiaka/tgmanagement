@@ -26,15 +26,10 @@ def createguildx(update: Update, context: CallbackContext):
     sender_id = update.effective_user.id
     list_of_words = message.text.split(" ")
     bot = context.bot
+    log_message = ""
     first_name = update.effective_user.first_name
     #mention = f'<a href="tg://user?id={sender_id}">{first_name}</a>'
     guild_name = list_of_words[1]
-    guild_request = """
-#GUILD_REQUEST :
-USER : {}
-USER ID : {}
-GUILD NAME : {}
-"""
 
     message.reply_text(
         "YOUR Request has been sent [hmm](t.me/ishikki_akabane)",
@@ -51,12 +46,21 @@ GUILD NAME : {}
         ),
     )
     log_message = (
-        f"#SUDO\n"
-        f"<b>Admin:</b> {mention_html(sender_id, html.escape(first_name))}\n"
-        f"<b>User:</b> "
+        f"#GUILD_REQUEST"
+        f"<b>USER:</b> {mention_html(sender_id, html.escape(first_name))}\n"
+        f"<b>USER ID:</b> {sender_id}\n"
+        f"<b>GUILD NAME:</b> {guild_name}"
     )
         
-    return log_message
+    if EVENT_LOGS:
+        try:
+            log = bot.send_photo(
+                EVENT_LOGS, TESTX_IMG,caption=log_message, parse_mode=ParseMode.HTML)
+        except BadRequest as excp:
+            log = bot.send_message(
+                EVENT_LOGS,log_message +
+                "\n\nFormatting has been disabled due to an unexpected error.")
+
     
     
 #/takejob
