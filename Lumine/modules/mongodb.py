@@ -231,8 +231,8 @@ def testt(update: Update, context: CallbackContext):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(text="Option 1", callback_data=="1"),
-                    InlineKeyboardButton(text="Option 2", callback_data=="2")
+                    InlineKeyboardButton(text="Option a", callback_data=="hmm"),
+                    InlineKeyboardButton(text="Option b", callback_data=="hola")
                 ]
             ]
         ),
@@ -243,10 +243,10 @@ def testt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     message = update.effective_message
     msgg = message.edit_text ("hmmm......")
-    if query.data == "1":
+    if query.data == "hmm":
         message.reply_text(f"YOU choose {query.data}")
         msgg.delete()
-    if query.data == "2":
+    if query.data == "hola":
         bot.answer_callback_query(query.id, text="You don't have enough rights to unmute people", show_alert=True)
 
 
@@ -257,7 +257,7 @@ DEPOSIT_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 LEADERBOARDX_HANDLER = DisableAbleCommandHandler("leaderboard", leaderboardx, run_async=True)
 PARTNER_HANDLER = DisableAbleCommandHandler("partner", partnerx, run_async=True)
 TESTT_HANDLER = DisableAbleCommandHandler("testt", testt,run_async=True)
-TESTT_BUT_HANDLER = CallbackQueryHandler(testt_callback, pattern=r"1",run_async=True)
+TESTT_BUT_HANDLER = CallbackQueryHandler(testt_callback, pattern=r"hmm",run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, , run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
