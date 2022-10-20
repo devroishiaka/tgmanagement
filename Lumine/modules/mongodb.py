@@ -232,6 +232,7 @@ def testt(update: Update, context: CallbackContext):
             [
                 [
                     InlineKeyboardButton(text="Option a", callback_data="hmm")
+                    InlineKeyboardButton(text="Option b", callback_data="hola")
                 ]
             ]
         ),
@@ -243,6 +244,8 @@ def testt_callback(update: Update, context: CallbackContext):
     message = update.effective_message
     if query.data == "hmm":
         message.reply_text(f"YOU choose")
+    if query.data == "hola":
+        message.reply_text(f"YOU choose b hola")
 
 
 #CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
