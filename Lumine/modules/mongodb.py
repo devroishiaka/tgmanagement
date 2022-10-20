@@ -7,6 +7,7 @@ from Lumine import dispatcher
 from Lumine import telethn as LumineTelethonClient
 from Lumine.modules.helper_funcs.misc import delete
 
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity
 from telegram.ext import CallbackContext, CommandHandler, Filters, CallbackQueryHandler, run_async
 from telegram.utils.helpers import escape_markdown, mention_html
@@ -225,15 +226,26 @@ def partnerx(update: Update, context: CallbackContext):
 
 def testt(update: Update, context: CallbackContext):
     message = update.effective_message
-    keyboard = [
-        [
-            InlineKeyboardButton("Option 1", callback_data="1"),
-            InlineKeyboardButton("Option 2", callback_data="2"),
-        ]
-    ]
-
-    reply_markupx = InlineKeyboardMarkup(keyboard)
-    message.reply_text("Please choose:", reply_markup=reply_markupx)
+    message.reply_text(
+        "Please choose:",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="Option 1",
+                        callback_data=="1"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="Option 2",
+                        callback_data=="2"
+                    )
+                ]
+            ]
+        ),
+    )
+        
 
 def testt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
