@@ -44,7 +44,7 @@ GUILD NAME : {}
                 [
                     InlineKeyboardButton(
                         text="Request",
-                        url=f"t.me/logsforfriendsdomain/{log_message.message_id}"
+                        url=f"t.me/logsforfriendsdomain/"
                     )
                 ]
             ]
@@ -55,9 +55,6 @@ GUILD NAME : {}
         f"<b>Admin:</b> {mention_html(sender_id, html.escape(first_name))}\n"
         f"<b>User:</b> "
     )
-    
-    if chat.type != "private":
-        log_message = f"k\n" + log_message
         
     return log_message
     
