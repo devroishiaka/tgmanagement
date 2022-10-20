@@ -30,21 +30,7 @@ GUILD NAME : {guild_name}
 """
 
     #collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator"}})
-    message.reply_text(
-        "YOUR Request has been sent",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Request",
-                        url=f"t.me/friendsdomain"
-                    )
-                ]
-            ]
-        ),
-    )
-    
-    dispatcher.bot.send_photo(
+    gmessage = dispatcher.bot.send_photo(
         f"@logsforfriendsdomain",
         photo=TESTX_IMG,
         caption=guild_request,
@@ -53,12 +39,27 @@ GUILD NAME : {guild_name}
                 [
                     InlineKeyboardButton(
                         text="Request",
-                        url=f"t.me/friendsdomain"
+                        url=f"t.me/friendsdomain/{message.message_id}"
                     )
                 ]
             ]
         ),
     )
+    
+    message.reply_text(
+        "YOUR Request has been sent",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="Request",
+                        url=f"t.me/logsforfriendsdomain/{gmessage.message_id}"
+                    )
+                ]
+            ]
+        ),
+    )
+    
     
     
 #/takejob
