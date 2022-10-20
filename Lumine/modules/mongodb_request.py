@@ -23,21 +23,20 @@ def createguildx(update: Update, context: CallbackContext):
     list_of_words = message.text.split(" ")
     bot = context.bot
     first_name = update.effective_user.first_name
-    mention = f'<a href="tg://user?id={sender_id}">{first_name}</a>'
+    #mention = f'<a href="tg://user?id={sender_id}">{first_name}</a>'
     guild_name = list_of_words[1]
-    guild_request = f"""
+    guild_request = """
 #GUILD_REQUEST :
 USER : {}
-USER ID : {sender_id}
-GUILD NAME : {guild_name}
+USER ID : {}
+GUILD NAME : {}
 """
 
     #collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator"}})
     gmessage = dispatcher.bot.send_photo(
         f"@logsforfriendsdomain",
         photo=TESTX_IMG,
-        caption=guild_request.format(mention_html(sender_id, first_name)),
-        parse_mode=ParseMode.HTML,
+        caption=guild_request.format(mention_html(sender_id, first_name), sender_id, guild_name),
         reply_markup=InlineKeyboardMarkup(
             [
                 [
