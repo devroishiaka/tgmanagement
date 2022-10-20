@@ -14,12 +14,12 @@ from telegram.utils.helpers import mention_html
 from Lumine.modules.helper_funcs.alternate import typing_action
 from Lumine.modules.log_channel import gloggable
 
-TESTX_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
+GUILD_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
+JOB_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
 
 
 #/create <guild name>
 @typing_action
-@gods_plus
 def createguildx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
@@ -27,9 +27,7 @@ def createguildx(update: Update, context: CallbackContext):
     bot = context.bot
     log_message = ""
     first_name = update.effective_user.first_name
-    #mention = f'<a href="tg://user?id={sender_id}">{first_name}</a>'
     guild_name = list_of_words[1]
-
 
     log_message = (
         f"#<b>GUILD_REQUEST</b>\n"
@@ -41,12 +39,12 @@ def createguildx(update: Update, context: CallbackContext):
     if EVENT_LOGS:
         try:
             log = bot.send_photo(
-                EVENT_LOGS, TESTX_IMG,caption=log_message, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(
+                EVENT_LOGS, GUILD_IMG,caption=log_message, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
                                 text="Request",
-                                url=f"t.me/eventlogsforeri/{message.message_id}"
+                                url=f"t.me/friendsdomain/{message.message_id}"
                             )
                         ]
                     ]
@@ -59,7 +57,7 @@ def createguildx(update: Update, context: CallbackContext):
                 "\n\nFormatting has been disabled due to an unexpected error.")
             
     message.reply_text(
-        "YOUR Request has been sent",
+        "Your <b>Guild</b> Request has been sent to the ministry",
         parse_mode=ParseMode.HTML,
         reply_markup=InlineKeyboardMarkup(
             [
@@ -74,16 +72,52 @@ def createguildx(update: Update, context: CallbackContext):
     )
     
 #/takejob
+@typing_action
 def takejobx(update: Update, context: CallbackContext):
     message = update.effective_message
+    sender_id = update.effective_user.id
+    list_of_words = message.text.split(" ")
+    bot = context.bot
+    log_message = ""
+    first_name = update.effective_user.first_name
+    postx_name = list_of_words[1]
+
+    log_message = (
+        f"#<b>JOB_REQUEST</b>\n"
+        f"User: {mention_html(sender_id, html.escape(first_name))}\n"
+        f"User ID: {sender_id}\n"
+        f"Post: {postx_name}"
+    )
+        
+    if EVENT_LOGS:
+        try:
+            log = bot.send_photo(
+                EVENT_LOGS, JOB_IMG,caption=log_message, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text="Request",
+                                url=f"t.me/friendsdomain/{message.message_id}"
+                            )
+                        ]
+                    ]
+                )
+            )
+
+        except BadRequest as excp:
+            log = bot.send_message(
+                EVENT_LOGS,log_message +
+                "\n\nFormatting has been disabled due to an unexpected error.")
+            
     message.reply_text(
-        "Your JOB Request has been sent",
+        "Your <b>JOB</b> Request has been sent to the ministry",
+        parse_mode=ParseMode.HTML,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        text="Request",
-                        url=f"t.me/friendsdomain"
+                        text="Your Request",
+                        url=f"t.me/eventlogsforeri/{log.message_id}"
                     )
                 ]
             ]
@@ -92,23 +126,28 @@ def takejobx(update: Update, context: CallbackContext):
     
 
 
-def testingx(update: Update, context: CallbackContext):
-    message = update.effective_message
-    sender_id = update.effective_user.id
-    bot = context.bot
-    text = message.text
-    first_name = update.effective_user.first_name
-    user_namm = update.effective_user.user_name
-    job_request = "HELLO, Just testing"
-    dispatcher.bot.send_photo(f"@logsforfriendsdomain", photo=TESTX_IMG, caption=job_request, parse_mode=ParseMode.HTML)
-    message.reply_text(f"Done {first_name}\n yo @{user_namm}", reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(text = "Your request", url = f"https://t.me/friendsdomain/{message.message_id}")]]))
-    
-    #https://t.me/Friendsdomain/15588
 
-#CREATE_HANDLER = CommandHandler("createguild", testingx)
 CREATEX_HANDLER = CommandHandler("createguild", createguildx, run_async=True)
 TAKEJOB_HANDLER = CommandHandler("takejob", takejobx, run_async=True)
+#_HANDLER = CommandHandler("", , run_async=True)
+#_HANDLER = CommandHandler("", , run_async=True)
+#_HANDLER = CommandHandler("", , run_async=True)
+#_HANDLER = CommandHandler("", , run_async=True)
+#_HANDLER = CommandHandler("", , run_async=True)
+#_HANDLER = CommandHandler("", , run_async=True)
+#_HANDLER = CommandHandler("", , run_async=True)
+#_HANDLER = CommandHandler("", , run_async=True)
+#_HANDLER = CommandHandler("", , run_async=True)
 
-#dispatcher.add_handler(CREATE_HANDLER)
+
 dispatcher.add_handler(CREATEX_HANDLER)
 dispatcher.add_handler(TAKEJOB_HANDLER)
+dispatcher.add_handler(TAKEJOB_HANDLER)
+#dispatcher.add_handler()
+#dispatcher.add_handler()
+#dispatcher.add_handler()
+#dispatcher.add_handler()
+#dispatcher.add_handler()
+#dispatcher.add_handler()
+#dispatcher.add_handler()
+#dispatcher.add_handler()
