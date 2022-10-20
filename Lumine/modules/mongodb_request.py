@@ -8,6 +8,7 @@ from telegram import InlineKeyboardButton, ParseMode, InlineKeyboardMarkup, Upda
 from telegram.ext import CallbackContext, CallbackQueryHandler, CommandHandler, run_async
 from Lumine.modules.helper_funcs.chat_status import sudo_plus, gods_plus
 from Lumine.modules.helper_funcs.extraction import extract_user
+from telegram.utils.helpers import mention_html
 from Lumine.modules.helper_funcs.alternate import typing_action
 
 TESTX_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
@@ -26,7 +27,7 @@ def createguildx(update: Update, context: CallbackContext):
     guild_name = list_of_words[1]
     guild_request = f"""
 #GUILD_REQUEST :
-USER : [{first_name}](tg://openmessage?user_id={sender_id})
+USER : {mention_html(sender_id, html.escape(first_name))}
 USER ID : {sender_id}
 GUILD NAME : {guild_name}
 """
@@ -36,7 +37,7 @@ GUILD NAME : {guild_name}
         f"@logsforfriendsdomain",
         photo=TESTX_IMG,
         caption=guild_request,
-        parse_mode=ParseMode.MARKDOWN,
+        parse_mode=ParseMode.HTML,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
