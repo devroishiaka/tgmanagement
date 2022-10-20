@@ -17,6 +17,7 @@ from Lumine.modules.log_channel import gloggable
 GUILD_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
 JOB_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
 
+MINISTRY = "eventlogsforeri"
 
 #/create <guild name>
 @typing_action
@@ -64,7 +65,7 @@ def createguildx(update: Update, context: CallbackContext):
                 [
                     InlineKeyboardButton(
                         text="Your Request",
-                        url=f"t.me/eventlogsforeri/{log.message_id}"
+                        url=f"t.me/{MINISTRY}/{log.message_id}"
                     )
                 ]
             ]
@@ -117,7 +118,7 @@ def takejobx(update: Update, context: CallbackContext):
                 [
                     InlineKeyboardButton(
                         text="Your Request",
-                        url=f"t.me/eventlogsforeri/{log.message_id}"
+                        url=f"t.me/{MINISTRY}/{log.message_id}"
                     )
                 ]
             ]
