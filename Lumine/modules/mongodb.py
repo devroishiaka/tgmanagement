@@ -224,6 +224,27 @@ def partnerx(update: Update, context: CallbackContext):
                 message.reply_text(f"🎉Happy Married Life🎉\nCongratulations🎊\n[{sender_name}](tg://openmessage?user_id={sender_id}) ❤ [{user_name}](tg://openmessage?user_id={user_id})")
         
 
+def testt(update: Update, context: CallbackContext):
+    message = update.effective_message
+    keyboard = [
+        [
+            InlineKeyboardButton("Option 1", callback_data="1"),
+            InlineKeyboardButton("Option 2", callback_data="2"),
+        ]
+    ]
+
+    reply_markupx = InlineKeyboardMarkup(keyboard)
+    message.reply_text("Please choose:", reply_markup=reply_markupx)
+
+def testt_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    message = update.effective_message
+    msgg = message.edit_text ("hmmm......")
+    if query.data == "1":
+        message.reply_text(f"YOU choose {query.data}")
+        msgg.delete()
+    if query.data == "2":
+        bot.answer_callback_query(query.id, text="You don't have enough rights to unmute people", show_alert=True)
 
 
 #CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
@@ -232,9 +253,9 @@ SETPOINTS_HANDLER = DisableAbleCommandHandler("setpoints", setpointsx, run_async
 DEPOSIT_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 LEADERBOARDX_HANDLER = DisableAbleCommandHandler("leaderboard", leaderboardx, run_async=True)
 PARTNER_HANDLER = DisableAbleCommandHandler("partner", partnerx, run_async=True)
-#_HANDLER = DisableAbleCommandHandler(,run_async=True)
-#_HANDLER = DisableAbleCommandHandler(,run_async=True)
-#_HANDLER = DisableAbleCommandHandler(,run_async=True)
+TESTT_HANDLER = DisableAbleCommandHandler("testt", testt,run_async=True)
+TESTT_BUT_HANDLER = CallbackQueryHandler(testt_callback, pattern=r"1",run_async=True)
+#_HANDLER = DisableAbleCommandHandler(, , run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
@@ -251,8 +272,8 @@ dispatcher.add_handler(SETPOINTS_HANDLER)
 dispatcher.add_handler(DEPOSIT_HANDLER)
 dispatcher.add_handler(LEADERBOARDX_HANDLER)
 dispatcher.add_handler(PARTNER_HANDLER)
-#dispatcher.add_handler()
-#dispatcher.add_handler()
+dispatcher.add_handler(TESTT_HANDLER)
+dispatcher.add_handler(TESTT_BUT_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
