@@ -36,24 +36,6 @@ USER ID : {}
 GUILD NAME : {}
 """
 
-    #collection.update_one({"_id": sender_id}, {"$set": {"Guild": bio[1], "Guild_Status": "Creator"}})
-"""    gmessage = dispatcher.bot.send_photo(
-        f"@logsforfriendsdomain",
-        photo=TESTX_IMG,
-        caption=guild_request.format(mention_html(sender_id, first_name), sender_id, guild_name),
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Request",
-                        url=f"t.me/friendsdomain/{message.message_id}"
-                    )
-                ]
-            ]
-        ),
-    )
-    """
-
     message.reply_text(
         "YOUR Request has been sent [hmm](t.me/ishikki_akabane)",
         parse_mode=ParseMode.HTML,
@@ -70,9 +52,13 @@ GUILD NAME : {}
     )
     log_message = (
         f"#SUDO\n"
-        f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
-        f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
+        f"<b>Admin:</b> {mention_html(sender_id, html.escape(first_name))}\n"
+        f"<b>User:</b> "
     )
+    
+    if chat.type != "private":
+        log_message = f"k\n" + log_message
+        
     return log_message
     
     
