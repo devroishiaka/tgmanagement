@@ -231,7 +231,7 @@ def testt(update: Update, context: CallbackContext):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(text="Option a", callback_data="hmm")
+                    InlineKeyboardButton(text="Option a", callback_data="hmm"),
                     InlineKeyboardButton(text="Option b", callback_data="hola")
                 ]
             ]
