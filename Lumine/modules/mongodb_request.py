@@ -4,6 +4,7 @@ from datetime import datetime
 from Lumine import dispatcher, DEV_USERS, OWNER_ID, EVENT_LOGS
 from Lumine.modules.mongodb import collection
 import time
+from telegram.error import BadRequest
 from telegram.ext.dispatcher import run_async
 from pymongo import MongoClient
 from telegram import InlineKeyboardButton, ParseMode, InlineKeyboardMarkup, Update, MessageEntity
@@ -34,7 +35,7 @@ def createguildx(update: Update, context: CallbackContext):
         f"User ID: {sender_id}\n"
         f"Guild Name: {guild_name}"
     )
-        
+    
     if EVENT_LOGS:
         try:
             log = bot.send_photo(
@@ -49,7 +50,7 @@ def createguildx(update: Update, context: CallbackContext):
                     ]
                 )
             )
-
+            
         except BadRequest as excp:
             log = bot.send_message(
                 EVENT_LOGS,log_message +
