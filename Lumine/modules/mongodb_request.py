@@ -14,8 +14,7 @@ from telegram.utils.helpers import mention_html
 from Lumine.modules.helper_funcs.alternate import typing_action
 from Lumine.modules.log_channel import gloggable
 
-GUILD_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
-JOB_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
+TESTX_IMG = "https://te.legra.ph/file/dc9325a322b1c8981eaf7.jpg"
 
 
 #/create <guild name>
@@ -28,7 +27,7 @@ def createguildx(update: Update, context: CallbackContext):
     log_message = ""
     first_name = update.effective_user.first_name
     guild_name = list_of_words[1]
-
+    
     log_message = (
         f"#<b>GUILD_REQUEST</b>\n"
         f"User: {mention_html(sender_id, html.escape(first_name))}\n"
@@ -39,7 +38,7 @@ def createguildx(update: Update, context: CallbackContext):
     if EVENT_LOGS:
         try:
             log = bot.send_photo(
-                EVENT_LOGS, GUILD_IMG,caption=log_message, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(
+                EVENT_LOGS, TESTX_IMG,caption=log_message, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
