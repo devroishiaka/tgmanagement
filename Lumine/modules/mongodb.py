@@ -243,7 +243,11 @@ def testt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     message = update.effective_message
     if query.data == "hmm":
-        message.reply_text(f"YOU choose")
+        bot.answer_callback_query(
+            query.id,
+            text="You don't have enough rights to unmute people",
+            show_alert=True,
+        )
     if query.data == "hola":
         message.reply_text(f"YOU choose b hola")
 
