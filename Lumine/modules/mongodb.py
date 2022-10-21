@@ -226,6 +226,7 @@ def partnerx(update: Update, context: CallbackContext):
 
 def testt(update: Update, context: CallbackContext):
     message = update.effective_message
+    sender_id = update.effective_user.id
     message.reply_text(
         "Please choose:",
         reply_markup=InlineKeyboardMarkup(
@@ -242,15 +243,18 @@ def testt(update: Update, context: CallbackContext):
 def testt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
+    chat = update.effective_chat
+    user = update.effective_user
+    splitter = query.data.split("=")
     message = update.effective_message
+    query_match = splitter[0]
+    user_id = splitter[1]
+    
     if query.data == "hmm":
-        bot.answer_callback_query(
-            query.id,
-            text="You don't have enough rights to unmute people",
-            show_alert=True,
-        )
+        message.reply_text(f"chat = {chat}\nuser = {user}\nquery_match = {query_match}\nuser_id = {user_id}")
     if query.data == "hola":
-        message.reply_text("YOU choose b hola")
+        query.message.delete()
+        bot.answer_callback_query(query.id, text="Deleted!")
 
 
 #CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
