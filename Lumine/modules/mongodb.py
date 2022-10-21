@@ -241,6 +241,7 @@ def testt(update: Update, context: CallbackContext):
 
 def testt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
+    bot = context.bot
     message = update.effective_message
     if query.data == "hmm":
         bot.answer_callback_query(
@@ -249,7 +250,7 @@ def testt_callback(update: Update, context: CallbackContext):
             show_alert=True,
         )
     if query.data == "hola":
-        message.reply_text(f"YOU choose b hola")
+        message.reply_text("YOU choose b hola")
 
 
 #CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
