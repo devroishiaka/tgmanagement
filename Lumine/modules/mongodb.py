@@ -245,13 +245,9 @@ def testt_callback(update: Update, context: CallbackContext):
     bot = context.bot
     chat = update.effective_chat
     user = update.effective_user
-    splitter = query.data.split("=")
     message = update.effective_message
-    query_match = splitter[0]
-    user_id = splitter[1]
-    
     if query.data == "hmm":
-        message.reply_text(f"chat = {chat}\nuser = {user}\nquery_match = {query_match}\nuser_id = {user_id}")
+        message.reply_text(f"chat = {chat}\nuser = {user}\nquery_match = \nuser_id = }")
     if query.data == "hola":
         query.message.delete()
         bot.answer_callback_query(query.id, text="Deleted!")
