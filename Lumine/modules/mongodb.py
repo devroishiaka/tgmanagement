@@ -243,8 +243,8 @@ def testt(update: Update, context: CallbackContext):
 def testt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
-    chat = update.effective_chat
-    user = update.effective_user
+    chat = update.effective_chat.title
+    user = update.effective_user.id
     message = update.effective_message
     if query.data == "hmm":
         message.reply_text(f"chat = {chat}\nuser = {user}\nquery_match = \nuser_id =")
