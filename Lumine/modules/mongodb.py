@@ -251,7 +251,7 @@ def testt_callback(update: Update, context: CallbackContext):
     splitter = query.data.split("=")
     query_match = splitter[0]
     user_id = splitter[1]
-    if query.data = f"hmm={user_id}":
+    if query.data == f"hmm={user_id}":
         message.reply_text(f"user_id = {user_id}")
     else:
         message.reply_text("hmmmm")
