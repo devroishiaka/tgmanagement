@@ -227,13 +227,14 @@ def partnerx(update: Update, context: CallbackContext):
 def testt(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
+    sender_name = update.effective_user.first_name
     message.reply_text(
         "Please choose:",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(text="Option a", callback_data="hmm"),
-                    InlineKeyboardButton(text="Option b", callback_data="hola")
+                    InlineKeyboardButton(text="Option a", callback_data=f"hmm={sender_id}"),
+                    InlineKeyboardButton(text="Option b", callback_data=f"hola={sender_name}")
                 ]
             ]
         ),
@@ -247,10 +248,13 @@ def testt_callback(update: Update, context: CallbackContext):
     chat = update.effective_chat.title
     user = update.effective_user.id
     message = update.effective_message
-    if query.data == "hmm":
-        message.reply_text(f"chat = {chat}\nuser = {user}\ndata =  \nuser_id =")
+    splitter = query.data.split("=")
+    query_match = splitter[0]
+    user_id = splitter[1]
+    if query.data = f"hmm={user_id}":
+        message.reply_text(f"user_id = {user_id}")
     else:
-        message.edit_text("hmmmm")
+        message.reply_text("hmmmm")
 
 
 #CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
