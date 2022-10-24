@@ -248,10 +248,9 @@ def testt_callback(update: Update, context: CallbackContext):
     user = update.effective_user.id
     message = update.effective_message
     if query.data == "hmm":
-        message.reply_text(f"chat = {chat}\nuser = {user}\ndata = {data} \nuser_id =")
+        message.reply_text(f"chat = {chat}\nuser = {user}\ndata = {query} \nuser_id =")
     if query.data == "hola":
-        query.message.delete()
-        bot.answer_callback_query(query.id, text="Deleted!")
+        update.effective_message.edit_text("hmmmm")
 
 
 #CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
