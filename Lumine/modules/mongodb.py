@@ -244,7 +244,6 @@ def testt(update: Update, context: CallbackContext):
 def testt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
-    data = callback_query.data
     chat = update.effective_chat.title
     user = update.effective_user.id
     message = update.effective_message
