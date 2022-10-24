@@ -228,17 +228,20 @@ def testt(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
     sender_name = update.effective_user.first_name
-    message.reply_text(
-        "Please choose:",
-        reply_markup=InlineKeyboardMarkup(
-            [
+    if message.reply_to_message:
+        repl_message = message.reply_to_message
+        user_id = repl_message.from_user.id
+        message.reply_text(
+            "Please choose:",
+            reply_markup=InlineKeyboardMarkup(
                 [
-                    InlineKeyboardButton(text="Option a", callback_data=f"hmm={sender_id}"),
-                    InlineKeyboardButton(text="Option b", callback_data=f"hola={sender_name}")
+                    [
+                        InlineKeyboardButton(text="Yes", callback_data=f"yess={user_id}"),
+                        InlineKeyboardButton(text="No", callback_data="nooo")
+                    ]
                 ]
-            ]
-        ),
-    )
+            ),
+        )
         
 
 def testt_callback(update: Update, context: CallbackContext):
@@ -246,14 +249,22 @@ def testt_callback(update: Update, context: CallbackContext):
     bot = context.bot
     chat = update.effective_chat.title
     user = update.effective_user.id
+    username = update.effective_user.first_name
     message = update.effective_message
     splitter = query.data.split("=")
     query_match = splitter[0]
-    user_id = splitter[1]
-    if query.data == f"hmm={user_id}":
-        message.reply_text(f"user_id = {user_id}")
+    reply_id = splitter[1]
+    if user == reply_id:
+        if query.data == f"yess={reply_id}":
+            message.edit_text(f"congratulations {username}")
+        elif query.data == "nooo":
+            message.edit_text("Damn")
     else:
-        message.reply_text("hmmmm")
+        bot.answer_callback_query(
+            query.id,
+            text="You don't have enough rights to unmute people",
+            show_alert=True,
+        )
 
 
 #CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
