@@ -244,7 +244,7 @@ def testt(update: Update, context: CallbackContext):
         )
         
 
-def testt_callback(update: Update, context: CallbackContext):
+def testtt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
     chat = update.effective_chat.title
@@ -254,12 +254,13 @@ def testt_callback(update: Update, context: CallbackContext):
     splitter = query.data.split("=")
     query_match = splitter[0]
     reply_id = splitter[1]
-    if user == reply_id:
-        bot.answer_callback_query(
-            query.id,
-            text="You don't have enough rights to unmute people",
-            show_alert=True,
-        )
+    if query.data == f"yess={reply_id}":
+        if user == reply_id:
+            bot.answer_callback_query(
+                query.id,
+                text="You don't have enough rights to unmute people",
+                show_alert=True,
+            )
         """
         if query.data == f"yess={reply_id}":
             message.edit_text(f"congratulations {username}")
@@ -273,8 +274,12 @@ def testt_callback(update: Update, context: CallbackContext):
             text="You don't have enough rights to unmute people",
             show_alert=True,
         )"""
-
-
+ 
+def testt_callback(update: Update, context: CallbackContext):
+    
+    
+    
+        
 #CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
 POINTS_HANDLER = DisableAbleCommandHandler("point", pointsx, run_async=True)
 SETPOINTS_HANDLER = DisableAbleCommandHandler("setpoints", setpointsx, run_async=True)
