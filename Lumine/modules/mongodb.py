@@ -244,7 +244,7 @@ def testt(update: Update, context: CallbackContext):
         )
         
 
-def testtt_callback(update: Update, context: CallbackContext):
+def testt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
     chat = update.effective_chat.title
