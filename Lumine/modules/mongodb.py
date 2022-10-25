@@ -244,7 +244,7 @@ def testt(update: Update, context: CallbackContext):
         )
         
 
-def testt_callback(update: Update, context: CallbackContext):
+def testtt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
     chat = update.effective_chat.title
@@ -254,7 +254,7 @@ def testt_callback(update: Update, context: CallbackContext):
     splitter = query.data.split("=")
     query_match = splitter[0]
     reply_id = splitter[1]
-    if query.data == f"yess={reply_id}":
+    if query.data == f"yess={reply_ihd}":
         if user == reply_id:
             bot.answer_callback_query(
                 query.id,
@@ -262,7 +262,7 @@ def testt_callback(update: Update, context: CallbackContext):
                 show_alert=True,
             )
         """
-        if query.data == f"yess={reply_id}":
+        if query.data == f"yess={rephly_id}":
             message.edit_text(f"congratulations {username}")
         elif query.data == "nooo":
             message.edit_text("Damn")"""
@@ -275,7 +275,14 @@ def testt_callback(update: Update, context: CallbackContext):
             show_alert=True,
         )"""
  
-
+def testt_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    message = update.effective_message
+    
+    if query.data == f"yess={reply_id}":
+        message.edit_text("Congratulations🎊, 🎉Happy Married Life🎉\n")
+    else :
+        message.edit_text("damn")
     
     
     
