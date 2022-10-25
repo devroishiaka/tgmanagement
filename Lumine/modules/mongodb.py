@@ -255,16 +255,24 @@ def testt_callback(update: Update, context: CallbackContext):
     query_match = splitter[0]
     reply_id = splitter[1]
     if user == reply_id:
-        if query.data == f"yess={reply_id}":
-            message.edit_text(f"congratulations {username}")
-        elif query.data == "nooo":
-            message.edit_text("Damn")
-    else:
         bot.answer_callback_query(
             query.id,
             text="You don't have enough rights to unmute people",
             show_alert=True,
         )
+        """
+        if query.data == f"yess={reply_id}":
+            message.edit_text(f"congratulations {username}")
+        elif query.data == "nooo":
+            message.edit_text("Damn")"""
+    else:
+        message.edit_text("Damn")
+        """
+        bot.answer_callback_query(
+            query.id,
+            text="You don't have enough rights to unmute people",
+            show_alert=True,
+        )"""
 
 
 #CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
