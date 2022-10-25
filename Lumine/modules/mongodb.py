@@ -275,7 +275,7 @@ def testtt_callback(update: Update, context: CallbackContext):
             show_alert=True,
         )"""
  
-def testt_callback(update: Update, context: CallbackContext):
+
     
     
     
