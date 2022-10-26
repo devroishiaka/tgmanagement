@@ -130,7 +130,7 @@ def hmm1(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
     sender_id = update.effective_user.id
     bot.sendMessage(
-        "HMMMMM",
+        text="HMMMMM",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
