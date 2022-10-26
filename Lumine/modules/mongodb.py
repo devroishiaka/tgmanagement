@@ -253,14 +253,14 @@ def testt(update: Update, context: CallbackContext):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(text="Yes", callback_data=f"yess={sender_name}"),
-                    InlineKeyboardButton(text="No", callback_data=f"nooo"),
+                    InlineKeyboardButton(text="Yes", callback_data="yess"),
+                    InlineKeyboardButton(text="No", callback_data="nooo"),
                 ]
             ]
-        ),
-        parse_mode=ParseMode.HTML,
+        )
     )
-
+    
+"""
 def testt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
@@ -271,14 +271,14 @@ def testt_callback(update: Update, context: CallbackContext):
             text="You don't have enough rights to unmute people",
             show_alert=True,
         )
-        """
+        
         if query.data == f"yess={rephly_id}":
             message.edit_text(f"congratulations {username}")
         elif query.data == "nooo":
-            message.edit_text("Damn")"""
+            message.edit_text("Damn")
     else:
         query.message.edit_text("Damn")
-        """
+        
         bot.answer_callback_query(
             query.id,
             text="You don't have enough rights to unmute people",
@@ -288,11 +288,10 @@ def testt_callback(update: Update, context: CallbackContext):
 def testtt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     message = update.effective_message
-    
-    if query.data == f"yess":
-        message.edit_text("Congratulations🎊, 🎉Happy Married Life🎉\n")
-    else :
-        message.edit_text("damn")
+    if query.data == "yess":
+        query.message.edit_text("Congratulations")
+    elif query.data == "nooo":
+        query.message.edit_text("damn")
     
     
     
@@ -304,7 +303,7 @@ DEPOSIT_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 LEADERBOARDX_HANDLER = DisableAbleCommandHandler("leaderboard", leaderboardx, run_async=True)
 PARTNER_HANDLER = DisableAbleCommandHandler("partner", partnerx, run_async=True)
 TESTT_HANDLER = DisableAbleCommandHandler("testt", testt, run_async=True)
-TESTT_BUT_HANDLER = CallbackQueryHandler(testt_callback, pattern=r"testt_", run_async=True)
+TESTT_BUT_HANDLER = CallbackQueryHandler(testtt_callback, pattern=r"testt_")
 #_HANDLER = DisableAbleCommandHandler(, , run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
