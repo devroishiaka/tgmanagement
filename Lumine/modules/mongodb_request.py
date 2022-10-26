@@ -124,13 +124,48 @@ def takejobx(update: Update, context: CallbackContext):
         ),
     )
     
+def hmm1(update: Update, context: CallbackContext):
+    message = update.effective_message
+    message.reply_text(
+        "HMMMMM",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="✅", callback_data="yess"
+                    ),
+                    InlineKeyboardButton(text="❌", callback_data="del"),
+                ]
+            ]
+        ),
+        parse_mode=ParseMode.HTML,
+    )
+
+def hmm1_btn(update: Update, context: CallbackContext):
+    bot = context.bot
+    query = update.callback_query
+    if query.data != "del":
+        bot.answer_callback_query(
+            query.id,
+            text="hmmmmm",
+            show_alert=True,
+        )
+    else:
+        query.message.delete()
+        bot.answer_callback_query(query.id, text="Deleted!")
+        
+
+
+
+
+
 
 
 
 CREATEX_HANDLER = CommandHandler("createguild", createguildx, run_async=True)
 TAKEJOB_HANDLER = CommandHandler("takejob", takejobx, run_async=True)
-#_HANDLER = CommandHandler("", , run_async=True)
-#_HANDLER = CommandHandler("", , run_async=True)
+HMM1_HANDLER = CommandHandler("hmm", hmm1)
+HMM1B_HANDLER = CallbackQueryHandler(hmm1_btn, pattern=r"hmm1_")
 #_HANDLER = CommandHandler("", , run_async=True)
 #_HANDLER = CommandHandler("", , run_async=True)
 #_HANDLER = CommandHandler("", , run_async=True)
@@ -142,8 +177,8 @@ TAKEJOB_HANDLER = CommandHandler("takejob", takejobx, run_async=True)
 
 dispatcher.add_handler(CREATEX_HANDLER)
 dispatcher.add_handler(TAKEJOB_HANDLER)
-#dispatcher.add_handler()
-#dispatcher.add_handler()
+dispatcher.add_handler(HMM1_HANDLER)
+dispatcher.add_handler(HMM1B_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
