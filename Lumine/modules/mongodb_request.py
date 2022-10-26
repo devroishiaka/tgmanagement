@@ -125,8 +125,11 @@ def takejobx(update: Update, context: CallbackContext):
     )
     
 def hmm1(update: Update, context: CallbackContext):
+    chat = update.effective_chat
+    bot = context.bot
     message = update.effective_message
-    message.reply_text(
+    bot.sendMessage(
+        chat.id,
         "HMMMMM",
         reply_markup=InlineKeyboardMarkup(
             [
