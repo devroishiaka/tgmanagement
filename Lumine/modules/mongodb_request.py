@@ -124,17 +124,18 @@ def takejobx(update: Update, context: CallbackContext):
         ),
     )
     
-def hmm1(update: Update, context: CallbackContext):
+def hmm1(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     bot = context.bot
     message = update.effective_message
-    message.reply_text(
+    sender_id = update.effective_user.id
+    bot.sendMessage(
         "HMMMMM",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        text="✅", callback_data="yess_"
+                        text="✅", callback_data=f"yess_={sender_id}"
                     ),
                     InlineKeyboardButton(text="❌", callback_data="del_"),
                 ]
@@ -142,18 +143,28 @@ def hmm1(update: Update, context: CallbackContext):
         )
     )
 
-def hmm1_btn(update: Update, context: CallbackContext):
+def hmm1_btn(update: Update, context: CallbackContext) -> str:
     bot = context.bot
     message = update.effective_message
     query = update.callback_query
-    if query.data == "del_":
-        query.message.edit_text(
-            "hmmmmm",
-        )
+    chat = update.effective_chat
+    if query.data != "del_":
+        splitter = query.data.split("=")
+        query_match = splitter[0]
+        if query_match == "yess_":
+            user_id = splitter[1]
+            bot.answer_callback_query(
+                query.id,
+                text="You don't have enough rights to unmute people",
+                show_alert=True,
+            )
+            return ""
     else:
-        query.message.edit_text(
-            "hmmmmm",
+        bot.answer_callback_query(
+            query.id,
+            text="Unbanned!"
         )
+        return ""
 
 
 
@@ -166,7 +177,7 @@ def hmm1_btn(update: Update, context: CallbackContext):
 CREATEX_HANDLER = CommandHandler("createguild", createguildx, run_async=True)
 TAKEJOB_HANDLER = CommandHandler("takejob", takejobx, run_async=True)
 HMM1_HANDLER = CommandHandler("hmm", hmm1, run_async=True)
-HMM1B_HANDLER = CallbackQueryHandler(hmm1_btn, pattern=r"hmm1_", run_async=True)
+HMM1B_HANDLER = CallbackQueryHandler(hmm1_btn, pattern=r"hmm1_")
 #_HANDLER = CommandHandler("", , run_async=True)
 #_HANDLER = CommandHandler("", , run_async=True)
 #_HANDLER = CommandHandler("", , run_async=True)
