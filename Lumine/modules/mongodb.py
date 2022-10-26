@@ -254,23 +254,18 @@ def testt(update: Update, context: CallbackContext):
             [
                 [
                     InlineKeyboardButton(text="Yes", callback_data=f"yess={sender_name}"),
-                    InlineKeyboardButton(text="No", callback_data=f"nooo={sender_id}")
+                    InlineKeyboardButton(text="No", callback_data=f"nooo"),
                 ]
             ]
-        )
+        ),
+        parse_mode=ParseMode.HTML,
     )
 
 def testt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
-    chat = update.effective_chat.title
-    user = update.effective_user.id
-    username = update.effective_user.first_name
     message = update.effective_message
-    splitter = query.data.split("=")
-    query_match = splitter[0]
-    reply_id = splitter[1]
-    if query_match == "yess":
+    if query.data == "nooo":
         bot.answer_callback_query(
             query.id,
             text="You don't have enough rights to unmute people",
@@ -282,7 +277,7 @@ def testt_callback(update: Update, context: CallbackContext):
         elif query.data == "nooo":
             message.edit_text("Damn")"""
     else:
-        message.edit_text("Damn")
+        query.message.edit_text("Damn")
         """
         bot.answer_callback_query(
             query.id,
