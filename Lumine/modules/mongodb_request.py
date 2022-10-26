@@ -128,30 +128,27 @@ def hmm1(update: Update, context: CallbackContext):
     chat = update.effective_chat
     bot = context.bot
     message = update.effective_message
-    bot.sendMessage(
-        chat.id,
+    message.reply_text(
         "HMMMMM",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        text="✅", callback_data="yess"
+                        text="✅", callback_data="yess_"
                     ),
-                    InlineKeyboardButton(text="❌", callback_data="del"),
+                    InlineKeyboardButton(text="❌", callback_data="del_"),
                 ]
             ]
-        ),
-        parse_mode=ParseMode.HTML,
+        )
     )
 
 def hmm1_btn(update: Update, context: CallbackContext):
     bot = context.bot
+    message = update.effective_message
     query = update.callback_query
-    if query.data != "del":
-        bot.answer_callback_query(
-            query.id,
-            text="hmmmmm",
-            show_alert=True,
+    if query.data != "del_":
+        query.message.edit_text(
+            "hmmmmm",
         )
     else:
         query.message.delete()
