@@ -146,14 +146,15 @@ def hmm1_btn(update: Update, context: CallbackContext):
     bot = context.bot
     message = update.effective_message
     query = update.callback_query
-    if query.data != "del_":
+    if query.data == "del_":
         query.message.edit_text(
             "hmmmmm",
         )
     else:
-        query.message.delete()
-        bot.answer_callback_query(query.id, text="Deleted!")
-        
+        query.message.edit_text(
+            "hmmmmm",
+        )
+
 
 
 
