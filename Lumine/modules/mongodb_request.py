@@ -124,7 +124,7 @@ def takejobx(update: Update, context: CallbackContext):
         ),
     )
     
-def hmm1(update: Update, context: CallbackContext) -> str:
+def hmm1(update: Update, context: CallbackContext):
     chat = update.effective_chat
     bot = context.bot
     message = update.effective_message
@@ -136,36 +136,34 @@ def hmm1(update: Update, context: CallbackContext) -> str:
             [
                 [
                     InlineKeyboardButton(
-                        text="✅", callback_data=f"yess_={sender_id}"
+                        text="✅", callback_data=f"yess={sender_id}"
                     ),
-                    InlineKeyboardButton(text="❌", callback_data="del_"),
+                    InlineKeyboardButton(text="❌", callback_data="nooo"),
                 ]
             ]
         )
     )
 
-def hmm1_btn(update: Update, context: CallbackContext) -> str:
+def hmm1_btn(update: Update, context: CallbackContext):
     bot = context.bot
     message = update.effective_message
     query = update.callback_query
     chat = update.effective_chat
-    if query.data != "del_":
+    if query.data != "nooo":
         splitter = query.data.split("=")
         query_match = splitter[0]
-        if query_match == "yess_":
+        if query_match == "yess":
             user_id = splitter[1]
             bot.answer_callback_query(
                 query.id,
-                text="You don't have enough rights to unmute people",
+                text=f"id = {user_id}",
                 show_alert=True,
             )
-            return ""
     else:
         bot.answer_callback_query(
             query.id,
-            text="Unbanned!"
+            text="Nooo!"
         )
-        return ""
 
 
 
