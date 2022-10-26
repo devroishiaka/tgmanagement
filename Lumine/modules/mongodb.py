@@ -223,7 +223,7 @@ def partnerx(update: Update, context: CallbackContext):
                 collection1.update_one({"_id": user_id}, {"$set": {"Partner": sender_name}})
                 message.reply_text(f"🎉Happy Married Life🎉\nCongratulations🎊\n[{sender_name}](tg://openmessage?user_id={sender_id}) ❤ [{user_name}](tg://openmessage?user_id={user_id})")
         
-
+"""
 def testt(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
@@ -242,9 +242,25 @@ def testt(update: Update, context: CallbackContext):
                 ]
             ),
         )
-        
+     """   
 
-def testtt_callback(update: Update, context: CallbackContext):
+def testt(update: Update, context: CallbackContext):
+    message = update.effective_message
+    sender_id = update.effective_user.id
+    sender_name = update.effective_user.first_name
+    message.reply_text(
+        "Please choose:",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(text="Yes", callback_data=f"yess={sender_name}"),
+                    InlineKeyboardButton(text="No", callback_data=f"nooo={sender_id}")
+                ]
+            ]
+        )
+    )
+
+def testt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
     chat = update.effective_chat.title
@@ -254,13 +270,12 @@ def testtt_callback(update: Update, context: CallbackContext):
     splitter = query.data.split("=")
     query_match = splitter[0]
     reply_id = splitter[1]
-    if query.data == f"yess={reply_ihd}":
-        if user == reply_id:
-            bot.answer_callback_query(
-                query.id,
-                text="You don't have enough rights to unmute people",
-                show_alert=True,
-            )
+    if query_match == "yess":
+        bot.answer_callback_query(
+            query.id,
+            text="You don't have enough rights to unmute people",
+            show_alert=True,
+        )
         """
         if query.data == f"yess={rephly_id}":
             message.edit_text(f"congratulations {username}")
@@ -275,11 +290,11 @@ def testtt_callback(update: Update, context: CallbackContext):
             show_alert=True,
         )"""
  
-def testt_callback(update: Update, context: CallbackContext):
+def testtt_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     message = update.effective_message
     
-    if query.data == f"yess={reply_id}":
+    if query.data == f"yess":
         message.edit_text("Congratulations🎊, 🎉Happy Married Life🎉\n")
     else :
         message.edit_text("damn")
@@ -293,8 +308,8 @@ SETPOINTS_HANDLER = DisableAbleCommandHandler("setpoints", setpointsx, run_async
 DEPOSIT_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 LEADERBOARDX_HANDLER = DisableAbleCommandHandler("leaderboard", leaderboardx, run_async=True)
 PARTNER_HANDLER = DisableAbleCommandHandler("partner", partnerx, run_async=True)
-TESTT_HANDLER = DisableAbleCommandHandler("testt", testt,run_async=True)
-TESTT_BUT_HANDLER = CallbackQueryHandler(testt_callback, pattern=r"hmm",run_async=True)
+TESTT_HANDLER = DisableAbleCommandHandler("testt", testt, run_async=True)
+TESTT_BUT_HANDLER = CallbackQueryHandler(testt_callback, pattern=r"testt_", run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, , run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
