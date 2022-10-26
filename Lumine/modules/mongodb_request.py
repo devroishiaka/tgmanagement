@@ -164,8 +164,8 @@ def hmm1_btn(update: Update, context: CallbackContext):
 
 CREATEX_HANDLER = CommandHandler("createguild", createguildx, run_async=True)
 TAKEJOB_HANDLER = CommandHandler("takejob", takejobx, run_async=True)
-HMM1_HANDLER = CommandHandler("hmm", hmm1)
-HMM1B_HANDLER = CallbackQueryHandler(hmm1_btn, pattern=r"hmm1_")
+HMM1_HANDLER = CommandHandler("hmm", hmm1, run_async=True)
+HMM1B_HANDLER = CallbackQueryHandler(hmm1_btn, pattern=r"hmm1_", run_async=True)
 #_HANDLER = CommandHandler("", , run_async=True)
 #_HANDLER = CommandHandler("", , run_async=True)
 #_HANDLER = CommandHandler("", , run_async=True)
