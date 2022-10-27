@@ -39,14 +39,6 @@ def help1btn_callback(update: Update, context: CallbackContext):
         query.message.edit_text(
             "hello, your answer- Noo"
         )
-    elif query.data == "maybe_":
-        query.message.edit_text(
-            "hello, your answer- Maybe"
-        )
-    elif query.data == "absno_":
-        query.message.edit_text(
-            "hello, your answer- Abs No"
-        )
 
 
 HELP_1_HANDLER = CommandHandler("help1", help1, run_async=True)
