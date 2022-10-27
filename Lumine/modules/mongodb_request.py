@@ -143,8 +143,6 @@ TAKEJOB_HANDLER = CommandHandler("takejob", takejobx, run_async=True)
 
 dispatcher.add_handler(CREATEX_HANDLER)
 dispatcher.add_handler(TAKEJOB_HANDLER)
-dispatcher.add_handler(HMM1_HANDLER)
-dispatcher.add_handler(HMM1B_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
