@@ -49,7 +49,7 @@ def help1btn_callback(update: Update, context: CallbackContext):
         )
 
 
-HELP_1_HANDLER = DisableAbleCommandHandler("help1", help1, run_async=True)
+HELP_1_HANDLER = CommandHandler("help1", help1, run_async=True)
 HELP_1_BTN_HANDLER = CallbackQueryHandler(help1btn_callback, pattern=r"yess_", run_async=True)
 
 dispatcher.add_handler(HELP_1_HANDLER)
