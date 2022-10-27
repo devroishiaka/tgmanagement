@@ -123,49 +123,6 @@ def takejobx(update: Update, context: CallbackContext):
             ]
         ),
     )
-    
-def hmm1(update: Update, context: CallbackContext):
-    chat = update.effective_chat
-    bot = context.bot
-    message = update.effective_message
-    sender_id = update.effective_user.id
-    bot.sendMessage(
-        chat.id,
-        text="HMMMMM",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="✅", callback_data=f"yess={sender_id}"
-                    ),
-                    InlineKeyboardButton(text="❌", callback_data="nooo"),
-                ]
-            ]
-        )
-    )
-
-def hmm1_btn(update: Update, context: CallbackContext):
-    bot = context.bot
-    message = update.effective_message
-    query = update.callback_query
-    chat = update.effective_chat
-    if query.data != "nooo":
-        splitter = query.data.split("=")
-        query_match = splitter[0]
-        if query_match == "yess":
-            user_id = splitter[1]
-            bot.answer_callback_query(
-                query.id,
-                text=f"id = {user_id}",
-                show_alert=True,
-            )
-    else:
-        bot.answer_callback_query(
-            query.id,
-            text="Nooo!"
-        )
-
-
 
 
 
@@ -175,8 +132,6 @@ def hmm1_btn(update: Update, context: CallbackContext):
 
 CREATEX_HANDLER = CommandHandler("createguild", createguildx, run_async=True)
 TAKEJOB_HANDLER = CommandHandler("takejob", takejobx, run_async=True)
-HMM1_HANDLER = CommandHandler("hmm", hmm1, run_async=True)
-HMM1B_HANDLER = CallbackQueryHandler(hmm1_btn, pattern=r"hmm1_")
 #_HANDLER = CommandHandler("", , run_async=True)
 #_HANDLER = CommandHandler("", , run_async=True)
 #_HANDLER = CommandHandler("", , run_async=True)
