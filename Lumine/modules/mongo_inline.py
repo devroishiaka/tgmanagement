@@ -55,7 +55,7 @@ def friendx(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="✅️", callback_data=f"yess={user_id}")
+                        InlineKeyboardButton(text="✅️", callback_data=f"yess={user_id}"),
                         InlineKeyboardButton(text="❌", callback_data=f"nooo={user_id}")
                     ]
                 ]
