@@ -32,19 +32,19 @@ def help1btn_callback(update: Update, context: CallbackContext):
     message = update.effective_message
     query = update.callback_query
     if query.data == "yess_":
-        query.message.reply_text(
+        query.message.edit_text(
             "hello, your answer- Yes"
         )
     elif query.data == "nooo_":
-        query.message.reply_text(
+        query.message.edit_text(
             "hello, your answer- Noo"
         )
     elif query.data == "maybe_":
-        query.message.reply_text(
+        query.message.edit_text(
             "hello, your answer- Maybe"
         )
     elif query.data == "absno_":
-        query.message.reply_text(
+        query.message.edit_text(
             "hello, your answer- Abs No"
         )
 
