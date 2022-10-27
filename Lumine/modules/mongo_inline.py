@@ -50,7 +50,7 @@ def friendx(update: Update, context: CallbackContext):
         user_id = repl_message.from_user.id
         user_name = repl_message.from_user.first_name
         message.reply_text(
-            f"{mention_html(user_id, html.escape(first_name))} Do you agree ?",
+            f"Do you agree ?",
             reply_to_message_id=user_id,
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -59,8 +59,7 @@ def friendx(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="❌", callback_data=f"nooo={user_id}")
                     ]
                 ]
-            ),
-            parse_mode=ParseMode.HTML,
+            )
         )
     else:
         message.reply_text(f"You not registerd!!!\nPlease use /register command to register yourself")
