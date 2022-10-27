@@ -43,7 +43,7 @@ def help1btn_callback(update: Update, context: CallbackContext):
         query.message.reply_text(
             "hello, your answer- Maybe"
         )
-    else query.data == "absno_":
+    elif query.data == "absno_":
         query.message.reply_text(
             "hello, your answer- Abs No"
         )
