@@ -25,7 +25,7 @@ def help1(update: Update, context: CallbackContext):
                 ]
             ]
         ),
-        parse_mode=ParseMode.MARKDOWN,
+        parse_mode=ParseMode.HTML,
     )
 
 def help1btn_callback(update: Update, context: CallbackContext):
@@ -50,7 +50,7 @@ def friendx(update: Update, context: CallbackContext):
         user_id = repl_message.from_user.id
         user_name = repl_message.from_user.first_name
         message.reply_text(
-            f"[{user_name}](tg://openmessage?user_id={user_id}) Do you agree ?",
+            f"{mention_html(user_id, html.escape(first_name))} Do you agree ?",
             reply_to_message_id=user_id,
             reply_markup=InlineKeyboardMarkup(
                 [
