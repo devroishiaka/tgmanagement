@@ -38,7 +38,7 @@ def help22btn_callback(update: Update, context: CallbackContext):
     query_match = splitter[0]
     if query_match == "yes":
         user_id = splitter[1]
-        if user_id == sender_id:
+        if sender_id == user_id:
             query.message.edit_text("yes finally obejctive clear @ishikki_akabane")
         else:
             bot.answer_callback_query(
