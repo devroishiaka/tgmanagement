@@ -43,19 +43,14 @@ def help1btn_callback(update: Update, context: CallbackContext):
 
 def friendx(update: Update, context: CallbackContext):
     message = update.effective_message
-    sender_id = update.effective_user.id
-    sender_name = update.effective_user.first_name
     if message.reply_to_message:
-        repl_message = message.reply_to_message
-        user_id = repl_message.from_user.id
-        user_name = repl_message.from_user.first_name
         message.reply_text(
             "Do you agree?",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="✅️", callback_data="yessx_"),
-                        InlineKeyboardButton(text="❌", callback_data="nooox_")
+                        InlineKeyboardButton(text="Yes", callback_data="yessx_"),
+                        InlineKeyboardButton(text="No", callback_data="nooox_")
                     ]
                 ]
             ),
