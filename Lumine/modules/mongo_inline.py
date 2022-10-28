@@ -58,7 +58,8 @@ def friendx(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="❌", callback_data="nooox_")
                     ]
                 ]
-            )
+            ),
+            parse_mode=ParseMode.HTML,
         )
     else:
         message.reply_text("lol, reply please")
@@ -67,16 +68,13 @@ def friendx(update: Update, context: CallbackContext):
 def friendbtn_callback(update: Update, context: CallbackContext):
     message = update.effective_message
     query = update.callback_query
-    bot = context.bot
-    user = update.effective_user.id
     if query.data == "yessx_":
         query.message.edit_text(
             "Congratulations🎊"
         )
     elif query.data == "nooox_":
-        bot.answer_callback_query(
-            query.id,
-            text="Its not your request"
+        query.message.edit_text(
+            "Congratulations🎊"
         )
 
 
