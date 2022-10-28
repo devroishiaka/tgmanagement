@@ -7,7 +7,7 @@ from telegram.ext import CallbackContext, CommandHandler, Filters, CallbackQuery
 from telegram.utils.helpers import escape_markdown, mention_html
 
 from Lumine import dispatcher
-from Lumine.modules.helper_funcs.extraction import 
+from Lumine.modules.helper_funcs.extraction import extract_user
 
 
 def help222(update: Update, context: CallbackContext):
