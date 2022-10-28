@@ -43,45 +43,39 @@ def help1btn_callback(update: Update, context: CallbackContext):
 
 def help11(update: Update, context: CallbackContext):
     message = update.effective_message
-    message.reply_text(
-        "Please choose for testing:",
-        reply_markup=InlineKeyboardMarkup(
-            [
+    if message.reply_to_message:
+        message.reply_text(
+            "choose:",
+            reply_markup=InlineKeyboardMarkup(
                 [
-                    InlineKeyboardButton(text="Yes", callback_data="yesss_"),
-                    InlineKeyboardButton(text="Noo", callback_data="noooo_")
-                ],
-                [
-                    InlineKeyboardButton(text="Maybe", callback_data="maybe_"),
-                    InlineKeyboardButton(text="Abs No", callback_data="absno_")
+                    [
+                        InlineKeyboardButton(text="Yes", callback_data="Yes111_")
+                        InlineKeyboardButton(text="No", callback_data="Noo111_")
+                    ]
                 ]
-            ]
-        ),
-        parse_mode=ParseMode.HTML,
-    )
+            )
+        )
+    else:
+        message.reply_text("Hmm, please reply")
 
-def help1btn1_callback(update: Update, context: CallbackContext):
-    message = update.effective_message
+def help11btn_callback(update: Update, context: CallbackContext):
     query = update.callback_query
-    if query.data == "yesss_":
-        query.message.edit_text(
-            "hello, your answer- Yes"
-        )
-    elif query.data == "noooo_":
-        query.message.edit_text(
-            "hello, your answer- Noo"
-        )
-
-
+    message = update.effective_message
+    if query.data == "Yes111_":
+        query.message.edit_text("hmm yes")
+    elif query.data == "Noo111_":
+        query.message.edit_text("hmm noo")
 
 
 
 HELP_1_HANDLER = CommandHandler("help1", help1, run_async=True)
 HELP_1_BTN_HANDLER = CallbackQueryHandler(help1btn_callback)
-FRIENDSX_HANDLER = CommandHandler("addfriend", help11, run_async=True)
-FRIENDSX_BTN_HANDLER = CallbackQueryHandler(help1btn1_callback)
+HELP11_HANDLER = CommandHandler("friend", help11, run_async=True)
+HELP11_BTN_HANDLER = CallbackQueryHandler(help11btn_callback)
+
 
 dispatcher.add_handler(HELP_1_HANDLER)
 dispatcher.add_handler(HELP_1_BTN_HANDLER)
-dispatcher.add_handler(FRIENDSX_HANDLER)
-dispatcher.add_handler(FRIENDSX_BTN_HANDLER)
+dispatcher.add_handler(HELP11_HANDLER)
+dispatcher.add_handler(HELP11_BTN_HANDLER)
+
