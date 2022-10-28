@@ -32,10 +32,15 @@ def help222(update: Update, context: CallbackContext):
 def help22btn_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     message = update.effective_message
+    sender_id = update.effective_user.id
     splitter = query.data.split("=")
     query_match = splitter[0]
     if query_match == "yes":
-        query.message.edit_text("hmm yes")
+        user_id = splitter[1]
+        if user_id == sender_id:
+            query.message.edit_text("hmm yes")
+        else:
+            query.message.edit_text("who are you?")
     elif query.data == "no_":
         query.message.edit_text("hmm noo")
 
