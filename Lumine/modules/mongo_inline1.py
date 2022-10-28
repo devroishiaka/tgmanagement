@@ -36,13 +36,13 @@ def help22btn_callback(update: Update, context: CallbackContext):
     sender_id = update.effective_user.id
     splitter = query.data.split("=")
     query_match = splitter[0]
-    if query_match == "yes":
-        user_id = splitter[1]
-        if sender_id == user_id:
+    userr_id = splitter[1]
+    if sender_id == userr_id
+        if query_match == "yes":
+            query.message.edit_text("lol, yes finally obejctive clear @ishikki_akabane")
+        else:
             query.message.edit_text("lol")
-        elif sender_id != user_id:
-            query.message.edit_text("yes finally obejctive clear @ishikki_akabane")
-    elif query.data == "no_":
+    else:
         query.message.edit_text("hmm noo")
 
 HELP11_HANDLER = CommandHandler("hmmm", help222, run_async=True)
