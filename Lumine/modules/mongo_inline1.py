@@ -36,13 +36,10 @@ def help22btn_callback(update: Update, context: CallbackContext):
     sender_id = update.effective_user.id
     list_of_words = query.data.split(" ")
     userr_id = list_of_words[1]
-    if query.data != "no_":
-        if sender_id == userr_id:
-            query.message.edit_text("lol, yes finally obejctive clear @ishikki_akabane")
-
+    if query.data == "no_":
         query.message.edit_text("lol")
     else:
-        query.message.edit_text("hmm noo")
+        query.message.edit_text(f"hmm\nuserr_id = {userr_id}\nsender_id = {sender_id}\nlist_of_words = {list_of_words}")
 
 HELP11_HANDLER = CommandHandler("hmmm", help222, run_async=True)
 HELP11_BTN_HANDLER = CallbackQueryHandler(help22btn_callback)
