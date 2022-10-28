@@ -39,13 +39,9 @@ def help22btn_callback(update: Update, context: CallbackContext):
     if query_match == "yes":
         user_id = splitter[1]
         if sender_id != user_id:
-            bot.answer_callback_query(
-                query.id,
-                text="who are you??",
-                show_alert=True,
-            )
-        elif sender_id == user_id:
             query.message.edit_text("yes finally obejctive clear @ishikki_akabane")
+        elif sender_id == user_id:
+            query.message.edit_text("yes finally @ishikki_akabane")
     elif query.data == "no_":
         query.message.edit_text("hmm noo")
 
