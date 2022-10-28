@@ -37,7 +37,12 @@ def help22btn_callback(update: Update, context: CallbackContext):
     query_match = splitter[0]
     if query_match == "yes":
         user_id = splitter[1]
-        query.message.edit_text(f"hmm yes {sender_id} , {user_id}")
+        bot.answer_callback_query(
+            query.id,
+            text="HMm yess",
+            show_alert=True,
+        )
+        #query.message.edit_text(f"hmm yes {sender_id} , {user_id}")
     elif query.data == "no_":
         query.message.edit_text("hmm noo")
 
