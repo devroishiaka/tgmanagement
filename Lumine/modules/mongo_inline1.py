@@ -37,8 +37,8 @@ def help22btn_callback(update: Update, context: CallbackContext):
     splitter = query.data.split("=")
     query_match = splitter[0]
     userr_id = splitter[1]
-    if sender_id == userr_id:
-        if query_match == "yes":
+    if query.data != "no_":
+        if sender_id == userr_id:
             query.message.edit_text("lol, yes finally obejctive clear @ishikki_akabane")
         else:
             query.message.edit_text("lol")
