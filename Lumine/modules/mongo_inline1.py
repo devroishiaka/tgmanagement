@@ -10,7 +10,7 @@ from Lumine import dispatcher
 from Lumine.modules.helper_funcs.extraction import extract_user
 
 
-def help222(update: Update, context: CallbackContext) -> str:
+def help222(update: Update, context: CallbackContext):
     message = update.effective_message
     if message.reply_to_message:
         repl_message = message.reply_to_message
@@ -20,7 +20,7 @@ def help222(update: Update, context: CallbackContext) -> str:
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="✅️", callback_data=f"yes={user_id}"),
+                        InlineKeyboardButton(text="✅️", callback_data=f"yes {user_id}"),
                         InlineKeyboardButton(text="❌", callback_data="no_")
                     ]
                 ]
@@ -29,19 +29,18 @@ def help222(update: Update, context: CallbackContext) -> str:
     else:
         message.reply_text("Please reply to someone!!")
 
-def help22btn_callback(update: Update, context: CallbackContext) -> str:
+def help22btn_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
     message = update.effective_message
     sender_id = update.effective_user.id
-    splitter = query.data.split("=")
-    query_match = splitter[0]
-    userr_id = splitter[1]
+    list_of_words = query.data.split(" ")
+    userr_id = list_of_words[1]
     if query.data != "no_":
         if sender_id == userr_id:
             query.message.edit_text("lol, yes finally obejctive clear @ishikki_akabane")
-        else:
-            query.message.edit_text("lol")
+
+        query.message.edit_text("lol")
     else:
         query.message.edit_text("hmm noo")
 
