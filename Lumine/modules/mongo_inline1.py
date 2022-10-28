@@ -18,8 +18,8 @@ def help222(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="Yes", callback_data="222_"),
-                        InlineKeyboardButton(text="No", callback_data="333_")
+                        InlineKeyboardButton(text="Yes", callback_data="yes_"),
+                        InlineKeyboardButton(text="No", callback_data="no_")
                     ]
                 ]
             )
@@ -30,9 +30,9 @@ def help222(update: Update, context: CallbackContext):
 def help22btn_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     message = update.effective_message
-    if query.data == "222_":
+    if query.data == "yes_":
         query.message.edit_text("hmm yes")
-    elif query.data == "333_":
+    elif query.data == "no_":
         query.message.edit_text("hmm noo")
 
 HELP11_HANDLER = CommandHandler("hmmm", help222, run_async=True)
