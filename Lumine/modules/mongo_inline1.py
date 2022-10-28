@@ -10,7 +10,7 @@ from Lumine import dispatcher
 from Lumine.modules.helper_funcs.extraction import extract_user
 
 
-def help222(update: Update, context: CallbackContext):
+def help222(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
     if message.reply_to_message:
         repl_message = message.reply_to_message
@@ -29,7 +29,7 @@ def help222(update: Update, context: CallbackContext):
     else:
         message.reply_text("Please reply to someone!!")
 
-def help22btn_callback(update: Update, context: CallbackContext):
+def help22btn_callback(update: Update, context: CallbackContext) -> str:
     query = update.callback_query
     bot = context.bot
     message = update.effective_message
