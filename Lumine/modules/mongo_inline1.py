@@ -31,6 +31,7 @@ def help222(update: Update, context: CallbackContext):
 
 def help22btn_callback(update: Update, context: CallbackContext):
     query = update.callback_query
+    bot = context.bot
     message = update.effective_message
     sender_id = update.effective_user.id
     splitter = query.data.split("=")
