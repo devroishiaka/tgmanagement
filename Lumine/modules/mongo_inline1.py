@@ -13,24 +13,28 @@ from Lumine.modules.helper_funcs.extraction import extract_user
 def help222(update: Update, context: CallbackContext):
     message = update.effective_message
     if message.reply_to_message:
+        repl_message = message.reply_to_message
+        user_id = repl_message.from_user.id
         message.reply_text(
             "choose:",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="Yes", callback_data="yes_"),
-                        InlineKeyboardButton(text="No", callback_data="no_")
+                        InlineKeyboardButton(text="✅️", callback_data=f"yes={user_id}"),
+                        InlineKeyboardButton(text="❌", callback_data="no_")
                     ]
                 ]
             )
         )
     else:
-        message.reply_text("Hmm, please reply")
+        message.reply_text("Please reply to someone!!")
 
 def help22btn_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     message = update.effective_message
-    if query.data == "yes_":
+    splitter = query.data.split("=")
+    query_match = splitter[0]
+    if query_match == "yes":
         query.message.edit_text("hmm yes")
     elif query.data == "no_":
         query.message.edit_text("hmm noo")
