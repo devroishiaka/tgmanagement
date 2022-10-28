@@ -41,41 +41,12 @@ def help1btn_callback(update: Update, context: CallbackContext):
         )
 
 
-def help11(update: Update, context: CallbackContext):
-    message = update.effective_message
-    if message.reply_to_message:
-        message.reply_text(
-            "choose:",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="Yes", callback_data="Yes111_"),
-                        InlineKeyboardButton(text="No", callback_data="Noo111_")
-                    ]
-                ]
-            )
-        )
-    else:
-        message.reply_text("Hmm, please reply")
-
-def help11btn_callback(update: Update, context: CallbackContext):
-    query = update.callback_query
-    message = update.effective_message
-    if query.data == "Yes111_":
-        query.message.edit_text("hmm yes")
-    elif query.data == "Noo111_":
-        query.message.edit_text("hmm noo")
-
 
 
 HELP_1_HANDLER = CommandHandler("help1", help1, run_async=True)
 HELP_1_BTN_HANDLER = CallbackQueryHandler(help1btn_callback)
-HELP11_HANDLER = CommandHandler("friend", help11, run_async=True)
-HELP11_BTN_HANDLER = CallbackQueryHandler(help11btn_callback)
 
 
 dispatcher.add_handler(HELP_1_HANDLER)
 dispatcher.add_handler(HELP_1_BTN_HANDLER)
-dispatcher.add_handler(HELP11_HANDLER)
-dispatcher.add_handler(HELP11_BTN_HANDLER)
 
