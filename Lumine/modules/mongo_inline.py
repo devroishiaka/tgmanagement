@@ -55,7 +55,7 @@ def friendx(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(text="✅️", callback_data=f"yess={sender_id}"),
-                        InlineKeyboardButton(text="❌", callback_data=f"nooo={sender_id}")
+                        InlineKeyboardButton(text="❌", callback_data=f"nooox")
                     ]
                 ]
             )
@@ -69,9 +69,8 @@ def friendbtn_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
     user = update.effective_user.id
-    splitter = query.data.split("=")
-    query_match = splitter[0]
-    if query_match == "yess":
+    if query.data != "nooox":
+        splitter = query.data.split("=")
         user_id = splitter[1]
         if user_id == user:
             query.message.edit_text(
@@ -83,15 +82,8 @@ def friendbtn_callback(update: Update, context: CallbackContext):
                 text="Its not your request"
             )
     else:
-        user_id = splitter[1]
-        if user_id == user:
-            query.message.edit_text(
-                "Sad lyf"
-            )
-        else:
-            bot.answer_callback_query(
-                query.id,
-                text="Its not your request"
+        query.message.edit_text(
+            "Sad lyf"
             )
 
 
