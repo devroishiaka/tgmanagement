@@ -39,7 +39,7 @@ def help22btn_callback(update: Update, context: CallbackContext):
         userid1 = int(userid)
         if userid1 == sender_id:
             query.message.edit_text("lol @ @")
-        elif userid1 =! sender_id:
+        elif userid1 != sender_id:
             query.message.edit_text("Who are you sir?")
     elif query.data == "no_":
         query.message.edit_text("hm\n lol")
