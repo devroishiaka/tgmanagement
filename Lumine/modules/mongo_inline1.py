@@ -47,13 +47,13 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
         query_match = splitter[0]
         if query_match == "unbanb_unban":
             user_id = splitter[1]
-            if not user_id == senderid:
+            if user_id == senderid:
                 bot.answer_callback_query(
                     query.id,
                     text="You don't have enough rights",
                     show_alert=True,
                 )
-            else:
+            elif user_id != senderid:
                 query.message.edit_text("Yep!")
                 bot.answer_callback_query(query.id, text="congo!!!")
             
