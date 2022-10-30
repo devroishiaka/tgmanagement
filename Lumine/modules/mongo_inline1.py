@@ -10,46 +10,59 @@ from Lumine import dispatcher
 from Lumine.modules.helper_funcs.extraction import extract_user
 
 
-def help222(update: Update, context: CallbackContext):
+def bann(update: Update, context: CallbackContext) -> str:
+    chat = update.effective_chat
+    user = update.effective_user
     message = update.effective_message
+    bot = context.bot
+    args = context.args
     if message.reply_to_message:
         repl_message = message.reply_to_message
         user_id = repl_message.from_user.id
-        message.reply_text(
-            "choose:",
+        useridd = int(user_id)
+        bot.sendMessage(
+            chat.id,
+            reply,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="✅️", callback_data=f"{user_id}"),
-                        InlineKeyboardButton(text="❌", callback_data="no_")
+                        InlineKeyboardButton(
+                            text="✅", callback_data=f"unbanb_unban={useridd}"
+                        ),
+                        InlineKeyboardButton(text="❌", callback_data="unbanb_del"),
                     ]
                 ]
-            )
+            ),
+            parse_mode=ParseMode.HTML,
         )
-    else:
-        message.reply_text("Please reply to someone!!")
 
-def help22btn_callback(update: Update, context: CallbackContext):
-    query = update.callback_query
+def unbanb_btn(update: Update, context: CallbackContext) -> str:
     bot = context.bot
-    message = update.effective_message
-    sender_id = update.effective_user.id
-    if query.data != "no_":
-        userid = query.data
-        userid1 = int(userid)
-        if userid1 == sender_id:
-            query.message.edit_text("lol @ @")
-        elif userid1 != sender_id:
-            query.message.edit_text("Who are you sir?")
-    elif query.data == "no_":
-        query.message.edit_text("hm\n lol")
-    #elif sender_id != userr_id:
-     #   query.message.edit_text(f"Done\nuserr_id = {userr_id}\nsender id = {sender_id}\nType = {typee}")
-    #elif sender_id == userr_id:
-     #   query.message.edit_text(f"Done\nuserr_id = {userr_id}\nsender id = {sender_id}")
+    query = update.callback_query
+    chat = update.effective_chat
+    user = update.effective_user
+    senderid = update.effective_user.id
+    if query.data != "unbanb_del":
+        splitter = query.data.split("=")
+        query_match = splitter[0]
+        if query_match == "unbanb_unban":
+            user_id = splitter[1]
+            if not user_id == senderid:
+                bot.answer_callback_query(
+                    query.id,
+                    text="You don't have enough rights",
+                    show_alert=True,
+                )
+                
+            query.message.edit_text("Yep!")
+            bot.answer_callback_query(query.id, text="congo!!!")
+            
+    else:
+        query.message.delete()
+        bot.answer_callback_query(query.id, text="Deleted!")
 
-HELP11_HANDLER = CommandHandler("hmmm", help222, run_async=True)
-HELP11_BTN_HANDLER = CallbackQueryHandler(help22btn_callback)
+HELP11_HANDLER = CommandHandler("hmm", bann, run_async=True)
+HELP11_BTN_HANDLER = CallbackQueryHandler(unbanb_btn)
 
 dispatcher.add_handler(HELP11_HANDLER)
 dispatcher.add_handler(HELP11_BTN_HANDLER)
