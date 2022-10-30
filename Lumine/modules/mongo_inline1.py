@@ -22,7 +22,6 @@ def bann(update: Update, context: CallbackContext) -> str:
         useridd = int(user_id)
         bot.sendMessage(
             chat.id,
-            reply,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
