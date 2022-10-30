@@ -39,10 +39,12 @@ def help22btn_callback(update: Update, context: CallbackContext):
     typee = type(userrid)
     if query.data == "no_":
         query.message.edit_text("lol @ @")
-    elif sender_id != userr_id:
+    else:
         query.message.edit_text(f"Done\nuserr_id = {userr_id}\nsender id = {sender_id}\nType = {typee}")
-    elif sender_id == userr_id:
-        query.message.edit_text(f"Done\nuserr_id = {userr_id}\nsender id = {sender_id}")
+    #elif sender_id != userr_id:
+     #   query.message.edit_text(f"Done\nuserr_id = {userr_id}\nsender id = {sender_id}\nType = {typee}")
+    #elif sender_id == userr_id:
+     #   query.message.edit_text(f"Done\nuserr_id = {userr_id}\nsender id = {sender_id}")
 
 HELP11_HANDLER = CommandHandler("hmmm", help222, run_async=True)
 HELP11_BTN_HANDLER = CallbackQueryHandler(help22btn_callback)
