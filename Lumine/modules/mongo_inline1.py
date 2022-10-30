@@ -53,9 +53,9 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
                     text="You don't have enough rights",
                     show_alert=True,
                 )
-                
-            query.message.edit_text("Yep!")
-            bot.answer_callback_query(query.id, text="congo!!!")
+            else:
+                query.message.edit_text("Yep!")
+                bot.answer_callback_query(query.id, text="congo!!!")
             
     else:
         query.message.delete()
