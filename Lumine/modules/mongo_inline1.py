@@ -35,11 +35,11 @@ def help22btn_callback(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
     userrid = query.data
-    typee = type(userrid)
+    sendd = str(sender_id)
     if query.data == "no_":
         query.message.edit_text("lol @ @")
     else:
-        query.message.edit_text(f"Done\nuser_id = {userrid}\nsender id = {sender_id}\nType user = {typee}")
+        query.message.edit_text(f" {sendd} \n {userrid}")
     #elif sender_id != userr_id:
      #   query.message.edit_text(f"Done\nuserr_id = {userr_id}\nsender id = {sender_id}\nType = {typee}")
     #elif sender_id == userr_id:
