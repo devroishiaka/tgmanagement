@@ -55,7 +55,6 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
                     show_alert=True,
                 )
             elif user_id != senderid:
-                query.message.edit_text("Yep!")
                 bot.answer_callback_query(query.id, text="congo!!!")
             
     else:
