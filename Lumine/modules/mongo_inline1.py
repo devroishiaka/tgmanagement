@@ -50,9 +50,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
             user_id = int(user_id)
             if user_id == senderid:
                 bot.answer_callback_query(
-                    query.id,
-                    text="You don't have enough rights",
-                    show_alert=True,
+                    query.message.edit_text("congratulations!!")
                 )
             elif user_id != senderid:
                 bot.answer_callback_query(query.id, text="congo!!!")
