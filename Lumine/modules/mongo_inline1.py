@@ -50,8 +50,11 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
             user_id = int(user_id)
             if user_id == senderid:
                 bot.message.edit_text("congratulations!!")
+                return
             elif user_id != senderid:
                 bot.answer_callback_query(query.id, text="congo!!!")
+                return
+            return
             
     else:
         query.message.delete()
