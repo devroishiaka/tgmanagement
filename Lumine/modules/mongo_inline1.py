@@ -31,28 +31,25 @@ def bann(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="❌", callback_data="unbanb_del"),
                     ]
                 ]
-            ),
-            parse_mode=ParseMode.HTML,
+            )
         )
 
-def unbanb_btn(update: Update, context: CallbackContext) -> str:
+def unbanb_btn(update: Update, context: CallbackContext):
     bot = context.bot
     query = update.callback_query
-    chat = update.effective_chat
     user = update.effective_user
     senderid = update.effective_user.id
+    sender_id = int(senderid)
+    query_id = query.id
     if query.data != "unbanb_del":
         splitter = query.data.split("=")
         query_match = splitter[0]
-        if query_match == "unbanb_unban":
-            user_id = splitter[1]
-            user_id = int(user_id)
-            if user_id == senderid:
-                bot.answer_callback_query(query.id, text="congoooo!!!")
-                bot.message.edit_text("congratulations!!")
-
-            bot.answer_callback_query(query.id, text="congo!!!")
-            
+        user_id = splitter[1]
+        user_id = int(user_id)
+        if user_id == senderid:
+            query.message.edit_text("congoooo!!!")
+        else:
+            bot.answer_callback_query(query_id, text="congo!!!")
     else:
         query.message.delete()
         bot.answer_callback_query(query.id, text="Deleted!")
