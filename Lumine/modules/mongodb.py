@@ -223,7 +223,23 @@ def partnerx(update: Update, context: CallbackContext):
                 collection1.update_one({"_id": user_id}, {"$set": {"Partner": sender_name}})
                 message.reply_text(f"🎉Happy Married Life🎉\nCongratulations🎊\n[{sender_name}](tg://openmessage?user_id={sender_id}) ❤ [{user_name}](tg://openmessage?user_id={user_id})")
         
-
+def leaderboardx1(update: Update, context: CallbackContext):
+    message = update.effective_message
+    result = collection.find().sort({Points:1})
+    results = str(result["Points"])
+    message.reply_text(f"{results})
+                       
+def leaderboardx2(update: Update, context: CallbackContext):
+    message = update.effective_message
+    result = collection.find().sort({$natural:1})
+    results = str(result["Points"])
+    message.reply_text(f"{results})
+                       
+def leaderboardx3(update: Update, context: CallbackContext):
+    message = update.effective_message
+    result = collection.find().sort({Points:1}).limit(50)
+    results = str(result["Points"])
+    message.reply_text(f"{results})
     
     
         
@@ -232,9 +248,9 @@ POINTS_HANDLER = DisableAbleCommandHandler("point", pointsx, run_async=True)
 SETPOINTS_HANDLER = DisableAbleCommandHandler("setpoints", setpointsx, run_async=True)
 DEPOSIT_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 LEADERBOARDX_HANDLER = DisableAbleCommandHandler("leaderboard", leaderboardx, run_async=True)
-#_HANDLER = DisableAbleCommandHandler(, , run_async=True)
-#_HANDLER = DisableAbleCommandHandler(,run_async=True)
-#_HANDLER = DisableAbleCommandHandler(,run_async=True)
+LE1_HANDLER = DisableAbleCommandHandler("le1", leaderboardx1, run_async=True)
+LE2_HANDLER = DisableAbleCommandHandler("le2", leaderboardx2, run_async=True)
+LE3_HANDLER = DisableAbleCommandHandler("le3", leaderboardx3, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
@@ -249,8 +265,8 @@ dispatcher.add_handler(SETPOINTS_HANDLER)
 dispatcher.add_handler(DEPOSIT_HANDLER)
 dispatcher.add_handler(LEADERBOARDX_HANDLER)
 #dispatcher.add_handler(PARTNER_HANDLER)
-#dispatcher.add_handler()
-#dispatcher.add_handler()
-#dispatcher.add_handler()
+dispatcher.add_handler(LE1_HANDLER)
+dispatcher.add_handler(LE2_HANDLER)
+dispatcher.add_handler(LE3_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
