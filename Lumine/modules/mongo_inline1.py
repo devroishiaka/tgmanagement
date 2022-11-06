@@ -10,7 +10,7 @@ from Lumine import dispatcher
 from Lumine.modules.helper_funcs.extraction import extract_user
 
 
-def bann(update: Update, context: CallbackContext) -> str:
+def bann(update: Update, context: CallbackContext):
     chat = update.effective_chat
     user = update.effective_user
     message = update.effective_message
@@ -20,9 +20,8 @@ def bann(update: Update, context: CallbackContext) -> str:
         repl_message = message.reply_to_message
         user_id = repl_message.from_user.id
         useridd = int(user_id)
-        bot.sendMessage(
-            chat.id,
-            text = "Choose",
+        message.reply_text(
+            "Choose",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -51,10 +50,8 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
             if user_id == senderid:
                 bot.answer_callback_query(query.id, text="congoooo!!!")
                 bot.message.edit_text("congratulations!!")
-                return
-            elif user_id != senderid:
-                bot.answer_callback_query(query.id, text="congo!!!")
-                return
+
+            bot.answer_callback_query(query.id, text="congo!!!")
             
     else:
         query.message.delete()
