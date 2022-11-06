@@ -232,7 +232,7 @@ def leaderboardx1(update: Update, context: CallbackContext):
 def leaderboardx3(update: Update, context: CallbackContext):
     message = update.effective_message
     result = collection.find().limit(5)
-    results = result["Points"]
+    results = str(result)
     message.reply_text(f"{results}")
     
 def devregister(update: Update, context: CallbackContext):
