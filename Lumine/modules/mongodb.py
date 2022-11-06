@@ -72,7 +72,7 @@ async def registerx(event):
     else :
         name = list_of_words[1]
         post_dict1 = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Gender": "No", "Partner": "No", "Friend": "No", "Father": "No", "Mother": "No", "Children": "No", "Status": "No", "Bounty": 0}
-        collection1.insert_one(post_dict1)
+        collection.insert_one(post_dict1)
         
         await event.reply("Successfully Registered!!!")
 
@@ -231,11 +231,18 @@ def leaderboardx1(update: Update, context: CallbackContext):
                        
 def leaderboardx3(update: Update, context: CallbackContext):
     message = update.effective_message
-    result = collection.find().sort({"Points":1}).limit(3)
+    result = collection.find().limit(5)
     results = result["Points"]
     message.reply_text(f"{results}")
     
-    
+def devregister(update: Update, context: CallbackContext):
+    message = update.effective_message
+    list_of_words = message.text.split("-")
+    user_id = list_of_words[0]
+    name = list_of_words[1]
+    post_dict1 = {"_id": user_id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Gender": "No", "Partner": "No", "Friend": "No", "Father": "No", "Mother": "No", "Children": "No", "Status": "No", "Bounty": 0}
+    collection.insert_one(post_dict1)
+    message.reply_text(f"#Terminal\nOperator Command = Register\nSuccessfully Registered the user {name}")
         
 #CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
 POINTS_HANDLER = DisableAbleCommandHandler("point", pointsx, run_async=True)
@@ -244,7 +251,7 @@ DEPOSIT_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 LEADERBOARDX_HANDLER = DisableAbleCommandHandler("leaderboard", leaderboardx, run_async=True)
 LE1_HANDLER = DisableAbleCommandHandler("le1", leaderboardx1, run_async=True)
 LE3_HANDLER = DisableAbleCommandHandler("le3", leaderboardx3, run_async=True)
-#_HANDLER = DisableAbleCommandHandler(,run_async=True)
+DEVREGISTER_HANDLER = DisableAbleCommandHandler("dregister", devregister, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
@@ -260,5 +267,5 @@ dispatcher.add_handler(LEADERBOARDX_HANDLER)
 #dispatcher.add_handler(PARTNER_HANDLER)
 dispatcher.add_handler(LE1_HANDLER)
 dispatcher.add_handler(LE3_HANDLER)
-#dispatcher.add_handler()
+dispatcher.add_handler(DEVREGISTER_HANDLER)
 #dispatcher.add_handler()
