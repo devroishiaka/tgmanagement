@@ -36,7 +36,7 @@ async def friend1(event):
         )
     )
 
-@app.on_callback_query()
+    
 async def callBackButton(bot:Update, callback_query:CallbackQuery):
     data = callback_query.data
     if data == "reject":
