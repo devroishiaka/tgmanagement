@@ -227,19 +227,19 @@ def leaderboardx1(update: Update, context: CallbackContext):
     message = update.effective_message
     result = collection.find().sort({Points:1})
     results = str(result["Points"])
-    message.reply_text(f"{results})
+    message.reply_text(f"{results}")
                        
 def leaderboardx2(update: Update, context: CallbackContext):
     message = update.effective_message
     result = collection.find().sort({$natural:1})
     results = str(result["Points"])
-    message.reply_text(f"{results})
+    message.reply_text(f"{results}")
                        
 def leaderboardx3(update: Update, context: CallbackContext):
     message = update.effective_message
-    result = collection.find().sort({Points:1}).limit(50)
+    result = collection.find().sort({Points:1}).limit(3)
     results = str(result["Points"])
-    message.reply_text(f"{results})
+    message.reply_text(f"{results}")
     
     
         
