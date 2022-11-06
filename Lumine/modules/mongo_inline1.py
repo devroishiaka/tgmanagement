@@ -28,7 +28,7 @@ def bann(update: Update, context: CallbackContext):
                         InlineKeyboardButton(
                             text="✅", callback_data=f"unbanb_unban={useridd}"
                         ),
-                        InlineKeyboardButton(text="❌", callback_data="unbanb_del"),
+                        InlineKeyboardButton(text="❌", callback_data=f"unbanb_del={useridd}"),
                     ]
                 ]
             )
@@ -41,9 +41,9 @@ def unbanb_btn(update: Update, context: CallbackContext):
     senderid = update.effective_user.id
     sender_id = int(senderid)
     query_id = query.id
-    if query.data != "unbanb_del":
-        splitter = query.data.split("=")
-        query_match = splitter[0]
+    splitter = query.data.split("=")
+    query_match = splitter[0]
+    if query_match != "unbanb_del":
         user_id = splitter[1]
         user_id = int(user_id)
         if user_id == senderid:
@@ -51,8 +51,12 @@ def unbanb_btn(update: Update, context: CallbackContext):
         else:
             bot.answer_callback_query(query_id, text="congo!!!")
     else:
-        query.message.delete()
-        bot.answer_callback_query(query.id, text="Deleted!")
+        user_id = splitter[1]
+        user_id = int(user_id)
+        if user_id == senderid:
+            query.message.delete()
+        else:
+            bot.answer_callback_query(query.id, text="Deleted!")
 
 HELP11_HANDLER = CommandHandler("hmm", bann, run_async=True)
 HELP11_BTN_HANDLER = CallbackQueryHandler(unbanb_btn)
