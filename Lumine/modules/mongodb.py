@@ -201,8 +201,8 @@ def leaderboardx(update: Update, context: CallbackContext):
     #leaderboardr = collection.find({}).sort({Points:-1}).limit(10)
     leaderboardr = collection.find({})
     for result in leaderboardr:
-        final = (result["Name"])
-        message.reply_text(final)
+        final += (result["Name"])
+    message.reply_text(final)
     #leaderboardrs = str(leaderboardr["Name", "Points"])
     #message.reply_text(result)
 
