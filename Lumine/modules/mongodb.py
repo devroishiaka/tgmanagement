@@ -200,6 +200,7 @@ def leaderboardx(update: Update, context: CallbackContext):
     message = update.effective_message
     #leaderboardr = collection.find({}).sort({Points:-1}).limit(10)
     leaderboardr = collection.find({})
+    final = "Top\n"
     for result in leaderboardr:
         final += (result["Name"])
         message.reply_text(final)
