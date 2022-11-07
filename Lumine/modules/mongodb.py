@@ -203,7 +203,7 @@ def leaderboardx(update: Update, context: CallbackContext):
     final = "Top\n"
     for result in leaderboardr:
         final += (result["Name"])
-        message.reply_text(final)
+    message.reply_text(final)
     #leaderboardrs = str(leaderboardr["Name", "Points"])
     #message.reply_text(result)
 
