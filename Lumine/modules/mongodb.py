@@ -199,7 +199,7 @@ def depositx(update: Update, context: CallbackContext):
 def leaderboardx(update: Update, context: CallbackContext):
     message = update.effective_message
     #leaderboardr = collection.find({}).sort({Points:-1}).limit(10)
-    leaderboardr = collection.find().limit(5)
+    leaderboardr = collection.find().sort({"Points":-1}).limit(5)
     final = "Top\n"
     for result in leaderboardr:
         final += (result["Name"])
@@ -248,7 +248,7 @@ def devregister(update: Update, context: CallbackContext):
     name = list_of_words[1]
     post_dict1 = {"_id": user_id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Gender": "No", "Partner": "No", "Friend": "No", "Father": "No", "Mother": "No", "Children": "No", "Status": "No", "Bounty": 0}
     collection.insert_one(post_dict1)
-    message.reply_text(f"#Terminal\n`Operator Command = Register`\n<code>Successfully Registered the user</code> {name}", parse_mode=ParseMode.HTML)
+    message.reply_text(f"#Terminal\n<code>Operator Command =</code> <b>Register</b>\n<code>Successfully Registered the user</code> <b>{name}</b>", parse_mode=ParseMode.HTML)
         
 #CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
 POINTS_HANDLER = DisableAbleCommandHandler("point", pointsx, run_async=True)
