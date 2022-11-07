@@ -225,7 +225,8 @@ def partnerx(update: Update, context: CallbackContext):
         
 def leaderboardx1(update: Update, context: CallbackContext):
     message = update.effective_message
-    result = collection.find().sort({"Points":1})
+    #result = collection.find().sort({"Points":1})
+    result = collection.find().limit(5)
     results = str(result["Points"])
     message.reply_text(f"{results}")
                        
@@ -233,11 +234,14 @@ def leaderboardx3(update: Update, context: CallbackContext):
     message = update.effective_message
     result = collection.find().limit(5)
     results = str(result)
-    message.reply_text(f"{results}")
+    For result2 in results:
+        result1 = results[Points]
+        message.reply_text(f"{result1}")
     
 def devregister(update: Update, context: CallbackContext):
     message = update.effective_message
-    list_of_words = message.text.split("-")
+    splitter = message.text.split(None, 1)
+    list_of_words = splitter.split("-")
     user_id = list_of_words[0]
     name = list_of_words[1]
     post_dict1 = {"_id": user_id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Gender": "No", "Partner": "No", "Friend": "No", "Father": "No", "Mother": "No", "Children": "No", "Status": "No", "Bounty": 0}
