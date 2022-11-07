@@ -233,10 +233,10 @@ def leaderboardx1(update: Update, context: CallbackContext):
 def leaderboardx3(update: Update, context: CallbackContext):
     message = update.effective_message
     result = collection.find().limit(5)
-    results = str(result)
-    For result2 in results:
-        result1 = results[Points]
-        message.reply_text(f"{result1}")
+    results = str(result[Points])
+    #For result2 in results:
+        #result1 = results[Points]
+    message.reply_text(f"{results}")
     
 def devregister(update: Update, context: CallbackContext):
     message = update.effective_message
