@@ -38,7 +38,7 @@ def friendx_btn(update: Update, context: CallbackContext):
     query = update.callback_query
     user = update.effective_user
     senderid = update.effective_user.id
-    sender_name = update.effective_user.firstname
+    sender_name = update.effective_user.first_name
     sender_id = int(senderid)
     query_id = query.id
     splitter = query.data.split("=")
