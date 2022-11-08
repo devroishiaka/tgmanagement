@@ -220,7 +220,7 @@ def leaderboardx(update: Update, context: CallbackContext):
     leaderboardr = collection.find().sort("Points",-1).limit(10)
     final = "Top Players\n"
     for result in leaderboardr:
-        final +=f"[x] {result["Name"]} • {result["Points"]}\n"
+        final +=f"{result["Name"]} • {result["Points"]}\n"
         message.reply_text(final)
     #leaderboardrs = str(leaderboardr["Name", "Points"])
     #message.reply_text(result)
