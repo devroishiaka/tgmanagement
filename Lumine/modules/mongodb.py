@@ -218,12 +218,13 @@ def leaderboardx(update: Update, context: CallbackContext):
 def leaderboardx(update: Update, context: CallbackContext):
     message = update.effective_message
     leaderboardr = collection.find().sort("Points",-1).limit(10)
-    final = "Top Players\n"
+    final = "Top Players 🌐\n"
     for result in leaderboardr:
         final += (result["Name"])
         final += " • "
         pointss = str(result["Points"])
         final += (pointss)
+        final += "\n"
     message.reply_text(final)
 
 
