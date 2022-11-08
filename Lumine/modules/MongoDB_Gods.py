@@ -64,7 +64,7 @@ def setpointsx(update: Update, context: CallbackContext):
 
 #/setowner
 @gods_plus
-def createguildx(update: Update, context: CallbackContext):
+def setownerx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
     text = message.text
@@ -79,8 +79,8 @@ def createguildx(update: Update, context: CallbackContext):
 
 
 SETPOINTS_HANDLER = DisableAbleCommandHandler("setpoints", setpointsx, run_async=True)
-CREATEGUILD_HANDLER = DisableAbleCommandHandler("create", create, run_async=True)
-SETOWNER_HANDLER = DisableAbleCommandHandler("setowner", setowner, run_async=True)
+CREATEGUILD_HANDLER = DisableAbleCommandHandler("create", createguildx, run_async=True)
+SETOWNER_HANDLER = DisableAbleCommandHandler("setowner", setownerx, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
