@@ -198,12 +198,15 @@ def depositx(update: Update, context: CallbackContext):
 #/leaderboard
 def leaderboardx(update: Update, context: CallbackContext):
     message = update.effective_message
-    #leaderboardr = collection.find({}).sort({Points:-1}).limit(10)
-    leaderboardr = collection.find().sort("Points",-1).limit(5)
-    final = "Top\n"
+    leaderboardr = collection.find().sort("Points",-1).limit(10)
+    final = "Top Players\n"
     for result in leaderboardr:
-        final += (result["Name"])
-        final += "\n"
+        for i in range(1,11):
+            final += (i,". ")
+            final += (result["Name"])
+            final += " • "
+            final += (result["Points"]
+            final += "\n"
     message.reply_text(final)
     #leaderboardrs = str(leaderboardr["Name", "Points"])
     #message.reply_text(result)
@@ -225,20 +228,6 @@ def partnerx(update: Update, context: CallbackContext):
                 collection1.update_one({"_id": user_id}, {"$set": {"Partner": sender_name}})
                 message.reply_text(f"🎉Happy Married Life🎉\nCongratulations🎊\n[{sender_name}](tg://openmessage?user_id={sender_id}) ❤ [{user_name}](tg://openmessage?user_id={user_id})")
         
-def leaderboardx1(update: Update, context: CallbackContext):
-    message = update.effective_message
-    #result = collection.find().sort({"Points":1})
-    result = collection.find().limit(5)
-    results = str(result["Points"])
-    message.reply_text(f"{results}")
-                       
-def leaderboardx3(update: Update, context: CallbackContext):
-    message = update.effective_message
-    result = collection.find().limit(5)
-    results = str(result[Points])
-    #For result2 in results:
-        #result1 = results[Points]
-    message.reply_text(f"{results}")
     
 def devregister(update: Update, context: CallbackContext):
     message = update.effective_message
@@ -250,13 +239,11 @@ def devregister(update: Update, context: CallbackContext):
     collection.insert_one(post_dict1)
     message.reply_text(f"#Terminal\n<code>Operator Command =</code> <b>Register</b>\n<code>Successfully Registered the user</code> <b>{name}</b>", parse_mode=ParseMode.HTML)
         
-#CREATEGUILD_HANDLER = DisableAbleCommandHandler("createguild", createguildx, run_async=True)
+
 POINTS_HANDLER = DisableAbleCommandHandler("point", pointsx, run_async=True)
 SETPOINTS_HANDLER = DisableAbleCommandHandler("setpoints", setpointsx, run_async=True)
 DEPOSIT_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 LEADERBOARDX_HANDLER = DisableAbleCommandHandler("leaderboard", leaderboardx, run_async=True)
-LE1_HANDLER = DisableAbleCommandHandler("le1", leaderboardx1, run_async=True)
-LE3_HANDLER = DisableAbleCommandHandler("le3", leaderboardx3, run_async=True)
 DEVREGISTER_HANDLER = DisableAbleCommandHandler("dregister", devregister, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
@@ -265,13 +252,10 @@ DEVREGISTER_HANDLER = DisableAbleCommandHandler("dregister", devregister, run_as
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 
 
-#dispatcher.add_handler(CREATEGUILD_HANDLER)
+
 dispatcher.add_handler(POINTS_HANDLER)
 dispatcher.add_handler(SETPOINTS_HANDLER)
 dispatcher.add_handler(DEPOSIT_HANDLER)
 dispatcher.add_handler(LEADERBOARDX_HANDLER)
-#dispatcher.add_handler(PARTNER_HANDLER)
-dispatcher.add_handler(LE1_HANDLER)
-dispatcher.add_handler(LE3_HANDLER)
 dispatcher.add_handler(DEVREGISTER_HANDLER)
 #dispatcher.add_handler()
