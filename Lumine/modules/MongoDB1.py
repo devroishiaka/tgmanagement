@@ -99,7 +99,6 @@ def leaderboardx(update: Update, context: CallbackContext):
         
 
 POINTS_HANDLER = DisableAbleCommandHandler("point", pointsx, run_async=True)
-DEPOSIT_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 LEADERBOARDX_HANDLER = DisableAbleCommandHandler("leaderboard", leaderboardx, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
@@ -110,6 +109,10 @@ LEADERBOARDX_HANDLER = DisableAbleCommandHandler("leaderboard", leaderboardx, ru
 
 
 dispatcher.add_handler(POINTS_HANDLER)
-dispatcher.add_handler(DEPOSIT_HANDLER)
 dispatcher.add_handler(LEADERBOARDX_HANDLER)
+#dispatcher.add_handler()
+#dispatcher.add_handler()
+#dispatcher.add_handler()
+#dispatcher.add_handler()
+#dispatcher.add_handler()
 #dispatcher.add_handler()
