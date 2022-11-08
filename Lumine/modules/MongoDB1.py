@@ -98,8 +98,8 @@ def leaderboardx(update: Update, context: CallbackContext):
     
         
 
-POINTS_HANDLER = DisableAbleCommandHandler("point", pointsx, run_async=True)
-LEADERBOARDX_HANDLER = DisableAbleCommandHandler("leaderboard", leaderboardx, run_async=True)
+POINTS_HANDLER = DisableAbleCommandHandler("points", pointsx, run_async=True)
+LEADERBOARDX_HANDLER = DisableAbleCommandHandler(["leaderboard", "top"], leaderboardx, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
