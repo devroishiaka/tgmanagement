@@ -205,7 +205,7 @@ def leaderboardx(update: Update, context: CallbackContext):
             final += (i,". ")
             final += (result["Name"])
             final += " • "
-            final += (result["Points"]
+            final += (result["Points"])
             final += "\n"
     message.reply_text(final)
     #leaderboardrs = str(leaderboardr["Name", "Points"])
