@@ -202,7 +202,8 @@ def leaderboardx(update: Update, context: CallbackContext):
     final = "Top Players\n"
     for result in leaderboardr:
         for i in range(1,11):
-            final += (i,". ")
+            final += (i)
+            final += ". "
             final += (result["Name"])
             final += " • "
             final += (result["Points"])
