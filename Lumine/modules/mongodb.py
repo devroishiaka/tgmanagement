@@ -196,6 +196,7 @@ def depositx(update: Update, context: CallbackContext):
 
 
 #/leaderboard
+"""
 def leaderboardx(update: Update, context: CallbackContext):
     message = update.effective_message
     leaderboardr = collection.find().sort("Points",-1).limit(10)
@@ -213,7 +214,17 @@ def leaderboardx(update: Update, context: CallbackContext):
             message.reply_text(final, end='')
         message.reply_text()
     #leaderboardrs = str(leaderboardr["Name", "Points"])
+    #message.reply_text(result)"""
+def leaderboardx(update: Update, context: CallbackContext):
+    message = update.effective_message
+    leaderboardr = collection.find().sort("Points",-1).limit(10)
+    final = "Top Players\n"
+    for result in leaderboardr:
+        final +=f"[x] {result["Name"]} • {result["Points"]}\n"
+        message.reply_text(final)
+    #leaderboardrs = str(leaderboardr["Name", "Points"])
     #message.reply_text(result)
+
 
 #/partner
 def partnerx(update: Update, context: CallbackContext):
