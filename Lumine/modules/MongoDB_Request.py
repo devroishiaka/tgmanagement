@@ -2,7 +2,7 @@ import json
 import html
 from datetime import datetime
 from Lumine import dispatcher, DEV_USERS, OWNER_ID, EVENT_LOGS
-from Lumine.modules.mongodb import collection
+from Lumine.modules.MongoDB import collection1, collection2
 import time
 from telegram.error import BadRequest
 from telegram.ext.dispatcher import run_async
