@@ -199,7 +199,7 @@ def depositx(update: Update, context: CallbackContext):
 def leaderboardx(update: Update, context: CallbackContext):
     message = update.effective_message
     #leaderboardr = collection.find({}).sort({Points:-1}).limit(10)
-    leaderboardr = collection.find().sort({"Points":-1}).limit(5)
+    leaderboardr = collection.find().sort("Points",-1).limit(5)
     final = "Top\n"
     for result in leaderboardr:
         final += (result["Name"])
