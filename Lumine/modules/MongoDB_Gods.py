@@ -26,7 +26,7 @@ def createguildx(update: Update, context: CallbackContext):
     guild_id = splitter.split(" ")[0]
     guild_name = splitter.split(" ")[1]
 
-    collection2.insert_one({"_id": guild_id, "Guild_Name": guild_name, "Guild_Level": 1, "Members": 1, "Vault": 1000, "Guild_Creator": "Gods", "Crime_Rate": 0, "Guild_Rank": 1, "Guild_Status": "No" })
+    collection2.insert_one({"_id": guild_id, "Guild_Name": guild_name, "Guild_Level": 1, "Members": 1, "Vault": 1000, "Guild_Creator": "Gods", "Crime_Rate": 0, "Guild_Rank": 1, "Guild_Status": "No", "Guild_Pfp": "No"})
     collection1.update_one({"_id": guild_id}, {"$inc": {"Points": -1000}})
     message.reply_text("Created a new guild!")
 
@@ -77,10 +77,74 @@ def setownerx(update: Update, context: CallbackContext):
     collection2.update_one({"_id": user_id}, {"$set": {"Guild_Creator": result}})
     message.reply_text("successfully updated The Guild INFO")
 
+    
+@gods_plus
+def checkdata(update: Update, context: CallbackContext):
+    message = update.effective_message
+    sender_id = update.effective_user.id
+    text = message.text
+    splitter = text.split(
+        None, 1
+    )
+    user_id = splitter[1]
+    results = collection1.find_one({"_id": user_id})
+    name = results["Name"]
+    level = results["Level"]
+    rank = results["Rank"]
+    points = results["Points"]
+    gender = results["Gender"]
+    partner = results["Partner"]
+    friend = results["Friend"]
+    father = results["Father"]
+    mother = results["Mother"]
+    children = results["Children"]
+    bounty = results["Bounty"]
+    status = results["Status"]
+
+    message.reply_text(f"""
+USERDATA
+
+USER ID = {user_id}
+USER NAME = {name}
+LEVEL = {level}
+RANK = {rank}
+POINTS = {points}
+GENDER = {gender}
+FRIEND = {friend}
+PARTNER = {partner}
+FATHER = {father}
+MOTHER = {mother}
+CHILDREN = {children}
+BOUNTY = {bounty}
+GUILD = {status}
+"""
+    )
+
+
+@gods_plus
+def addpfp(update: Update, context: CallbackContext):
+    message = update.effective_message
+    text = message.text
+    splitter = text.split(
+        None, 1
+    )
+    datatext = splitter[1]
+    guild_name = datatext.split(" ")[0]
+    pfplink = datatext.split(" ")[1]
+    results = collection2.find_one({"Guild_Name": guild_name})
+    if results:
+        collection2.update_one({"Guild_Name": guild_name}, {"$set": {"Guild_Pfp": pfplink}})
+        message.reply_text("Successfully updated the Guild Profile Pic")
+    else:
+        message.reply_text("NO such GUILD found!!")
+        
+        
 
 SETPOINTS_HANDLER = DisableAbleCommandHandler("setpoints", setpointsx, run_async=True)
 CREATEGUILD_HANDLER = DisableAbleCommandHandler("create", createguildx, run_async=True)
 SETOWNER_HANDLER = DisableAbleCommandHandler("setowner", setownerx, run_async=True)
+CHECKDATA_HANDLER = DisableAbleCommandHandler("checkdata", checkdata, run_async=True)
+ADDPFP_HANDLER = DisableAbleCommandHandler("addpfp", addpfp, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
@@ -90,6 +154,8 @@ SETOWNER_HANDLER = DisableAbleCommandHandler("setowner", setownerx, run_async=Tr
 dispatcher.add_handler(SETPOINTS_HANDLER)
 dispatcher.add_handler(CREATEGUILD_HANDLER)
 dispatcher.add_handler(SETOWNER_HANDLER)
+dispatcher.add_handler(CHECKDATA_HANDLER)
+dispatcher.add_handler(ADDPFP_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
