@@ -72,11 +72,65 @@ def depositx(update: Update, context: CallbackContext):
             message.reply_text("Provide me something to deposit")
     else:
         message.reply_text("You not registerd!!\nUse /register to get registerd in this game")
+        
 
+def guild(update: Update, context: CallbackContext):
+    message = update.effective_message
+    splitter = message.text.split(None, 1)[1]
+    guild_name = splitter
+    results = collection2.find_one({"Guild_Name": guild_name})
+    if results:
+        gname = results["Guild_Name"]
+        grank = results["Guild_Rank"]
+        glevel = results["Guild_Level"]
+        gcreator = results["Guild_Creator"]
+        gvault = results["Vault"]
+        gmembers = results["Members"]
+        gcrime = results["Crime_Rate"]
+
+        pfp = results["Guild_Pfp"]
+        if pfp == "NO":
+            message.reply_text(f"""
+GUILD INFO
+
+Guild Name = {gname}
+Creator = {gcreator}
+Rank = {grank}
+Level = {glevel}
+Members = {gmembers}
+Vault = {gvault}
+Crime Rate = {gcrime}
+"""
+            )
+        else:
+            message.reply_photo(pfp, caption=f"""
+GUILD INFO
+
+Guild Name = {gname}
+Creator = {gcreator}
+Rank = {grank}
+Level = {glevel}
+Members = {gmembers}
+Vault = {gvault}
+Crime Rate = {gcrime}
+"""
+            )
+    else:
+        message.reply_text("No Such GUILD found")
 
 DEPOSITX_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
+GUILD_HANDLER = DisableAbleCommandHandler("guild", guild, run_async=True)
+#_HANDLER = DisableAbleCommandHandler(, run_async=True)
+#_HANDLER = DisableAbleCommandHandler(, run_async=True)
+#_HANDLER = DisableAbleCommandHandler(, run_async=True)
+#_HANDLER = DisableAbleCommandHandler(, run_async=True)
+#_HANDLER = DisableAbleCommandHandler(, run_async=True)
 
 dispatcher.add_handler(DEPOSITX_HANDLER)
+dispatcher.add_handler(GUILD_HANDLER)
+#dispatcher.add_handler()
+#dispatcher.add_handler()
+#dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
