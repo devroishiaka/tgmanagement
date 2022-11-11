@@ -124,7 +124,7 @@ def vault(update: Update, context: CallbackContext):
     guild_exist = collection2.find_one({"Guild_Name": guild_name})
     if guild_exist:
         msg_final = f"{guild_name}'s Vault\n"
-        alluser = collection1.find("Status": guild_name)
+        alluser = collection1.find({"Status": guild_name})
         amount = int(guild_exist["Vault"])
         msg_final += f"{guild_name} Have a total amount of {amount} in the vault\n"
         msg_final += "Many members of the guild have contributed and have deposited thier points in the vault\n\n"
