@@ -121,7 +121,7 @@ def vault(update: Update, context: CallbackContext):
     message = update.effective_message
     splitter = message.text.split(None, 1)[1]
     guild_name = int(splitter)
-    guild_exist = collection2.find_one("Guild_Name": guild_name)
+    guild_exist = collection2.find_one({"Guild_Name": guild_name})
     if guild_exist:
         msg_final = f"{guild_name}'s Vault\n"
         alluser = collection1.find("Status": guild_name)
