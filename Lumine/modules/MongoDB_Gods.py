@@ -20,9 +20,7 @@ def createguildx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
     text = message.text
-    splitter = text.split(
-        None, 1
-    )
+    splitter = text.split(None, 1)[1]
     guild_id = splitter.split(" ")[0]
     guild_name = splitter.split(" ")[1]
 
@@ -45,20 +43,20 @@ def setpointsx(update: Update, context: CallbackContext):
         user_id = repl_message.from_user.id
         point1 = list_of_words[1]
         points1 = int(point1)
-        collection.update_one({"_id": user_id}, {"$inc": {"Points": points1}})
+        collection1.update_one({"_id": user_id}, {"$inc": {"Points": points1}})
         message.reply_text("successfully updated the points")
         
     if len(list_of_words) == 3:
         id_tag = list_of_words[1]
         point2 = list_of_words[2]
         points2 = int(point2)
-        collection.update_one({"_id": id_tag}, {"$inc": {"Points": points2}})
+        collection1.update_one({"_id": id_tag}, {"$inc": {"Points": points2}})
         message.reply_text("successfully updated the points")
         
     elif len(list_of_words) == 2:
         point3 = list_of_words[1]
         points3 = int(point3)
-        collection.update_one({"_id": sender_id}, {"$inc": {"Points": points3}})
+        collection1.update_one({"_id": sender_id}, {"$inc": {"Points": points3}})
         message.reply_text("successfully updated the points")
 
 
@@ -86,7 +84,7 @@ def checkdata(update: Update, context: CallbackContext):
     splitter = text.split(
         None, 1
     )
-    user_id = splitter[1]
+    user_id = int(splitter[1])
     results = collection1.find_one({"_id": user_id})
     name = results["Name"]
     level = results["Level"]
