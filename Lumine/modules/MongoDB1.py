@@ -19,27 +19,6 @@ from Lumine.modules.helper_funcs.chat_status import sudo_plus, gods_plus
 from Lumine.modules.helper_funcs.extraction import extract_user
 from Lumine.modules.disable import DisableAbleCommandHandler
 
-#----------------------------------#######################----------------------------------
-#collection = --- User Data   ---------post1
-#collection2 = --- Guild Data  ---------post2
-
-#post1 =                   #Post2 =
-"""
-_id =                      _id = 
-Name =                     Guild_Name = 
-level =                    Guild_Level =
-Rank =                     Members =
-Points =                   vault =
-Gender =                   Guild_Creator =
-Partner =                  Crime_Rate =
-Friend =                   Guild_Rank = 
-Father =                   Guild_Status =
-Mother = 
-Children = 
-Status = (Guild name)
-Bounty = 
-"""
-#----------------------------------#######################----------------------------------
 
 #/register [name]
 @LumineTelethonClient.on(events.NewMessage(pattern="(?i)/register"))
@@ -60,7 +39,7 @@ async def registerx(event):
         )
     else :
         name = list_of_words[1]
-        post_dict1 = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Gender": "No", "Partner": "No", "Friend": "No", "Father": "No", "Mother": "No", "Children": "No", "Status": "No", "Bounty": 0}
+        post_dict1 = {"_id": sender.id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Gender": "No", "Partner": "No", "Friend": "No", "Father": "No", "Mother": "No", "Children": "No", "Status": "No", "Bounty": 0, "Deposit": 0}
         collection1.insert_one(post_dict1)
         
         await event.reply("Successfully Registered!!!")
@@ -85,7 +64,7 @@ def pointsx(update: Update, context: CallbackContext):
 #/leaderboard
 def leaderboardx(update: Update, context: CallbackContext):
     message = update.effective_message
-    leaderboardr = collection.find().sort("Points",-1).limit(10)
+    leaderboardr = collection1.find().sort("Points",-1).limit(10)
     final = "Top Players 🌐\n"
     for result in leaderboardr:
         final += (result["Name"])
