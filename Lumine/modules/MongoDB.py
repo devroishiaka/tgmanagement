@@ -29,9 +29,10 @@ Gender =                   Guild_Creator =
 Partner =                  Crime_Rate =
 Friend =                   Guild_Rank = 
 Father =                   Guild_Status =
-Mother = 
+Mother =                   Guild_pfp =
 Children = 
 Status = (Guild name)
-Bounty = 
+Bounty =
+Deposits = 
 """
 #----------------------------------#######################----------------------------------
