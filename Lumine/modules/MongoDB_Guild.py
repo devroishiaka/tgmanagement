@@ -80,7 +80,8 @@ def depositx(update: Update, context: CallbackContext):
 def guild(update: Update, context: CallbackContext):
     message = update.effective_message
     text = message.text
-    if len(text) == 2:
+    splitter = text.split(" ")
+    if len(splitter) > 1:
         guild_name = text.split(None, 1)[1]
         results = collection2.find_one({"Guild_Name": guild_name})
         if results:
@@ -202,7 +203,7 @@ def vault(update: Update, context: CallbackContext):
             msg_final += "The Members LIst are listed below:\n"
             msg_final += f"<a href='t.me/Kazumaclanxd'>KaZuma CLan</a> • 1000\n"
             for users in alluser:
-                depositss = users["deposit"]
+                depositss = users["Deposit"]
                 if depositss != 0:
                     uname = users["Name"]
                     userid = users["_id"]
@@ -217,18 +218,26 @@ def vault(update: Update, context: CallbackContext):
     else:
         message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
 
-def guildvv(update: Update, context: CallbackContext):
+        
+def allguild(update: Update, context: CallbackContext):
     message = update.effective_message
-    text = message.text
-    sizes = text.split(" ")
-    size = len(text)
-    sizee = len(sizes)
-    message.reply_text(f"{size}\n{sizee}")
+    user_id = update.effective_user.id
+    allguild = collection2.find().sort("Guild_Level",-1).limit(10)
+    final = "━━━━━━━━━҉━━━━━━━━━\n<b>Top Guilds</b> 🌐\n\n"
+    for result in allguild:
+        final += (result["Guild_Name"])
+        final += " • "
+        pointss = str(result["Guild_Level"])
+        final += f"<code>{pointss}</code>"
+        final += "\n"
+    final += "━━━━━━━━━҉━━━━━━━━━"
+    message.reply_text(final, parse_mode=parse_mode.HTML)
+    
 
 DEPOSITX_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 GUILD_HANDLER = DisableAbleCommandHandler("guild", guild, run_async=True)
 VAULT_HANDLER = DisableAbleCommandHandler("vault", vault, run_async=True)
-GGG_HANDLER = DisableAbleCommandHandler("guildvv", guildvv, run_async=True)
+TOPGUILDS_HANDLER = DisableAbleCommandHandler("topguilds", allguild, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
@@ -237,7 +246,7 @@ GGG_HANDLER = DisableAbleCommandHandler("guildvv", guildvv, run_async=True)
 dispatcher.add_handler(DEPOSITX_HANDLER)
 dispatcher.add_handler(GUILD_HANDLER)
 dispatcher.add_handler(VAULT_HANDLER)
-dispatcher.add_handler(GGG_HANDLER)
+dispatcher.add_handler(TOPGUILDS_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
