@@ -33,7 +33,7 @@ async def joinx(event):
                 collection2.update_one({"Guild_Name": guild}, {"$inc":{"Members": 1}})
                 collection1.update_one({"_id": sender.id}, {"$set":{"Status": guild}})
                 return await event.respond(
-                f"━━━━━━━━━━━━━━━━\n\n🎉 {sender.first_name} You Successfully joined the {guild} guild!!!\n━━━━━━━━━━━━━━━━"
+                f"━━━━━━━━━━━━━━\n🎉 {sender.first_name} You Successfully joined the {guild} guild!!!\n━━━━━━━━━━━━━━"
                 )
             else:
                 return await event.respond(
@@ -95,7 +95,7 @@ def guild(update: Update, context: CallbackContext):
             pfp = results["Guild_Pfp"]
             if pfp == "NO":
                 message.reply_text(f"""
-━━━━━━━━━҉━━━━━━━━━
+━━━━━━━҉━━━━━━━
 <b>⊱ {gname} ⊰</b>
 
 ◈ Guild Name = <code>{guild_name}</code>
@@ -105,7 +105,7 @@ def guild(update: Update, context: CallbackContext):
 ◈ Members = <code>{gmembers}</code>
 ◈ Vault = <code>{gvault}</code>
 ◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
+━━━━━━━҉━━━━━━━
 """,
                     parse_mode=ParseMode.HTML,
                 )
@@ -191,24 +191,28 @@ def vault(update: Update, context: CallbackContext):
             message.reply_text("Join a guild first to have a Guild Vault")
         else:
             guild = collection2.find_one({"Guild_Name": guild_exist})
-            msg_final = f"━━━━━━━━━҉━━━━━━━━━\n<b>⊱ {guild_exist} ⊰</b>\n\n"
+            msg_final = f"━━━━━━━━҉━━━━━━━━\n<b>⊱ {guild_exist} ⊰</b>\n\n"
             alluser = collection1.find({"Status": guild_exist})
             amount = int(guild["Vault"])
             msg_final += f"{guild_exist} Have a total amount of {amount} in the vault\n"
             creator = guild["Guild_Creator"]
             msg_final += f"The Creator of this Guild is {creator}"
-            msg_final += "━━━━━━━━━҉━━━━━━━━━\n"
+            msg_final += "━━━━━━━━҉━━━━━━━━\n"
             msg_final += "Members of the guild have contributed and have deposited thier points in the vault\n\n"
             msg_final += "The Members LIst are listed below:\n"
-            msg_final += "@Kazumaclanxd • 1000\n"
+            msg_final += f"<a href='t.me/Kazumaclanxd'>KaZuma CLan</a> • 1000\n"
             for users in alluser:
-                uname = users["Name"]
-                userid = users["_id"]
-                msg_final += f"<a href='tg://user?id={userid}'>{uname}</a>"
-                msg_final += " • "
-                deposit = users["Deposit"]
-                msg_final += f"<code>{deposit}</code>"
-                msg_final += "\n"
+                depositss = int(users["deposit"])
+                if depositss != 0:
+                    uname = users["Name"]
+                    userid = users["_id"]
+                    msg_final += f"<a href='tg://user?id={userid}'>{uname}</a>"
+                    msg_final += " • "
+                    deposit = users["Deposit"]
+                    msg_final += f"<code>{deposit}</code>"
+                    msg_final += "\n"
+                else:
+                    continue
             message.reply_text(msg_final, parse_mode=ParseMode.HTML)
     else:
         message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
