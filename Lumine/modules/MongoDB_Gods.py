@@ -20,9 +20,8 @@ def createguildx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
     text = message.text
-    if len(text) == 2:
-        message.reply_text("Correct format:\n/create <user ID> <Guild Name>")
-    elif len(text) > 2:
+    splitters = text.split(" ")
+    if len(splitters) > 2:
         splitter = text.split(None, 1)[1]
         guild_id = splitter.split(" ")[0]
         guild_name = splitter.split(None, 1)[1]
