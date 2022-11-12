@@ -67,7 +67,9 @@ def leaderboardx(update: Update, context: CallbackContext):
     leaderboardr = collection1.find().sort("Points",-1).limit(10)
     final = "Top Players 🌐\n"
     for result in leaderboardr:
-        final += (result["Name"])
+        uname = result["Name"]
+        userid = result["_id"]
+        final += f"<a href='tg://user?id={userid}'>{uname}</a>"
         final += " • "
         pointss = str(result["Points"])
         final += (pointss)
