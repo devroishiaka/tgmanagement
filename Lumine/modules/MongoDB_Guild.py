@@ -7,7 +7,7 @@ from Lumine import telethn as LumineTelethonClient
 from Lumine.modules.MongoDB import collection1, collection2
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
-from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity
+from telegram import MAX_MESSAGE_LENGTH, MessageEntity
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 from telegram.utils.helpers import escape_markdown, mention_html
 
@@ -231,7 +231,7 @@ def allguild(update: Update, context: CallbackContext):
         final += f"<code>{pointss}</code>"
         final += "\n"
     final += "━━━━━━━━━҉━━━━━━━━━"
-    message.reply_text(final, parse_mode=parse_mode.HTML)
+    message.reply_text(final, parse_mode=Parse_mode.HTML)
     
 
 DEPOSITX_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
