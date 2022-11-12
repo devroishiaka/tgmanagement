@@ -66,7 +66,7 @@ def depositx(update: Update, context: CallbackContext):
                 if points1 < result1:
                     collection2.update_one({"Guild_Name": result2}, {"$inc": {"Vault": points1}})
                     points = 0-points1
-                    collection1.update_one({"_id": sender_id}, {"$inc": {"Points": points}, {"Deposit": points1}})
+                    collection1.update_one({"_id": sender_id}, {"$inc": {"Points": points, "Deposit": points1}})
                     message.reply_text("💸 Successfully Deposited the points!")
                 else:
                     message.reply_text("you dont have enough points to deposit")
