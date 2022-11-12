@@ -202,7 +202,7 @@ def vault(update: Update, context: CallbackContext):
             msg_final += "The Members LIst are listed below:\n"
             msg_final += f"<a href='t.me/Kazumaclanxd'>KaZuma CLan</a> • 1000\n"
             for users in alluser:
-                depositss = int(users["deposit"])
+                depositss = users["deposit"]
                 if depositss != 0:
                     uname = users["Name"]
                     userid = users["_id"]
@@ -217,11 +217,18 @@ def vault(update: Update, context: CallbackContext):
     else:
         message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
 
+def guildvv(update: Update, context: CallbackContext):
+    message = update.effective_message
+    text = message.text
+    sizes = text.split(" ")
+    size = len(text)
+    sizee = len(sizes)
+    message.reply_text(f"{size}\n{sizee}")
 
 DEPOSITX_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 GUILD_HANDLER = DisableAbleCommandHandler("guild", guild, run_async=True)
 VAULT_HANDLER = DisableAbleCommandHandler("vault", vault, run_async=True)
-#_HANDLER = DisableAbleCommandHandler(, run_async=True)
+GGG_HANDLER = DisableAbleCommandHandler("guildvv", guildvv, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
@@ -230,7 +237,7 @@ VAULT_HANDLER = DisableAbleCommandHandler("vault", vault, run_async=True)
 dispatcher.add_handler(DEPOSITX_HANDLER)
 dispatcher.add_handler(GUILD_HANDLER)
 dispatcher.add_handler(VAULT_HANDLER)
-#dispatcher.add_handler()
+dispatcher.add_handler(GGG_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
