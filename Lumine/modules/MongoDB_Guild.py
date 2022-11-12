@@ -135,7 +135,7 @@ def guild(update: Update, context: CallbackContext):
             if guild_name == "No":
                 message.reply_text("Join a Guild first to see info about your guild.\nYou can also search other guild with the format /guild <guild name>")
             else:
-                results = collection2.find_one({"Guild_Name": guild_exist})
+                results = collection2.find_one({"Guild_Name": guild_name})
                 gname = results["Guild_FName"]
                 grank = results["Guild_Rank"]
                 glevel = results["Guild_Level"]
