@@ -80,7 +80,7 @@ def depositx(update: Update, context: CallbackContext):
 def guild(update: Update, context: CallbackContext):
     message = update.effective_message
     text = message.text
-    if len(text) > 1:
+    if len(text) > 2:
         guild_name = text.split(None, 1)[1]
         results = collection2.find_one({"Guild_Name": guild_name})
         if results:
@@ -202,9 +202,11 @@ def vault(update: Update, context: CallbackContext):
             msg_final += "The Members LIst are listed below:\n"
             msg_final += "@Kazumaclanxd • 1000\n"
             for users in alluser:
-                msg_final += (alluser["Name"])
+                uname = users["Name"]
+                userid = users["_id"]
+                msg_final += f"<a href='tg://user?id={userid}'>{uname}</a>"
                 msg_final += " • "
-                deposit = alluser["Deposit"]
+                deposit = users["Deposit"]
                 msg_final += f"<code>{deposit}</code>"
                 msg_final += "\n"
             message.reply_text(msg_final, parse_mode=ParseMode.HTML)
