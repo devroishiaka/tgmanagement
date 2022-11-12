@@ -57,12 +57,6 @@ def setpointsx(update: Update, context: CallbackContext):
         points2 = int(point2)
         collection1.update_one({"_id": id_tag}, {"$inc": {"Points": points2}})
         message.reply_text("✅ successfully updated the points")
-        
-    elif len(list_of_words) == 2:
-        point3 = list_of_words[1]
-        points3 = int(point3)
-        collection1.update_one({"_id": sender_id}, {"$inc": {"Points": points3}})
-        message.reply_text("✅ successfully updated the points")
 
 
 #/setowner
