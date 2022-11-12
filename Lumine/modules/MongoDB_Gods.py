@@ -67,7 +67,7 @@ def setpointsx(update: Update, context: CallbackContext):
 
 #/setowner
 @gods_plus
-def setowner(update: Update, context: CallbackContext):
+def setownerx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
     text = message.text
