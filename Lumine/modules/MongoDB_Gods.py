@@ -149,7 +149,7 @@ def addpfp(update: Update, context: CallbackContext):
         collection2.update_one({"Guild_Name": guild_name}, {"$set": {"Guild_Pfp": pfplink}})
         message.reply_text("✅ Successfully updated the Guild Profile Pic")
     else:
-        message.reply_text("NO such GUILD found!!)
+        message.reply_text("NO such GUILD found!!")
         
         
 
