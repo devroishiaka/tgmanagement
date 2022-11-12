@@ -33,7 +33,7 @@ async def joinx(event):
                 collection2.update_one({"Guild_Name": guild}, {"$inc":{"Members": 1}})
                 collection1.update_one({"_id": sender.id}, {"$set":{"Status": guild}})
                 return await event.respond(
-                f"━━━━━━━━━━━━━━━━\n🎉 You Successfully joined the {guild} guild!!!\n━━━━━━━━━━━━━━━━"
+                f"━━━━━━━━━━━━━━━━\n\n🎉 {sender.first_name} You Successfully joined the {guild} guild!!!\n━━━━━━━━━━━━━━━━"
                 )
             else:
                 return await event.respond(
@@ -54,10 +54,10 @@ def depositx(update: Update, context: CallbackContext):
     sender_id = update.effective_user.id
     bot = context.bot
     list_of_words = message.text.split(" ")
-    points1 = int(list_of_words[1])
-    registerd = collection.find_one({"_id": sender_id})
-    if registerd:
-        if len(list_of_words) == 2:
+    if len(list_of_words) > 1:
+        points1 = int(list_of_words[1])
+        registerd = collection1.find_one({"_id": sender_id})
+        if registerd:
             result1 = int(registerd["Points"])
             result2 = str(registerd["Status"])
             if result2 == "No":
@@ -66,76 +66,150 @@ def depositx(update: Update, context: CallbackContext):
                 if points1 < result1:
                     collection2.update_one({"Guild_Name": result2}, {"$inc": {"Vault": points1}})
                     points = 0-points1
-                    collection1.update_one({"_id": sender_id}, {"$inc": {"Points": points, "Deposits": points1}})
+                    collection1.update_one({"_id": sender_id}, {"$inc": {"Points": points}, {"Deposit": points1}})
                     message.reply_text("💸 Successfully Deposited the points!")
                 else:
                     message.reply_text("you dont have enough points to deposit")
         else:
-            message.reply_text("Provide me something to deposit\nCorrect Format: /deposit <amount>")
+            message.reply_text("You not registerd!!\nUse /register to get registerd in this game")
     else:
-        message.reply_text("You not registerd!!\nUse /register to get registerd in this game")
-        
+        message.reply_text("Provide me something to deposit\nCorrect Format: /deposit <amount>")
 
+        
+#/guild or /guild <guild name>
 def guild(update: Update, context: CallbackContext):
     message = update.effective_message
-    splitter = message.text.split(None, 1)[1]
-    guild_name = splitter
-    results = collection2.find_one({"Guild_Name": guild_name})
-    if results:
-        gname = results["Guild_Name"]
-        grank = results["Guild_Rank"]
-        glevel = results["Guild_Level"]
-        gcreator = results["Guild_Creator"]
-        gvault = results["Vault"]
-        gmembers = results["Members"]
-        gcrime = results["Crime_Rate"]
+    text = message.text
+    if len(text) > 1:
+        guild_name = text.split(None, 1)[1]
+        results = collection2.find_one({"Guild_Name": guild_name})
+        if results:
+            gname = results["Guild_FName"]
+            grank = results["Guild_Rank"]
+            glevel = results["Guild_Level"]
+            gcreator = results["Guild_Creator"]
+            gvault = results["Vault"]
+            gmembers = results["Members"]
+            gcrime = results["Crime_Rate"]
 
-        pfp = results["Guild_Pfp"]
-        if pfp == "NO":
-            message.reply_text(f"""
-GUILD INFO
+            pfp = results["Guild_Pfp"]
+            if pfp == "NO":
+                message.reply_text(f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
 
-Guild Name = {gname}
-Creator = {gcreator}
-Rank = {grank}
-Level = {glevel}
-Members = {gmembers}
-Vault = {gvault}
-Crime Rate = {gcrime}
-"""
-            )
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+""",
+                    parse_mode=ParseMode.HTML,
+                )
+            else:
+                message.reply_photo(pfp, caption=f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+""",
+                    parse_mode=ParseMode.HTML,
+                )
         else:
-            message.reply_photo(pfp, caption=f"""
-GUILD INFO
-
-Guild Name = {gname}
-Creator = {gcreator}
-Rank = {grank}
-Level = {glevel}
-Members = {gmembers}
-Vault = {gvault}
-Crime Rate = {gcrime}
-"""
-            )
+            message.reply_text("No Such GUILD found")
     else:
-        message.reply_text("No Such GUILD found")
-        
+        user_id = update.effective_user.id
+        registerd = collection1.find_one({"_id": user_id})
+        if registerd:
+            guild_name = registerd["Status"]
+            if guild_name == "No":
+                message.reply_text("Join a Guild first to see info about your guild.\nYou can also search other guild with the format /guild <guild name>")
+            else:
+                results = collection2.find_one({"Guild_Name": guild_exist})
+                gname = results["Guild_FName"]
+                grank = results["Guild_Rank"]
+                glevel = results["Guild_Level"]
+                gcreator = results["Guild_Creator"]
+                gvault = results["Vault"]
+                gmembers = results["Members"]
+                gcrime = results["Crime_Rate"]
+
+                pfp = results["Guild_Pfp"]
+                if pfp == "No":
+                    message.reply_text(f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+""",
+                        parse_mode=ParseMode.HTML,
+                    )
+                else:
+                    message.reply_photo(pfp, caption=f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+""",
+                        parse_mode=ParseMode.HTML,
+                    )
+        else:
+            message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
+            
+#/vault        
 def vault(update: Update, context: CallbackContext):
     message = update.effective_message
-    guild_name = message.text.split(None, 1)[1]
-    guild_exist = collection2.find_one({"Guild_Name": guild_name})
-    if guild_exist:
-        msg_final = f"{guild_name}'s Vault\n"
-        alluser = collection1.find({"Status": guild_name})
-        amount = int(guild_exist["Vault"])
-        msg_final += f"{guild_name} Have a total amount of {amount} in the vault\n"
-        msg_final += "Many members of the guild have contributed and have deposited thier points in the vault\n\n"
-        msg_final += "The Members LIst are listed below:\n"
-        for users in alluser:
-            msg_final += (alluser["Name"])
-            msg_final += " • "
-            msg_final += (alluser["Deposits"])
-        message.reply_text(msg_final)
+    user_id = update.effective_user.id
+    registerd = collection1.find_one({"_id": user_id})
+    if registerd:
+        guild_exist = registerd["Status"]
+        if guild_exist == "No":
+            message.reply_text("Join a guild first to have a Guild Vault")
+        else:
+            guild = collection2.find_one({"Guild_Name": guild_exist})
+            msg_final = f"━━━━━━━━━҉━━━━━━━━━\n<b>⊱ {guild_exist} ⊰</b>\n\n"
+            alluser = collection1.find({"Status": guild_exist})
+            amount = int(guild["Vault"])
+            msg_final += f"{guild_exist} Have a total amount of {amount} in the vault\n"
+            creator = guild["Guild_Creator"]
+            msg_final += f"The Creator of this Guild is {creator}"
+            msg_final += "━━━━━━━━━҉━━━━━━━━━\n"
+            msg_final += "Members of the guild have contributed and have deposited thier points in the vault\n\n"
+            msg_final += "The Members LIst are listed below:\n"
+            msg_final += "@Kazumaclanxd • 1000\n"
+            for users in alluser:
+                msg_final += (alluser["Name"])
+                msg_final += " • "
+                deposit = alluser["Deposit"]
+                msg_final += f"<code>{deposit}</code>"
+                msg_final += "\n"
+            message.reply_text(msg_final, parse_mode=ParseMode.HTML)
+    else:
+        message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
 
 
 DEPOSITX_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
