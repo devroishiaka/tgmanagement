@@ -80,7 +80,7 @@ def depositx(update: Update, context: CallbackContext):
 def guild(update: Update, context: CallbackContext):
     message = update.effective_message
     text = message.text
-    if len(text) > 2:
+    if len(text) == 2:
         guild_name = text.split(None, 1)[1]
         results = collection2.find_one({"Guild_Name": guild_name})
         if results:
