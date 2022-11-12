@@ -44,7 +44,7 @@ async def joinx(event):
             "You not registerd!!\nUse /register to get registerd in this game"
             )
     else:
-        return await event.respond("Wrong format, use this way:\n/join <Guild Name>"
+        return await event.respond("Wrong format, use this way:\n/join <Guild Name>")
 
 
 
