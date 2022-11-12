@@ -214,7 +214,7 @@ def vault(update: Update, context: CallbackContext):
                     msg_final += "\n"
                 else:
                     continue
-            message.reply_text(msg_final, parse_mode=ParseMode.HTML)
+            message.reply_text(msg_final, parse_mode=ParseMode.HTML,)
     else:
         message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
 
@@ -230,8 +230,7 @@ def allguild(update: Update, context: CallbackContext):
         pointss = str(result["Guild_Level"])
         final += f"<code>{pointss}</code>"
         final += "\n"
-    final += "━━━━━━━━━҉━━━━━━━━━"
-    message.reply_text(final, parse_mode=Parse_mode.HTML)
+    message.reply_text(final, parse_mode=ParseMode.HTML)
     
 
 DEPOSITX_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
