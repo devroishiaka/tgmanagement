@@ -24,24 +24,27 @@ from Lumine.modules.disable import DisableAbleCommandHandler
 async def joinx(event):
     sender = await event.get_sender()
     list_of_words = event.message.text.split(" ")
-    guild = list_of_words[1]
-    registerd = collection1.find_one({"_id": sender.id})
-    if registerd:
-        guild_exist = collection2.find({"Guild_Name": guild})
-        if guild_exist:
-            collection2.update_one({"Guild_Name": guild}, {"$inc":{"Members": 1}})
-            collection1.update_one({"_id": sender.id}, {"$set":{"Status": guild}})
-            return await event.respond(
-            f"🎉 You Successfully joined the {guild} guild!!!"
-            )
+    if len(list_of_words) > 1:
+        guild = list_of_words[1]
+        registerd = collection1.find_one({"_id": sender.id})
+        if registerd:
+            guild_exist = collection2.find({"Guild_Name": guild})
+            if guild_exist:
+                collection2.update_one({"Guild_Name": guild}, {"$inc":{"Members": 1}})
+                collection1.update_one({"_id": sender.id}, {"$set":{"Status": guild}})
+                return await event.respond(
+                f"━━━━━━━━━━━━━━━━\n🎉 You Successfully joined the {guild} guild!!!\n━━━━━━━━━━━━━━━━"
+                )
+            else:
+                return await event.respond(
+                f"{guild} guild doesn’t exist!!"
+                )
         else:
             return await event.respond(
-            f"{guild} guild dont exist!!"
+            "You not registerd!!\nUse /register to get registerd in this game"
             )
     else:
-        return await event.respond(
-        "You not registerd!!\nUse /register to get registerd in this game"
-        )
+        return await event.respond("Wrong format, use this way:\n/join <Guild Name>"
 
 
 
