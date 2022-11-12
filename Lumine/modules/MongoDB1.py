@@ -74,7 +74,7 @@ def leaderboardx(update: Update, context: CallbackContext):
         pointss = str(result["Points"])
         final += (pointss)
         final += "\n"
-    message.reply_text(final, parse_mode=Parse_Mode.HTML)
+    message.reply_text(final, parse_mode=ParseMode.HTML)
         
     
         
