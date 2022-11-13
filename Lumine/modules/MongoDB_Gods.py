@@ -21,11 +21,18 @@ def createguildx(update: Update, context: CallbackContext):
     sender_id = update.effective_user.id
     text = message.text
     splitters = text.split(" ")
+    
     if len(splitters) > 2:
         splitter = text.split(None, 1)[1]
         guild_id = splitter.split(" ")[0]
         guild_name = splitter.split(None, 1)[1]
-
+        guild_exist = collection2.find_one({"Guild_Name": guild_name})
+        if guild_exist:
+            message.reply_text("Guild Name is taken\nUse different name")
+        userid_exist = collection2.find_one({"_id": guild_id})
+        if userid_exist:
+            message.reply_text("This user already own's a guild.")
+        
         collection2.insert_one({"_id": guild_id, "Guild_Name": guild_name, "Guild_FName": guild_name, "Guild_Level": 1, "Members": 1, "Vault": 2000, "Guild_Creator": "Gods", "Crime_Rate": 0, "Guild_Rank": 1, "Guild_Status": "No", "Guild_Pfp": "No" })
         collection1.update_one({"_id": guild_id}, {"$inc": {"Points": -1000}})
         message.reply_text("✅ Created a new guild!")
@@ -41,45 +48,52 @@ def setpointsx(update: Update, context: CallbackContext):
     sender_id = update.effective_user.id
     bot = context.bot
     list_of_words = message.text.split(" ")
-    
-    if message.reply_to_message:
-        repl_message = message.reply_to_message
-        user_id = repl_message.from_user.id
-        point1 = list_of_words[1]
-        points1 = int(point1)
-        collection1.update_one({"_id": user_id}, {"$inc": {"Points": points1}})
-        message.reply_text("✅ successfully updated the points")
-        
-    if len(list_of_words) == 3:
-        id_tag = list_of_words[1]
-        point2 = list_of_words[2]
-        points2 = int(point2)
-        collection1.update_one({"_id": id_tag}, {"$inc": {"Points": points2}})
-        message.reply_text("✅ successfully updated the points")
+    if len(list_of_words) > 1:
+        if message.reply_to_message:
+            repl_message = message.reply_to_message
+            user_id = repl_message.from_user.id
+            point1 = list_of_words[1]
+            points1 = int(point1)
+            collection1.update_one({"_id": user_id}, {"$inc": {"Points": points1}})
+            message.reply_text("✅ successfully updated the points")
+            
+        if len(list_of_words) == 3:
+            id_tag = list_of_words[1]
+            point2 = list_of_words[2]
+            points2 = int(point2)
+            collection1.update_one({"_id": id_tag}, {"$inc": {"Points": points2}})
+            message.reply_text("✅ successfully updated the points")
+    else:
+        message.reply_text("Wrong format\nuse this way /setpoints <user ID> <Points>")
 
 
 #/setowner
 @gods_plus
-def setownerx(update: Update, context: CallbackContext):
+def setowner(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
     text = message.text
-    splitter = text.split(
-        None, 1
-    )
-    user_id = splitter[1]
-    results = collection1.find_one({"_id": user_id})
-    result = results["Name"]
-    collection2.update_one({"_id": user_id}, {"$set": {"Guild_Creator": result}})
-    message.reply_text("✅ successfully updated The Guild INFO")
+    splitters = text.split(" ")
+    if len(splitters) > 1:
+        splitter = text.split(
+            None, 1
+        )
+        user_id = splitter[1]
+        results = collection1.find_one({"_id": user_id})
+        result = results["Name"]
+        collection2.update_one({"_id": user_id}, {"$set": {"Guild_Creator": result}})
+        message.reply_text("✅ successfully updated The Guild INFO")
+    else:
+        message.reply_text("Wrong format\ncorrect way: /setowner <user ID>")
 
     
 @gods_plus
 def checkdata(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
+    splitters = message.text.split(" ")
     text = message.text
-    if len(text) > 1:
+    if len(splitters) > 1:
         splitter = text.split(
             None, 1
         )
@@ -127,23 +141,26 @@ GUILD = <code>{status}</code>
        
 
 
-@gods_plus
+@gods_plus 
 def addpfp(update: Update, context: CallbackContext):
     message = update.effective_message
     text = message.text
-    splitter = text.split(
-        None, 1
-    )
-    datatext = splitter[1]
-    guild_name = datatext.split(" ")[0]
-    pfplink = datatext.split(" ")[1]
-    results = collection2.find_one({"Guild_Name": guild_name})
-    if results:
-        collection2.update_one({"Guild_Name": guild_name}, {"$set": {"Guild_Pfp": pfplink}})
-        message.reply_text("✅ Successfully updated the Guild Profile Pic")
+    splitters = text.split(" ")
+    if splitters > 2:
+        splitter = text.split(
+            None, 1
+        )
+        datatext = splitter[1]
+        guild_name = datatext.split(" ")[0]
+        pfplink = datatext.split(" ")[1]
+        results = collection2.find_one({"Guild_Name": guild_name})
+        if results:
+            collection2.update_one({"Guild_Name": guild_name}, {"$set": {"Guild_Pfp": pfplink}})
+            message.reply_text("✅ Successfully updated the Guild Profile Pic")
+        else:
+            message.reply_text("NO such GUILD found!!")
     else:
-        message.reply_text("NO such GUILD found!!")
-        
+        message.reply_text("Correct format:\n/addpfp <guildname> <pfp link>")
         
 
 SETPOINTS_HANDLER = DisableAbleCommandHandler("setpoints", setpointsx, run_async=True)
