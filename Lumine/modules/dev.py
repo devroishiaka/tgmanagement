@@ -50,7 +50,7 @@ def leave(update: Update, context: CallbackContext):
         update.effective_message.reply_text("Send a valid chat ID")
 
 
-LEAVE_HANDLER = CommandHandler("leave", leave, run_async=True)
+LEAVE_HANDLER = CommandHandler("leavex", leave, run_async=True)
 ALLOWGROUPS_HANDLER = CommandHandler("lockdown", allow_groups, run_async=True)
 
 dispatcher.add_handler(ALLOWGROUPS_HANDLER)
