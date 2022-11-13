@@ -165,7 +165,7 @@ def addpfp(update: Update, context: CallbackContext):
 
 SETPOINTS_HANDLER = DisableAbleCommandHandler("setpoints", setpointsx, run_async=True)
 CREATEGUILD_HANDLER = DisableAbleCommandHandler("create", createguildx, run_async=True)
-SETOWNER_HANDLER = DisableAbleCommandHandler("setowner", setownerx, run_async=True)
+SETOWNER_HANDLER = DisableAbleCommandHandler("setowner", setowner, run_async=True)
 CHECKDATA_HANDLER = DisableAbleCommandHandler("checkdata", checkdata, run_async=True)
 ADDPFP_HANDLER = DisableAbleCommandHandler("addpfp", addpfp, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
