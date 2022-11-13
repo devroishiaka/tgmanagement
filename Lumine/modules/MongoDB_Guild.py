@@ -229,7 +229,7 @@ def allguild(update: Update, context: CallbackContext):
         pointss = str(result["Guild_Level"])
         final += f"<code>{pointss}</code>"
         final += "\n"
-    message.reply_text(final, parse_mode=Parse.Mode.HTML)
+    message.reply_text(final, parse_mode=ParseMode.HTML)
     
 
 def leavex(update: Update, context: CallbackContext):
@@ -292,6 +292,8 @@ dispatcher.add_handler(DEPOSITX_HANDLER)
 dispatcher.add_handler(GUILD_HANDLER)
 dispatcher.add_handler(VAULT_HANDLER)
 dispatcher.add_handler(TOPGUILDS_HANDLER)
+dispatcher.add_handler(LEAVEX_HANDLER)
+dispatcher.add_handler(LEAVEX_BTN_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
