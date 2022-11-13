@@ -281,7 +281,7 @@ DEPOSITX_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True
 GUILD_HANDLER = DisableAbleCommandHandler("guild", guild, run_async=True)
 VAULT_HANDLER = DisableAbleCommandHandler("vault", vault, run_async=True)
 TOPGUILDS_HANDLER = DisableAbleCommandHandler("topguilds", allguild, run_async=True)
-LEAVEX_HANDLER = DisableAbleCommandHandler("leave", leave, run_async=True)
+LEAVEX_HANDLER = DisableAbleCommandHandler("leave", leavex, run_async=True)
 LEAVEX_BTN_HANDLER = CallbackQueryHandler(leavex_btn)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
