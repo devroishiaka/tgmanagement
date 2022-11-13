@@ -20,7 +20,7 @@ def devregister(update: Update, context: CallbackContext):
     list_of_words = splitter.split("-")
     user_id = int(list_of_words[0])
     name = list_of_words[1]
-    post_dict1 = {"_id": user_id, "Name": name, "Level": 1, "Rank": "D-Class", "Points": 100, "Gender": "No", "Partner": "No", "Friend": "No", "Father": "No", "Mother": "No", "Children": "No", "Status": "No", "Bounty": 0}
+    post_dict1 = {"_id": user_id, "Name": name, "EXP": 10, "Level": 1, "Rank": "D-Class", "Points": 100, "Gender": "No", "Partner": "No", "Friend": "No", "Father": "No", "Mother": "No", "Children": "No", "Status": "No", "Bounty": 0, "Deposit": 0, "TDeposit": 0}
     collection1.insert_one(post_dict1)
     message.reply_text(f"#Terminal\n<code>Operator Command =</code> <b>Register</b>\n<code>Successfully Registered the user</code> <b>{name}</b>", parse_mode=ParseMode.HTML)
 
@@ -34,7 +34,7 @@ def devregister(update: Update, context: CallbackContext):
 
 
 
-DEVREGISTER_HANDLER = DisableAbleCommandHandler("dregister", devregister, run_async=True)
+DEVREGISTER_HANDLER = DisableAbleCommandHandler("adduser", devregister, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
