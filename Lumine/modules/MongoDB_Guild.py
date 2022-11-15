@@ -112,7 +112,8 @@ async def guildx(event):
 ━━━━━━━━━҉━━━━━━━━━
 """,
                     parse_mode=ParseMode.HTML,
-                    pfp,)
+                    pfp,
+                                            )
             else:
                 return await event.respond(f"""
 ━━━━━━━━━҉━━━━━━━━━
