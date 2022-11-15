@@ -96,10 +96,12 @@ async def guildx(event):
             gmembers = results["Members"]
             gcrime = results["Crime_Rate"]
 
-            return await event.respond(f"""
+            pfp = results["Guild_Pfp"]
+            pfp = str(pfp)
+            if pfp != "No":
+                return await event.send_file(f"""
 ━━━━━━━━━҉━━━━━━━━━
 <b>⊱ {gname} ⊰</b>
-
 ◈ Guild Name = <code>{guild_name}</code>
 ◈ Creator = <code>{gcreator}</code>
 ◈ Rank = <code>{grank}</code>
@@ -109,14 +111,77 @@ async def guildx(event):
 ◈ Crime Rate = <code>{gcrime}</code>
 ━━━━━━━━━҉━━━━━━━━━
 """,
-                parse_mode=ParseMode.HTML,
-            )
+                    parse_mode=ParseMode.HTML,
+                    pfp,
+                )
+            else:
+                return await event.respond(f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+""",
+                    parse_mode=ParseMode.HTML,
+                )
         else:
             return await event.respond(f"{guild} guild doesn’t exist!!")
     else:
-        return await event.respond(
-            "You not registerd!!\nUse /register to get registerd in this game"
-        )
+        registerd = collection1.find_one({"_id": sender.id})
+        if registerd:
+            guild_name = registerd["Status"]
+            guild_name = str(guild_name)
+            if guild_name == "No":
+                return await event.respond("Join a Guild first to see info about your guild.\nYou can also search other guild with the format /guild <guild name>")
+            else:
+                results = collection2.find_one({"Guild_Name": guild_name})
+                gname = results["Guild_FName"]
+                grank = results["Guild_Rank"]
+                glevel = results["Guild_Level"]
+                gcreator = results["Guild_Creator"]
+                gvault = results["Vault"]
+                gmembers = results["Members"]
+                gcrime = results["Crime_Rate"]
+
+                pfp = results["Guild_Pfp"]
+                if pfp != "No":
+                    return await event.send_file(f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+""",
+                        parse_mode=ParseMode.HTML,
+                        pfp,
+                    )
+                else:
+                    return await event.respond(f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+""",
+                        parse_mode=ParseMode.HTML,
+                    )
+        else:
+            return await event.respond("You not registerd!!\nUse /register to get registerd in this game.")
             
 
 
