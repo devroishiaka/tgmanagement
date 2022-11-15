@@ -98,7 +98,7 @@ def guild(update: Update, context: CallbackContext):
             if pfp == "NO":
                 message.reply_text(f"""
 ━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
+<b>⊱ {gname} ⊰
 
 ◈ Guild Name = <code>{guild_name}</code>
 ◈ Creator = <code>{gcreator}</code>
@@ -109,7 +109,6 @@ def guild(update: Update, context: CallbackContext):
 ◈ Crime Rate = <code>{gcrime}</code>
 ━━━━━━━━━҉━━━━━━━━━
 """,
-                    parse_mode=ParseMode.HTML,
                 )
             else:
                 message.reply_photo(pfp, caption=f"""
@@ -125,7 +124,6 @@ def guild(update: Update, context: CallbackContext):
 ◈ Crime Rate = <code>{gcrime}</code>
 ━━━━━━━━━҉━━━━━━━━━
 """,
-                    parse_mode=ParseMode.HTML,
                 )
         else:
             message.reply_text("No Such GUILD found")
