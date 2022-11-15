@@ -76,12 +76,22 @@ def leaderboardx(update: Update, context: CallbackContext):
         final += "\n"
     message.reply_text(final, parse_mode=ParseMode.HTML)
         
-    
+#/points
+def testssx(update: Update, context: CallbackContext):
+    message = update.effective_message
+    sender_id = update.effective_user.id
+    splitter = message.text.split(" ")
+    user_id = splitter[1]
+    name = splitter[2]
+    typeu = type(user_id)
+    typen = type(name)
+    intu = int(user_id)
+    message.reply_text(f"user id = {user_id}\ntype = {typeu}\nINT = {intu}\n\nName = {name}\nType = {typen}")
         
 
 POINTS_HANDLER = DisableAbleCommandHandler("points", pointsx, run_async=True)
 LEADERBOARDX_HANDLER = DisableAbleCommandHandler(["leaderboard", "top"], leaderboardx, run_async=True)
-#_HANDLER = DisableAbleCommandHandler(, run_async=True)
+testsss_HANDLER = DisableAbleCommandHandler("testssx", testssx, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
 #_HANDLER = DisableAbleCommandHandler(,run_async=True)
@@ -91,7 +101,7 @@ LEADERBOARDX_HANDLER = DisableAbleCommandHandler(["leaderboard", "top"], leaderb
 
 dispatcher.add_handler(POINTS_HANDLER)
 dispatcher.add_handler(LEADERBOARDX_HANDLER)
-#dispatcher.add_handler()
+dispatcher.add_handler(testsss_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
