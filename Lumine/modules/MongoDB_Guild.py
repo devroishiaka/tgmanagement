@@ -83,7 +83,7 @@ def guild(update: Update, context: CallbackContext):
     message = update.effective_message
     splitters = message.text.split(" ")
     if len(splitters) > 1:
-        guild_name = splitters[1]
+        guild_name = str(splitters[1])
         results = collection2.find_one({"Guild_Name": guild_name})
         if results:
             gname = results["Guild_FName"]
