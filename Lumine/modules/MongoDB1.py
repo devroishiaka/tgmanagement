@@ -65,7 +65,7 @@ def pointsx(update: Update, context: CallbackContext):
 def leaderboardx(update: Update, context: CallbackContext):
     message = update.effective_message
     leaderboardr = collection1.find().sort("Points",-1).limit(10)
-    final = "Top Players 🌐\n"
+    final = "━━━━━━━━━҉━━━━━━━━━\nTop Players 🌐\n"
     for result in leaderboardr:
         uname = result["Name"]
         userid = result["_id"]
@@ -76,13 +76,6 @@ def leaderboardx(update: Update, context: CallbackContext):
         final += "\n"
     message.reply_text(final, parse_mode=ParseMode.HTML)
         
-#/join <guild name>
-@LumineTelethonClient.on(events.NewMessage(pattern="(?i)/joinss"))
-async def joinxg(event):
-    sender = await event.get_sender()
-    typeu = type(sender.id)
-    #intu = int(typeu)
-    return await event.respond(f"user id = {sender.id}\ntype = {typeu}")
         
 
 POINTS_HANDLER = DisableAbleCommandHandler("points", pointsx, run_async=True)
