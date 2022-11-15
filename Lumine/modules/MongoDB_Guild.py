@@ -83,7 +83,7 @@ def depositx(update: Update, context: CallbackContext):
 async def guildx(event):
     sender = await event.get_sender()
     list_of_words = event.message.text.split(" ")
-    if len(list_of_words) == 1:
+    if len(list_of_words) > 1:
         guild_name = list_of_words[1]
         guild_name = str(guild_name)
         guild_exist = collection2.find_one({"Guild_Name": guild_name})
