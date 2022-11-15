@@ -235,7 +235,7 @@ def allguild(update: Update, context: CallbackContext):
         levels = str(result["Guild_Level"])
         final += f"<code>{levels}</code>"
         final += "\n"
-    message.reply_text(final, parse_mode=Parse.Mode.HTML)
+    message.reply_text(final, parse_mode=ParseMode.HTML)
 
 
 def leavex(update: Update, context: CallbackContext):
