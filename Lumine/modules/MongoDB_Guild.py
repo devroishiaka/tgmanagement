@@ -79,13 +79,15 @@ def depositx(update: Update, context: CallbackContext):
 
         
 #/guild or /guild <guild name>
-def guild(update: Update, context: CallbackContext):
-    message = update.effective_message
-    splitters = message.text.split(" ")
-    if len(splitters) > 1:
-        guild_name = str(splitters[1])
-        results = collection2.find_one({"Guild_Name": guild_name})
-        if results:
+@LumineTelethonClient.on(events.NewMessage(pattern="(?i)/guild"))
+async def guildx(event):
+    sender = await event.get_sender()
+    list_of_words = event.message.text.split(" ")
+    if len(list_of_words) == 1:
+        guild_name = list_of_words[1]
+        guild_name = str(guild_name)
+        guild_exist = collection2.find_one({"Guild_Name": guild_name})
+        if guild_exist:
             gname = results["Guild_FName"]
             grank = results["Guild_Rank"]
             glevel = results["Guild_Level"]
@@ -94,9 +96,7 @@ def guild(update: Update, context: CallbackContext):
             gmembers = results["Members"]
             gcrime = results["Crime_Rate"]
 
-            pfp = results["Guild_Pfp"]
-            if pfp == "NO":
-                message.reply_text(f"""
+            return await event.respond(f"""
 ━━━━━━━━━҉━━━━━━━━━
 <b>⊱ {gname} ⊰</b>
 
@@ -109,79 +109,14 @@ def guild(update: Update, context: CallbackContext):
 ◈ Crime Rate = <code>{gcrime}</code>
 ━━━━━━━━━҉━━━━━━━━━
 """,
-                    parse_mode=ParseMode.HTML,
-                )
-            else:
-                message.reply_photo(pfp, caption=f"""
-━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
-
-◈ Guild Name = <code>{guild_name}</code>
-◈ Creator = <code>{gcreator}</code>
-◈ Rank = <code>{grank}</code>
-◈ Level = <code>{glevel}</code>
-◈ Members = <code>{gmembers}</code>
-◈ Vault = <code>{gvault}</code>
-◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
-""",
-                    parse_mode=ParseMode.HTML,
-                )
+                parse_mode=ParseMode.HTML,
+            )
         else:
-            message.reply_text("No Such GUILD found")
-
-    user_id = update.effective_user.id
-    user_id = int(user_id)
-    registerd = collection1.find_one({"_id": user_id})
-    if registerd:
-        guild_name = registerd["Status"]
-        if guild_name == "No":
-            message.reply_text("Join a Guild first to see info about your guild.\nYou can also search other guild with the format /guild <guild name>")
-        else:
-            results = collection2.find_one({"Guild_Name": guild_name})
-            gname = results["Guild_FName"]
-            grank = results["Guild_Rank"]
-            glevel = results["Guild_Level"]
-            gcreator = results["Guild_Creator"]
-            gvault = results["Vault"]
-            gmembers = results["Members"]
-            gcrime = results["Crime_Rate"]
-
-            pfp = results["Guild_Pfp"]
-            if pfp == "No":
-                message.reply_text(f"""
-━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
-
-◈ Guild Name = <code>{guild_name}</code>
-◈ Creator = <code>{gcreator}</code>
-◈ Rank = <code>{grank}</code>
-◈ Level = <code>{glevel}</code>
-◈ Members = <code>{gmembers}</code>
-◈ Vault = <code>{gvault}</code>
-◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
-""",
-                    parse_mode=ParseMode.HTML,
-                )
-            else:
-                message.reply_photo(pfp, caption=f"""
-━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
-
-◈ Guild Name = <code>{guild_name}</code>
-◈ Creator = <code>{gcreator}</code>
-◈ Rank = <code>{grank}</code>
-◈ Level = <code>{glevel}</code>
-◈ Members = <code>{gmembers}</code>
-◈ Vault = <code>{gvault}</code>
-◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
-""",
-                    parse_mode=ParseMode.HTML,
-                )
+            return await event.respond(f"{guild} guild doesn’t exist!!")
     else:
-        message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
+        return await event.respond(
+            "You not registerd!!\nUse /register to get registerd in this game"
+        )
             
 
 
@@ -293,7 +228,7 @@ def leavex_btn(update: Update, context: CallbackContext):
 
 
 DEPOSITX_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
-GUILD_HANDLER = DisableAbleCommandHandler("guild", guild, run_async=True)
+#GUILD_HANDLER = DisableAbleCommandHandler("guild", guild, run_async=True)
 VAULT_HANDLER = DisableAbleCommandHandler("vault", vault, run_async=True)
 TOPGUILDS_HANDLER = DisableAbleCommandHandler("topguilds", allguild, run_async=True)
 LEAVEX_HANDLER = DisableAbleCommandHandler("leave", leavex, run_async=True)
@@ -304,7 +239,7 @@ LEAVEX_BTN_HANDLER = CallbackQueryHandler(leavex_btn, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 
 dispatcher.add_handler(DEPOSITX_HANDLER)
-dispatcher.add_handler(GUILD_HANDLER)
+#dispatcher.add_handler(GUILD_HANDLER)
 dispatcher.add_handler(VAULT_HANDLER)
 dispatcher.add_handler(TOPGUILDS_HANDLER)
 dispatcher.add_handler(LEAVEX_HANDLER)
