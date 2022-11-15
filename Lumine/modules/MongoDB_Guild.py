@@ -228,7 +228,7 @@ def allguild(update: Update, context: CallbackContext):
     message = update.effective_message
     user_id = update.effective_user.id
     allguild = collection2.find().sort("Guild_Level",-1).limit(10)
-    final = "━━━━━━━━━҉━━━━━━━━━\n<b>Top Guilds</b> 🌐\n\nGuild Name • Level"
+    final = "━━━━━━━━━҉━━━━━━━━━\n<b>Top Guilds</b> 🌐\n\nGuild Name • Level\n"
     for result in allguild:
         final += result["Guild_Name"]
         final += " • "
