@@ -86,8 +86,8 @@ async def guildx(event):
     if len(list_of_words) > 1:
         guild_name = list_of_words[1]
         guild_name = str(guild_name)
-        guild_exist = collection2.find_one({"Guild_Name": guild_name})
-        if guild_exist:
+        results = collection2.find_one({"Guild_Name": guild_name})
+        if results:
             gname = results["Guild_FName"]
             grank = results["Guild_Rank"]
             glevel = results["Guild_Level"]
