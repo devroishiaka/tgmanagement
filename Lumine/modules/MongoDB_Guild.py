@@ -98,7 +98,7 @@ def guild(update: Update, context: CallbackContext):
             if pfp == "NO":
                 message.reply_text(f"""
 ━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰
+<b>⊱ {gname} ⊰</b>
 
 ◈ Guild Name = <code>{guild_name}</code>
 ◈ Creator = <code>{gcreator}</code>
@@ -109,6 +109,7 @@ def guild(update: Update, context: CallbackContext):
 ◈ Crime Rate = <code>{gcrime}</code>
 ━━━━━━━━━҉━━━━━━━━━
 """,
+                    parse_mode=ParseMode.HTML,
                 )
             else:
                 message.reply_photo(pfp, caption=f"""
@@ -124,62 +125,63 @@ def guild(update: Update, context: CallbackContext):
 ◈ Crime Rate = <code>{gcrime}</code>
 ━━━━━━━━━҉━━━━━━━━━
 """,
+                    parse_mode=ParseMode.HTML,
                 )
         else:
             message.reply_text("No Such GUILD found")
-    else:
-        user_id = update.effective_user.id
-        user_id = int(user_id)
-        registerd = collection1.find_one({"_id": user_id})
-        if registerd:
-            guild_name = registerd["Status"]
-            if guild_name == "No":
-                message.reply_text("Join a Guild first to see info about your guild.\nYou can also search other guild with the format /guild <guild name>")
-            else:
-                results = collection2.find_one({"Guild_Name": guild_name})
-                gname = results["Guild_FName"]
-                grank = results["Guild_Rank"]
-                glevel = results["Guild_Level"]
-                gcreator = results["Guild_Creator"]
-                gvault = results["Vault"]
-                gmembers = results["Members"]
-                gcrime = results["Crime_Rate"]
 
-                pfp = results["Guild_Pfp"]
-                if pfp == "No":
-                    message.reply_text(f"""
-━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
-
-◈ Guild Name = <code>{guild_name}</code>
-◈ Creator = <code>{gcreator}</code>
-◈ Rank = <code>{grank}</code>
-◈ Level = <code>{glevel}</code>
-◈ Members = <code>{gmembers}</code>
-◈ Vault = <code>{gvault}</code>
-◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
-""",
-                        parse_mode=ParseMode.HTML,
-                    )
-                else:
-                    message.reply_photo(pfp, caption=f"""
-━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
-
-◈ Guild Name = <code>{guild_name}</code>
-◈ Creator = <code>{gcreator}</code>
-◈ Rank = <code>{grank}</code>
-◈ Level = <code>{glevel}</code>
-◈ Members = <code>{gmembers}</code>
-◈ Vault = <code>{gvault}</code>
-◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
-""",
-                        parse_mode=ParseMode.HTML,
-                    )
+    user_id = update.effective_user.id
+    user_id = int(user_id)
+    registerd = collection1.find_one({"_id": user_id})
+    if registerd:
+        guild_name = registerd["Status"]
+        if guild_name == "No":
+            message.reply_text("Join a Guild first to see info about your guild.\nYou can also search other guild with the format /guild <guild name>")
         else:
-            message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
+            results = collection2.find_one({"Guild_Name": guild_name})
+            gname = results["Guild_FName"]
+            grank = results["Guild_Rank"]
+            glevel = results["Guild_Level"]
+            gcreator = results["Guild_Creator"]
+            gvault = results["Vault"]
+            gmembers = results["Members"]
+            gcrime = results["Crime_Rate"]
+
+            pfp = results["Guild_Pfp"]
+            if pfp == "No":
+                message.reply_text(f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+""",
+                    parse_mode=ParseMode.HTML,
+                )
+            else:
+                message.reply_photo(pfp, caption=f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+""",
+                    parse_mode=ParseMode.HTML,
+                )
+    else:
+        message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
             
 
 
