@@ -33,7 +33,7 @@ async def joinx(event):
                 collection2.update_one({"Guild_Name": guild}, {"$inc":{"Members": 1}})
                 collection1.update_one({"_id": sender.id}, {"$set":{"Status": guild}})
                 return await event.respond(
-                f"━━━━━━━━━━━━━━\n🎉 {sender.first_name} You Successfully joined the {guild} guild!!!\n━━━━━━━━━━━━━━"
+                f"━━━━━━━━━━━━━━━━\n\n🎉 {sender.first_name} Successfully joined the {guild} guild!!!\n━━━━━━━━━━━━━━━━"
                 )
             else:
                 return await event.respond(
@@ -52,6 +52,7 @@ async def joinx(event):
 def depositx(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
+    sender_id = int(sender_id)
     sender_name = update.effective_user.first_name
     bot = context.bot
     list_of_words = message.text.split(" ")
@@ -60,7 +61,7 @@ def depositx(update: Update, context: CallbackContext):
         registerd = collection1.find_one({"_id": sender_id})
         if registerd:
             result1 = int(registerd["Points"])
-            result2 = str(registerd["Status"])
+            result2 = registerd["Status"]
             if result2 == "No":
                 message.reply_text("Brooooooooooo,\nJoin a guild first to have a vault")
             else :
@@ -81,9 +82,8 @@ def depositx(update: Update, context: CallbackContext):
 def guild(update: Update, context: CallbackContext):
     message = update.effective_message
     splitters = message.text.split(" ")
-    text = message.text
     if len(splitters) > 1:
-        guild_name = text.split(None, 1)[1]
+        guild_name = splitters[1]
         results = collection2.find_one({"Guild_Name": guild_name})
         if results:
             gname = results["Guild_FName"]
@@ -183,10 +183,13 @@ def guild(update: Update, context: CallbackContext):
         else:
             message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
             
-#/vault        
+
+
+
 def vault(update: Update, context: CallbackContext):
     message = update.effective_message
     user_id = update.effective_user.id
+    user_id = int(user_id)
     registerd = collection1.find_one({"_id": user_id})
     if registerd:
         guild_exist = registerd["Status"]
@@ -204,15 +207,18 @@ def vault(update: Update, context: CallbackContext):
             msg_final += "\n━━━━━━━━━҉━━━━━━━━━\n"
             msg_final += "Members of the guild have contributed and have deposited thier points in the vault\n\n"
             msg_final += "The Members LIst are listed below:\n"
-            msg_final += f"<a href='t.me/Kazumaclanxd'>KaZumA CLan</a> • 1000\n"
+            msg_final += f"<a href='t.me/Kazumaclanxd'>Kᴀᴢᴜᴍᴀ Cʟᴀɴ</a> • 1000\n"
             for users in alluser:
-                uname = users["Name"]
-                userid = users["_id"]
-                msg_final += f"<a href='tg://user?id={userid}'>{uname}</a>"
-                msg_final += " • "
-                deposit = users["Deposit"]
-                msg_final += f"<code>{deposit}</code>"
-                msg_final += "\n"
+                deposit = int(users["Deposit"])
+                if deposit != 0:
+                    uname = users["Name"]
+                    userid = users["_id"]
+                    msg_final += f"<a href='tg://user?id={userid}'>{uname}</a>"
+                    msg_final += " • "
+                    msg_final += f"<code>{deposit}</code>"
+                    msg_final += "\n"
+                else:
+                    continue
             message.reply_text(msg_final, parse_mode=ParseMode.HTML)
     else:
         message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
@@ -226,26 +232,35 @@ def allguild(update: Update, context: CallbackContext):
     for result in allguild:
         final += result["Guild_Name"]
         final += " • "
-        pointss = str(result["Guild_Level"])
-        final += f"<code>{pointss}</code>"
+        levels = str(result["Guild_Level"])
+        final += f"<code>{levels}</code>"
         final += "\n"
-    message.reply_text(final, parse_mode=ParseMode.HTML)
-    
+    message.reply_text(final, parse_mode=Parse.Mode.HTML)
+
 
 def leavex(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
-    message.reply_text(
-        "YOU SURE THAT YOU WANT TO LEAVE THIS GUILD ?",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(text="YES ✅", callback_data=f"leave={sender_id}"),
-                    InlineKeyboardButton(text="NO ❌", callback_data=f"dell={sender_id}")
-                ]
-            ]
-        )
-    )
+    registerd = collection1.find_one({"_id": sender_id})
+    if registerd:
+        guild_exist = str(registerd["Status"])
+        if guild_exist != "No":
+            message.reply_text(
+                "YOU SURE THAT YOU WANT TO LEAVE THIS GUILD ?",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(text="YES ✅", callback_data=f"leave={sender_id}"),
+                            InlineKeyboardButton(text="NO ❌", callback_data=f"dell={sender_id}")
+                        ]
+                    ]
+                )
+            )
+        else:
+            message.reply_text("join a guild first to leave that guild")
+    else:
+        message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
+
 
 def leavex_btn(update: Update, context: CallbackContext):
     bot = context.bot
