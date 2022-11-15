@@ -99,36 +99,9 @@ async def guildx(event):
             pfp = results["Guild_Pfp"]
             pfp = str(pfp)
             if pfp != "No":
-                return await event.send_file(f"""
-━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
-◈ Guild Name = <code>{guild_name}</code>
-◈ Creator = <code>{gcreator}</code>
-◈ Rank = <code>{grank}</code>
-◈ Level = <code>{glevel}</code>
-◈ Members = <code>{gmembers}</code>
-◈ Vault = <code>{gvault}</code>
-◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
-""",
-                    parse_mode=ParseMode.HTML,
-                    pfp,
-                                            )
+                return await event.send_file(f"━━━━━━━━━҉━━━━━━━━━\n<b>⊱ {gname} ⊰</b>\n◈ Guild Name = <code>{guild_name}</code>\n◈ Creator = <code>{gcreator}</code>\n◈ Rank = <code>{grank}</code>\n◈ Level = <code>{glevel}</code>\n◈ Members = <code>{gmembers}</code>\n◈ Vault = <code>{gvault}</code>\n◈ Crime Rate = <code>{gcrime}</code>\n━━━━━━━━━҉━━━━━━━━━", parse_mode=ParseMode.HTML, pfp)
             else:
-                return await event.respond(f"""
-━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
-◈ Guild Name = <code>{guild_name}</code>
-◈ Creator = <code>{gcreator}</code>
-◈ Rank = <code>{grank}</code>
-◈ Level = <code>{glevel}</code>
-◈ Members = <code>{gmembers}</code>
-◈ Vault = <code>{gvault}</code>
-◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
-""",
-                    parse_mode=ParseMode.HTML,
-                )
+                return await event.respond(f"━━━━━━━━━҉━━━━━━━━━\n<b>⊱ {gname} ⊰</b>\n◈ Guild Name = <code>{guild_name}</code>\n◈ Creator = <code>{gcreator}</code>\n◈ Rank = <code>{grank}</code>\n◈ Level = <code>{glevel}</code>\n◈ Members = <code>{gmembers}</code>\n◈ Vault = <code>{gvault}</code>\n◈ Crime Rate = <code>{gcrime}</code>\n━━━━━━━━━҉━━━━━━━━━", parse_mode=ParseMode.HTML)
         else:
             return await event.respond(f"{guild} guild doesn’t exist!!")
     else:
@@ -150,36 +123,9 @@ async def guildx(event):
 
                 pfp = results["Guild_Pfp"]
                 if pfp != "No":
-                    return await event.send_file(f"""
-━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
-◈ Guild Name = <code>{guild_name}</code>
-◈ Creator = <code>{gcreator}</code>
-◈ Rank = <code>{grank}</code>
-◈ Level = <code>{glevel}</code>
-◈ Members = <code>{gmembers}</code>
-◈ Vault = <code>{gvault}</code>
-◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
-""",
-                        parse_mode=ParseMode.HTML,
-                        pfp,
-                    )
+                    return await event.send_file(f"━━━━━━━━━҉━━━━━━━━━\n<b>⊱ {gname} ⊰</b>\n◈ Guild Name = <code>{guild_name}</code>\n◈ Creator = <code>{gcreator}</code>\n◈ Rank = <code>{grank}</code>\n◈ Level = <code>{glevel}</code>\n◈ Members = <code>{gmembers}</code>\n◈ Vault = <code>{gvault}</code>\n◈ Crime Rate = <code>{gcrime}</code>\n━━━━━━━━━҉━━━━━━━━━", parse_mode=ParseMode.HTML, pfp)
                 else:
-                    return await event.respond(f"""
-━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
-◈ Guild Name = <code>{guild_name}</code>
-◈ Creator = <code>{gcreator}</code>
-◈ Rank = <code>{grank}</code>
-◈ Level = <code>{glevel}</code>
-◈ Members = <code>{gmembers}</code>
-◈ Vault = <code>{gvault}</code>
-◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
-""",
-                        parse_mode=ParseMode.HTML,
-                    )
+                    return await event.respond(f"━━━━━━━━━҉━━━━━━━━━\n<b>⊱ {gname} ⊰</b>\n◈ Guild Name = <code>{guild_name}</code>\n◈ Creator = <code>{gcreator}</code>\n◈ Rank = <code>{grank}</code>\n◈ Level = <code>{glevel}</code>\n◈ Members = <code>{gmembers}</code>\n◈ Vault = <code>{gvault}</code>\n◈ Crime Rate = <code>{gcrime}</code>\n━━━━━━━━━҉━━━━━━━━━", parse_mode=ParseMode.HTML)
         else:
             return await event.respond("You not registerd!!\nUse /register to get registerd in this game.")
             
