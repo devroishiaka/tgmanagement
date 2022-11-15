@@ -59,7 +59,7 @@ def friendx_btn(update: Update, context: CallbackContext):
             bot.answer_callback_query(query.id, text="Not your Query!!!")
 
 FRIENDX_HANDLER = CommandHandler("friend", friendx, run_async=True)
-FRIENDX_BTN_HANDLER = CallbackQueryHandler(friendx_btn)
+FRIENDX_BTN_HANDLER = CallbackQueryHandler(friendx_btn, run_async=True)
 
 dispatcher.add_handler(FRIENDX_HANDLER)
 dispatcher.add_handler(FRIENDX_BTN_HANDLER)
