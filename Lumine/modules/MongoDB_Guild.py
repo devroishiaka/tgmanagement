@@ -93,13 +93,13 @@ def guildx(update: Update, context: CallbackContext):
             if guild_exist != "No":
                 guild = collection2.find_one({"Guild_Name": guild_exist})
 
-                gname = results["Guild_FName"]
-                grank = results["Guild_Rank"]
-                glevel = results["Guild_Level"]
-                gcreator = results["Guild_Creator"]
-                gvault = results["Vault"]
-                gmembers = results["Members"]
-                gcrime = results["Crime_Rate"]
+                gname = guild["Guild_FName"]
+                grank = guild["Guild_Rank"]
+                glevel = guild["Guild_Level"]
+                gcreator = guild["Guild_Creator"]
+                gvault = guild["Vault"]
+                gmembers = guild["Members"]
+                gcrime = guild["Crime_Rate"]
                 final = f"""
 ━━━━━━━━━҉━━━━━━━━━
 <b>⊱ {gname} ⊰</b>
