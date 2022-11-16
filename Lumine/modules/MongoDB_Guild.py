@@ -87,7 +87,7 @@ def guildx(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     if len(list_of_words) == 1:
         sender_id = int(sender_id)
-        registerd = collection1({"_id": sender_id})
+        registerd = collection1.find_one({"_id": sender_id})
         if registerd:
             guild_exist = registerd["Status"]
             if guild_exist != "No":
