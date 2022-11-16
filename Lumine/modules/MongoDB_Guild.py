@@ -14,7 +14,7 @@ from telegram.utils.helpers import escape_markdown, mention_html
 from Lumine import (
     dispatcher
 )
-
+from Lumine.modules.helper_funcs.alternate import typing_action
 from Lumine.modules.helper_funcs.chat_status import sudo_plus, gods_plus
 from Lumine.modules.helper_funcs.extraction import extract_user
 from Lumine.modules.disable import DisableAbleCommandHandler
@@ -79,13 +79,12 @@ def depositx(update: Update, context: CallbackContext):
 
         
 #/guild or /guild <guild name>
-@LumineTelethonClient.on(events.NewMessage(pattern="(?i)/guild"))
-async def guildx(event):
-    sender = await event.get_sender()
-    list_of_words = event.message.text.split(" ")
-    if len(list_of_words) > 1:
-        guild_name = list_of_words[1]
-        guild_name = str(guild_name)
+@typing_action
+def guild(update: Update, context: CallbackContext):
+    message = update.effective_message
+    splitters = message.text.split(" ")
+    if len(splitters) > 1:
+        guild_name = splitters[1]
         results = collection2.find_one({"Guild_Name": guild_name})
         if results:
             gname = results["Guild_FName"]
@@ -97,20 +96,48 @@ async def guildx(event):
             gcrime = results["Crime_Rate"]
 
             pfp = results["Guild_Pfp"]
-            pfp = str(pfp)
-            if pfp != "No":
-                return await event.send_file(f"━━━━━━━━━҉━━━━━━━━━\n<b>⊱ {gname} ⊰</b>\n◈ Guild Name = <code>{guild_name}</code>\n◈ Creator = <code>{gcreator}</code>\n◈ Rank = <code>{grank}</code>\n◈ Level = <code>{glevel}</code>\n◈ Members = <code>{gmembers}</code>\n◈ Vault = <code>{gvault}</code>\n◈ Crime Rate = <code>{gcrime}</code>\n━━━━━━━━━҉━━━━━━━━━", parse_mode=ParseMode.HTML, pfp)
+            if pfp == "NO":
+                message.reply_text(f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+""",
+                    parse_mode=ParseMode.HTML,
+                )
             else:
-                return await event.respond(f"━━━━━━━━━҉━━━━━━━━━\n<b>⊱ {gname} ⊰</b>\n◈ Guild Name = <code>{guild_name}</code>\n◈ Creator = <code>{gcreator}</code>\n◈ Rank = <code>{grank}</code>\n◈ Level = <code>{glevel}</code>\n◈ Members = <code>{gmembers}</code>\n◈ Vault = <code>{gvault}</code>\n◈ Crime Rate = <code>{gcrime}</code>\n━━━━━━━━━҉━━━━━━━━━", parse_mode=ParseMode.HTML)
+                message.reply_photo(pfp, caption=f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+""",
+                    parse_mode=ParseMode.HTML,
+                )
         else:
-            return await event.respond(f"{guild} guild doesn’t exist!!")
+            message.reply_text("No Such GUILD found")
     else:
-        registerd = collection1.find_one({"_id": sender.id})
+        user_id = update.effective_user.id
+        user_id = int(user_id)
+        registerd = collection1.find_one({"_id": user_id})
         if registerd:
             guild_name = registerd["Status"]
-            guild_name = str(guild_name)
             if guild_name == "No":
-                return await event.respond("Join a Guild first to see info about your guild.\nYou can also search other guild with the format /guild <guild name>")
+                message.reply_text("Join a Guild first to see info about your guild.\nYou can also search other guild with the format /guild <guild name>")
             else:
                 results = collection2.find_one({"Guild_Name": guild_name})
                 gname = results["Guild_FName"]
@@ -122,12 +149,40 @@ async def guildx(event):
                 gcrime = results["Crime_Rate"]
 
                 pfp = results["Guild_Pfp"]
-                if pfp != "No":
-                    return await event.send_file(f"━━━━━━━━━҉━━━━━━━━━\n<b>⊱ {gname} ⊰</b>\n◈ Guild Name = <code>{guild_name}</code>\n◈ Creator = <code>{gcreator}</code>\n◈ Rank = <code>{grank}</code>\n◈ Level = <code>{glevel}</code>\n◈ Members = <code>{gmembers}</code>\n◈ Vault = <code>{gvault}</code>\n◈ Crime Rate = <code>{gcrime}</code>\n━━━━━━━━━҉━━━━━━━━━", parse_mode=ParseMode.HTML, pfp)
+                if pfp == "No":
+                    message.reply_text(f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+""",
+                        parse_mode=ParseMode.HTML,
+                    )
                 else:
-                    return await event.respond(f"━━━━━━━━━҉━━━━━━━━━\n<b>⊱ {gname} ⊰</b>\n◈ Guild Name = <code>{guild_name}</code>\n◈ Creator = <code>{gcreator}</code>\n◈ Rank = <code>{grank}</code>\n◈ Level = <code>{glevel}</code>\n◈ Members = <code>{gmembers}</code>\n◈ Vault = <code>{gvault}</code>\n◈ Crime Rate = <code>{gcrime}</code>\n━━━━━━━━━҉━━━━━━━━━", parse_mode=ParseMode.HTML)
+                    message.reply_photo(pfp, caption=f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+""",
+                        parse_mode=ParseMode.HTML,
+                    )
         else:
-            return await event.respond("You not registerd!!\nUse /register to get registerd in this game.")
+            message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
             
 
 
