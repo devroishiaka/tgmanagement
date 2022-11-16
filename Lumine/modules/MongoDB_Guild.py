@@ -129,11 +129,50 @@ def guildx(update: Update, context: CallbackContext):
                         parse_mode=ParseMode.HTML
                     )
             else:
-                message.reply_text("No Such Guild Found")
+                message.reply_text("Join a Guild first to see info about your guild.\nYou can also search other guild with the format /guild <guild name>")
         else:
             message.reply_text("You not registerd!!\nUse /register to get registerd in this game")
     else:
-        message.reply_text("LOL")           
+        guild_exist = list_of_words[1]
+        guild = collection2.find_one({"Guild_Name": guild_exist})
+        if guild:
+            gname = guild["Guild_FName"]
+            grank = guild["Guild_Rank"]
+            glevel = guild["Guild_Level"]
+            gcreator = guild["Guild_Creator"]
+            gvault = guild["Vault"]
+            gmembers = guild["Members"]
+            gcrime = guild["Crime_Rate"]
+
+            final = f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+
+◈ Guild Name = <code>{guild_exist}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+"""
+            pfp = guild["Guild_Pfp"]
+            if pfp == "No":
+                bot.send_message(
+                    chat_id,
+                    final,
+                    parse_mode=ParseMode.HTML
+                )
+            else:
+                bot.send_photo(
+                    chat_id,
+                    pfp,
+                    final,
+                    parse_mode=ParseMode.HTML
+                )
+        else:
+            message.reply_text("No Such Guild Found")
 
 
 
