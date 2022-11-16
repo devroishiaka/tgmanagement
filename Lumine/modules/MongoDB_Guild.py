@@ -114,7 +114,7 @@ def guildx(update: Update, context: CallbackContext):
 ━━━━━━━━━҉━━━━━━━━━
 """
 
-                pfp = results["Guild_Pfp"]
+                pfp = guild["Guild_Pfp"]
                 if pfp == "No":
                     bot.send_message(
                         chat_id,
