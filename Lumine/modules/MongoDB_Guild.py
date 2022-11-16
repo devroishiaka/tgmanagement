@@ -104,7 +104,7 @@ def guildx(update: Update, context: CallbackContext):
 ━━━━━━━━━҉━━━━━━━━━
 <b>⊱ {gname} ⊰</b>
 
-◈ Guild Name = <code>{guild_name}</code>
+◈ Guild Name = <code>{guild_exist}</code>
 ◈ Creator = <code>{gcreator}</code>
 ◈ Rank = <code>{grank}</code>
 ◈ Level = <code>{glevel}</code>
