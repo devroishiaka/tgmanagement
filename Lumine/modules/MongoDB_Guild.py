@@ -79,67 +79,20 @@ def depositx(update: Update, context: CallbackContext):
 
         
 #/guild or /guild <guild name>
-@typing_action
-def guild(update: Update, context: CallbackContext):
+def guildx(update: Update, context: CallbackContext):
     message = update.effective_message
-    splitters = message.text.split(" ")
-    if len(splitters) > 1:
-        guild_name = splitters[1]
-        results = collection2.find_one({"Guild_Name": guild_name})
-        if results:
-            gname = results["Guild_FName"]
-            grank = results["Guild_Rank"]
-            glevel = results["Guild_Level"]
-            gcreator = results["Guild_Creator"]
-            gvault = results["Vault"]
-            gmembers = results["Members"]
-            gcrime = results["Crime_Rate"]
-
-            pfp = results["Guild_Pfp"]
-            if pfp == "NO":
-                message.reply_text(f"""
-━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
-
-◈ Guild Name = <code>{guild_name}</code>
-◈ Creator = <code>{gcreator}</code>
-◈ Rank = <code>{grank}</code>
-◈ Level = <code>{glevel}</code>
-◈ Members = <code>{gmembers}</code>
-◈ Vault = <code>{gvault}</code>
-◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
-""",
-                    parse_mode=ParseMode.HTML,
-                )
-            else:
-                message.reply_photo(pfp, caption=f"""
-━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
-
-◈ Guild Name = <code>{guild_name}</code>
-◈ Creator = <code>{gcreator}</code>
-◈ Rank = <code>{grank}</code>
-◈ Level = <code>{glevel}</code>
-◈ Members = <code>{gmembers}</code>
-◈ Vault = <code>{gvault}</code>
-◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
-""",
-                    parse_mode=ParseMode.HTML,
-                )
-        else:
-            message.reply_text("No Such GUILD found")
-    else:
-        user_id = update.effective_user.id
-        user_id = int(user_id)
-        registerd = collection1.find_one({"_id": user_id})
+    sender_id = update.effective_user.id
+    list_of_words = message.text.split(" ")
+    bot = context.bot
+    chat_id = update.effective_chat.id
+    if len(list_of_words) == 1:
+        sender_id = int(sender_id)
+        registerd = collection1({"_id": sender_id})
         if registerd:
-            guild_name = registerd["Status"]
-            if guild_name == "No":
-                message.reply_text("Join a Guild first to see info about your guild.\nYou can also search other guild with the format /guild <guild name>")
-            else:
-                results = collection2.find_one({"Guild_Name": guild_name})
+            guild_exist = registerd["Status"]
+            if guild_exist != "No":
+                guild = collection2.find_one({"Guild_Name": guild_exist})
+
                 gname = results["Guild_FName"]
                 grank = results["Guild_Rank"]
                 glevel = results["Guild_Level"]
@@ -147,43 +100,40 @@ def guild(update: Update, context: CallbackContext):
                 gvault = results["Vault"]
                 gmembers = results["Members"]
                 gcrime = results["Crime_Rate"]
+                final = f"""
+━━━━━━━━━҉━━━━━━━━━
+<b>⊱ {gname} ⊰</b>
+
+◈ Guild Name = <code>{guild_name}</code>
+◈ Creator = <code>{gcreator}</code>
+◈ Rank = <code>{grank}</code>
+◈ Level = <code>{glevel}</code>
+◈ Members = <code>{gmembers}</code>
+◈ Vault = <code>{gvault}</code>
+◈ Crime Rate = <code>{gcrime}</code>
+━━━━━━━━━҉━━━━━━━━━
+"""
 
                 pfp = results["Guild_Pfp"]
                 if pfp == "No":
-                    message.reply_text(f"""
-━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
-
-◈ Guild Name = <code>{guild_name}</code>
-◈ Creator = <code>{gcreator}</code>
-◈ Rank = <code>{grank}</code>
-◈ Level = <code>{glevel}</code>
-◈ Members = <code>{gmembers}</code>
-◈ Vault = <code>{gvault}</code>
-◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
-""",
-                        parse_mode=ParseMode.HTML,
+                    bot.send_message(
+                        chat_id,
+                        final,
+                        parse_mode=ParseMode.HTML
                     )
                 else:
-                    message.reply_photo(pfp, caption=f"""
-━━━━━━━━━҉━━━━━━━━━
-<b>⊱ {gname} ⊰</b>
-
-◈ Guild Name = <code>{guild_name}</code>
-◈ Creator = <code>{gcreator}</code>
-◈ Rank = <code>{grank}</code>
-◈ Level = <code>{glevel}</code>
-◈ Members = <code>{gmembers}</code>
-◈ Vault = <code>{gvault}</code>
-◈ Crime Rate = <code>{gcrime}</code>
-━━━━━━━━━҉━━━━━━━━━
-""",
-                        parse_mode=ParseMode.HTML,
+                    boot.send_photo(
+                        chat_id,
+                        pfp,
+                        caption=final,
+                        parse_mode=ParseMode.HTML
                     )
+            else:
+                message.reply_text("No Such Guild Found")
         else:
-            message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
-            
+            message.reply_text("You not registerd!!\nUse /register to get registerd in this game")
+    else:
+        message.reply_text("LOL")           
 
 
 
@@ -294,7 +244,7 @@ def leavex_btn(update: Update, context: CallbackContext):
 
 
 DEPOSITX_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
-GUILD_HANDLER = DisableAbleCommandHandler("guild", guild, run_async=True)
+GUILD_HANDLER = DisableAbleCommandHandler("guild", guildx, run_async=True)
 VAULT_HANDLER = DisableAbleCommandHandler("vault", vault, run_async=True)
 TOPGUILDS_HANDLER = DisableAbleCommandHandler("topguilds", allguild, run_async=True)
 LEAVEX_HANDLER = DisableAbleCommandHandler("leave", leavex, run_async=True)
