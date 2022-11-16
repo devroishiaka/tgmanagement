@@ -294,7 +294,7 @@ def leavex_btn(update: Update, context: CallbackContext):
 
 
 DEPOSITX_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
-#GUILD_HANDLER = DisableAbleCommandHandler("guild", guild, run_async=True)
+GUILD_HANDLER = DisableAbleCommandHandler("guild", guild, run_async=True)
 VAULT_HANDLER = DisableAbleCommandHandler("vault", vault, run_async=True)
 TOPGUILDS_HANDLER = DisableAbleCommandHandler("topguilds", allguild, run_async=True)
 LEAVEX_HANDLER = DisableAbleCommandHandler("leave", leavex, run_async=True)
@@ -305,7 +305,7 @@ LEAVEX_BTN_HANDLER = CallbackQueryHandler(leavex_btn, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 
 dispatcher.add_handler(DEPOSITX_HANDLER)
-#dispatcher.add_handler(GUILD_HANDLER)
+dispatcher.add_handler(GUILD_HANDLER)
 dispatcher.add_handler(VAULT_HANDLER)
 dispatcher.add_handler(TOPGUILDS_HANDLER)
 dispatcher.add_handler(LEAVEX_HANDLER)
