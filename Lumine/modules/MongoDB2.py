@@ -42,13 +42,13 @@ def datatype(update: Update, context: CallbackContext):
 def testdevs1(update: Update, context: CallbackContext):
     message = update.effective_message
     user_id = update.effective_user.id
-    collection2.insert_one({"_id": user_id, "weapons": ["katana", "shurikin", "berakhuda sword"]})
+    collection1.insert_one({"_id": user_id, "weapons": ["katana", "shurikin", "berakhuda sword"]})
     message.reply_text("Done")
 
 def testdevs2(update: Update, context: CallbackContext):
     message = update.effective_message
     user_id = update.effective_user.id
-    result = collection2.find({"_id": user_id})
+    result = collection1.find_one({"_id": user_id})
     weapons = result["weapons"]
     message.reply_text(f"Done\n {weapons}")
 
