@@ -39,8 +39,23 @@ def datatype(update: Update, context: CallbackContext):
     else:
         message.reply_text(f"User ID = {user_id}\nTYPE = {typeaa}\n\nChat ID = {chat_id}\nTYPE = {typecc}\n\nUser Name = {user_name}\nTYPE = {typeuu}")
 
+def testdevs1(update: Update, context: CallbackContext):
+    message = update.effective_message
+    user_id = update.effective_user.id
+    collection2.insert_one({"_id": user_id, "weapons": ["katana", "shurikin", "berakhuda sword"]})
+    message.reply_text("Done")
 
+def testdevs2(update: Update, context: CallbackContext):
+    message = update.effective_message
+    user_id = update.effective_user.id
+    result = collection2.find({"_id": user_id})
+    weapons = result["weapons"]
+    message.reply_text(f"Done\n {weapons}")
 
 DATATYPE_HANDLER = DisableAbleCommandHandler("datatype", datatype, run_async=True)
+testdevs1_HANDLER = DisableAbleCommandHandler("testdevs1", testdevs1, run_async=True)
+testdevs2_HANDLER = DisableAbleCommandHandler("testdevs2", testdevs2, run_async=True)
 
 dispatcher.add_handler(DATATYPE_HANDLER)
+dispatcher.add_handler(testdevs1_HANDLER)
+dispatcher.add_handler(testdevs2_HANDLER)
