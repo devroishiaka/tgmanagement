@@ -50,7 +50,10 @@ def testdevs2(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
     result = collection1.find_one({"_id": user_id})
     weapons = result["weapons"]
-    message.reply_text(f"Done\n {weapons}")
+    weapons1 = weapons[0]
+    weapons2 = weapons[1]
+    weapons3 = weapons[2]
+    message.reply_text(f"Done\n{weapons1}\n{weapons2}\n{weapons3}")
 
 DATATYPE_HANDLER = DisableAbleCommandHandler("datatype", datatype, run_async=True)
 testdevs1_HANDLER = DisableAbleCommandHandler("testdevs1", testdevs1, run_async=True)
