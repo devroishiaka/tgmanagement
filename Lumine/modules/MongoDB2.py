@@ -54,11 +54,72 @@ def testdevs2(update: Update, context: CallbackContext):
     weapons2 = weapons[1]
     weapons3 = weapons[2]
     message.reply_text(f"Done\n{weapons1}\n{weapons2}\n{weapons3}")
+    
+def infoxx(update: Update, context: CallbackContext):
+    message = update.effective_message
+    user_id = update.effective_user.id
+    user_id = int(user_id)
+    user_name = update.effective_user.first_name
+    registerd = collection1.find_one({"_id": user_id})
+    infofile = ""
+    if registerd:
+        name = registerd["Name"]
+        points = registerd["Points"]
+        exp = registerd["EXP"]
+        level = registerd["Level"]
+        rank = registerd["Rank"]
+        guild = registerd["Status"]
+        weapons = registerd["Weapons"]
+        deposits = registerd["TDeposit"]
+        skills = registerd["Skills"]
+        bounty = registerd["Bounty"]
+        totalduel = registerd["DTotal"]
+        achievment = registerd["Achievment"]
+        healthno = registerd["Health"]
+
+        infofile += f"⊱┈「<b> Iɴғᴏ </b>」┈⊰\n"
+        infofile += "───────────────────\n"
+        infofile += f"Hᴇᴀʟᴛʜ: {health}\n"
+        infofile += "───────────────────\n\n"
+        infofile += f"EXP: {expbar}"
+        infofile += f"🔹 ID ⊸⊱ {user_id}\n"
+        infofile += f"🔹 Nᴀᴍᴇ ⊸⊱ <a href='tg://user?id={user_id}'>{name}</a>\n"
+        infofile += f"🔹 Points ⊸⊱ {points}"
+        infofile += f"🔹 Level ⊸⊱ {level}"
+        infofile += f"🔹 Guild ⊸⊱ {guild}"
+        infofile += "───────────────────\n"
+        infofile += f"🔹 Total Deposits ⊸⊱ {deposits}"
+        infofile += f"🔹 Total Skills ⊸⊱ {len(skills)}"
+        infofile += f"🔹 Total Achievments ⊸⊱ {len(achievment)}"
+        message.reply_text(
+            infofile,
+            parse_mode=ParseMode.HTML,
+            InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(text="Battle", callback_data=f"battle={user_id}"),
+                        InlineKeyboardButton(text="Family", callback_data=f"family={user_id}")
+                    ]
+                ]
+            )
+        )
+    else:
+        message.reply_text("You not registerd!!\nUse /register to get registerd in this game")
+        
 
 DATATYPE_HANDLER = DisableAbleCommandHandler("datatype", datatype, run_async=True)
 testdevs1_HANDLER = DisableAbleCommandHandler("testdevs1", testdevs1, run_async=True)
 testdevs2_HANDLER = DisableAbleCommandHandler("testdevs2", testdevs2, run_async=True)
+INFOOX_HANDLER = DisableAbleCommandHandler("info", infoxx, run_async=True)
+#_HANDLER = DisableAbleCommandHandler(, run_async=True)
+#_HANDLER = DisableAbleCommandHandler(, run_async=True)
+#_HANDLER = DisableAbleCommandHandler(, run_async=True)
 
 dispatcher.add_handler(DATATYPE_HANDLER)
 dispatcher.add_handler(testdevs1_HANDLER)
 dispatcher.add_handler(testdevs2_HANDLER)
+dispatcher.add_handler(INFOOX_HANDLER)
+#dispatcher.add_handler()
+#dispatcher.add_handler()
+#dispatcher.add_handler()
+#dispatcher.add_handler()
