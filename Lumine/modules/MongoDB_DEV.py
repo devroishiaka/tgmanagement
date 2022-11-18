@@ -2,7 +2,7 @@ from Lumine.modules.MongoDB import collection1, collection2
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity
-from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
+from telegram.ext import CallbackContext, CommandHandler, Filters, run_async, CallbackQueryHandler
 from telegram.utils.helpers import escape_markdown, mention_html
 
 from Lumine import (
@@ -26,9 +26,40 @@ def devregister(update: Update, context: CallbackContext):
 def devdelete(update: Update, context: CallbackContext):
     message = update.effective_message
     list_of_words = message.text.split(" ")
-    user_id = int(list_of_words[1])
-    collection2.delete_one({"_id": user_id})
-    message.reply_text("DONE, data deleted")
+    if len(list_of_words) > 1:
+        user_id = int(list_of_words[1])
+        message.reply_text(
+            "Choose the Database",
+            InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(text="User", callback_data=f"db1={user_id}"),
+                        InlineKeyboardButton(text="Guild", callback_data=f"db2={user_id}")
+                    ]
+                ]
+            )
+        )
+    else:
+        message.reply_text("use this way\n/deleteone <user ID>")
+
+def delete_callback(update: Update, context: CallbackContext):
+    bot = context.bot
+    query = update.callback_query
+    user = update.effective_user.id
+    query_id = query.id
+    quser_id = int(user)
+    splitter = query.data.split("=")
+    user_id = int(splitter[1])
+    if quser_id in devlist:
+        if splitter[0] == "db1":
+            collection1.delete_one({"_id": user_id})
+            query.message.edit_text(f"#Terminal\n<code>Operator Command =</code> <b>Delete</b>\n<code>Successfully deleted the user data from the user database</code>", parse_mode=ParseMode.HTML)
+        elif splitter[0] == "db2":
+            collection2.delete_one({"_id": user_id})
+            query.message.edit_text(f"#Terminal\n<code>Operator Command =</code> <b>Delete</b>\n<code>Successfully deleted the user data from the guild database</code>", parse_mode=ParseMode.HTML)
+    else:
+        bot.answer_callback_query(query_id, text="YOU NOT A DEVELOPER!!!")
+
 
 
 
@@ -40,7 +71,7 @@ def devdelete(update: Update, context: CallbackContext):
 
 DEVREGISTER_HANDLER = DisableAbleCommandHandler("adduser", devregister, run_async=True)
 DEVDELETE_HANDLER = DisableAbleCommandHandler("deleteone", devdelete, run_async=True)
-#_HANDLER = DisableAbleCommandHandler(, run_async=True)
+DEVDELETE_BTN_HANDLER = CallbackQueryHandler(delete_callback, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
@@ -50,7 +81,7 @@ DEVDELETE_HANDLER = DisableAbleCommandHandler("deleteone", devdelete, run_async=
 
 dispatcher.add_handler(DEVREGISTER_HANDLER)
 dispatcher.add_handler(DEVDELETE_HANDLER)
-#dispatcher.add_handler()
+dispatcher.add_handler(DEVDELETE_BTN_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
