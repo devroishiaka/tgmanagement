@@ -94,7 +94,7 @@ def infoxx(update: Update, context: CallbackContext):
         message.reply_text(
             infofile,
             parse_mode=ParseMode.HTML,
-            InlineKeyboardMarkup(
+            reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="Battle", callback_data=f"battle={user_id}"),
