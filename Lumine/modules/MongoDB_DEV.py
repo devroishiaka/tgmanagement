@@ -23,7 +23,12 @@ def devregister(update: Update, context: CallbackContext):
     collection1.insert_one(post_dict1)
     message.reply_text(f"#Terminal\n<code>Operator Command =</code> <b>Register</b>\n<code>Successfully Registered the user</code> <b>{name}</b>", parse_mode=ParseMode.HTML)
 
-
+def devdelete(update: Update, context: CallbackContext):
+    message = update.effective_message
+    list_of_words = message.text.split(" ")
+    user_id = int(list_of_words[1])
+    collection2.delete_one({"_id": user_id})
+    message.reply_text("DONE, data deleted")
 
 
 
@@ -34,7 +39,7 @@ def devregister(update: Update, context: CallbackContext):
 
 
 DEVREGISTER_HANDLER = DisableAbleCommandHandler("adduser", devregister, run_async=True)
-#_HANDLER = DisableAbleCommandHandler(, run_async=True)
+DEVDELETE_HANDLER = DisableAbleCommandHandler("deleteone", devdelete, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
@@ -44,7 +49,7 @@ DEVREGISTER_HANDLER = DisableAbleCommandHandler("adduser", devregister, run_asyn
 
 
 dispatcher.add_handler(DEVREGISTER_HANDLER)
-#dispatcher.add_handler()
+dispatcher.add_handler(DEVDELETE_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
