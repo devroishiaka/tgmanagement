@@ -6,7 +6,8 @@ from telegram.ext import CallbackContext, CommandHandler, Filters, run_async, Ca
 from telegram.utils.helpers import escape_markdown, mention_html
 
 from Lumine import (
-    dispatcher
+    dispatcher,
+    DEV_USERS
 )
 
 from Lumine.modules.helper_funcs.chat_status import sudo_plus, gods_plus
@@ -50,7 +51,7 @@ def delete_callback(update: Update, context: CallbackContext):
     quser_id = int(user)
     splitter = query.data.split("=")
     user_id = int(splitter[1])
-    if quser_id in devlist:
+    if quser_id in DEV_USERS:
         if splitter[0] == "db1":
             collection1.delete_one({"_id": user_id})
             query.message.edit_text(f"#Terminal\n<code>Operator Command =</code> <b>Delete</b>\n<code>Successfully deleted the user data from the user database</code>", parse_mode=ParseMode.HTML)
