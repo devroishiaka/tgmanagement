@@ -79,14 +79,14 @@ def infoxx(update: Update, context: CallbackContext):
         healthc = int(healthno) // 10
         health = ""
         for i in range(healthc):
-            health = "●"
-        for i2 in range(10-healthc):
-            health = "○"
-        exppc = int(expp) // 10
+            health += "●"
+        for i2 in range(10 - healthc):
+            health += "○"
+        exppc = int(expp) // 20
         exp = ""
         for i3 in range(exppc):
             exp += "∘"
-        for i4 in range(10-exppc):
+        for i4 in range(20-exppc):
             exp += " "
         infofile = ""
         infofile += f"⊱┈「<b> Iɴғᴏ </b>」┈⊰\n"
