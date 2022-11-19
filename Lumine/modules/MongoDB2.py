@@ -160,7 +160,7 @@ def inlinex_callback(update, context):
                 ]
             )
         )
-    else query.data == "done4":
+    elif query.data == "done4":
         query.message.edit_text(
             "Yo5",
             reply_markup=InlineKeyboardMarkup(
