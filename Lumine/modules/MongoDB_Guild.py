@@ -261,7 +261,7 @@ def leavex_btn(update: Update, context: CallbackContext):
     query_id = query.id
     splitter = query.data.split("=")
     query_match = splitter[0]
-    if query_match != "dell":
+    if query_match == "leave":
         senderid = splitter[1]
         sender_id = int(senderid)
         if user_id == sender_id:
