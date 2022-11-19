@@ -87,7 +87,7 @@ def infoxx(update: Update, context: CallbackContext):
         for i3 in range(exppc):
             exp += "∘"
         for i4 in range(20-exppc):
-            exp += " "
+            exp += "-"
         infofile = ""
         infofile += f"⊱┈「<b> Iɴғᴏ </b>」┈⊰\n"
         infofile += "───────────────────\n"
@@ -96,9 +96,8 @@ def infoxx(update: Update, context: CallbackContext):
         infofile += f"Hᴇᴀʟᴛʜ: [{health}]\n"
         infofile += f"🔹 ID ⊸⊱ {user_id}\n"
         infofile += f"🔹 Nᴀᴍᴇ ⊸⊱ <a href='tg://user?id={user_id}'>{name}</a>\n"
-        infofile += f"🔹 Points ⊸⊱ {points}"
-        infofile += f"🔹 Guild ⊸⊱ {guild}"
-        infofile += "\n───────────────────\n"
+        infofile += f"🔹 Points ⊸⊱ {points}\n"
+        infofile += f"🔹 Guild ⊸⊱ {guild}\n\n"
         infofile += f"🔹 Total Deposits ⊸⊱ {deposits}\n"
         infofile += f"🔹 Total Skills ⊸⊱ {len(skills) - 1}\n"
         infofile += f"🔹 Total Achievments ⊸⊱ {len(achievment) - 1}"
@@ -138,8 +137,8 @@ def inlinex_callback(update, context):
     a = 15
     b = 15
     c = a * b
-    if query.data == "done1":
-        while c > 0:
+    while c > 0:
+        if query.data == "done1":
             query.message.reply_text(
                 f"A = 15\nB = 15\nC = {c}",
                 reply_markup=InlineKeyboardMarkup(
@@ -151,22 +150,22 @@ def inlinex_callback(update, context):
                     ]
                 )
             )
-    elif query.data == "done2":
-        b = b - 2
-        c = a * b
-        query.message.edit_text(
-            f"A = {a} \nB = {b}\nC = {c}"
-        )
-    elif query.data == "done3":
-        b = b - 3
-        c = a * b
-        query.message.edit_text(
-            f"A = {a} \nB = {b}\nC = {c}"
-        )
-    elif query.data == "done4":
-        query.message.edit_text(
-            "Cancel",
-        )
+        elif query.data == "done2":
+            b = b - 2
+            c = a * b
+            query.message.edit_text(
+                f"A = {a} \nB = {b}\nC = {c}"
+            )
+        elif query.data == "done3":
+            b = b - 3
+            c = a * b
+            query.message.edit_text(
+                f"A = {a} \nB = {b}\nC = {c}"
+            )
+        elif query.data == "done4":
+            query.message.edit_text(
+                "Cancel",
+            )
         
 
 DATATYPE_HANDLER = DisableAbleCommandHandler("datatype", datatype, run_async=True)
