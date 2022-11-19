@@ -61,7 +61,6 @@ def infoxx(update: Update, context: CallbackContext):
     user_id = int(user_id)
     user_name = update.effective_user.first_name
     registerd = collection1.find_one({"_id": user_id})
-    infofile = ""
     if registerd:
         name = registerd["Name"]
         points = registerd["Points"]
@@ -89,7 +88,7 @@ def infoxx(update: Update, context: CallbackContext):
             exp += ""
         for i4 in range(10-exppc):
             exp += ""
-
+        infofile = ""
         infofile += f"⊱┈「<b> Iɴғᴏ </b>」┈⊰\n"
         infofile += "───────────────────\n"
         infofile += f"EXP: {exp}\nLevel ⊸⊱ {level}\n"
