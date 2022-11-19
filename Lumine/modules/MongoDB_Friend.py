@@ -43,7 +43,7 @@ def friendx_btn(update: Update, context: CallbackContext):
     query_id = query.id
     splitter = query.data.split("=")
     query_match = splitter[0]
-    if query_match != "friend_del":
+    if query_match == "friend":
         user_id = splitter[1]
         user_id = int(user_id)
         if user_id == senderid:
