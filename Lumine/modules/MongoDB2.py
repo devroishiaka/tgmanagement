@@ -8,7 +8,7 @@ from Lumine.modules.MongoDB import collection1, collection2
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity
-from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
+from telegram.ext import CallbackContext, CommandHandler, Filters, run_async, CallbackQueryHandler
 from telegram.utils.helpers import escape_markdown, mention_html
 
 from Lumine import (
