@@ -131,7 +131,7 @@ def inlinex(update: Update, context: CallbackContext):
             ]
         )
     )
-
+"""
 def inlinex_callback(update, context):
     query = update.callback_query
     a = 15
@@ -166,7 +166,7 @@ def inlinex_callback(update, context):
         elif query.data == "done4":
             query.message.edit_text(
                 "Cancel",
-            )
+            )"""
         
 
 DATATYPE_HANDLER = DisableAbleCommandHandler("datatype", datatype, run_async=True)
@@ -174,7 +174,7 @@ testdevs1_HANDLER = DisableAbleCommandHandler("testdevs1", testdevs1, run_async=
 testdevs2_HANDLER = DisableAbleCommandHandler("testdevs2", testdevs2, run_async=True)
 INFOOX_HANDLER = DisableAbleCommandHandler("info", infoxx, run_async=True)
 inlinex_HANDLER = DisableAbleCommandHandler("inline", inlinex, run_async=True)
-inlinexN_HANDLER = CallbackQueryHandler(inlinex_callback, run_async=True)
+#inlinexN_HANDLER = CallbackQueryHandler(inlinex_callback, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 
@@ -183,6 +183,6 @@ dispatcher.add_handler(testdevs1_HANDLER)
 dispatcher.add_handler(testdevs2_HANDLER)
 dispatcher.add_handler(INFOOX_HANDLER)
 dispatcher.add_handler(inlinex_HANDLER)
-dispatcher.add_handler(inlinexN_HANDLER)
+#dispatcher.add_handler(inlinexN_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
