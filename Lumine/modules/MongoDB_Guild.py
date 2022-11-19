@@ -272,7 +272,7 @@ def leavex_btn(update: Update, context: CallbackContext):
             query.message.edit_text("✅ You successfully left the guild!!!")
         else:
             bot.answer_callback_query(query_id, text="WHO ARE YOU ???")
-    else:
+    elif query_match == "dell":
         sender_id = splitter[1]
         senderid = int(sender_id)
         if user_id == senderid:
