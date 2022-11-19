@@ -107,11 +107,79 @@ def infoxx(update: Update, context: CallbackContext):
         message.reply_text("You not registerd!!\nUse /register to get registerd in this game")
         
 
+def inlinex(update: Update, context: CallbackContext):
+    message = update.effective_message
+    sender_id = update.effective_user.id
+    message.reply_text(
+        "Yo1",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(text="1", callback_data=f"done1"),
+                    InlineKeyboardButton(text="2", callback_data=f"done2")
+                ]
+            ]
+        )
+    )
+
+def inlinex_callback(update, context):
+    query = update.callback_query
+    if query.data == "done1":
+        query.message.edit_text(
+            "Yo2",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(text="3", callback_data=f"done3"),
+                        InlineKeyboardButton(text="4", callback_data=f"done4")
+                    ]
+                ]
+            )
+        )
+    elif query.data == "done2":
+        query.message.edit_text(
+            "Yo3",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(text="3", callback_data=f"done3"),
+                        InlineKeyboardButton(text="4", callback_data=f"done4")
+                    ]
+                ]
+            )
+        )
+    elif query.data == "done3":
+        query.message.edit_text(
+            "Yo4",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(text="1", callback_data=f"done1"),
+                        InlineKeyboardButton(text="2", callback_data=f"done2")
+                    ]
+                ]
+            )
+        )
+    else query.data == "done4":
+        query.message.edit_text(
+            "Yo5",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(text="1", callback_data=f"done1"),
+                        InlineKeyboardButton(text="2", callback_data=f"done2")
+                    ]
+                ]
+            )
+        )
+        
+
 DATATYPE_HANDLER = DisableAbleCommandHandler("datatype", datatype, run_async=True)
 testdevs1_HANDLER = DisableAbleCommandHandler("testdevs1", testdevs1, run_async=True)
 testdevs2_HANDLER = DisableAbleCommandHandler("testdevs2", testdevs2, run_async=True)
 INFOOX_HANDLER = DisableAbleCommandHandler("info", infoxx, run_async=True)
-#_HANDLER = DisableAbleCommandHandler(, run_async=True)
+inlinex_HANDLER = DisableAbleCommandHandler("inline", inlinex, run_async=True)
+inlinexN_HANDLER = CallbackQueryHandler(inlinex_callback, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 
@@ -119,7 +187,7 @@ dispatcher.add_handler(DATATYPE_HANDLER)
 dispatcher.add_handler(testdevs1_HANDLER)
 dispatcher.add_handler(testdevs2_HANDLER)
 dispatcher.add_handler(INFOOX_HANDLER)
-#dispatcher.add_handler()
-#dispatcher.add_handler()
+dispatcher.add_handler(inlinex_HANDLER)
+dispatcher.add_handler(inlinexN_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
