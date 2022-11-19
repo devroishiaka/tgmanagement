@@ -20,7 +20,7 @@ def devregister(update: Update, context: CallbackContext):
     list_of_words = message.text.split(" ")
     user_id = int(list_of_words[1])
     name = list_of_words[2]
-    post_dict1 = {"_id": sender.id, "Name": name, "EXP": 10, "Level": 1, "Rank": "D-Class", "Points": 100, "Gender": "No", "Partner": "No", "Friend": "No", "Parents": "No", "Parents": "No", "Children": "No", "Status": "No", "Bounty": 0, "Deposit": 0, "TDeposit": 0, "Weapons": ["No"], "WeaSet": [1, 2, 3, 4], "Skills": ["No"], "Health": 100, "DWins": 0, "DTotal": 0, "Invantory": ["No"], "Achievment": ["No"]}
+    post_dict1 = {"_id": sender.id, "Name": name, "EXP": 10, "Level": 1, "Rank": "D-Class", "Points": 100, "Gender": "No", "Partner": "No", "Friend": "No", "Parents": "No", "Parents": "No", "Children": "No", "Status": "No", "Bounty": 0, "Deposit": 0, "TDeposit": 0, "Weapons": ["Knife"], "WeaSet": [1, 2, 3, 4], "Skills": ["No"], "Health": 100, "DWins": 0, "DTotal": 0, "Invantory": ["No"], "Achievment": ["No"]}
     collection1.insert_one(post_dict1)
     message.reply_text(f"#Terminal\n<code>Operator Command =</code> <b>Register</b>\n<code>Successfully Registered the user</code> <b>{name}</b>", parse_mode=ParseMode.HTML)
 
