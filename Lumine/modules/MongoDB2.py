@@ -85,23 +85,23 @@ def infoxx(update: Update, context: CallbackContext):
         exppc = int(expp) // 10
         exp = ""
         for i3 in range(exppc):
-            exp += ""
+            exp += "∘"
         for i4 in range(10-exppc):
-            exp += ""
+            exp += " "
         infofile = ""
         infofile += f"⊱┈「<b> Iɴғᴏ </b>」┈⊰\n"
         infofile += "───────────────────\n"
-        infofile += f"EXP: {exp}\nLevel ⊸⊱ {level}\n"
-        infofile += "───────────────────\n\n"
+        infofile += f"EXP: [{exp}]\nLevel ⊸⊱ {level}\n"
+        infofile += "───────────────────\n"
         infofile += f"Hᴇᴀʟᴛʜ: [{health}]\n"
         infofile += f"🔹 ID ⊸⊱ {user_id}\n"
         infofile += f"🔹 Nᴀᴍᴇ ⊸⊱ <a href='tg://user?id={user_id}'>{name}</a>\n"
         infofile += f"🔹 Points ⊸⊱ {points}"
         infofile += f"🔹 Guild ⊸⊱ {guild}"
-        infofile += "───────────────────\n"
-        infofile += f"🔹 Total Deposits ⊸⊱ {deposits}"
-        infofile += f"🔹 Total Skills ⊸⊱ {len(skills)}"
-        infofile += f"🔹 Total Achievments ⊸⊱ {len(achievment)}"
+        infofile += "\n───────────────────\n"
+        infofile += f"🔹 Total Deposits ⊸⊱ {deposits}\n"
+        infofile += f"🔹 Total Skills ⊸⊱ {len(skills) - 1}\n"
+        infofile += f"🔹 Total Achievments ⊸⊱ {len(achievment) - 1}"
         message.reply_text(
             infofile,
             parse_mode=ParseMode.HTML,
