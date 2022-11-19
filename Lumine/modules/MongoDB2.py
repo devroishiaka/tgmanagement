@@ -138,7 +138,9 @@ def inlinex_callback(update, context):
     b = 15
     c = a * b
     while c > 0:
-        if query.data == "done1":
+    if query.data == "done1":
+        while c > 0:
+            c = a * b
             query.message.reply_text(
                 f"A = 15\nB = 15\nC = {c}",
                 reply_markup=InlineKeyboardMarkup(
