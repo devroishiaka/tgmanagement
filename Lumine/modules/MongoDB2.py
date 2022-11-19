@@ -134,7 +134,7 @@ def inlinex_callback(update, context):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(text="3", callback_data="done3")
+                            InlineKeyboardButton(text="3", callback_data="done3"),
                             InlineKeyboardButton(text="2", callback_data="done2")
                         ]
                     ]
