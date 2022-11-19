@@ -50,7 +50,7 @@ def friendx_btn(update: Update, context: CallbackContext):
             query.message.edit_text(f"Congratulations🎊!!!\n{sender_name} accepted your friend request")
         else:
             bot.answer_callback_query(query_id, text="Not your Query!!!")
-    else:
+    elif query_match == "friend_del":
         user_id = splitter[1]
         user_id = int(user_id)
         if user_id == senderid:
