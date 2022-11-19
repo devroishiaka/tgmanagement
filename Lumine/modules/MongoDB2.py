@@ -65,7 +65,7 @@ def infoxx(update: Update, context: CallbackContext):
     if registerd:
         name = registerd["Name"]
         points = registerd["Points"]
-        exp = registerd["EXP"]
+        expp = registerd["EXP"]
         level = registerd["Level"]
         rank = registerd["Rank"]
         guild = registerd["Status"]
@@ -77,15 +77,27 @@ def infoxx(update: Update, context: CallbackContext):
         achievment = registerd["Achievment"]
         healthno = registerd["Health"]
 
+        healthc = int(healthno) // 10
+        health = ""
+        for i in range(healthc):
+            health = "●"
+        for i2 in range(10-healthc):
+            health = "○"
+        exppc = int(expp) // 10
+        exp = ""
+        for i3 in range(exppc):
+            exp += ""
+        for i4 in range(10-exppc):
+            exp += ""
+
         infofile += f"⊱┈「<b> Iɴғᴏ </b>」┈⊰\n"
         infofile += "───────────────────\n"
-        infofile += f"Hᴇᴀʟᴛʜ: {health}\n"
+        infofile += f"EXP: {exp}\nLevel ⊸⊱ {level}\n"
         infofile += "───────────────────\n\n"
-        infofile += f"EXP: {expbar}"
+        infofile += f"Hᴇᴀʟᴛʜ: [{health}]\n"
         infofile += f"🔹 ID ⊸⊱ {user_id}\n"
         infofile += f"🔹 Nᴀᴍᴇ ⊸⊱ <a href='tg://user?id={user_id}'>{name}</a>\n"
         infofile += f"🔹 Points ⊸⊱ {points}"
-        infofile += f"🔹 Level ⊸⊱ {level}"
         infofile += f"🔹 Guild ⊸⊱ {guild}"
         infofile += "───────────────────\n"
         infofile += f"🔹 Total Deposits ⊸⊱ {deposits}"
@@ -94,7 +106,7 @@ def infoxx(update: Update, context: CallbackContext):
         message.reply_text(
             infofile,
             parse_mode=ParseMode.HTML,
-            reply_markup=InlineKeyboardMarkup(
+            InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="Battle", callback_data=f"battle={user_id}"),
