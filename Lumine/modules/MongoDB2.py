@@ -116,7 +116,7 @@ def inlinex(update: Update, context: CallbackContext):
             [
                 [
                     InlineKeyboardButton(text="1", callback_data=f"done1"),
-                    InlineKeyboardButton(text="2", callback_data=f"done2")
+                    InlineKeyboardButton(text="2", callback_data=f"done4")
                 ]
             ]
         )
@@ -124,53 +124,37 @@ def inlinex(update: Update, context: CallbackContext):
 
 def inlinex_callback(update, context):
     query = update.callback_query
+    a = 15
+    b = 15
+    c = a * b
     if query.data == "done1":
-        query.message.edit_text(
-            "Yo2",
-            reply_markup=InlineKeyboardMarkup(
-                [
+        while c > 0:
+            query.message.reply_text(
+                f"A = 15\nB = 15\nC = {c}",
+                reply_markup=InlineKeyboardMarkup(
                     [
-                        InlineKeyboardButton(text="3", callback_data=f"done3"),
-                        InlineKeyboardButton(text="4", callback_data=f"done4")
+                        [
+                            InlineKeyboardButton(text="3", callback_data="done3")
+                            InlineKeyboardButton(text="2", callback_data="done2")
+                        ]
                     ]
-                ]
+                )
             )
-        )
     elif query.data == "done2":
+        b = b - 2
+        c = a * b
         query.message.edit_text(
-            "Yo3",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="3", callback_data=f"done3"),
-                        InlineKeyboardButton(text="4", callback_data=f"done4")
-                    ]
-                ]
-            )
+            f"A = {a} \nB = {b}\nC = {c}"
         )
     elif query.data == "done3":
+        b = b - 3
+        c = a * b
         query.message.edit_text(
-            "Yo4",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="1", callback_data=f"done1"),
-                        InlineKeyboardButton(text="2", callback_data=f"done2")
-                    ]
-                ]
-            )
+            f"A = {a} \nB = {b}\nC = {c}"
         )
     elif query.data == "done4":
         query.message.edit_text(
-            "Yo5",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="1", callback_data=f"done1"),
-                        InlineKeyboardButton(text="2", callback_data=f"done2")
-                    ]
-                ]
-            )
+            "Cancel",
         )
         
 
