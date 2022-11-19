@@ -137,7 +137,6 @@ def inlinex_callback(update, context):
     a = 15
     b = 15
     c = a * b
-    while c > 0:
     if query.data == "done1":
         while c > 0:
             c = a * b
