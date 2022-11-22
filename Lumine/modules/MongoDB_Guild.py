@@ -1,3 +1,5 @@
+import json
+import html
 import asyncio
 from datetime import datetime
 from asyncio import sleep
@@ -227,7 +229,7 @@ def allguild(update: Update, context: CallbackContext):
         final += "\n"
     message.reply_text(final, parse_mode=ParseMode.HTML)
 
-
+"""
 def leavex(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
@@ -279,14 +281,58 @@ def leavex_btn(update: Update, context: CallbackContext):
             query.message.delete()
         else:
             bot.answer_callback_query(query.id, text="WHO ARE YOU ???")
-            
+"""
+def leavex(update: Update, context: CallbackContext):
+    chat = update.effective_chat
+    user = update.effective_user
+    message = update.effective_message
+    bot = context.bot
+    args = context.args
+    user_id = int(user.id)
+    message.reply_text(
+        "Choose",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="✅", callback_data=f"leave={user_id}"
+                    ),
+                    InlineKeyboardButton(text="❌", callback_data=f"leave_del={user_id}"),
+                ]
+            ]
+        )
+    )
+def leavex_btn(update: Update, context: CallbackContext):
+    bot = context.bot
+    query = update.callback_query
+    user = update.effective_user
+    senderid = update.effective_user.id
+    sender_name = update.effective_user.first_name
+    sender_id = int(senderid)
+    query_id = query.id
+    splitter = query.data.split("=")
+    query_match = splitter[0]
+    if query_match == "leave":
+        user_id = splitter[1]
+        user_id = int(user_id)
+        if user_id == senderid:
+            query.message.edit_text(f"Congratulations🎊!!!\n{sender_name} accepted your leave request")
+        else:
+            bot.answer_callback_query(query_id, text="Not your Query!!!")
+    elif query_match == "leave_del":
+        user_id = splitter[1]
+        user_id = int(user_id)
+        if user_id == senderid:
+            query.message.delete()
+        else:
+            bot.answer_callback_query(query.id, text="Not your Query!!!")            
 
 
 DEPOSITX_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 GUILD_HANDLER = DisableAbleCommandHandler("guild", guildx, run_async=True)
 VAULT_HANDLER = DisableAbleCommandHandler("vault", vault, run_async=True)
 TOPGUILDS_HANDLER = DisableAbleCommandHandler("topguilds", allguild, run_async=True)
-LEAVEX_HANDLER = DisableAbleCommandHandler("leave", leavex, run_async=True)
+LEAVEX_HANDLER = DisableAbleCommandHandler("leaveguild", leavex, run_async=True)
 LEAVEX_BTN_HANDLER = CallbackQueryHandler(leavex_btn, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
