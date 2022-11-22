@@ -132,7 +132,7 @@ def inlinex(update: Update, context: CallbackContext):
         )
     )
 
-def inlinex_callback(update: Update, context: CallbackContext):
+async def inlinex_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     a = 0
     c = 15 - a
@@ -170,7 +170,7 @@ testdevs1_HANDLER = DisableAbleCommandHandler("testdevs1", testdevs1, run_async=
 testdevs2_HANDLER = DisableAbleCommandHandler("testdevs2", testdevs2, run_async=True)
 INFOOX_HANDLER = DisableAbleCommandHandler("info", infoxx, run_async=True)
 inlinex_HANDLER = DisableAbleCommandHandler("inline", inlinex, run_async=True)
-inlinexN_HANDLER = CallbackQueryHandler(inlinex_callback, run_async=True)
+inlinexN_HANDLER = CallbackQueryHandler(inlinex_callback)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 
