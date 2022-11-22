@@ -56,7 +56,21 @@ def friendx_btn(update: Update, context: CallbackContext):
         if user_id == senderid:
             query.message.delete()
         else:
-            bot.answer_callback_query(query.id, text="Not your Query!!!")
+            bot.answer_callback_query(query.id, text="Not your Query!!!")  
+    elif query_match == "leave":
+        user_id = splitter[1]
+        user_id = int(user_id)
+        if user_id == senderid:
+            query.message.edit_text("You left the guild")
+        else:
+            bot.answer_callback_query(query_id, text="Not your Query!!!")
+    elif query_match == "leave_del":
+        user_id = splitter[1]
+        user_id = int(user_id)
+        if user_id == senderid:
+            query.message.delete()
+        else:
+            bot.answer_callback_query(query_id, text="Not your Query!!!")
 
 FRIENDX_HANDLER = CommandHandler("friend", friendx, run_async=True)
 FRIENDX_BTN_HANDLER = CallbackQueryHandler(friendx_btn, run_async=True)
