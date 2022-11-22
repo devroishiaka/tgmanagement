@@ -4,6 +4,7 @@ import sys
 import time
 import spamwatch
 
+from pyrogram import Client
 import telegram.ext as tg
 from telethon import TelegramClient
 
@@ -168,6 +169,9 @@ else:
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("Lumine", API_ID, API_HASH)
 dispatcher = updater.dispatcher
+pbot = Client("eri", API_ID, API_HASH, bot_token=TOKEN)
+
+pbot.start()
 
 SUDO_USERS = list(SUDO_USERS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
