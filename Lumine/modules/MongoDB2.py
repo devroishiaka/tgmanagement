@@ -132,7 +132,7 @@ def inlinex(update: Update, context: CallbackContext):
         )
     )
 
-async def inlinex_callback(update: Update, context: CallbackContext):
+def inlinex_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     a = 0
     c = 15 - a
