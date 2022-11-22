@@ -302,6 +302,7 @@ def leavex(update: Update, context: CallbackContext):
             ]
         )
     )
+"""
 def leavex_btn(update: Update, context: CallbackContext):
     bot = context.bot
     query = update.callback_query
@@ -326,14 +327,14 @@ def leavex_btn(update: Update, context: CallbackContext):
             query.message.delete()
         else:
             bot.answer_callback_query(query.id, text="Not your Query!!!")            
-
+"""
 
 DEPOSITX_HANDLER = DisableAbleCommandHandler("deposit", depositx, run_async=True)
 GUILD_HANDLER = DisableAbleCommandHandler("guild", guildx, run_async=True)
 VAULT_HANDLER = DisableAbleCommandHandler("vault", vault, run_async=True)
 TOPGUILDS_HANDLER = DisableAbleCommandHandler("topguilds", allguild, run_async=True)
 LEAVEX_HANDLER = DisableAbleCommandHandler("leaveguild", leavex, run_async=True)
-LEAVEX_BTN_HANDLER = CallbackQueryHandler(leavex_btn, run_async=True)
+#LEAVEX_BTN_HANDLER = CallbackQueryHandler(leavex_btn, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
@@ -344,7 +345,7 @@ dispatcher.add_handler(GUILD_HANDLER)
 dispatcher.add_handler(VAULT_HANDLER)
 dispatcher.add_handler(TOPGUILDS_HANDLER)
 dispatcher.add_handler(LEAVEX_HANDLER)
-dispatcher.add_handler(LEAVEX_BTN_HANDLER)
+#dispatcher.add_handler(LEAVEX_BTN_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
