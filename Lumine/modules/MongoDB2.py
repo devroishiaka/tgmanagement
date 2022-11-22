@@ -6,9 +6,9 @@ from Lumine import telethn as LumineTelethonClient
 
 from Lumine.modules.MongoDB import collection1, collection2
 
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update, ForceReply
 from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity
-from telegram.ext import CallbackContext, CommandHandler, Filters, run_async, CallbackQueryHandler
+from telegram.ext import CallbackContext, CommandHandler, Filters, run_async, CallbackQueryHandler, ConversationHandler
 from telegram.utils.helpers import escape_markdown, mention_html
 
 from Lumine import (
@@ -125,48 +125,44 @@ def inlinex(update: Update, context: CallbackContext):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(text="1", callback_data=f"done1"),
-                    InlineKeyboardButton(text="2", callback_data=f"done4")
+                    InlineKeyboardButton(text="s1", callback_data="done=111"),
+                    InlineKeyboardButton(text="s2", callback_data="done=222")
                 ]
             ]
         )
     )
-"""
-def inlinex_callback(update, context):
+
+def inlinex_callback(update: Update, context: CallbackContext):
     query = update.callback_query
-    a = 15
-    b = 15
-    c = a * b
-    if query.data == "done1":
-        while c > 0:
-            c = a * b
+    a = 0
+    c = 15 - a
+    while c > 0:
+        if query.data == "done=111":
+            c = 15 - 1
             query.message.reply_text(
-                f"A = 15\nB = 15\nC = {c}",
+                f"C = 15 - 1\nC = {c}",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(text="3", callback_data="done3"),
-                            InlineKeyboardButton(text="2", callback_data="done2")
+                            InlineKeyboardButton(text="1", callback_data="done=111"),
+                            InlineKeyboardButton(text="2", callback_data="done=222")
                         ]
                     ]
                 )
             )
-        elif query.data == "done2":
-            b = b - 2
-            c = a * b
-            query.message.edit_text(
-                f"A = {a} \nB = {b}\nC = {c}"
+        elif query.data == "done==222":
+            c = 15 - 2
+            query.message.reply_text(
+                f"C = 15 - 2\nC = {c}",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(text="1", callback_data="done=111"),
+                            InlineKeyboardButton(text="2", callback_data="done=222")
+                        ]
+                    ]
+                )
             )
-        elif query.data == "done3":
-            b = b - 3
-            c = a * b
-            query.message.edit_text(
-                f"A = {a} \nB = {b}\nC = {c}"
-            )
-        elif query.data == "done4":
-            query.message.edit_text(
-                "Cancel",
-            )"""
         
 
 DATATYPE_HANDLER = DisableAbleCommandHandler("datatype", datatype, run_async=True)
@@ -174,7 +170,7 @@ testdevs1_HANDLER = DisableAbleCommandHandler("testdevs1", testdevs1, run_async=
 testdevs2_HANDLER = DisableAbleCommandHandler("testdevs2", testdevs2, run_async=True)
 INFOOX_HANDLER = DisableAbleCommandHandler("info", infoxx, run_async=True)
 inlinex_HANDLER = DisableAbleCommandHandler("inline", inlinex, run_async=True)
-#inlinexN_HANDLER = CallbackQueryHandler(inlinex_callback, run_async=True)
+inlinexN_HANDLER = CallbackQueryHandler(inlinex_callback, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 
