@@ -53,3 +53,6 @@ multicolorcaptcha
 pymongo
 dnspython
 motor
+py-tgcalls==0.8.6
+pyrogram
+asyncio
