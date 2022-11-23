@@ -74,34 +74,34 @@ def friendx_btn(update: Update, context: CallbackContext):
     a = 0
     c = 15 - a
     while c > 0:
-            if query_match == "done":
-                a = 2
-                c = c - a
-                user_id = splitter[1]
-                user_id = int(user_id)
-                if user_id == senderid:
-                    query.message.edit_text(
-                        f"c = {c}",
-                        reply_markup=InlineKeyboardMarkup(
+        if query_match == "done":
+            a = 2
+            c = c - a
+            user_id = splitter[1]
+            user_id = int(user_id)
+            if user_id == senderid:
+                query.message.edit_text(
+                    f"c = {c}",
+                    reply_markup=InlineKeyboardMarkup(
+                        [
                             [
-                                [
-                                    InlineKeyboardButton(text="s1", callback_data=f"done={senderid}"),
-                                    InlineKeyboardButton(text="s2", callback_data=f"dont={senderid}")
-                                ]
+                                InlineKeyboardButton(text="s1", callback_data=f"done={senderid}"),
+                                InlineKeyboardButton(text="s2", callback_data=f"dont={senderid}")
                             ]
-                        )
+                        ]
                     )
-                else:
-                    bot.answer_callback_query(query_id, text="Not your Query!!!")
-            elif query_match == "dont":
-                a = 4
-                c = c - a
-                user_id = splitter[1]
-                user_id = int(user_id)
-                if user_id == senderid:
-                    query.message.edit_text(f"c = {c}")
-                else:
-                    bot.answer_callback_query(query_id, text="Not your Query!!!")
+                )
+            else:
+                bot.answer_callback_query(query_id, text="Not your Query!!!")
+    elif query_match == "dont":
+        a = 4
+        c = c - a
+        user_id = splitter[1]
+        user_id = int(user_id)
+        if user_id == senderid:
+            query.message.edit_text(f"c = {c}")
+        else:
+            bot.answer_callback_query(query_id, text="Not your Query!!!")
 
 FRIENDX_HANDLER = CommandHandler("friend", friendx, run_async=True)
 FRIENDX_BTN_HANDLER = CallbackQueryHandler(friendx_btn, run_async=True)
