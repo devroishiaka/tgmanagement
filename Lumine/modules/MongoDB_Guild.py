@@ -211,7 +211,7 @@ def vault(update: Update, context: CallbackContext):
                     msg_final += "\n"
                 else:
                     continue
-            message.reply_text(msg_final, parse_mode=ParseMode.HTML, disable_web_page_preview=true)
+            message.reply_text(msg_final, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
     else:
         message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
 
@@ -222,7 +222,7 @@ def allguild(update: Update, context: CallbackContext):
     allguild = collection2.find().sort("Guild_Level",-1).limit(10)
     final = "━━━━━━━━━҉━━━━━━━━━\n<b>Top Guilds</b> 🌐\n\nGuild Name • Level\n"
     for result in allguild:
-        final += result["Guild_Name"]
+        final += result["Guild_FName"]
         final += " • "
         levels = str(result["Guild_Level"])
         final += f"<code>{levels}</code>"
