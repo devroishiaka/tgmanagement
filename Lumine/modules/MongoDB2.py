@@ -119,19 +119,20 @@ def infoxx(update: Update, context: CallbackContext):
 
 def inlinex(update: Update, context: CallbackContext):
     message = update.effective_message
-    sender_id = update.effective_user.id
+    sender_idd = update.effective_user.id
+    sender_id = int(sender_idd)
     message.reply_text(
-        "Yo1",
+        "Yoooo",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(text="s1", callback_data="done=111"),
-                    InlineKeyboardButton(text="s2", callback_data="done=222")
+                    InlineKeyboardButton(text="s1", callback_data=f"done={sender_id}"),
+                    InlineKeyboardButton(text="s2", callback_data=f"dont={sender_id}")
                 ]
             ]
         )
     )
-
+"""
 def inlinex_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     a = 0
@@ -144,13 +145,13 @@ def inlinex_callback(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(text="1", callback_data="done=111"),
-                            InlineKeyboardButton(text="2", callback_data="done=222")
+                            InlineKeyboardButton(text="1", callback_data=f"done={sender_id}"),
+                            InlineKeyboardButton(text="2", callback_data=f"done={sender_id}")
                         ]
                     ]
                 )
             )
-        elif query.data == "done==222":
+        elif query.data == "donee==222":
             c = 15 - 2
             query.message.reply_text(
                 f"C = 15 - 2\nC = {c}",
@@ -158,19 +159,19 @@ def inlinex_callback(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(text="1", callback_data="done=111"),
-                            InlineKeyboardButton(text="2", callback_data="done=222")
+                            InlineKeyboardButton(text="2", callback_data="donee=222")
                         ]
                     ]
                 )
             )
-        
+"""     
 
 DATATYPE_HANDLER = DisableAbleCommandHandler("datatype", datatype, run_async=True)
 testdevs1_HANDLER = DisableAbleCommandHandler("testdevs1", testdevs1, run_async=True)
 testdevs2_HANDLER = DisableAbleCommandHandler("testdevs2", testdevs2, run_async=True)
 INFOOX_HANDLER = DisableAbleCommandHandler("info", infoxx, run_async=True)
 inlinex_HANDLER = DisableAbleCommandHandler("inline", inlinex, run_async=True)
-inlinexN_HANDLER = CallbackQueryHandler(inlinex_callback)
+#inlinexN_HANDLER = CallbackQueryHandler(inlinex_callback)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 
@@ -179,6 +180,6 @@ dispatcher.add_handler(testdevs1_HANDLER)
 dispatcher.add_handler(testdevs2_HANDLER)
 dispatcher.add_handler(INFOOX_HANDLER)
 dispatcher.add_handler(inlinex_HANDLER)
-dispatcher.add_handler(inlinexN_HANDLER)
+#dispatcher.add_handler(inlinexN_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
