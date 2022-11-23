@@ -66,7 +66,7 @@ def devguildlist(update: Update, context: CallbackContext):
     message = update.effective_message
     guilds = collection2.find()
     final = "All guilds"
-    for guildss in guild:
+    for guildss in guilds:
         guildsss = str(guildss)
         final += guildsss
     message.reply_text(final)
