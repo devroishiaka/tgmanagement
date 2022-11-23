@@ -68,7 +68,7 @@ def devguildlist(update: Update, context: CallbackContext):
     final = "All guilds"
     for guildss in guilds:
         guildsss = str(guildss)
-        final += (f"{guildsss}\n)
+        final += (f"{guildsss}\n")
     message.reply_text(final)
 
 
