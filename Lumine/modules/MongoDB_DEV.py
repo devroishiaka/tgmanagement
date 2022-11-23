@@ -61,6 +61,15 @@ def delete_callback(update: Update, context: CallbackContext):
     else:
         bot.answer_callback_query(query_id, text="YOU NOT A DEVELOPER!!!")
 
+        
+def devguildlist(update: Update, context: CallbackContext):
+    message = update.effective_message
+    guilds = collection2.find()
+    final = "All guilds"
+    for guildss in guild:
+        guildsss = str(guildss)
+        final += guildsss
+    message.reply_text(final)
 
 
 
@@ -73,7 +82,7 @@ def delete_callback(update: Update, context: CallbackContext):
 DEVREGISTER_HANDLER = DisableAbleCommandHandler("adduser", devregister, run_async=True)
 DEVDELETE_HANDLER = DisableAbleCommandHandler("deleteone", devdelete, run_async=True)
 DEVDELETE_BTN_HANDLER = CallbackQueryHandler(delete_callback, run_async=True)
-#_HANDLER = DisableAbleCommandHandler(, run_async=True)
+DEVGUILDLIST_HANDLER = DisableAbleCommandHandler("guildlist", devguildlist, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
@@ -83,7 +92,7 @@ DEVDELETE_BTN_HANDLER = CallbackQueryHandler(delete_callback, run_async=True)
 dispatcher.add_handler(DEVREGISTER_HANDLER)
 dispatcher.add_handler(DEVDELETE_HANDLER)
 dispatcher.add_handler(DEVDELETE_BTN_HANDLER)
-#dispatcher.add_handler()
+dispatcher.add_handler(DEVGUILDLIST_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
 #dispatcher.add_handler()
