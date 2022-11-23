@@ -211,7 +211,7 @@ def vault(update: Update, context: CallbackContext):
                     msg_final += "\n"
                 else:
                     continue
-            message.reply_text(msg_final, parse_mode=ParseMode.HTML)
+            message.reply_text(msg_final, parse_mode=ParseMode.HTML, disable_web_page_preview=true)
     else:
         message.reply_text("You not registerd!!\nUse /register to get registerd in this game.")
 
