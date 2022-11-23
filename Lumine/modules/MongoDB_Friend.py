@@ -80,7 +80,17 @@ def friendx_btn(update: Update, context: CallbackContext):
                 user_id = splitter[1]
                 user_id = int(user_id)
                 if user_id == senderid:
-                    query.message.edit_text(f"c = {c}")
+                    query.message.edit_text(
+                        f"c = {c}",
+                        reply_markup=InlineKeyboardMarkup(
+                            [
+                                [
+                                    InlineKeyboardButton(text="s1", callback_data=f"done={senderid}"),
+                                    InlineKeyboardButton(text="s2", callback_data=f"dont={senderid}")
+                                ]
+                            ]
+                        )
+                    )
                 else:
                     bot.answer_callback_query(query_id, text="Not your Query!!!")
             elif query_match == "dont":
