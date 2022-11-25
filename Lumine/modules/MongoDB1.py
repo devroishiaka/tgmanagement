@@ -66,9 +66,12 @@ def leaderboardx(update: Update, context: CallbackContext):
     message = update.effective_message
     leaderboardr = collection1.find().sort("Points",-1).limit(10)
     final = "━━━━━━━━━҉━━━━━━━━━\nTop Players 🌐\n"
+    no1 = 0
     for result in leaderboardr:
         uname = result["Name"]
         userid = result["_id"]
+        no1 = no1 + 1
+        final += f"{no1}. "
         final += f"<a href='tg://user?id={userid}'>{uname}</a>"
         final += " • "
         pointss = str(result["Points"])
