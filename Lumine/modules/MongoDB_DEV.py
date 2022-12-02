@@ -81,7 +81,7 @@ def devguildlist(update: Update, context: CallbackContext):
 
 DEVREGISTER_HANDLER = DisableAbleCommandHandler("adduser", devregister, run_async=True)
 DEVDELETE_HANDLER = DisableAbleCommandHandler("deleteone", devdelete, run_async=True)
-DEVDELETE_BTN_HANDLER = CallbackQueryHandler(delete_callback, run_async=True)
+#DEVDELETE_BTN_HANDLER = CallbackQueryHandler(delete_callback, run_async=True)
 DEVGUILDLIST_HANDLER = DisableAbleCommandHandler("guildlist", devguildlist, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
 #_HANDLER = DisableAbleCommandHandler(, run_async=True)
@@ -91,7 +91,7 @@ DEVGUILDLIST_HANDLER = DisableAbleCommandHandler("guildlist", devguildlist, run_
 
 dispatcher.add_handler(DEVREGISTER_HANDLER)
 dispatcher.add_handler(DEVDELETE_HANDLER)
-dispatcher.add_handler(DEVDELETE_BTN_HANDLER)
+#dispatcher.add_handler(DEVDELETE_BTN_HANDLER)
 dispatcher.add_handler(DEVGUILDLIST_HANDLER)
 #dispatcher.add_handler()
 #dispatcher.add_handler()
