@@ -51,6 +51,7 @@ def battle_but1(update: Update, context: CallbackContext):
             )
         )
     elif "AAAAA" in splitter:
+        attacker_id = splitter[1]
         c = int(splitter[3])
         if c > 0:
             if "BA1" in splitter:
