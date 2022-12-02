@@ -49,7 +49,7 @@ def battle_but1(update: Update, context: CallbackContext):
                 ]
             )
         )
-    else:
+    elif "Bnoo" in splitter:
         query.message.edit_text(
             "LOL"
         )
