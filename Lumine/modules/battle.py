@@ -36,24 +36,86 @@ def battle_but1(update: Update, context: CallbackContext):
     splitter = query.data.split("=")
     if "Byes" in splitter:
         attacker_id = splitter[1]
+        c = 20
         query.message.edit_text(
             "Battle weapons (attacker)",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="1", callback_data=f"BA1={attacker_id}"),
-                        InlineKeyboardButton(text="2", callback_data=f"BA2={attacker_id}"),
-                        InlineKeyboardButton(text="3", callback_data=f"BA3={attacker_id}"),
-                        InlineKeyboardButton(text="4", callback_data=f"BA4={attacker_id}"),
+                        InlineKeyboardButton(text="1", callback_data=f"AAAAA=BA1={attacker_id}=c"),
+                        InlineKeyboardButton(text="2", callback_data=f"AAAAA=BA2={attacker_id}=c"),
+                        InlineKeyboardButton(text="3", callback_data=f"AAAAA=BA3={attacker_id}=c"),
+                        InlineKeyboardButton(text="4", callback_data=f"AAAAA=BA4={attacker_id}=c"),
                     ]
                 ]
             )
         )
-    elif "Bnoo" in splitter:
-        query.message.edit_text(
-            "LOL"
-        )
-
+    elif "AAAAA" in splitter:
+        c = int(splitter[3])
+        if c > 0:
+            if "BA1" in splitter:
+                c = c - 1
+                query.message.edit_text(
+                    f"{c}",
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton(text="1", callback_data=f"AAAAA=BA1={attacker_id}=c"),
+                                InlineKeyboardButton(text="2", callback_data=f"AAAAA=BA2={attacker_id}=c"),
+                                InlineKeyboardButton(text="3", callback_data=f"AAAAA=BA3={attacker_id}=c"),
+                                InlineKeyboardButton(text="4", callback_data=f"AAAAA=BA4={attacker_id}=c"),
+                            ]
+                        ]
+                    )
+                )
+            elif "BA2" in splitter:
+                c = c - 2
+                query.message.edit_text(
+                    f"{c}",
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton(text="1", callback_data=f"AAAAA=BA1={attacker_id}=c"),
+                                InlineKeyboardButton(text="2", callback_data=f"AAAAA=BA2={attacker_id}=c"),
+                                InlineKeyboardButton(text="3", callback_data=f"AAAAA=BA3={attacker_id}=c"),
+                                InlineKeyboardButton(text="4", callback_data=f"AAAAA=BA4={attacker_id}=c"),
+                            ]
+                        ]
+                    )
+                )
+            elif "BA3" in splitter:
+                c = c - 3
+                query.message.edit_text(
+                    f"{c}",
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton(text="1", callback_data=f"AAAAA=BA1={attacker_id}=c"),
+                                InlineKeyboardButton(text="2", callback_data=f"AAAAA=BA2={attacker_id}=c"),
+                                InlineKeyboardButton(text="3", callback_data=f"AAAAA=BA3={attacker_id}=c"),
+                                InlineKeyboardButton(text="4", callback_data=f"AAAAA=BA4={attacker_id}=c"),
+                            ]
+                        ]
+                    )
+                )
+            elif "BA4" in splitter:
+                c = c - 4
+                query.message.edit_text(
+                    f"{c}",
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton(text="1", callback_data=f"AAAAA=BA1={attacker_id}=c"),
+                                InlineKeyboardButton(text="2", callback_data=f"AAAAA=BA2={attacker_id}=c"),
+                                InlineKeyboardButton(text="3", callback_data=f"AAAAA=BA3={attacker_id}=c"),
+                                InlineKeyboardButton(text="4", callback_data=f"AAAAA=BA4={attacker_id}=c"),
+                            ]
+                        ]
+                    )
+                )
+        else:
+            query.message.edit_text("SAD")
+"""
 def battle_but2(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
@@ -119,12 +181,12 @@ def battle_but2(update: Update, context: CallbackContext):
                         ]
                     ]
                 )
-            )
+            )"""
 
 battleff_handler = CommandHandler("battlee", battleff)
 button1_callback_handler = CallbackQueryHandler(battle_but1, pattern=".*")
-button2_callback_handler = CallbackQueryHandler(battle_but2, pattern=".*")
+#button2_callback_handler = CallbackQueryHandler(battle_but2, pattern=".*")
 
 dispatcher.add_handler(battleff_handler)
 dispatcher.add_handler(button1_callback_handler)
-dispatcher.add_handler(button2_callback_handler)
+#dispatcher.add_handler(button2_callback_handler)
