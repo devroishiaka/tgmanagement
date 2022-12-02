@@ -17,14 +17,14 @@ BD = Battle defence(weapons of the defender)
 def battleff(update: Update, context: CallbackContext):
     message = update.effective_message
     attacker_id = update.effective_user.id
-    attacker_id= int(attacker_id)
+    attacker_id= attacker_id
     message.reply_text(
         "CHOOSE",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(text="YES", callback_data=f"Byes={attacker_id}"),
-                    InlineKeyboardButton(text="NOO", callback_data=f"Bnoo={attacker_id}")
+                    InlineKeyboardButton(text="YES", callback_data=f"Byes=a"),
+                    InlineKeyboardButton(text="NOO", callback_data=f"Bnoo=a")
                 ]
             ]
         )
@@ -34,8 +34,8 @@ def battleff(update: Update, context: CallbackContext):
 def battle_but1(update: Update, context: CallbackContext):
     query = update.callback_query
     splitter = query.data.split("=")
-    if "Byes" in splitter:
-        attacker_id = splitter[1]
+    if "Byes=a" == query.data:
+        attacker_id = 45565
         c = 20
         query.message.edit_text(
             "Battle weapons (attacker)",
@@ -50,8 +50,8 @@ def battle_but1(update: Update, context: CallbackContext):
                 ]
             )
         )
-    elif "AAAAA" in splitter:
-        attacker_id = splitter[1]
+    else:
+        attacker_id = 45565
         c = int(splitter[3])
         if c > 0:
             if "BA1" in splitter:
