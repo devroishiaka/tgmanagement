@@ -122,8 +122,8 @@ def battle_but2(update: Update, context: CallbackContext):
             )
 
 battleff_handler = CommandHandler("battlee", battleff)
-button1_callback_handler = CallbackQueryHandler(battle_but1, pattern=r"Byes")
-button2_callback_handler = CallbackQueryHandler(battle_but2, pattern=r"BA")
+button1_callback_handler = CallbackQueryHandler(battle_but1, pattern=".*")
+button2_callback_handler = CallbackQueryHandler(battle_but2, pattern=".*")
 
 dispatcher.add_handler(battleff_handler)
 dispatcher.add_handler(button1_callback_handler)
