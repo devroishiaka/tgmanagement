@@ -23,8 +23,8 @@ def battleff(update: Update, context: CallbackContext):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(text="YES", callback_data=f"Byes=a"),
-                    InlineKeyboardButton(text="NOO", callback_data=f"Bnoo=a")
+                    InlineKeyboardButton(text="YES", callback_data="aaa_Byes=a"),
+                    InlineKeyboardButton(text="NOO", callback_data="aaa_Bnoo=a")
                 ]
             ]
         )
@@ -34,7 +34,7 @@ def battleff(update: Update, context: CallbackContext):
 def battle_but1(update: Update, context: CallbackContext):
     query = update.callback_query
     splitter = query.data.split("=")
-    if "Byes=a" == query.data:
+    if "aaa_Byes=a" == query.data:
         attacker_id = 45565
         c = 20
         query.message.edit_text(
@@ -42,15 +42,15 @@ def battle_but1(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="1", callback_data=f"AAAAA=BA1={attacker_id}={c}"),
-                        InlineKeyboardButton(text="2", callback_data=f"AAAAA=BA2={attacker_id}={c}"),
-                        InlineKeyboardButton(text="3", callback_data=f"AAAAA=BA3={attacker_id}={c}"),
-                        InlineKeyboardButton(text="4", callback_data=f"AAAAA=BA4={attacker_id}={c}"),
+                        InlineKeyboardButton(text="1", callback_data=f"aaa_AAAAA=BA1={attacker_id}={c}"),
+                        InlineKeyboardButton(text="2", callback_data=f"aaa_AAAAA=BA2={attacker_id}={c}"),
+                        InlineKeyboardButton(text="3", callback_data=f"aaa_AAAAA=BA3={attacker_id}={c}"),
+                        InlineKeyboardButton(text="4", callback_data=f"aaa_AAAAA=BA4={attacker_id}={c}"),
                     ]
                 ]
             )
         )
-    else:
+    elif "aaa_AAAAA" == query.data.split("=")[0]:
         attacker_id = 45565
         c = int(splitter[3])
         if c > 0:
@@ -61,10 +61,10 @@ def battle_but1(update: Update, context: CallbackContext):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton(text="1", callback_data=f"AAAAA=BA1={attacker_id}={c}"),
-                                InlineKeyboardButton(text="2", callback_data=f"AAAAA=BA2={attacker_id}={c}"),
-                                InlineKeyboardButton(text="3", callback_data=f"AAAAA=BA3={attacker_id}={c}"),
-                                InlineKeyboardButton(text="4", callback_data=f"AAAAA=BA4={attacker_id}={c}"),
+                                InlineKeyboardButton(text="1", callback_data=f"aaa_AAAAA=BA1={attacker_id}={c}"),
+                                InlineKeyboardButton(text="2", callback_data=f"aaa_AAAAA=BA2={attacker_id}={c}"),
+                                InlineKeyboardButton(text="3", callback_data=f"aaa_AAAAA=BA3={attacker_id}={c}"),
+                                InlineKeyboardButton(text="4", callback_data=f"aaa_AAAAA=BA4={attacker_id}={c}"),
                             ]
                         ]
                     )
@@ -76,10 +76,10 @@ def battle_but1(update: Update, context: CallbackContext):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton(text="1", callback_data=f"AAAAA=BA1={attacker_id}={c}"),
-                                InlineKeyboardButton(text="2", callback_data=f"AAAAA=BA2={attacker_id}={c}"),
-                                InlineKeyboardButton(text="3", callback_data=f"AAAAA=BA3={attacker_id}={c}"),
-                                InlineKeyboardButton(text="4", callback_data=f"AAAAA=BA4={attacker_id}={c}"),
+                                InlineKeyboardButton(text="1", callback_data=f"aaa_AAAAA=BA1={attacker_id}={c}"),
+                                InlineKeyboardButton(text="2", callback_data=f"aaa_AAAAA=BA2={attacker_id}={c}"),
+                                InlineKeyboardButton(text="3", callback_data=f"aaa_AAAAA=BA3={attacker_id}={c}"),
+                                InlineKeyboardButton(text="4", callback_data=f"aaa_AAAAA=BA4={attacker_id}={c}"),
                             ]
                         ]
                     )
@@ -91,10 +91,10 @@ def battle_but1(update: Update, context: CallbackContext):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton(text="1", callback_data=f"AAAAA=BA1={attacker_id}={c}"),
-                                InlineKeyboardButton(text="2", callback_data=f"AAAAA=BA2={attacker_id}={c}"),
-                                InlineKeyboardButton(text="3", callback_data=f"AAAAA=BA3={attacker_id}={c}"),
-                                InlineKeyboardButton(text="4", callback_data=f"AAAAA=BA4={attacker_id}={c}"),
+                                InlineKeyboardButton(text="1", callback_data=f"aaa_AAAAA=BA1={attacker_id}={c}"),
+                                InlineKeyboardButton(text="2", callback_data=f"aaa_AAAAA=BA2={attacker_id}={c}"),
+                                InlineKeyboardButton(text="3", callback_data=f"aaa_AAAAA=BA3={attacker_id}={c}"),
+                                InlineKeyboardButton(text="4", callback_data=f"aaa_AAAAA=BA4={attacker_id}={c}"),
                             ]
                         ]
                     )
@@ -106,10 +106,10 @@ def battle_but1(update: Update, context: CallbackContext):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton(text="1", callback_data=f"AAAAA=BA1={attacker_id}={c}"),
-                                InlineKeyboardButton(text="2", callback_data=f"AAAAA=BA2={attacker_id}={c}"),
-                                InlineKeyboardButton(text="3", callback_data=f"AAAAA=BA3={attacker_id}={c}"),
-                                InlineKeyboardButton(text="4", callback_data=f"AAAAA=BA4={attacker_id}={c}"),
+                                InlineKeyboardButton(text="1", callback_data=f"aaa_AAAAA=BA1={attacker_id}={c}"),
+                                InlineKeyboardButton(text="2", callback_data=f"aaa_AAAAA=BA2={attacker_id}={c}"),
+                                InlineKeyboardButton(text="3", callback_data=f"aaa_AAAAA=BA3={attacker_id}={c}"),
+                                InlineKeyboardButton(text="4", callback_data=f"aaa_AAAAA=BA4={attacker_id}={c}"),
                             ]
                         ]
                     )
@@ -185,7 +185,7 @@ def battle_but2(update: Update, context: CallbackContext):
             )"""
 
 battleff_handler = CommandHandler("battlee", battleff)
-button1_callback_handler = CallbackQueryHandler(battle_but1, pattern=".*")
+button1_callback_handler = CallbackQueryHandler(battle_but1, pattern=r"aaa_")
 #button2_callback_handler = CallbackQueryHandler(battle_but2, pattern=".*")
 
 dispatcher.add_handler(battleff_handler)
